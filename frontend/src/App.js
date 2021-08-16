@@ -7,13 +7,15 @@ import Navbar from './components/Navbar/navbar';
 import LoginScreen from './screens/LoginScreen/loginScreen'
 import SignupScreen from './screens/SignupScreen/singupScreen'
 import RoomsScreen from './screens/RoomScreen/roomsScreen';
+import LandingScreen from './screens/LandingScreen/landingScreen';
 
 const App = () => {
   return (
     <Router>
       <div>
         <Navbar />
-        <Route path="/rooms" component={RoomsScreen} exact />
+        <Route path="/" component={LandingScreen} exact />
+        <Route path="/rooms" component={RoomsScreen} />
         <Route path="/login" component={LoginScreen} />
         <Route path="/signup" component={SignupScreen} />
 
