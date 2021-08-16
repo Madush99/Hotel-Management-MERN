@@ -7,6 +7,9 @@ import connectDB from './config/db.js'
 
 //routes
 import roomRoutes from './routes/roomsRoutes.js'
+import userRoutes from './routes/userRoutes.js'
+import restaurentsRoutes from './routes/restaurentRoutes.js'
+ 
 
 dotenv.config()
 
@@ -28,7 +31,8 @@ app.get('/', (req, res) => {
 
 //calling routes
 app.use('/api/rooms', roomRoutes)
-
+app.use('/api/users', userRoutes)
+app.use('/api/restaurents', restaurentsRoutes)
 
 //create port 
 const PORT = process.env.PORT || 6500
