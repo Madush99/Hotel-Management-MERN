@@ -4,6 +4,10 @@ import colors from 'colors'
 import morgan from 'morgan'
 import connectDB from './config/db.js'
 
+
+//routes
+import roomRoutes from './routes/roomsRoutes.js'
+
 dotenv.config()
 
 //connect database
@@ -21,6 +25,9 @@ app.use(express.json())
 app.get('/', (req, res) => {
       res.send('API is running...')
 })
+
+//calling routes
+app.use('/api/rooms', roomRoutes)
 
 
 //create port 
