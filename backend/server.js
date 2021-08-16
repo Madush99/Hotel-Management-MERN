@@ -31,6 +31,6 @@ app.use('/api/rooms', roomRoutes)
 
 
 //create port 
-const PORT = process.env.PORT || 6000
+const PORT = process.env.PORT || 6500
 
 app.listen(PORT, console.log(`server running in ${process.env.NODE_ENV} port ${PORT}`.yellow.bold))
