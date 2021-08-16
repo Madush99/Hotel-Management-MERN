@@ -3,10 +3,11 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 
-import { roomsAllReducer } from './reducers/roomsReducer.js'
+import { roomsAllReducer, roomDetailsReducer } from './reducers/roomsReducer.js'
 
 const reducer = combineReducers({
       roomsAll: roomsAllReducer,
+      roomDetails: roomDetailsReducer,
 })
 
 
