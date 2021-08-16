@@ -69,7 +69,7 @@ const SignupScreen = ({ location, history }) => {
                                                                   </div>
                                                                   <center>
                                                 
-                                                                  <h3 class="display-4"><b>SIGN UP</b></h3>
+                                                                  <h3 class="display-4">SIGN UP</h3>
                                                                   </center>
                                                                   <br/>
                                                                   
