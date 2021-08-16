@@ -1,0 +1,9 @@
+.login,
+.image {
+  min-height: 100vh;
+}
+.bg-image {
+  background-image: url('https://images7.alphacoders.com/362/362619.jpg');
+  background-size: cover;
+  background-position: center center;
+}
