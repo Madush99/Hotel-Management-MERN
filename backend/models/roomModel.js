@@ -9,6 +9,26 @@ const roomSchema = mongoose.Schema({
             type: Number,
             required: true
       },
+      features1: {
+            type: String,
+            required: true
+      },
+      features2: {
+            type: String,
+            required: true
+      },
+      features3: {
+            type: String,
+            required: true
+      },
+      features4: {
+            type: String,
+            required: true
+      },
+      features5: {
+            type: String,
+            required: true
+      },
       phonenumber: {
             type: Number,
             required: true

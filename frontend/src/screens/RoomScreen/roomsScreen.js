@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { LinkContainer } from 'react-router-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { allRooms } from '../../actions/roomAction.js'
 import '../RoomScreen/rooms.css'
@@ -26,7 +27,7 @@ const RoomsScreen = () => {
 
                                     <div className="col-md-9 mt-2">
                                           {rooms.map((room) => (
-                                                <div className='row bs'>
+                                                <div className='row bs' key={room._id}>
                                                       <div className='col-md-4'>
                                                             <img src={room.imageurls[0]} className='smallimg'></img>
                                                       </div>
@@ -39,7 +40,9 @@ const RoomsScreen = () => {
                                                             </b>
 
                                                             <div style={{ float: 'right' }}>
-                                                                  <button className='btn btn-outline-warning'>View Details</button>
+                                                                  <LinkContainer to={`/room/${room._id}`}>
+                                                                        <button className='btn btn-outline-warning'>View Details</button>
+                                                                  </LinkContainer>
                                                             </div>
                                                       </div>
                                                 </div>
