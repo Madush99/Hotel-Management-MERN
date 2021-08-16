@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import './login.css'
 import { Link } from 'react-router-dom'
-import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import { login } from '../../actions/userAction'
+import { Row, Col } from 'react-bootstrap'
 
-const LoginScreen = () => {
+const LoginScreen = ({ location, history }) => {
       const [email, setEmail] = useState('')
       const [password, setPassword] = useState('')
 
@@ -16,6 +16,14 @@ const LoginScreen = () => {
       const userLogin = useSelector(state => state.userLogin)
       const { loading, error, userInfo } = userLogin
 
+      const redirect = location.search ? location.search.split('=')[1] : '/'
+
+      useEffect(() => {
+            if (userInfo) {
+                  history.push(redirect)
+            }
+
+      }, [history, userInfo, redirect])
      
       const submitHandler = (e) => {
             e.preventDefault()
@@ -53,8 +61,8 @@ const LoginScreen = () => {
                                                                               <label for="customCheck1" class="custom-control-label">Remember password</label>
                                                                         </div>
                                                                         <button type="submit" class="btn btn-outline-warning btn-block text-uppercase mb-2 rounded-pill shadow-sm">Sign in</button>
-                                                                        <div class="text-center d-flex justify-content-between mt-4"><p>Code by <a href="#" class="font-italic text-muted">
-                                                                              <u>Jassa</u></a></p></div>
+                                                                        <div class="text-center d-flex justify-content-between mt-4"><p>New Customer? <a href="/signup" class="font-italic text-muted">
+                                                                              <u>Register Now</u></a></p></div>
                                                                   </form>
                                                             </div>
                                                       </div>

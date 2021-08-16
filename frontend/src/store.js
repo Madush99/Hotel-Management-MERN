@@ -6,7 +6,8 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import { roomsAllReducer } from './reducers/roomsReducer.js'
 import { 
       userLoginReducer,  
-      userDetailsReducer, 
+      userDetailsReducer,
+      userRegisterReducer, 
 } from './reducers/userReducer'
 
 
@@ -15,6 +16,7 @@ const reducer = combineReducers({
       roomsAll: roomsAllReducer,
       userLogin: userLoginReducer,
       userDetails: userDetailsReducer,
+      userRegister: userRegisterReducer,
 })
 
 

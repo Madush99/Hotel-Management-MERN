@@ -12,6 +12,8 @@ import UserProfile from './screens/UserProfileScreen/userProfileScreen'
 
 
 
+
+
 const App = () => {
   return (
     <Router>
@@ -22,7 +24,6 @@ const App = () => {
         <Route path="/login" component={LoginScreen} />
         <Route path="/signup" component={SignupScreen} />
         <Route path="/profile" component={UserProfile} />
-
       </div>
     </Router>
   );
