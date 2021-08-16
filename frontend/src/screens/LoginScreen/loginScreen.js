@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './login.css'
 import { Link } from 'react-router-dom'
 import { Form, Button, Row, Col } from 'react-bootstrap'
@@ -7,9 +7,22 @@ import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import { login } from '../../actions/userAction'
 
-const LoginScreen = ({ location, history }) => {
+const LoginScreen = () => {
+      const [email, setEmail] = useState('')
+      const [password, setPassword] = useState('')
 
-      
+
+      const dispatch = useDispatch()
+      const userLogin = useSelector(state => state.userLogin)
+      const { loading, error, userInfo } = userLogin
+
+ 
+
+      const submitHandler = (e) => {
+            e.preventDefault()
+            dispatch(login(email, password))
+      }
+
 
       return (
             <>
@@ -25,14 +38,16 @@ const LoginScreen = ({ location, history }) => {
                                                 <div class="container">
                                                       <div class="row">
                                                             <div class="col-lg-10 col-xl-7 mx-auto">
-                                                                  <h3 class="display-4">Split page!</h3>
+                                                                  <h3 class="display-4">LOG IN!</h3>
+                                                                  {error && <Message variant='danger'>{error}</Message>}
+                                                                  {loading && <Loader />}
                                                                   <p class="text-muted mb-4">Create a login split page using Bootstrap 4.</p>
-                                                                  <form>
+                                                                  <form onSubmit={submitHandler} >
                                                                         <div class="form-group mb-3">
-                                                                              <input id="inputEmail" type="email" placeholder="Email address" required="" autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4" />
+                                                                              <input id="inputEmail" type="email" placeholder="Email address" required="" autofocus="" value={email} onChange={(e) => setEmail(e.target.value)} class="form-control rounded-pill border-0 shadow-sm px-4" />
                                                                         </div>
                                                                         <div class="form-group mb-3">
-                                                                              <input id="inputPassword" type="password" placeholder="Password" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" />
+                                                                              <input id="inputPassword" type="password" placeholder="Password" required=""  value={password} onChange={(e) => setPassword(e.target.value)} class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" />
                                                                         </div>
                                                                         <div class="custom-control custom-checkbox mb-3">
                                                                               <input id="customCheck1" type="checkbox" checked class="custom-control-input" />

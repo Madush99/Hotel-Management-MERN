@@ -8,6 +8,9 @@ import LoginScreen from './screens/LoginScreen/loginScreen'
 import SignupScreen from './screens/SignupScreen/singupScreen'
 import RoomsScreen from './screens/RoomScreen/roomsScreen';
 import LandingScreen from './screens/LandingScreen/landingScreen';
+import UserProfile from './screens/UserProfileScreen/userProfileScreen'
+
+
 
 const App = () => {
   return (
@@ -18,6 +21,7 @@ const App = () => {
         <Route path="/rooms" component={RoomsScreen} />
         <Route path="/login" component={LoginScreen} />
         <Route path="/signup" component={SignupScreen} />
+        <Route path="/profile" component={UserProfile} />
 
       </div>
     </Router>
