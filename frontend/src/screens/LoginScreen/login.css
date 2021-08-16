@@ -3,7 +3,8 @@
   min-height: 100vh;
 }
 .bg-image {
-  background-image: url('https://images7.alphacoders.com/362/362619.jpg');
+  background-image: url('../LoginScreen/gg.jpg');
   background-size: cover;
-  background-position: center center;
+  background-position: 100% 35%;
+
 }
