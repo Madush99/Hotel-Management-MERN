@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Carousel, Row, Col, ListGroup } from 'react-bootstrap'
 import { getRoomDetails } from '../../actions/roomAction.js'
 import '../ViewRoomScreen/viewrooms.css'
+import Aos from 'aos'
+import 'aos/dist/aos.css'
+Aos.init()
+Aos.refresh()
 
 const ViewRoomScreen = ({ match, history }) => {
 
@@ -27,7 +31,7 @@ const ViewRoomScreen = ({ match, history }) => {
                         ) : (
                               <>
                                     <div className="container">
-                                          <div className='bn'>
+                                          <div className='bn' data-aos="zoom-in">
                                                 <Row>
                                                       <Col md={12}>
                                                             <Carousel nextLabel="" prevLabel="">

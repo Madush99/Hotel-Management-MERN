@@ -3,7 +3,7 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 
-import { roomsAllReducer, roomDetailsReducer } from './reducers/roomsReducer.js'
+import { roomsAllReducer, roomDetailsReducer, roomBookDetailReducer } from './reducers/roomsReducer.js'
 import {
       userLoginReducer,
       userDetailsReducer,
@@ -18,6 +18,7 @@ const reducer = combineReducers({
       userLogin: userLoginReducer,
       userDetails: userDetailsReducer,
       userRegister: userRegisterReducer,
+      roomBookdetails: roomBookDetailReducer,
 })
 
 

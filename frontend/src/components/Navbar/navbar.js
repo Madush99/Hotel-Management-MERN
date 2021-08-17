@@ -27,31 +27,32 @@ const Navbar = () => {
                         <div class="collapse navbar-collapse" id="navbarNav">
                               <ul class="navbar-nav ml-auto">
                                     {userInfo ? (
-
-
-                                    <NavDropdown className="link" title={userInfo.name} id='username'>
-                                          <LinkContainer to="/profile">
-                                                <NavDropdown.Item class="link-dark">Profile</NavDropdown.Item>
-                                          </LinkContainer>
-                                          <NavDropdown.Item onClick={logoutHandler}>
-                                                <li className="link">logout</li>
-                                          </NavDropdown.Item>
-                                    </NavDropdown>
+                                          <NavDropdown className="link" title={userInfo.name} id='username'>
+                                                <LinkContainer to="/profile">
+                                                      <NavDropdown.Item class="link-dark">Profile</NavDropdown.Item>
+                                                </LinkContainer>
+                                                <LinkContainer to="/rooms">
+                                                      <NavDropdown.Item class="link-dark">Rooms</NavDropdown.Item>
+                                                </LinkContainer>
+                                                <NavDropdown.Item onClick={logoutHandler}>
+                                                      <li className="link">logout</li>
+                                                </NavDropdown.Item>
+                                          </NavDropdown>
 
                                     ) : <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href='/login'>Login</a>
-                              </li>}
+                                          <a class="nav-link active" aria-current="page" href='/login'>Login</a>
+                                    </li>}
 
 
                                     {userInfo && userInfo.isEditor && (
-                                    <NavDropdown className="link" title='Admin'>
-                                          <Link to="/admin">
-                                                Admin
-                                          </Link>
+                                          <NavDropdown className="link" title='Admin'>
+                                                <Link to="/admin">
+                                                      Admin
+                                                </Link>
 
-                                    </NavDropdown>
-                                    ) 
-}
+                                          </NavDropdown>
+                                    )
+                                    }
                               </ul>
                         </div>
                   </div>

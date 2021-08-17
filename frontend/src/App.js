@@ -11,6 +11,9 @@ import LandingScreen from './screens/LandingScreen/landingScreen';
 import ViewRoomScreen from './screens/ViewRoomScreen/viewRoomScreen';
 import UserProfile from './screens/UserProfileScreen/userProfileScreen'
 import Restaurents from './screens/RestaurantsScreen/restaurantsScreen'
+import BookingScreen from './screens/BookingScreen/bookingScreen';
+
+
 
 
 
@@ -27,8 +30,9 @@ const App = () => {
         <Route path="/room/:id" component={ViewRoomScreen} />
         <Route path="/restaurants" component={Restaurents} />
 
+        <Route path="/roombook/:roomid" component={BookingScreen} />
         <Route path="/profile" component={UserProfile} />
-        
+
       </div>
     </Router>
   );
