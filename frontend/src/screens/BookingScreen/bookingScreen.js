@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Carousel, Row, Col, ListGroup } from 'react-bootstrap'
 import moment from 'moment'
 import Aos from 'aos'
@@ -10,14 +10,39 @@ Aos.refresh()
 
 const BookingScreen = ({ match }) => {
 
+      const [rentperday, setrentperday] = useState()
+      const fromdate = moment(match.params.fromdate, 'DD-MM-YYYY')
+      const todate = moment(match.params.todate, 'DD-MM-YYYY')
+      const totalDays = moment.duration(todate.diff(fromdate)).asDays() + 1
+      const [totalAmount, settotalAmount] = useState()
+
       const dispatch = useDispatch()
 
       const roomBookdetails = useSelector((state) => state.roomBookdetails)
       const { loading, error, rooms } = roomBookdetails
 
+
+
       useEffect(() => {
             dispatch(bookRoomDetails(match.params.roomid))
+
       }, [dispatch, match])
+
+      // async function tokenHander(token) {
+
+      //       console.log(token);
+      //       const bookingDetails = {
+
+      //             token,
+      //             user: JSON.parse(localStorage.getItem('currentUser')),
+      //             room,
+      //             fromdate,
+      //             todate,
+      //             totalDays,
+      //             totalAmount
+
+      //       }
+      // }
 
       return (
 
@@ -124,12 +149,12 @@ const BookingScreen = ({ match }) => {
                                                                               <ListGroup.Item as="li" variant="secondary">
                                                                                     <b>BOOK NOW</b>
                                                                               </ListGroup.Item>
-                                                                              <ListGroup.Item as="li" disabled><b>From Date: </b> {rooms.maxcount}</ListGroup.Item>
-                                                                              <ListGroup.Item as="li" disabled><b>To Date: </b> {rooms.maxcount}</ListGroup.Item>
+                                                                              <ListGroup.Item as="li" disabled><b>From Date: </b> {match.params.fromdate}</ListGroup.Item>
+                                                                              <ListGroup.Item as="li" disabled><b>To Date: </b> {match.params.todate}</ListGroup.Item>
                                                                               <ListGroup.Item as="li" disabled>
-                                                                                    <b>Total Days : </b> {rooms.type}
+                                                                                    <b>Total Days : </b> {totalDays}
                                                                               </ListGroup.Item>
-                                                                              <ListGroup.Item as="li" disabled ><b>Total Amount :</b></ListGroup.Item>
+                                                                              <ListGroup.Item as="li" disabled ><b>Total Amount :{rooms.rentperday * totalDays}</b>{totalAmount}</ListGroup.Item>
                                                                               <ListGroup.Item as="li" disabled > <button className='btn btn-outline-warning'>Pay Now</button></ListGroup.Item>
 
 
