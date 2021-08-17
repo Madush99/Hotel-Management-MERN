@@ -31,5 +31,48 @@ const getRestaurents = asyncHandler(async (req, res) => {
  
  })
 
+ const createRestaurant = asyncHandler(async(req, res) => {  
+      const { 
+        name,     
+        type,     
+        tables,     
+        phoneNo,
+        email,
+        location,
+        image,
+        description  
+    } = req.body 
 
-  export { getRestaurents , getRestaurantById }
+        const rest = await Restaurent.create({  
+        name,     
+        type,     
+        tables,     
+        phoneNo,
+        email,
+        location,
+        image,
+        description   
+           
+       }) 
+          if(rest) 
+        {    
+             res.status(201).json({   
+                 _id:rest._id,    
+                name:rest.name,
+                type: rest.type,
+                tables:rest.tables,
+                phoneNo:rest.phoneNo,
+                email:rest.email,
+                location:rest.location,
+                image:rest.image,
+                description:rest.description
+             })  
+         } else {   
+              res.status(400)     
+              throw new Error('Invalid food data') 
+           }
+        })
+  
+
+
+  export { getRestaurents , getRestaurantById , createRestaurant }
