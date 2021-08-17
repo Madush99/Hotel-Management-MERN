@@ -24,7 +24,8 @@ const RoomsScreen = () => {
       return (
             <>
                   <div className="container">
-                        <div className="row bs p-3 m-5 dark">
+                        <div className="row bs p-3 m-5 dark" data-aos="fade-up"
+                              data-aos-anchor-placement="center-bottom">
                               <div className="col-md-4">
                                     <RangePicker style={{ height: "38px" }} format='DD-MM-YYYY' className='m-2' />
                               </div>
@@ -51,7 +52,7 @@ const RoomsScreen = () => {
                         </div>
                   </div>
 
-                  <div className="row justify-content-center mt-5">
+                  <div className="row justify-content-center mt-5"  >
                         {loading ? (
                               <h1>loading....</h1>
                         ) : error ? (
