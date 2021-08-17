@@ -10,7 +10,7 @@ import RoomsScreen from './screens/RoomScreen/roomsScreen';
 import LandingScreen from './screens/LandingScreen/landingScreen';
 import ViewRoomScreen from './screens/ViewRoomScreen/viewRoomScreen';
 import UserProfile from './screens/UserProfileScreen/userProfileScreen'
-
+import Restaurents from './screens/RestaurantsScreen/restaurantsScreen'
 
 
 
@@ -25,6 +25,7 @@ const App = () => {
         <Route path="/login" component={LoginScreen} />
         <Route path="/signup" component={SignupScreen} />
         <Route path="/room/:id" component={ViewRoomScreen} />
+        <Route path="/restaurants" component={Restaurents} />
 
         <Route path="/profile" component={UserProfile} />
         
