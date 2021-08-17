@@ -20,7 +20,7 @@ const foodSchema = mongoose.Schema({
     },
     image:{
         type: String,
-        required: true,
+        
     },
    
 }, {
