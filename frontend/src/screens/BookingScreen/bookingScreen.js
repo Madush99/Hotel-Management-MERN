@@ -31,7 +31,7 @@ const BookingScreen = ({ match }) => {
                         ) : (
                               <>
                                     <div className='m-5'>
-                                          <div className="row p-3 mb-5 bs" data-aos='flip-right' duration='2000'>
+                                          <div className="row p-3 mb-5 bs" data-aos="zoom-out-right">
 
                                                 <div >
                                                       <div className='bn'>

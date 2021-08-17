@@ -4,6 +4,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { allRooms } from '../../actions/roomAction.js'
 import '../RoomScreen/rooms.css'
 import { DatePicker, Space } from "antd";
+import 'antd/dist/antd.css'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
+const { RangePicker } = DatePicker;
 
 const RoomsScreen = () => {
 
@@ -19,9 +24,9 @@ const RoomsScreen = () => {
       return (
             <>
                   <div className="container">
-                        <div className="row bs p-3 m-5">
+                        <div className="row bs p-3 m-5 dark">
                               <div className="col-md-4">
-                                    <DatePicker style={{ height: "38px" }} format='DD-MM-YYYY' className='m-2' />
+                                    <RangePicker style={{ height: "38px" }} format='DD-MM-YYYY' className='m-2' />
                               </div>
 
                               <div className="col-md-4">
@@ -45,45 +50,51 @@ const RoomsScreen = () => {
                               </div>
                         </div>
                   </div>
-                  <div className="container">
-                        <div className="row justify-content-center mt-5">
-                              {loading ? (
-                                    <h1>loading....</h1>
-                              ) : error ? (
-                                    <h1>Error...</h1>
-                              ) : (
 
-                                    <div className="col-md-9 mt-2">
-                                          {rooms.map((room) => (
-                                                <div className='row bs' key={room._id}>
-                                                      <div className='col-md-4'>
-                                                            <img src={room.imageurls[0]} className='smallimg'></img>
+                  <div className="row justify-content-center mt-5">
+                        {loading ? (
+                              <h1>loading....</h1>
+                        ) : error ? (
+                              <h1>Error...</h1>
+                        ) : (
+
+                              <div className="col-md-9 mt-2">
+                                    {rooms.map((room) => (
+                                          <div className='row bs' key={room._id}>
+                                                <div className='col-md-4'>
+                                                      <img src={room.imageurls[0]} className='smallimg'></img>
+                                                </div>
+                                                <div className='col-md-7'>
+                                                      <h1>{room.name}</h1>
+                                                      <b>
+                                                            <p>Max Count: {room.maxcount}</p>
+                                                            <p>Phone Number: {room.phonenumber}</p>
+                                                            <p>Type: {room.type}</p>
+                                                      </b>
+
+                                                      <div style={{ float: 'right' }} className='vb'>
+
+                                                            <LinkContainer to={`/roombook/${room._id}`}>
+                                                                  <button className='btn btn-outline-warning'>Book Now</button>
+                                                            </LinkContainer>
+
+
                                                       </div>
-                                                      <div className='col-md-7'>
-                                                            <h1>{room.name}</h1>
-                                                            <b>
-                                                                  <p>Max Count: {room.maxcount}</p>
-                                                                  <p>Phone Number: {room.phonenumber}</p>
-                                                                  <p>Type: {room.type}</p>
-                                                            </b>
+                                                      <div style={{ float: 'right' }} className='vb'>
 
-                                                            <div style={{ float: 'right' }}>
-                                                                  <LinkContainer to={`/roombook/${room._id}`}>
-                                                                        <button className='btn btn-outline-warning'>Book Now</button>
-                                                                  </LinkContainer>
-                                                                  <LinkContainer to={`/room/${room._id}`}>
-                                                                        <button className='btn btn-outline-warning'>View Details</button>
-                                                                  </LinkContainer>
-                                                            </div>
+                                                            <LinkContainer to={`/room/${room._id}`}>
+                                                                  <button className='btn btn-outline-warning'>View Details</button>
+                                                            </LinkContainer>
                                                       </div>
                                                 </div>
-                                          ))}
+                                          </div>
+                                    ))}
 
-                                    </div>
+                              </div>
 
-                              )}
-                        </div>
+                        )}
                   </div>
+
 
             </>
       )
