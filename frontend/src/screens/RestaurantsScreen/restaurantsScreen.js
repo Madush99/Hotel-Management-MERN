@@ -6,8 +6,7 @@ import Rest from '../../components/RestaurantImages/resturantsDisplay'
 import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import { Row, Col } from 'react-bootstrap'
-
-
+import './style.css'
 
 
 const RestaurantScreen = () => {
@@ -25,7 +24,8 @@ const RestaurantScreen = () => {
       return (
             <>
             <Carousel />
-                <h1>Restaurants</h1>
+            <br></br>
+                <h1 style={{ textAlign: "center" }}>RESTAURANTS</h1>
                 {
                         loading ? (<Loader />) : error ? (<Message variant='danger'>{error}</Message>
                         ) : (
@@ -39,6 +39,7 @@ const RestaurantScreen = () => {
                                )}
                   </Row>
                   )}
+                 
             </>
       )
 }
