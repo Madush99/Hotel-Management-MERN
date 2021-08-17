@@ -32,10 +32,12 @@ const RestaurantScreen = () => {
                 <Row className='ro'>
                               {restautants.map((restaurant) =>
 
-                                    <Col key={restaurant._id} sm={12} md={6} lg={4} xl={3}>
+                                    <Col key={restaurant._id} sm={12} md={6} lg={4} xl={7}>
                                           <Rest restaurant={restaurant} />
                                     </Col>
-
+                                   
+                                    
+                              
                                )}
                   </Row>
                   )}
