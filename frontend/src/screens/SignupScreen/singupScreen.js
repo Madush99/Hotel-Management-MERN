@@ -102,7 +102,7 @@ const SignupScreen = ({ location, history }) => {
                                                                         <button type="submit" class="btn btn-outline-warning btn-block text-uppercase mb-2 rounded-pill shadow-sm">Sign up</button>
 
                                                                         
-                                                                        <p class="text-muted mb-4">Create a Account using Social Links.</p>
+                                                                        <center><p class="text-muted mb-4">Create an Account using Social Links.</p></center>
 
                                                                         <div class="social-media">
                                                                               <a href="#" class="social-icon">
