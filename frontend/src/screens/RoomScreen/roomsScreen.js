@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { allRooms } from '../../actions/roomAction.js'
 import '../RoomScreen/rooms.css'
+import moment from "moment";
 import { DatePicker, Space } from "antd";
 import 'antd/dist/antd.css'
 import AOS from 'aos';
@@ -11,6 +12,10 @@ AOS.init();
 const { RangePicker } = DatePicker;
 
 const RoomsScreen = () => {
+
+      const [fromdate, setfromdate] = useState('');
+      const [todate, settodate] = useState('')
+
 
       const dispatch = useDispatch()
 
@@ -21,13 +26,19 @@ const RoomsScreen = () => {
             dispatch(allRooms())
       }, [dispatch])
 
+
+      function filterByDate(dates) {
+            setfromdate(moment(dates[0]).format('DD-MM-YY'))
+            settodate(moment(dates[1]).format('DD-MM-YY'))
+      }
+
       return (
             <>
                   <div className="container">
                         <div className="row bs p-3 m-5 dark" data-aos="fade-up"
                               data-aos-anchor-placement="center-bottom">
                               <div className="col-md-4">
-                                    <RangePicker style={{ height: "38px" }} format='DD-MM-YYYY' className='m-2' />
+                                    <RangePicker style={{ height: "38px" }} onChange={filterByDate} format='DD-MM-YYYY' className='m-2' />
                               </div>
 
                               <div className="col-md-4">
@@ -75,7 +86,7 @@ const RoomsScreen = () => {
 
                                                       <div style={{ float: 'right' }} className='vb'>
 
-                                                            <LinkContainer to={`/roombook/${room._id}`}>
+                                                            <LinkContainer to={`/roombook/${room._id}/${fromdate}/${todate}`}>
                                                                   <button className='btn btn-outline-warning'>Book Now</button>
                                                             </LinkContainer>
 
