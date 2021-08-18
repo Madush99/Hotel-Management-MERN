@@ -14,7 +14,7 @@ const RestaurantScreen = () => {
       const dispatch = useDispatch()
 
       const restaurantsAll = useSelector((state) => state.restaurantsAll)
-      const { loading, error, restautants } = restaurantsAll
+      const { loading, error, restaurants } = restaurantsAll
 
       useEffect(() => {
             dispatch(allRestaurants())
@@ -30,7 +30,7 @@ const RestaurantScreen = () => {
                         loading ? (<Loader />) : error ? (<Message variant='danger'>{error}</Message>
                         ) : (
                               <Row className='ro' style={{ backgroundColor: "#daa520" }} >
-                              {restautants.map((restaurant) =>
+                              {restaurants.map((restaurant) =>
 
                                     <Col key={restaurant._id} sm={12} md={6} lg={4} xl={4}>
                                           <Rest restaurant={restaurant} />

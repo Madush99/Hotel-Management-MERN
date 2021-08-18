@@ -12,12 +12,12 @@ import {
 } from '../constants/restaurentsConstants'
 
 
-export const restAllReducer = (state = { restautants: [] }, action) => {
+export const restAllReducer = (state = { restaurants: [] }, action) => {
     switch (action.type) {
           case  REST_ALL_REQUEST:
                 return { loading: true }
           case REST_ALL_SUCCESS:
-                return { loading: false, restautants: action.payload }
+                return { loading: false, restaurants: action.payload }
           case REST_ALL_FAIL:
                 return { loading: false, error: action.payload }
           default:

@@ -98,8 +98,8 @@ const RestEditScreen = ({ match, history }) => {
                                         <Form.Label>Type</Form.Label>
                                           <Form value={type} onChange={(e) => setType(e.target.value)}>
                                                 <select style={{ width: "100%" }}>
-                                                      <option  value= "restaurant">Restaurant </option>
-                                                      <option  value= "restaurant">Bar </option>
+                                                      <option  value= "Restaurant">Restaurant </option>
+                                                      <option  value= "Bar">Bar </option>
                                                </select>
                                           </Form>
                                        
