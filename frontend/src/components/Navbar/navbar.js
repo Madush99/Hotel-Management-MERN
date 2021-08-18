@@ -44,7 +44,7 @@ const Navbar = () => {
                                     </li>}
 
 
-                                    {userInfo && userInfo.isEditor && (
+                                    {userInfo && userInfo.isAdmin && (
                                           <NavDropdown className="link" title='Admin'>
                                                 <Link to="/admin">
                                                       Admin
