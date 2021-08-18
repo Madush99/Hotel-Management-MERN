@@ -7,6 +7,7 @@ import Loader from '../../components/Loader'
 import { login } from '../../actions/userAction'
 import { Row, Col } from 'react-bootstrap'
 
+
 const LoginScreen = ({ location, history }) => {
       const [email, setEmail] = useState('')
       const [password, setPassword] = useState('')
@@ -72,6 +73,7 @@ const LoginScreen = ({ location, history }) => {
                               </div>
                         </div>
                   </div>
+                 
             </>
       )
 }

@@ -19,6 +19,11 @@ const getRoomsById = asyncHandler(async (req, res) => {
                   _id: rooms._id,
                   name: rooms.name,
                   maxcount: rooms.maxcount,
+                  features1: rooms.features1,
+                  features2: rooms.features2,
+                  features3: rooms.features3,
+                  features4: rooms.features4,
+                  features5: rooms.features5,
                   phonenumber: rooms.phonenumber,
                   rentperday: rooms.rentperday,
                   imageurls: rooms.imageurls,
@@ -34,6 +39,17 @@ const getRoomsById = asyncHandler(async (req, res) => {
       }
 })
 
+const roomById = asyncHandler(async (req, res) => {
+      const roomid = req.body.roomid
+
+      try {
+            const rooms = await Rooms.findOne({ '_id': req.body.roomid })
+            res.json(rooms)
+      } catch (error) {
+            return res.status(400).json({ message: error });
+      }
+
+})
 
 
-export { getAllRooms, getRoomsById }
+export { getAllRooms, getRoomsById, roomById }

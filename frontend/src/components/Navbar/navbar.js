@@ -20,7 +20,7 @@ const Navbar = () => {
       return (
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                   <div class="container-fluid">
-                        <a class="navbar-brand" href="#">Navbar</a>
+                        <a class="navbar-brand" href="/">Navbar</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                               <span class="navbar-toggler-icon"></span>
                         </button>
@@ -30,20 +30,21 @@ const Navbar = () => {
                                     <a class="nav-link active" aria-current="page" href='/weddings'>Wedding</a>
                               </li>
                                     {userInfo ? (
-
-
-                                    <NavDropdown className="link" title={userInfo.name} id='username'>
-                                          <LinkContainer to="/profile">
-                                                <NavDropdown.Item class="link-dark">Profile</NavDropdown.Item>
-                                          </LinkContainer>
-                                          <NavDropdown.Item onClick={logoutHandler}>
-                                                <li className="link">logout</li>
-                                          </NavDropdown.Item>
-                                    </NavDropdown>
+                                          <NavDropdown className="link" title={userInfo.name} id='username'>
+                                                <LinkContainer to="/profile">
+                                                      <NavDropdown.Item class="link-dark">Profile</NavDropdown.Item>
+                                                </LinkContainer>
+                                                <LinkContainer to="/rooms">
+                                                      <NavDropdown.Item class="link-dark">Rooms</NavDropdown.Item>
+                                                </LinkContainer>
+                                                <NavDropdown.Item onClick={logoutHandler}>
+                                                      <li className="link">logout</li>
+                                                </NavDropdown.Item>
+                                          </NavDropdown>
 
                                     ) : <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href='/login'>Login</a>
-                              </li>}
+                                          <a class="nav-link active" aria-current="page" href='/login'>Login</a>
+                                    </li>}
 
 
                                     {userInfo && userInfo.isAdmin && (
@@ -55,6 +56,15 @@ const Navbar = () => {
                                     </NavDropdown>
                                     ) 
 }
+                                    {userInfo && userInfo.isEditor && (
+                                          <NavDropdown className="link" title='Admin'>
+                                                <Link to="/admin">
+                                                      Admin
+                                                </Link>
+
+                                          </NavDropdown>
+                                    )
+                                    }
                               </ul>
                         </div>
                   </div>

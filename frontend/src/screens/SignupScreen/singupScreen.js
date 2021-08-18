@@ -7,9 +7,6 @@ import { register } from '../../actions/userAction.js'
 import Message from '../../components/Message.js'
 import Loader from '../../components/Loader.js'
 import Navbar from '../../components/Navbar/navbar.js'
-import Avatar from '@material-ui/core/Avatar'
-import { makeStyles } from '@material-ui/core/styles'
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 
 
 const SignupScreen = ({ location, history }) => {
@@ -45,17 +42,9 @@ const SignupScreen = ({ location, history }) => {
             }
       }
 
-      const useStyles = makeStyles((theme) => ({
-            avatar: {
-              margin: theme.spacing(3),
-              backgroundColor: theme.palette.secondary.main,
-              height: '75px',
-              width: '75px',
-              
-            },
-          }));
+    
 
-          const classes = useStyles()
+   
       return (
             
             <>
@@ -79,37 +68,56 @@ const SignupScreen = ({ location, history }) => {
                                                                   {loading && <Loader />}
                                                                   </div>
                                                                   <center>
-                                                                  <Avatar className={classes.avatar}>
-                                                                         <LockOutlinedIcon />
-                                                                  </Avatar>
-                                                                  <h3 class="display-4">Register</h3>
+                                                
+                                                                  <h3 class="display-4">SIGN UP</h3>
                                                                   </center>
                                                                   <br/>
                                                                   
                                                                   <form onSubmit={submitHandler}>
                                                                         <div class="form-group mb-3">
+                        
                                                                               < input id="Enter Name" type="text" placeholder="Enter Name" required="" autofocus="" className="form-control rounded-pill border-0 shadow-sm px-4" 
                                                                               value={name}
                                                                               onChange={(e) => setName(e.target.value)} />
                                                                         </div>
                                                                         <div class="form-group mb-3">
+                                                                              
                                                                               <input id="inputEmail" type="email" placeholder="Enter Email" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" 
                                                                               value={email}
                                                                               onChange={(e) => setEmail(e.target.value)}/>
                                                                         </div>
                                                                         <div class="form-group mb-3">
+                                                                              
                                                                               <input id="inputPassword" type="password" placeholder="Enter Password" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" 
                                                                               value={password}
                                                                               onChange={(e) => setPassword(e.target.value)}/>
                                                                         </div>
                                                                         <div class="form-group mb-3">
+                                                                              
                                                                               <input id="inputPassword" type="password" placeholder="Confirm Password" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" 
                                                                               value={confirmPassword}
                                                                               onChange={(e) => setConfirmPassword(e.target.value)}/>
                                                                         </div>
                                                                         <br/>
                                                                         <button type="submit" class="btn btn-outline-warning btn-block text-uppercase mb-2 rounded-pill shadow-sm">Sign up</button>
-                        
+
+                                                                        
+                                                                        <center><p class="text-muted mb-4">Create an Account using Social Links.</p></center>
+
+                                                                        <div class="social-media">
+                                                                              <a href="#" class="social-icon">
+                                                                                    <i class="fab fa-twitter"></i>
+                                                                              </a>
+                                                                              <a href="#" class="social-icon">
+                                                                                    <i class="fab fa-google"></i>
+                                                                              </a>
+                                                                              <a href="#" class="social-icon">
+                                                                                    <i class="fab fa-facebook"></i>
+                                                                              </a>
+                                                                              <a href="#" class="social-icon">
+                                                                                    <i class="fab fa-linkedin-in"></i>
+                                                                              </a>
+                                                                        </div>
                                                                   </form>
                                                             </div>
                                                       </div>

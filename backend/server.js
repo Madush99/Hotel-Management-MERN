@@ -17,6 +17,10 @@ import conferenceRoutes from './routes/conferenceRoutes.js'
 import conInsideRoutes from './routes/conInsideRoute.js'
 import uploadRoutes from './routes/uploadRoutes.js'
  
+import bookingRoutes from './routes/bookingRoutes.js'
+
+import foodRoutes from './routes/foodRoutes.js'
+
 
 dotenv.config()
 
@@ -25,7 +29,8 @@ connectDB()
 
 const app = express()
 
-app.use(cors())
+
+
 
 if (process.env.NODE_ENV === 'development') {
       app.use(morgan('dev'))
@@ -49,6 +54,8 @@ app.use('/api/uploads', uploadRoutes)
 
 const __dirname = path.resolve()
 app.use('/images', express.static(path.join(__dirname, '/images')))
+app.use('/api/booking', bookingRoutes)
+app.use('/api/food', foodRoutes)
 
 //create port 
 const PORT = process.env.PORT || 6500
