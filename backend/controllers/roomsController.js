@@ -53,39 +53,14 @@ const roomById = asyncHandler(async (req, res) => {
 
 const createRooms = asyncHandler(async (req, res) => {
 
-      const {
-            name,
-            maxcount,
-            features1,
-            features2,
-            features3,
-            features4,
-            features5,
-            phonenumber,
-            rentperday,
-            image1,
-            image2,
-            image3,
-            type,
-            description
-      } = req.body
-
-      const rooms = await Rooms.create({
-            name,
-            maxcount,
-            features1,
-            features2,
-            features3,
-            features4,
-            features5,
-            phonenumber,
-            rentperday,
-            imageUrls: [image1, image2, image3],
-            type,
-            description
-
-      })
+      try {
+            const newroom = new Rooms(req.body)
+            await newroom.save()
+            res.send('New Room Added')
+      } catch (error) {
+            return res.status(400).json({ error })
+      }
 })
 
 
-export { getAllRooms, getRoomsById, roomById }
+export { getAllRooms, getRoomsById, roomById, createRooms }

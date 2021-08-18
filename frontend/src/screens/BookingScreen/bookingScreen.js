@@ -8,6 +8,7 @@ import 'aos/dist/aos.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { bookRoomDetails } from '../../actions/roomAction'
 import StripeCheckout from 'react-stripe-checkout'
+import '../BookingScreen/booking.css'
 
 Aos.init()
 Aos.refresh()
@@ -80,7 +81,7 @@ const BookingScreen = ({ match }) => {
                                                             <Row>
                                                                   <Col md={12}>
                                                                         <Carousel nextLabel="" prevLabel="">
-                                                                              {rooms.imageurls && rooms.imageurls.map((url) => {
+                                                                              {rooms.imageUrls && rooms.imageUrls.map((url) => {
                                                                                     return (
                                                                                           <Carousel.Item>
                                                                                                 <img
@@ -101,8 +102,11 @@ const BookingScreen = ({ match }) => {
                                                                   <Col >
                                                                         <br></br>
                                                                         <div class="vl">
-                                                                              <h6 className="hj">Shangri-La Colombo</h6>
-                                                                              <h1 className="hj">{rooms.name}</h1>
+                                                                              <div className="jk">
+                                                                                    <h6>Shangri-La Colombo</h6>
+                                                                                    <h1 >{rooms.name}</h1>
+                                                                              </div>
+
 
                                                                         </div>            <hr></hr>
 
