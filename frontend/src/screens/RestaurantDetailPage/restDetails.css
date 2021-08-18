@@ -1,0 +1,54 @@
+.bn {
+    box-sizing: border-box;
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+      #5a7dbc0d 0px 0.25em 1em;
+    margin-top: 10px !important;
+    margin-left: 100px;
+    margin-right: 500px;
+    border-radius: 5px !important;
+    padding: 10px !important;
+    background-color: #fff;
+
+  }
+  
+  .container {
+    padding-top: 50px;
+  }
+  ul{
+      margin-right: 20px;
+  }
+  
+  ul.b {
+    list-style-type: square;
+  }
+  
+  .vl {
+    border-left: 10px solid rgb(224, 192, 5);
+    height: 50px;
+    position: flex;
+    left: 15%;
+    margin-left: 13px;
+  }
+  
+  .ab {
+    padding-top: 20px;
+  }
+  .nm {
+    padding-left: 30%;
+    padding-top: -2px;
+  }
+  .km {
+    padding-top: 10%;
+    padding-left: 35%;
+  }
+  .hj {
+    padding-left: 10px;
+    
+  }
+
+  .a1{ 
+      background-image: url(../../components/assets/images/res1.jpg);
+      background-attachment: fixed;
+      background-size: cover;
+  }
+  

@@ -13,7 +13,7 @@ import ViewRoomScreen from './screens/ViewRoomScreen/viewRoomScreen';
 import UserProfile from './screens/UserProfileScreen/userProfileScreen'
 import Restaurents from './screens/RestaurantsScreen/restaurantsScreen'
 import BookingScreen from './screens/BookingScreen/bookingScreen';
-
+import ViewRestaurent from './screens/RestaurantDetailPage/restDetails'
 
 
 
@@ -34,6 +34,8 @@ const App = () => {
         <Route path="/restaurants" component={Restaurents} />
         <Route path="/profile" component={UserProfile} />
         <Route path='/search/:keyword' component={RoomsScreen} />
+        <Route path="/restaurant/:id" component={ViewRestaurent} />
+
       </div>
     </Router>
   );

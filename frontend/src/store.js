@@ -10,7 +10,7 @@ import {
       userRegisterReducer,
 } from './reducers/userReducer'
 
-import { restAllReducer } from './reducers/restaurentsReducer'
+import { restAllReducer, restDetailsReducer } from './reducers/restaurentsReducer'
 
 
 
@@ -21,7 +21,8 @@ const reducer = combineReducers({
       userDetails: userDetailsReducer,
       userRegister: userRegisterReducer,
       roomBookdetails: roomBookDetailReducer,
-      restaurantsAll: restAllReducer
+      restaurantsAll: restAllReducer,
+      restDetails: restDetailsReducer
 })
 
 

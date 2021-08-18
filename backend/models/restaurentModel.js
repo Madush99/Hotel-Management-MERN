@@ -26,10 +26,7 @@ const restaurentSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    image:{
-        type: String,
-        
-    },
+    image: [],
     description:{
         type: String,
         required: true,

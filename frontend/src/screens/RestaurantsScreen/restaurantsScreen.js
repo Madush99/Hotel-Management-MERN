@@ -29,10 +29,10 @@ const RestaurantScreen = () => {
                 {
                         loading ? (<Loader />) : error ? (<Message variant='danger'>{error}</Message>
                         ) : (
-                <Row className='ro'>
+                <Row className='ro' style={{ backgroundColor: "#daa520" }} >
                               {restautants.map((restaurant) =>
 
-                                    <Col key={restaurant._id} sm={12} md={6} lg={4} xl={7}>
+                                    <Col key={restaurant._id} sm={12} md={6} lg={4} xl={4}>
                                           <Rest restaurant={restaurant} />
                                     </Col>
                                    
