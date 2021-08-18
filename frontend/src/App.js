@@ -9,6 +9,8 @@ import SignupScreen from './screens/SignupScreen/singupScreen'
 import RoomsScreen from './screens/RoomScreen/roomsScreen';
 import LandingScreen from './screens/LandingScreen/landingScreen';
 import UserProfile from './screens/UserProfileScreen/userProfileScreen'
+import weddingInsertScreen from './screens/WeddingInsertScreen/weddingInsertScreen'
+
 
 
 
@@ -24,6 +26,7 @@ const App = () => {
         <Route path="/login" component={LoginScreen} />
         <Route path="/signup" component={SignupScreen} />
         <Route path="/profile" component={UserProfile} />
+        <Route path="/weddingInsert" component={weddingInsertScreen} />
       </div>
     </Router>
   );

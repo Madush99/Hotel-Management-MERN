@@ -9,14 +9,14 @@ import {
       userDetailsReducer,
       userRegisterReducer, 
 } from './reducers/userReducer'
-
-
+import { weddingInsertReducer } from './reducers/weddingReducer.js'
 
 const reducer = combineReducers({
       roomsAll: roomsAllReducer,
       userLogin: userLoginReducer,
       userDetails: userDetailsReducer,
       userRegister: userRegisterReducer,
+      weddingInsert: weddingInsertReducer,
 })
 
 

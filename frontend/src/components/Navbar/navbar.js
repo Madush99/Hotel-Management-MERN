@@ -26,6 +26,8 @@ const Navbar = () => {
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
                               <ul class="navbar-nav ml-auto">
+                              li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href='/weddings'>Login</a>
                                     {userInfo ? (
 
 
@@ -43,9 +45,9 @@ const Navbar = () => {
                               </li>}
 
 
-                                    {userInfo && userInfo.isEditor && (
+                                    {userInfo && userInfo.isAdmin && (
                                     <NavDropdown className="link" title='Admin'>
-                                          <Link to="/admin">
+                                          <Link to="/weddingInsert">
                                                 Admin
                                           </Link>
 
