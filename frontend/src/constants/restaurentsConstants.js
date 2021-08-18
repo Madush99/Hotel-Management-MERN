@@ -1,0 +1,4 @@
+
+export const REST_ALL_REQUEST = 'REST_ALL_REQUEST'
+export const REST_ALL_SUCCESS = 'REST_ALL_SUCCESS'
+export const REST_ALL_FAIL = 'REST_ALL_FAIL'

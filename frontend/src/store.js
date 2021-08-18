@@ -10,6 +10,8 @@ import {
       userRegisterReducer,
 } from './reducers/userReducer'
 
+import { restAllReducer } from './reducers/restaurentsReducer'
+
 
 
 const reducer = combineReducers({
@@ -19,13 +21,23 @@ const reducer = combineReducers({
       userDetails: userDetailsReducer,
       userRegister: userRegisterReducer,
       roomBookdetails: roomBookDetailReducer,
+      restaurantsAll: restAllReducer
 })
 
+
+const userInfoFromStorage = localStorage.getItem('userInfo')
+      ? JSON.parse(localStorage.getItem('userInfo'))
+      : null
+
+const initialState = {
+      userLogin: { userInfo: userInfoFromStorage }
+}
 
 const middleware = [thunk]
 
 const store = createStore(
       reducer,
+      initialState,
       composeWithDevTools(applyMiddleware(...middleware))
 )
 

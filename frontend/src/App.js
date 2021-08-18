@@ -8,6 +8,7 @@ import LoginScreen from './screens/LoginScreen/loginScreen'
 import SignupScreen from './screens/SignupScreen/singupScreen'
 import RoomsScreen from './screens/RoomScreen/roomsScreen';
 import LandingScreen from './screens/LandingScreen/landingScreen';
+import FoodScreen from './screens/FoodScreen/FoodScreen';
 import ViewRoomScreen from './screens/ViewRoomScreen/viewRoomScreen';
 import UserProfile from './screens/UserProfileScreen/userProfileScreen'
 import Restaurents from './screens/RestaurantsScreen/restaurantsScreen'
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/rooms" component={RoomsScreen} />
         <Route path="/login" component={LoginScreen} />
         <Route path="/signup" component={SignupScreen} />
+        <Route path="/food" component={FoodScreen} />
         <Route path="/room/:id" component={ViewRoomScreen} />
         <Route path="/roombook/:roomid/:fromdate/:todate" component={BookingScreen} />
         <Route path="/restaurants" component={Restaurents} />

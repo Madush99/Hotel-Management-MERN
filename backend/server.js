@@ -12,6 +12,8 @@ import userRoutes from './routes/userRoutes.js'
 import restaurentsRoutes from './routes/restaurentRoutes.js'
 import bookingRoutes from './routes/bookingRoutes.js'
 
+import foodRoutes from './routes/foodRoutes.js'
+
 
 dotenv.config()
 
@@ -39,6 +41,7 @@ app.use('/api/rooms', roomRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/restaurents', restaurentsRoutes)
 app.use('/api/booking', bookingRoutes)
+app.use('/api/food', foodRoutes)
 
 //create port 
 const PORT = process.env.PORT || 6500

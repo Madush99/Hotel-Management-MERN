@@ -28,6 +28,7 @@
     "stripe": "^8.169.0",
     "sweetalert2": "^11.1.2",
     "uuid": "^8.3.2",
+    "styled-components": "^5.3.0",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
