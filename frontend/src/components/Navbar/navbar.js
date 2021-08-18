@@ -29,6 +29,9 @@ const Navbar = () => {
                              < li class="nav-item">
                                     <a class="nav-link active" aria-current="page" href='/weddings'>Wedding</a>
                               </li>
+                              < li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href='/conferenceInsert'>con insert</a>
+                              </li>
                                     {userInfo ? (
                                           <NavDropdown className="link" title={userInfo.name} id='username'>
                                                 <LinkContainer to="/profile">
@@ -50,7 +53,7 @@ const Navbar = () => {
                                     {userInfo && userInfo.isAdmin && (
                                     <NavDropdown className="link" title='Admin'>
                                           <Link to="/weddingInsert">
-                                                Admin
+                                                Wedding Insert
                                           </Link>
 
                                     </NavDropdown>

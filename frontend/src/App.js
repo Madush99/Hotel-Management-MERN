@@ -16,6 +16,8 @@ import weddingInsertScreen from './screens/WeddingInsertScreen/weddingInsertScre
 import Restaurents from './screens/RestaurantsScreen/restaurantsScreen'
 import BookingScreen from './screens/BookingScreen/bookingScreen';
 import ViewRestaurent from './screens/RestaurantDetailPage/restDetails'
+import WeddingScreen from './screens/weddingScreen/WeddingScreen';
+import conferenceInsert from './screens/conferenceInsertScreen/conferenceInsert'
 
 
 
@@ -37,7 +39,10 @@ const App = () => {
         <Route path="/profile" component={UserProfile} />
         <Route path="/weddingInsert" component={weddingInsertScreen} />
         <Route path='/search/:keyword' component={RoomsScreen} />
+        <Route path="/weddings" component={WeddingScreen} />
+        <Route path="/conferenceInsert" component={conferenceInsert} />
         <Route path="/restaurant/:id" component={ViewRestaurent} />
+        
 
       </div>
     </Router>

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { WEDDING_INSERT_REQUEST, WEDDING_INSERT_SUCCESS, WEDDING_INSERT_FAIL } from '../constants/weddingConstant.js'
+import { WEDDING_INSERT_REQUEST, WEDDING_INSERT_SUCCESS, WEDDING_INSERT_FAIL, WEDDING_ALL_REQUEST, WEDDING_ALL_SUCCESS, WEDDING_ALL_FAIL } from '../constants/weddingConstant.js'
 
 export const weddingAdd = (wedHallName, wedSeats, wedDes, wedImage) => async (dispatch) => {
     try {
@@ -36,3 +36,30 @@ export const weddingAdd = (wedHallName, wedSeats, wedDes, wedImage) => async (di
 }
 
 
+export const allWeddings = () => async (dispatch) => {
+    try {
+          dispatch({
+                type: WEDDING_ALL_REQUEST,
+          })
+
+          const { data } = await axios.get('/api/weddings/')
+
+          console.log(data)
+
+          dispatch({
+                type: WEDDING_ALL_SUCCESS,
+                payload: data
+          })
+    } catch (error) {
+          console.log(error)
+
+          dispatch({
+                type: WEDDING_ALL_FAIL,
+                payload:
+                      error.response && error.response.data.message
+                            ? error.response.data.message
+                            : error.message,
+
+          })
+    }
+}
