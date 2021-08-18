@@ -12,7 +12,7 @@ import FoodScreen from './screens/FoodScreen/FoodScreen';
 import ViewRoomScreen from './screens/ViewRoomScreen/viewRoomScreen';
 import UserProfile from './screens/UserProfileScreen/userProfileScreen'
 import weddingInsertScreen from './screens/WeddingInsertScreen/weddingInsertScreen'
-
+import CreateRest from './screens/RestaurantCreate/restCreate'
 import Restaurents from './screens/RestaurantsScreen/restaurantsScreen'
 import BookingScreen from './screens/BookingScreen/bookingScreen';
 import ViewRestaurent from './screens/RestaurantDetailPage/restDetails'
@@ -38,6 +38,7 @@ const App = () => {
         <Route path="/weddingInsert" component={weddingInsertScreen} />
         <Route path='/search/:keyword' component={RoomsScreen} />
         <Route path="/restaurant/:id" component={ViewRestaurent} />
+        <Route path="/createRestaurant" component={CreateRest} />
 
       </div>
     </Router>

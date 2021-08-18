@@ -6,6 +6,9 @@ import {
     REST_BYID_REQUEST,
     REST_BYID_SUCCESS,
     REST_BYID_FAIL,
+    REST_CREATE_REQUEST,
+    REST_CREATE_SUCCESS,
+    REST_CREATE_FAIL
 } from '../constants/restaurentsConstants'
 
 
@@ -63,4 +66,40 @@ export const getRestDetails = (id) => async (dispatch, getState) => {
       }
 }
 
+
+//create Restaurent
+
+
+export const createRest = (name,type,tables,phoneNo,email,location,image,description) => async (dispatch, getState) => {
+      try {
+        dispatch({
+          type: REST_CREATE_REQUEST,
+        })
+    
+        const {
+          userLogin: { userInfo },
+        } = getState()
+    
+        const config = {
+          headers: {
+            Authorization: `Bearer ${userInfo.token}`,
+          },
+        }
+    
+        const { data } = await axios.post(`/api/restaurents/create`, {name,type,tables,phoneNo,email,location,image,description}, config)
+    
+        dispatch({
+          type: REST_CREATE_SUCCESS,
+          payload: data,
+        })
+      } catch (error) {
+        dispatch({
+          type: REST_CREATE_FAIL,
+          payload:
+            error.response && error.response.data.message
+              ? error.response.data.message
+              : error.message,
+        })
+      }
+    }
 
