@@ -10,7 +10,8 @@ import cors from 'cors'
 import roomRoutes from './routes/roomsRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import restaurentsRoutes from './routes/restaurentRoutes.js'
- 
+import bookingRoutes from './routes/bookingRoutes.js'
+
 
 dotenv.config()
 
@@ -19,7 +20,8 @@ connectDB()
 
 const app = express()
 
-app.use(cors())
+
+
 
 if (process.env.NODE_ENV === 'development') {
       app.use(morgan('dev'))
@@ -36,6 +38,7 @@ app.get('/', (req, res) => {
 app.use('/api/rooms', roomRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/restaurents', restaurentsRoutes)
+app.use('/api/booking', bookingRoutes)
 
 //create port 
 const PORT = process.env.PORT || 6500

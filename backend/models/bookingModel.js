@@ -10,8 +10,9 @@ const bookingSchema = mongoose.Schema({
             required: true
       },
       userid: {
-            type: String,
-            required: true,
+            type: mongoose.Schema.Types.ObjectId,
+            required: false,
+            ref: 'User'
       },
       fromdate: {
             type: String,
@@ -36,8 +37,13 @@ const bookingSchema = mongoose.Schema({
       status: {
             type: String,
             required: true,
+            default: 'booked'
       },
 
 }, {
       timestamps: true
 })
+
+const Bookings = mongoose.model('bookings', bookingSchema)
+
+export default Bookings

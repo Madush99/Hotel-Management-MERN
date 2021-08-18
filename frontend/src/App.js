@@ -31,7 +31,7 @@ const App = () => {
         <Route path="/roombook/:roomid/:fromdate/:todate" component={BookingScreen} />
         <Route path="/restaurants" component={Restaurents} />
         <Route path="/profile" component={UserProfile} />
-
+        <Route path='/search/:keyword' component={RoomsScreen} />
       </div>
     </Router>
   );
