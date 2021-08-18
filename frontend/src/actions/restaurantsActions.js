@@ -3,6 +3,9 @@ import {
     REST_ALL_REQUEST,
     REST_ALL_SUCCESS,
     REST_ALL_FAIL,
+    REST_BYID_REQUEST,
+    REST_BYID_SUCCESS,
+    REST_BYID_FAIL,
 } from '../constants/restaurentsConstants'
 
 
@@ -32,6 +35,32 @@ export const allRestaurants = () => async (dispatch) => {
 
           })
     }
+}
+
+//get Restaurant details by id
+
+export const getRestDetails = (id) => async (dispatch, getState) => {
+      try {
+            dispatch({
+                  type: REST_BYID_REQUEST,
+            })
+
+            const { data } = await axios.get(`/api/restaurents/${id}`)
+
+            dispatch({
+                  type: REST_BYID_SUCCESS,
+                  payload: data
+            })
+
+      } catch (error) {
+            dispatch({
+                  type: REST_BYID_FAIL,
+                  payload:
+                        error.response && error.response.data.message
+                              ? error.response.data.message
+                              : error.message,
+            })
+      }
 }
 
 
