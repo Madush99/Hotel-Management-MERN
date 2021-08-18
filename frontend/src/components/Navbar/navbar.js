@@ -26,6 +26,9 @@ const Navbar = () => {
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
                               <ul class="navbar-nav ml-auto">
+                                    < li class="nav-item">
+                                          <a class="nav-link active" aria-current="page" href='/weddings'>Wedding</a>
+                                    </li>
                                     {userInfo ? (
                                           <NavDropdown className="link" title={userInfo.name} id='username'>
                                                 <LinkContainer to="/profile">
@@ -46,7 +49,7 @@ const Navbar = () => {
 
                                     {userInfo && userInfo.isAdmin && (
                                           <NavDropdown className="link" title='Admin'>
-                                                <Link to="/admin">
+                                                <Link to="/weddingInsert">
                                                       Admin
                                                 </Link>
 
