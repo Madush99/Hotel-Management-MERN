@@ -15,7 +15,10 @@ import {
       ROOMS_LIST_REQUEST,
       ROOMS_LIST_SUCCESS,
       ROOMS_LIST_FAIL,
-      ROOMS_LIST_RESET
+      ROOMS_LIST_RESET,
+      ROOMS_DELETE_REQUEST,
+      ROOMS_DELETE_SUCCESS,
+      ROOMS_DELETE_FAIL
 } from '../constants/roomsConstants.js'
 
 export const roomsAllReducer = (state = { rooms: [] }, action) => {
@@ -82,6 +85,19 @@ export const roomList = (state = { rooms: [] }, action) => {
                   return { loading: false, error: action.payload }
             case ROOMS_LIST_RESET:
                   return { rooms: [] }
+            default:
+                  return state
+      }
+}
+
+export const roomDeleteReducer = (state = {}, action) => {
+      switch (action.type) {
+            case ROOMS_DELETE_REQUEST:
+                  return { loading: true }
+            case ROOMS_DELETE_SUCCESS:
+                  return { loading: false, success: true }
+            case ROOMS_DELETE_FAIL:
+                  return { loading: false, error: action.payload }
             default:
                   return state
       }

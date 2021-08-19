@@ -66,5 +66,17 @@ const createRooms = asyncHandler(async (req, res) => {
       }
 })
 
+const deleteRoom = asyncHandler(async (req, res) => {
+      const rooms = await Rooms.findById(req.params.id)
 
-export { getAllRooms, getRoomsById, roomById, createRooms }
+      if (rooms) {
+            await rooms.remove()
+            res.json({ message: 'Room removed' })
+      } else {
+            res.status(404)
+            throw new Error('Room not found')
+      }
+})
+
+
+export { getAllRooms, getRoomsById, roomById, createRooms, deleteRoom }

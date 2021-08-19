@@ -6,7 +6,7 @@ import Loader from '../../components/Loader'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Table, Button } from 'react-bootstrap'
 
-const RoomsListScreen = ({ history }) => {
+const RoomsListScreen = ({ history, match }) => {
 
       const dispatch = useDispatch()
 

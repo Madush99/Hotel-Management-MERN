@@ -2,11 +2,14 @@ import express from 'express'
 
 const router = express.Router()
 
-import { getAllRooms, getRoomsById, roomById, createRooms } from '../controllers/roomsController.js'
+import { getAllRooms, getRoomsById, roomById, createRooms, deleteRoom } from '../controllers/roomsController.js'
 
 router.post('/createrooms', createRooms)
-router.get('/allrooms', getAllRooms)
-router.get('/:id', getRoomsById)
 router.post('/roomsbyId', roomById)
+router.get('/allrooms', getAllRooms)
+router.route('/:id')
+      .get(getRoomsById)
+      .delete(deleteRoom)
+
 
 export default router
