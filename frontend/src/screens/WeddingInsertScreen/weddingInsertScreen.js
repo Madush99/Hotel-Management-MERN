@@ -27,7 +27,7 @@ const SignupScreen = ({ location, history }) => {
 
       useEffect(() => {
             if (weddingInfo) {
-                  Swal.fire('Congrats', 'Wedding Hall Data Has been Succesfully Added', 'success').then(result => {
+                  Swal.fire('Successful', 'Wedding Hall Data Has been Succesfully Added', 'success').then(result => {
                         window.location.href = '/'
                   })
             }
@@ -114,8 +114,7 @@ const SignupScreen = ({ location, history }) => {
                                                                         </Form.Group>
                                                                         <br/>
                                                                         <button type="submit" class="btn btn-outline-warning btn-block text-uppercase mb-2 rounded-pill shadow-sm">Submit</button>
-
-                                                                        
+     
                                                                   </form>
                                                             </div>
                                                       </div>

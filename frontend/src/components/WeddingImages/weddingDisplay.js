@@ -1,21 +1,25 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Card } from 'react-bootstrap'
+import './card.css'
+
 
 const WeddingDis = ({ wedding }) => {
       return (
-            <Card className='my-3 p-3 rounded' border="info">
+            <Card className='my-3 p-3 rounded' border="dark">
                   <Link to={`/wedding/${wedding._id}`}>
                         <Card.Img className='card-img' src={wedding.wedImage} variant='top' />
                   </Link>
 
                   <Card.Body>
+                        <center>
                         <Link to={`/restaurant/${wedding._id}`}>
-                            <Card.Title as='div'><h3>{wedding.wedHallName}</h3></Card.Title>
+                            <Card.Title as='div'><h1>{wedding.wedHallName}</h1></Card.Title>
                             <Link to={`/restaurant/${wedding._id}`}>
-                             <Card.Title as='div'><h5>{wedding.wedSeats} Seats</h5></Card.Title>
+                             <Card.Title as='div'><h6>Maximum Seating: {wedding.wedSeats} Seats</h6></Card.Title>
                         </Link>
                         </Link>
+                        </center>
                   </Card.Body>
             </Card>
       )
