@@ -8,6 +8,7 @@ import Loader from '../../components/Loader'
 import FormContainer from '../../components/FormContainer'
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min'
 import { createRest } from '../../actions/restaurantsActions'
+import Swal from 'sweetalert2'
 
 
 
@@ -33,11 +34,15 @@ const RestEditScreen = ({ match, history }) => {
       const createRestaurant = useSelector((state) => state.createRestaurant)
       const { loading, error, restaurants } = createRestaurant
 
+
+
       useEffect(() => {
             if (restaurants) {
-                  history.push(Redirect)
+                  Swal.fire('Congrats', 'Restaurant Added SUCCESSFULY', 'success').then(result => {
+                        window.location.href = '/'
+                  })
             }
-      }, [dispatch, restaurants, Redirect])
+      }, [history, restaurants])
 
       const submitHandler = (e) => {
             e.preventDefault()

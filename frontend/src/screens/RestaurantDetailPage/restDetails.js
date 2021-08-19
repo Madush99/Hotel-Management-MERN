@@ -70,80 +70,80 @@ const RestaurantDetail = ({ match, history }) => {
                                             <h6>The authentic Chinese restaurant in the city </h6>
                                             <hr></hr>
 
-                                            <p>The following children’s meal plan is applicable for all Golden Circle members. When accompanied by a dine-in adult, up to 2 children of registered in-house hotel guests at the age of 6 and below can enjoy buffet meals at the all-day dining venues at no additional charge. Additional children at the age of 6 and below and all children who are above 6 years of age but under 12 years of age will receive a 50% discount on the adult buffet price. Registered in-house hotel guests can also join Golden Circle at any time during their stay to enjoy the meal plan. Children of non-registered walk-in guests under the age of 12 will receive a 50% discount on buffet meals at the all-day dining outlets.</p>
+                                            <p>Shangri-La’s signature Chinese restaurant Shang Palace celebrates cuisine steeped in rich tradition. The décor is inspired from Beijing’s traditional siheyuan houses and blends beautifully with modern luxury. </p>
+                                            <p>At Shang Palace we invite you to enjoy the varied flavours of Dongbei, Sichuan and Canton. Succulent meats, fresh seafood, delicate dim sum, a range of Chinese teas and cocktails all feature in our extensive menu, allowing you to indulge in a true feast.</p>
+                                            <p>Our weekday lunch set menu features intricate delicacies including flavourful soups, the finest dim sum, meats, seafood, rice and noodles. Available from Tuesday to Friday‬.</p>
+                                            <p>Location - Level 3</p>
+                                            <p>Lunch - 12 noon to 3pm, Monday to Sunday</p>
+                                            <p>Dinner - 6.30pm to 11pm, Monday to Sunday</p>
+                                            <p>Weekend Yum Cha Lunch - 12noon to 3pm, Saturday and Sunday</p>
                                             <p>{restaurants.description}</p>
                                         </div>
 
-
-
-
-
-
+                                        <Row>
+                                           
+                                        </Row>
 
 
                                     </Col>
 
 
 
-
-
-
-
                                     <Col className="de">
-                                       
+
                                         <div class="d-grid gap-2">
                                             <a class="btnn" type="button" href="/booknow">Book Your Table Now!</a>
                                         </div>
-                                       
+
 
                                         <Row>
 
-                            
-
-                                                <Form className="form">
-                                                    <div className="title">Name
-                                                        <p >{restaurants.name}</p>
-                                                    </div>
-                                                    <div className="title">Type
-                                                        <p >{restaurants.type}</p>
-                                                    </div>
-                                                    <div className="title">Tables
-                                                        <p >{restaurants.tables}</p>
-                                                    </div>
-                                                    <div className="title">Phone Number
-                                                        <p >{restaurants.phoneNo}</p>
-                                                    </div>
-                                                    <div className="title">Email
-                                                        <p >{restaurants.email}</p>
-                                                    </div>
-                                                    <div className="title">Location
-                                                        <p >{restaurants.location}</p>
-                                                    </div>
-                                                    <div className="title">Opening Hours
-                                                        <p >Breakfast: 8.00a.m to 10.30a.m</p>
-                                                        <p >Lunch: 11.30a.m to 4.30p.m</p>
-                                                        <p >Dinner: 5.00p.m to 11.30p.m </p>
-                                                        <br></br>
-                                                        <p >Weekend Yum Cha Saturday
-                                                            and Sunday 12pm - 3pm</p>
 
 
-                                                    </div>
-                                                    <div className="title">Location
-                                                        <p >{restaurants.location}</p>
-                                                    </div>
-                                                    <div className="title">Dress Code
-                                                        <p >Smart Casual</p>
-                                                    </div>
+                                            <Form className="form">
+                                                <div className="title">Name
+                                                    <p >{restaurants.name}</p>
+                                                </div>
+                                                <div className="title">Type
+                                                    <p >{restaurants.type}</p>
+                                                </div>
+                                                <div className="title">Tables
+                                                    <p >{restaurants.tables}</p>
+                                                </div>
+                                                <div className="title">Phone Number
+                                                    <p >{restaurants.phoneNo}</p>
+                                                </div>
+                                                <div className="title">Email
+                                                    <p >{restaurants.email}</p>
+                                                </div>
+                                                <div className="title">Location
+                                                    <p >{restaurants.location}</p>
+                                                </div>
+                                                <div className="title">Opening Hours
+                                                    <p >Breakfast: 8.00a.m to 10.30a.m</p>
+                                                    <p >Lunch: 11.30a.m to 4.30p.m</p>
+                                                    <p >Dinner: 5.00p.m to 11.30p.m </p>
+                                                    <br></br>
+                                                    <p >Weekend Yum Cha Saturday
+                                                        and Sunday 12pm - 3pm</p>
 
-                                                    <div className="title">Smoking Policy
-                                                        <p >No smoking permitted</p>
-                                                    </div>
 
-                                                </Form>
+                                                </div>
+                                                <div className="title">Location
+                                                    <p >{restaurants.location}</p>
+                                                </div>
+                                                <div className="title">Dress Code
+                                                    <p >Smart Casual</p>
+                                                </div>
+
+                                                <div className="title">Smoking Policy
+                                                    <p >No smoking permitted</p>
+                                                </div>
+
+                                            </Form>
 
 
-                                            
+
 
                                         </Row>
                                         <hr style={{ color: "#da9100", height: "5px", width: "50%" }}></hr>

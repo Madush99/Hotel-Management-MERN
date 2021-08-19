@@ -40,6 +40,7 @@ ul.b {
 .about p{
   width: 400px;
   text-align: justify;
+  font-size: 12px;
 }
 
 .de{
@@ -53,7 +54,7 @@ ul.b {
 }
 
 .title{
-  color: #daa520;
+  color: rgb(190, 163, 5);
 }
 
 .form{
@@ -66,7 +67,7 @@ ul.b {
   border-color: black;
   border-radius: 25px;
   border-width: 1px;
-  background-color: #d4af37;
+  background-color:  rgb(224, 192, 5);
   text-align: center;
   color: azure;
   height: 25px;
