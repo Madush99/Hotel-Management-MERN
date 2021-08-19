@@ -92,7 +92,7 @@ const RestaurantDetail = ({ match, history }) => {
                                     <Col className="de">
                                        
                                         <div class="d-grid gap-2">
-                                            <a class="btn" type="button" href="/booknow">Book Your Table Now!</a>
+                                            <a class="btnn" type="button" href="/booknow">Book Your Table Now!</a>
                                         </div>
                                        
 
