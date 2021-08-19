@@ -33,6 +33,25 @@ const insertWedding = asyncHandler(async(req, res) => {
 
 })
 
+// const insertWedding = asyncHandler(async (req, res) => {
+
+//     const { wedHallName, wedSeats, wedDes, wedimg1, wedimg2, wedimg3 } = req.body
+
+//     const newwedding = new Wedding({
+//         wedHallName,
+//         wedSeats,
+//         wedImage: [wedimg1, wedimg2, wedimg3],
+//         wedDes,
+        
+//     })
+//     try {
+//           await newwedding.save()
+//           res.send('New Wedding Added Successfully')
+//     } catch (error) {
+//           return res.status(400).json({ error });
+//     }
+// })
+
 const getAllWedDetails = asyncHandler(async (req, res) => {
     const wedding = await Wedding.find({})
     res.json(wedding)
