@@ -71,7 +71,7 @@ const RestEditScreen = ({ match, history }) => {
 
       return (
             <>
-                  <Link to='/admin/productlist' className='btn btn-light my-3'>
+                  <Link to='/' className='btn btn-light my-3'>
                         Go Back
                   </Link>
                   <FormContainer>
@@ -167,12 +167,12 @@ const RestEditScreen = ({ match, history }) => {
 
                                     <Form.Group controlId='image'>
                                           <Form.Label>Image</Form.Label>
-                                          {/* <Form.Control
+                                          <Form.Control
                                                 type='text'
                                                 placeholder='Enter Image url'
                                                 value={image}
                                                 onChange={(e) => setImage(e.target.value)}
-                                          ></Form.Control> */}
+                                          ></Form.Control>
                                           <Form.File
                                                 id='image-file'
                                                 label='Choose File'
