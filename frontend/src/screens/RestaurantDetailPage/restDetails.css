@@ -60,11 +60,14 @@ ul.b {
   margin-top: 20px;
 }
 
-.btn{
+.btnn{
   margin-top: 2px;
-  width: 65%;
+  width: 55%;
   border-color: black;
   border-radius: 25px;
   border-width: 1px;
   background-color: #d4af37;
+  text-align: center;
+  color: azure;
+  height: 25px;
 }
