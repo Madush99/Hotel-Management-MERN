@@ -8,6 +8,8 @@ import { DatePicker, Space } from "antd";
 import 'antd/dist/antd.css'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import RoomsCarousel from '../../components/RoomsCorousel/roomsCarousel'
+
 AOS.init();
 const { RangePicker } = DatePicker;
 
@@ -35,6 +37,7 @@ const RoomsScreen = () => {
       return (
             <>
                   <div className="container">
+                        <RoomsCarousel />
                         <div className="row bs p-3 m-5 dark" data-aos="fade-up"
                               data-aos-anchor-placement="center-bottom">
                               <div className="col-md-4">

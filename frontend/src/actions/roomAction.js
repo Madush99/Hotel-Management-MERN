@@ -12,7 +12,10 @@ import {
       ROOMS_POSTBYIDL_FAIL,
       CREATE_ROOMS_REQUEST,
       CREATE_ROOMS_SUCCESS,
-      CREATE_ROOMS_FAIL
+      CREATE_ROOMS_FAIL,
+      ROOMS_LIST_REQUEST,
+      ROOMS_LIST_SUCCESS,
+      ROOMS_LIST_FAIL
 } from '../constants/roomsConstants.js'
 
 export const allRooms = () => async (dispatch) => {
@@ -115,5 +118,29 @@ export const roomCreate = (name, maxcount, features1, features2, features3, feat
                               : error.message,
             })
 
+      }
+}
+
+
+export const listRooms = () => async (dispatch) => {
+      try {
+            dispatch({
+                  type: ROOMS_LIST_REQUEST,
+            })
+
+            const { data } = await axios.get(`/api/rooms/allrooms`)
+
+            dispatch({
+                  type: ROOMS_LIST_SUCCESS,
+                  payload: data
+            })
+      } catch (error) {
+            dispatch({
+                  type: ROOMS_LIST_FAIL,
+                  payload:
+                        error.response && error.response.data.message
+                              ? error.response.data.message
+                              : error.message,
+            })
       }
 }

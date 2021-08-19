@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,7 +10,7 @@ import FormContainer from '../../components/FormContainer'
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min'
 import { roomCreate } from '../../actions/roomAction'
 
-const CreateRoomScreen = ({ history }) => {
+const CreateRoomScreen = ({ location, history }) => {
 
 
       const [name, setName] = useState("")
@@ -30,15 +31,19 @@ const CreateRoomScreen = ({ history }) => {
 
       const dispatch = useDispatch()
 
+      // const redirect = location.search ? location.search.split('=')[1] : '/'
+
       const createRoom = useSelector((state) => state.createRoom)
       const { loading, error, rooms } = createRoom
 
 
       useEffect(() => {
             if (rooms) {
-                  history.push(Redirect)
+                  Swal.fire('Congrats', 'Your Room has booked succeessfully', 'success').then(result => {
+                        window.location.href = '/profile'
+                  })
             }
-      }, [dispatch, rooms, Redirect])
+      }, [history, rooms])
 
 
       const submitHandler = (e) => {
