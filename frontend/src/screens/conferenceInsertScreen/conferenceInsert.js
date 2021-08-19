@@ -7,7 +7,7 @@ import { conferenceAdd } from '../../actions/conferenceAction'
 import Message from '../../components/Message.js'
 import Loader from '../../components/Loader.js'
 import { Form } from 'react-bootstrap'
-
+import Swal from 'sweetalert2'
 
 
 const SignupScreen = ({ location, history }) => {
@@ -26,14 +26,13 @@ const SignupScreen = ({ location, history }) => {
       const conferenceInsert = useSelector(state => state.conferenceInsert)
       const { loading, error, conferenceInfo } = conferenceInsert
 
-      const redirect = location.search ? location.search.split('=')[1] : '/'
-
       useEffect(() => {
             if (conferenceInfo) {
-                  history.push(redirect)
+                  Swal.fire('Successful', 'Successfully Inserted Conference Room', 'success').then(result => {
+                        window.location.href = '/profile'
+                  })
             }
-
-      }, [history, conferenceInfo, redirect])
+      }, [history, conferenceInfo])
 
       const submitHandler = (e) => {
             e.preventDefault()
@@ -83,7 +82,7 @@ const SignupScreen = ({ location, history }) => {
                                                                   {loading && <Loader />}
                                                                   </div>
                                                                   <center>
-                                                                  <h3 class="display-4">Insert Wedding Hall</h3>
+                                                                  <h3 class="display-4">Insert Conference Rooms</h3>
                                                                   </center>
                                                                   <br/>
                                                                   
