@@ -5,6 +5,7 @@ import { getRestDetails } from '../../actions/restaurantsActions'
 import './restDetails.css'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
+import LinkContainer from 'react-router-bootstrap/lib/LinkContainer'
 Aos.init()
 Aos.refresh()
 
@@ -89,10 +90,11 @@ const RestaurantDetail = ({ match, history }) => {
 
 
                                     <Col className="de">
-
+                                       
                                         <div class="d-grid gap-2">
-                                            <button class="btn" type="button">Book Your Table Now!</button>
+                                            <a class="btn" type="button" href="/booknow">Book Your Table Now!</a>
                                         </div>
+                                       
 
                                         <Row>
 
