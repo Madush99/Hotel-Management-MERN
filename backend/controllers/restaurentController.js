@@ -72,7 +72,18 @@ const getRestaurents = asyncHandler(async (req, res) => {
               throw new Error('Invalid food data') 
            }
         })
-  
+
+        const deleteRest = asyncHandler(async (req, res) => {
+          const rest = await Restaurent.findById(req.params.id)
+      
+          if (rest) {
+              await rest.remove()
+              res.json({ message: 'Restaurant removed' })
+          } else {
+              res.status(404)
+              throw new Error('Restaurant not found')
+          }
+      })
 
 
-  export { getRestaurents , getRestaurantById , createRestaurant }
+  export { getRestaurents , getRestaurantById , createRestaurant, deleteRest }
