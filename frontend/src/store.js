@@ -9,7 +9,8 @@ import {
       userDetailsReducer,
       userRegisterReducer,
 } from './reducers/userReducer'
-import { weddingInsertReducer } from './reducers/weddingReducer.js'
+import { weddingInsertReducer, wedAllReducer, conByIdReducer } from './reducers/weddingReducer.js'
+import { conferenceInsertReducer, conAllReducer } from './reducers/conferenceReducer'
 
 import {
       restAllReducer,
@@ -29,7 +30,11 @@ const reducer = combineReducers({
       roomBookdetails: roomBookDetailReducer,
       restaurantsAll: restAllReducer,
       restDetails: restDetailsReducer,
+      wedAll: wedAllReducer,
+      conferenceInsert: conferenceInsertReducer,
       createRestaurant: restCreateReducer,
+      conAll: conAllReducer,
+      wedById: conByIdReducer,
       createRoom: roomCreate,
       listAllRooms: roomList,
 })

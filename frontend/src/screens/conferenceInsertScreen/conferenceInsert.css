@@ -1,0 +1,9 @@
+.signup,
+.image {
+  min-height: 100vh;
+}
+.bg-image1 {
+  background-image: url('https://i.pinimg.com/originals/9c/01/f5/9c01f50987a59c007d04c0a768fd6ebd.jpg');
+  background-size: cover;
+  background-position: center center;
+}

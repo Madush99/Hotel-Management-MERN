@@ -16,8 +16,12 @@ import CreateRest from './screens/RestaurantCreate/restCreate'
 import Restaurents from './screens/RestaurantsScreen/restaurantsScreen'
 import BookingScreen from './screens/BookingScreen/bookingScreen';
 import ViewRestaurent from './screens/RestaurantDetailPage/restDetails'
-import CreateRoomScreen from './screens/CreateRoomScreen/createRoomScreen';
+import WeddingScreen from './screens/weddingScreen/WeddingScreen';
+import conferenceInsert from './screens/conferenceInsertScreen/conferenceInsert'
 import RestaurantList from './screens/AllRestaurant/restaurantTable';
+import ConferenceScreen from './screens/conferenceScreen/ConferenceScreen'
+import WeddingByIdScreen from './screens/weddingByIdScreen/WeddingByIdScreen'
+import CreateRoomScreen from './screens/CreateRoomScreen/createRoomScreen';
 import RoomManagementScreen from './screens/RoomManagementScreen/roomManagementScreen';
 import RoomsListScreen from './screens/RoomsListScreen/roomsListScreen';
 
@@ -41,10 +45,15 @@ const App = () => {
         <Route path="/profile" component={UserProfile} />
         <Route path="/weddingInsert" component={weddingInsertScreen} />
         <Route path='/search/:keyword' component={RoomsScreen} />
+        <Route path="/weddings" component={WeddingScreen} />
+        <Route path="/conferenceInsert" component={conferenceInsert} />
         <Route path="/restaurant/:id" component={ViewRestaurent} />
+        <Route path="/conference" component={ConferenceScreen} />
         <Route path="/createRestaurant" component={CreateRest} />
         <Route path="/admin/createRoom" component={CreateRoomScreen} />
         <Route path="/restaurantList" component={RestaurantList} />
+        <Route path="/wedding/:id" component={WeddingByIdScreen} />
+
         <Route path="/roomManagement" component={RoomManagementScreen} />
         <Route path="/listAllRooms" component={RoomsListScreen} />
       </div>
