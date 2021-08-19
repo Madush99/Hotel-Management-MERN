@@ -7,7 +7,7 @@ import { weddingAdd } from '../../actions/weddingAction.js'
 import Message from '../../components/Message.js'
 import Loader from '../../components/Loader.js'
 import { Form } from 'react-bootstrap'
-
+import Swal from 'sweetalert2'
 
 
 const SignupScreen = ({ location, history }) => {
@@ -24,14 +24,14 @@ const SignupScreen = ({ location, history }) => {
       const weddingInsert = useSelector(state => state.weddingInsert)
       const { loading, error, weddingInfo } = weddingInsert
 
-      const redirect = location.search ? location.search.split('=')[1] : '/'
 
       useEffect(() => {
             if (weddingInfo) {
-                  history.push(redirect)
+                  Swal.fire('Congrats', 'Wedding Hall Data Has been Succesfully Added', 'success').then(result => {
+                        window.location.href = '/'
+                  })
             }
-
-      }, [history, weddingInfo, redirect])
+      }, [history, weddingInfo])
 
       const submitHandler = (e) => {
             e.preventDefault()
