@@ -49,9 +49,13 @@ const Navbar = () => {
 
                                     {userInfo && userInfo.isAdmin && (
                                           <NavDropdown className="link" title='Admin'>
-                                                <Link to="/weddingInsert">
-                                                      Admin
-                                                </Link>
+                                                <LinkContainer to="/weddingInsert">
+                                                      <NavDropdown.Item class="link-dark">Wedding</NavDropdown.Item>
+                                                </LinkContainer>
+                                                <LinkContainer to="/roomManagement">
+                                                      <NavDropdown.Item class="link-dark">Room Management</NavDropdown.Item>
+                                                </LinkContainer>
+
 
                                           </NavDropdown>
                                     )

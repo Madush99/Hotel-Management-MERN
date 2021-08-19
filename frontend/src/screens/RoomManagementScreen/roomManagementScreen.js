@@ -1,6 +1,7 @@
 import React from 'react'
 import { Tabs } from "antd";
 import CreateRoomScreen from '../CreateRoomScreen/createRoomScreen';
+import RoomsListScreen from '../RoomsListScreen/roomsListScreen';
 
 const { TabPane } = Tabs;
 
@@ -17,7 +18,7 @@ const RoomManagementScreen = () => {
                         <TabPane tab="Rooms" key="2">
 
                               <div className="row">
-
+                                    <RoomsListScreen />
                               </div>
 
                         </TabPane>

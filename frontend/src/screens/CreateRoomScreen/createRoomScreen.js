@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -38,7 +39,9 @@ const CreateRoomScreen = ({ location, history }) => {
 
       useEffect(() => {
             if (rooms) {
-                  // history.push('/')
+                  Swal.fire('Congrats', 'Your Room has booked succeessfully', 'success').then(result => {
+                        window.location.href = '/profile'
+                  })
             }
       }, [history, rooms])
 
