@@ -26,15 +26,9 @@ const Navbar = () => {
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
                               <ul class="navbar-nav ml-auto">
-                              < li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href='/conference'>Conference Room</a>
-                              </li>
-                             < li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href='/weddings'>Wedding</a>
-                              </li>
-                              < li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href='/conferenceInsert'>con insert</a>
-                              </li>
+                                    < li class="nav-item">
+                                          <a class="nav-link active" aria-current="page" href='/weddings'>Wedding</a>
+                                    </li>
                                     {userInfo ? (
                                           <NavDropdown className="link" title={userInfo.name} id='username'>
                                                 <LinkContainer to="/profile">
@@ -54,19 +48,14 @@ const Navbar = () => {
 
 
                                     {userInfo && userInfo.isAdmin && (
-                                    <NavDropdown className="link" title='Admin'>
-                                          <Link to="/weddingInsert">
-                                                Wedding Insert
-                                          </Link>
-
-                                    </NavDropdown>
-                                    ) 
-}
-                                    {userInfo && userInfo.isEditor && (
                                           <NavDropdown className="link" title='Admin'>
-                                                <Link to="/admin">
-                                                      Admin
-                                                </Link>
+                                                <LinkContainer to="/weddingInsert">
+                                                      <NavDropdown.Item class="link-dark">Wedding</NavDropdown.Item>
+                                                </LinkContainer>
+                                                <LinkContainer to="/roomManagement">
+                                                      <NavDropdown.Item class="link-dark">Room Management</NavDropdown.Item>
+                                                </LinkContainer>
+
 
                                           </NavDropdown>
                                     )
