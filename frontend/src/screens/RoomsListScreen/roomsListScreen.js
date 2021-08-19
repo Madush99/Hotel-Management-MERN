@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { listRooms } from '../../actions/roomAction'
+import { listRooms, deleteRoom } from '../../actions/roomAction'
 import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Table, Button } from 'react-bootstrap'
+import Swal from 'sweetalert2'
 
 const RoomsListScreen = ({ history, match }) => {
 
@@ -13,10 +14,40 @@ const RoomsListScreen = ({ history, match }) => {
       const listAllRooms = useSelector((state) => state.listAllRooms)
       const { loading, error, rooms } = listAllRooms
 
+      const roomDelete = useSelector((state) => state.roomDelete)
+      const { success: successDelete } = roomDelete
+
       useEffect(() => {
             dispatch(listRooms())
-      }, [dispatch])
+            // if (successDelete) {
+            //       Swal.fire('Room Deleted, Successfuly', 'success').then(result => {
+            //             window.location.href = '/roomManagement'
+            //       })
+            // }
+      }, [dispatch, successDelete])
 
+
+      const deleteHandler = (id) => {
+            if (Swal.fire({
+                  title: 'Are you sure?',
+                  text: "You won't be able to revert this!",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                  if (result.isConfirmed) {
+                        Swal.fire(
+                              'Deleted!',
+                              'Your file has been deleted.',
+                              'success'
+                        )
+                  }
+            })) {
+                  dispatch(deleteRoom(id))
+            }
+      }
 
       return (
             <>
@@ -54,7 +85,7 @@ const RoomsListScreen = ({ history, match }) => {
                                                             <Button
                                                                   variant='danger'
                                                                   className='btn-sm'
-                                                            // onClick={() => deleteHandler(user._id)}
+                                                                  onClick={() => deleteHandler(rooms._id)}
                                                             >
                                                                   <i className='fas fa-trash'></i>
                                                             </Button>
