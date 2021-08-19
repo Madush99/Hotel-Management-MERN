@@ -3,22 +3,22 @@ import './conferenceInsert.css'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
-import { conferenceAdd } from '../../actions/conferenceAction.js'
+import { conferenceAdd } from '../../actions/conferenceAction'
 import Message from '../../components/Message.js'
 import Loader from '../../components/Loader.js'
 import { Form } from 'react-bootstrap'
 
 
 
-const ConferenceInsertScreen = ({ location, history }) => {
+const SignupScreen = ({ location, history }) => {
 
 
-      const [conName, setConName] = useState('')
-      const [conSeats, setConSeats] = useState('')
-      const [conPrice, setConPrice] = useState(0)
-      const [conDes, setConDes] = useState('')
-      const [conFeatures, setConFeatures] = useState('')
-      const [conImage, setConImage] = useState('')
+      const [conName, setName] = useState('')
+      const [conSeats, setSeats] = useState('')
+      const [conDes, setDes] = useState('')
+      const [conPrice, setPrice] = useState('')
+      const [confeatures, setFeatures] = useState('')
+      const [conImage, setImage] = useState('')
       const [uploading, setUploading] = useState(false)
 
       const dispatch = useDispatch()
@@ -37,7 +37,7 @@ const ConferenceInsertScreen = ({ location, history }) => {
 
       const submitHandler = (e) => {
             e.preventDefault()
-                  dispatch(conferenceAdd(conName, conSeats, conPrice, conFeatures, conDes, conImage))
+                  dispatch(conferenceAdd( conName, conDes, conSeats, conPrice, conImage, confeatures ))
       }
 
       const uploadFileHandler = async (e) => {
@@ -53,7 +53,7 @@ const ConferenceInsertScreen = ({ location, history }) => {
                 }
             }
             const { data } = await axios.post('http://localhost:6500/api/uploads/image', formData, config)
-            setConImage(data)
+            setImage(data)
             setUploading(false)
         } catch (error) {
             console.error(error)
@@ -83,42 +83,42 @@ const ConferenceInsertScreen = ({ location, history }) => {
                                                                   {loading && <Loader />}
                                                                   </div>
                                                                   <center>
-                                                                  <h3 class="display-4">Insert Conference Room</h3>
+                                                                  <h3 class="display-4">Insert Wedding Hall</h3>
                                                                   </center>
                                                                   <br/>
                                                                   
                                                                   <form onSubmit={submitHandler}>
                                                                         <div class="form-group mb-3">
-                                                                              < input id="Enter Wedding Hall Name" type="text" placeholder="Enter Conference Hall Name" required="" autofocus="" className="form-control rounded-pill border-0 shadow-sm px-4" 
+                                                                              < input id="Enter Wedding Hall Name" type="text" placeholder="Enter Conference room Name" required="" autofocus="" className="form-control rounded-pill border-0 shadow-sm px-4" 
                                                                               value={conName}
-                                                                              onChange={(e) => setConName(e.target.value)} />
+                                                                              onChange={(e) => setName(e.target.value)} />
                                                                         </div>
                                                                         <div class="form-group mb-3">
                                                                               <input id="input seats" type="text" placeholder="Enter maximum seatings" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" 
                                                                               value={conSeats}
-                                                                              onChange={(e) => setConSeats(e.target.value)}/>
+                                                                              onChange={(e) => setSeats(e.target.value)}/>
                                                                         </div>
                                                                         <div class="form-group mb-3">
-                                                                              <input id="input description" type="text" placeholder="Enter Conference Room description" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" 
+                                                                              <input id="input description" type="text" placeholder="Enter con description" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" 
                                                                               value={conDes}
-                                                                              onChange={(e) => setConDes(e.target.value)}/>
+                                                                              onChange={(e) => setDes(e.target.value)}/>
                                                                         </div>
                                                                         <div class="form-group mb-3">
-                                                                              <input id="input description" type="number" placeholder="Enter Conference Room Price" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" 
+                                                                              <input id="input description" type="text" placeholder="Enter con price" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" 
                                                                               value={conPrice}
-                                                                              onChange={(e) => setConPrice(e.target.value)}/>
+                                                                              onChange={(e) => setPrice(e.target.value)}/>
                                                                         </div>
                                                                         <div class="form-group mb-3">
-                                                                              <input id="input description" type="text" placeholder="Enter Conference Features" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" 
-                                                                              value={conFeatures}
-                                                                              onChange={(e) => setConFeatures(e.target.value)}/>
+                                                                              <input id="input description" type="text" placeholder="Enter con features" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" 
+                                                                              value={confeatures}
+                                                                              onChange={(e) => setFeatures(e.target.value)}/>
                                                                         </div>
                                                                         <Form.Group controlId='image'>
                                                                             <div className="form-group bn">
                                                                                 <Form.Label>Upload Document</Form.Label>
                                                                                 <Form.Control type='text' className="form-control" placeholder='Enter Document URL'
                                                                                     value={conImage}
-                                                                                    onChange={(e) => setConImage(e.target.value)}
+                                                                                    onChange={(e) => setImage(e.target.value)}
                                                                                 ></Form.Control>
                                                                             </div>
                                                                             <Form.File id="file" label='Choose File' custom onChange={uploadFileHandler}></Form.File>
@@ -141,4 +141,4 @@ const ConferenceInsertScreen = ({ location, history }) => {
       )
 }
 
-export default ConferenceInsertScreen
+export default SignupScreen

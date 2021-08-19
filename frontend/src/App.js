@@ -12,12 +12,15 @@ import FoodScreen from './screens/FoodScreen/FoodScreen';
 import ViewRoomScreen from './screens/ViewRoomScreen/viewRoomScreen';
 import UserProfile from './screens/UserProfileScreen/userProfileScreen'
 import weddingInsertScreen from './screens/WeddingInsertScreen/weddingInsertScreen'
-
+import CreateRest from './screens/RestaurantCreate/restCreate'
 import Restaurents from './screens/RestaurantsScreen/restaurantsScreen'
 import BookingScreen from './screens/BookingScreen/bookingScreen';
 import ViewRestaurent from './screens/RestaurantDetailPage/restDetails'
 import WeddingScreen from './screens/weddingScreen/WeddingScreen';
 import conferenceInsert from './screens/conferenceInsertScreen/conferenceInsert'
+import RestaurantList from './screens/AllRestaurant/restaurantTable';
+import ConferenceScreen from './screens/conferenceScreen/ConferenceScreen'
+import WeddingByIdScreen from './screens/weddingByIdScreen/WeddingByIdScreen'
 
 
 
@@ -42,7 +45,10 @@ const App = () => {
         <Route path="/weddings" component={WeddingScreen} />
         <Route path="/conferenceInsert" component={conferenceInsert} />
         <Route path="/restaurant/:id" component={ViewRestaurent} />
-        
+        <Route path="/conference" component={ConferenceScreen} />
+        <Route path="/createRestaurant" component={CreateRest} />
+        <Route path="/restaurantList" component={RestaurantList} />
+        <Route path="/wedding/:id" component={WeddingByIdScreen} />
 
       </div>
     </Router>
