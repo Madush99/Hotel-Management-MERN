@@ -20,7 +20,7 @@ const getRestaurents = asyncHandler(async (req, res) => {
          phoneNo: restaurant.phoneNo,
          email: restaurant.email,
          location: restaurant.location,
-         image: restaurant.image,
+         images: restaurant.images,
          description: restaurant.description,
         })
          
@@ -39,39 +39,34 @@ const getRestaurents = asyncHandler(async (req, res) => {
         phoneNo,
         email,
         location,
-        image,
+        image1,
+        image2,
+        image3,
         description  
     } = req.body 
 
-        const rest = await Restaurent.create({  
+        const newrest = new Restaurent({  
         name,     
         type,     
         tables,     
         phoneNo,
         email,
         location,
-        image,
+        images:
+        [image1,
+        image2,
+        image3],
         description   
            
        }) 
-          if(rest) 
+        try
         {    
-             res.status(201).json({   
-                 _id:rest._id,    
-                name:rest.name,
-                type: rest.type,
-                tables:rest.tables,
-                phoneNo:rest.phoneNo,
-                email:rest.email,
-                location:rest.location,
-                image:rest.image,
-                description:rest.description
-             })  
-         } else {   
-              res.status(400)     
-              throw new Error('Invalid food data') 
-           }
-        })
+            await newrest.save()
+             res.send('New Restaurant Added Successfully')
+             } catch(error) {
+            return res.status(400).json({ error });
+          }
+         } )
 
         const deleteRest = asyncHandler(async (req, res) => {
           const rest = await Restaurent.findById(req.params.id)
