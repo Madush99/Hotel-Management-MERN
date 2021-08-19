@@ -9,7 +9,10 @@ import {
       ROOMS_BYIDL_FAIL,
       ROOMS_POSTBYID_REQUEST,
       ROOMS_POSTBYID_SUCCESS,
-      ROOMS_POSTBYIDL_FAIL
+      ROOMS_POSTBYIDL_FAIL,
+      CREATE_ROOMS_REQUEST,
+      CREATE_ROOMS_SUCCESS,
+      CREATE_ROOMS_FAIL
 } from '../constants/roomsConstants.js'
 
 export const allRooms = () => async (dispatch) => {
@@ -84,5 +87,33 @@ export const bookRoomDetails = (roomid) => async (dispatch) => {
                               ? error.response.data.message
                               : error.message,
             })
+      }
+}
+
+export const roomCreate = (name, maxcount, features1, features2, features3, features4, features5, rentperday, imageUrl1, imageUrl2, imageUrl3, type, description) => async (dispatch, getState) => {
+      try {
+            dispatch({
+                  type: CREATE_ROOMS_REQUEST,
+            })
+
+
+            const { data } = await axios.post(`/api/rooms/createrooms`, { name, maxcount, features1, features2, features3, features4, features5, rentperday, imageUrl1, imageUrl2, imageUrl3, type, description })
+
+            dispatch({
+                  type: CREATE_ROOMS_SUCCESS,
+                  payload: data,
+            })
+
+
+
+      } catch (error) {
+            dispatch({
+                  type: CREATE_ROOMS_FAIL,
+                  payload:
+                        error.response && error.response.data.message
+                              ? error.response.data.message
+                              : error.message,
+            })
+
       }
 }

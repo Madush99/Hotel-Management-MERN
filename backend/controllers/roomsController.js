@@ -24,9 +24,8 @@ const getRoomsById = asyncHandler(async (req, res) => {
                   features3: rooms.features3,
                   features4: rooms.features4,
                   features5: rooms.features5,
-                  phonenumber: rooms.phonenumber,
                   rentperday: rooms.rentperday,
-                  imageurls: rooms.imageurls,
+                  imageUrls: rooms.imageUrls,
                   currentBookings: rooms.currentBookings,
                   type: rooms.type,
                   description: rooms.description,
@@ -53,12 +52,17 @@ const roomById = asyncHandler(async (req, res) => {
 
 const createRooms = asyncHandler(async (req, res) => {
 
+      const { name,
+            rentperday, maxcount, features1, features2, features3, features4, features5, description, type, imageUrl1, imageUrl2, imageUrl3 } = req.body
+
+      const newroom = new Rooms({
+            name, maxcount, rentperday, features1, features2, features3, features4, features5, type, imageUrls: [imageUrl1, imageUrl2, imageUrl3], description, currentbookings: []
+      })
       try {
-            const newroom = new Rooms(req.body)
             await newroom.save()
-            res.send('New Room Added')
+            res.send('New Room Added Successfully')
       } catch (error) {
-            return res.status(400).json({ error })
+            return res.status(400).json({ error });
       }
 })
 
