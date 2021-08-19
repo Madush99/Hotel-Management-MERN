@@ -18,6 +18,7 @@ import BookingScreen from './screens/BookingScreen/bookingScreen';
 import ViewRestaurent from './screens/RestaurantDetailPage/restDetails'
 import CreateRoomScreen from './screens/CreateRoomScreen/createRoomScreen';
 import RestaurantList from './screens/AllRestaurant/restaurantTable';
+import RoomManagementScreen from './screens/RoomManagementScreen/roomManagementScreen';
 
 
 
@@ -43,7 +44,7 @@ const App = () => {
         <Route path="/createRestaurant" component={CreateRest} />
         <Route path="/admin/createRoom" component={CreateRoomScreen} />
         <Route path="/restaurantList" component={RestaurantList} />
-
+        <Route path="/roomManagement" component={RoomManagementScreen} />
       </div>
     </Router>
   );

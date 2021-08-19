@@ -9,7 +9,7 @@ import FormContainer from '../../components/FormContainer'
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min'
 import { roomCreate } from '../../actions/roomAction'
 
-const CreateRoomScreen = ({ history }) => {
+const CreateRoomScreen = ({ location, history }) => {
 
 
       const [name, setName] = useState("")
@@ -30,15 +30,17 @@ const CreateRoomScreen = ({ history }) => {
 
       const dispatch = useDispatch()
 
+      // const redirect = location.search ? location.search.split('=')[1] : '/'
+
       const createRoom = useSelector((state) => state.createRoom)
       const { loading, error, rooms } = createRoom
 
 
       useEffect(() => {
             if (rooms) {
-                  history.push(Redirect)
+                  // history.push('/')
             }
-      }, [dispatch, rooms, Redirect])
+      }, [history, rooms])
 
 
       const submitHandler = (e) => {
