@@ -15,7 +15,8 @@ import { conferenceInsertReducer, conAllReducer } from './reducers/conferenceRed
 import {
       restAllReducer,
       restDetailsReducer,
-      restCreateReducer
+      restCreateReducer,
+      restDeleteReducer
 } from './reducers/restaurentsReducer'
 
 
@@ -37,7 +38,8 @@ const reducer = combineReducers({
       wedById: conByIdReducer,
       createRoom: roomCreate,
       listAllRooms: roomList,
-      roomDelete: roomDeleteReducer
+      roomDelete: roomDeleteReducer,
+      restDelete: restDeleteReducer
 })
 
 

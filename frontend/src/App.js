@@ -24,6 +24,7 @@ import WeddingByIdScreen from './screens/weddingByIdScreen/WeddingByIdScreen'
 import CreateRoomScreen from './screens/CreateRoomScreen/createRoomScreen';
 import RoomManagementScreen from './screens/RoomManagementScreen/roomManagementScreen';
 import RoomsListScreen from './screens/RoomsListScreen/roomsListScreen';
+import RestaurantManagement from './screens/RestaurantManagement/restManagement'
 
 
 
@@ -53,7 +54,8 @@ const App = () => {
         <Route path="/admin/createRoom" component={CreateRoomScreen} />
         <Route path="/restaurantList" component={RestaurantList} />
         <Route path="/wedding/:id" component={WeddingByIdScreen} />
-
+    
+        <Route path="/restaurantManagement" component={RestaurantManagement} />
         <Route path="/roomManagement" component={RoomManagementScreen} />
         <Route path="/listAllRooms" component={RoomsListScreen} />
       </div>

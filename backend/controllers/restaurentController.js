@@ -68,6 +68,8 @@ const getRestaurents = asyncHandler(async (req, res) => {
           }
          } )
 
+        
+
         const deleteRest = asyncHandler(async (req, res) => {
           const rest = await Restaurent.findById(req.params.id)
       
