@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { WEDDING_INSERT_REQUEST, WEDDING_INSERT_SUCCESS, WEDDING_INSERT_FAIL, WEDDING_ALL_REQUEST, WEDDING_ALL_SUCCESS, WEDDING_ALL_FAIL, WEDDING_BYID_REQUEST, WEDDING_BYID_SUCCESS, WEDDING_BYID_FAIL } from '../constants/weddingConstant.js'
 
-export const weddingAdd = (wedHallName, wedSeats, wedDes, wedImage) => async (dispatch) => {
+export const weddingAdd = (wedHallName, wedSeats, wedDes, wedimg1, wedimg2, wedimg3) => async (dispatch) => {
     try {
         dispatch({
             type: WEDDING_INSERT_REQUEST
@@ -13,7 +13,7 @@ export const weddingAdd = (wedHallName, wedSeats, wedDes, wedImage) => async (di
             }
         }
 
-        const { data } = await axios.post('http://localhost:6500/api/weddings/addWedding', { wedHallName, wedSeats, wedDes, wedImage },
+        const { data } = await axios.post('http://localhost:6500/api/weddings/addWedding', { wedHallName, wedSeats, wedDes, wedimg1, wedimg2, wedimg3 },
             config
         )
 
