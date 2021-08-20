@@ -36,20 +36,20 @@ const RestaurantDetail = ({ match, history }) => {
                                 <Row>
                                     <Col md={12}>
                                         <Carousel nextLabel="" prevLabel="">
-                                            {/* {restaurants.image && restaurants.image.map((url) => { */}
-
-                                            <Carousel.Item>
-                                                {/* <img
-                                                                                          src={url}
-                                                                                          className="img-fluid d-block w-100"
-                                                                                          style={{ height: "500px" }}
-                                                                                    /> */}
-                                                <img src={restaurants.image} ></img>
-                                            </Carousel.Item>
-
-                                            {/* } */}
-                                            {/* )} */}
+                                            {restaurants.images && restaurants.images.map((url) => {
+                                                return (
+                                                    <Carousel.Item>
+                                                        <img
+                                                            src={url}
+                                                            className="img-fluid d-block w-100"
+                                                            style={{ height: "500px" }}
+                                                        />
+                                                    </Carousel.Item>
+                                                );
+                                            })}
                                         </Carousel>
+
+                                        
                                     </Col>
 
 
@@ -81,7 +81,7 @@ const RestaurantDetail = ({ match, history }) => {
                                         </div>
 
                                         <Row>
-                                           
+
                                         </Row>
 
 

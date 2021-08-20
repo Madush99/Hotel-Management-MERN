@@ -51,7 +51,7 @@ const RoomsListScreen = ({ history, match }) => {
 
       return (
             <>
-                  <h1>Rooms</h1>
+                  <h1>Rooms List</h1>
                   {
                         loading ? (
                               <Loader />
@@ -77,7 +77,7 @@ const RoomsListScreen = ({ history, match }) => {
                                                       <td>RS.{rooms.rentperday}</td>
                                                       <td>{rooms.type}</td>
                                                       <td>
-                                                            <LinkContainer to=''>
+                                                            <LinkContainer to={`/update/${rooms._id}`} >
                                                                   <Button variant='light' className='btn-sm'>
                                                                         <i className='fas fa-edit'></i>
                                                                   </Button>
