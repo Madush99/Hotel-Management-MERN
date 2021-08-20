@@ -93,35 +93,34 @@ const RoomsScreen = () => {
 
       return (
             <>
-                  <div className="container">
-                        <RoomsCarousel />
-                        <div className="row bs p-3 m-5 dark" data-aos="fade-up"
-                              data-aos-anchor-placement="center-bottom">
-                              <div className="col-md-4">
-                                    <RangePicker style={{ height: "38px" }} onChange={filterByDate} format='DD-MM-YYYY' className='m-2' />
-                              </div>
+                  <RoomsCarousel />
+                  <div className="row bs p-3 m-5 dark" data-aos="fade-up"
+                        data-aos-anchor-placement="center-bottom">
+                        <div className="col-md-4">
+                              <RangePicker style={{ height: "38px" }} onChange={filterByDate} format='DD-MM-YYYY' className='m-2' />
+                        </div>
 
-                              <div className="col-md-4">
-                                    <input
-                                          type="text"
-                                          className="form-control i2 m-2"
-                                          placeholder='Search Rooms'
-                                          value={searchkey}
-                                          onKeyUp={filterBySearch}
-                                          onChange={(e) => { setsearchkey(e.target.value) }}
-                                    />
-                              </div>
-                              <div className="col-md-4">
-                                    <select className="form-control m-2" value={type} onChange={(e) => { filterByType(e.target.value) }} >
+                        <div className="col-md-4">
+                              <input
+                                    type="text"
+                                    className="form-control i2 m-2"
+                                    placeholder='Search Rooms'
+                                    value={searchkey}
+                                    onKeyUp={filterBySearch}
+                                    onChange={(e) => { setsearchkey(e.target.value) }}
+                              />
+                        </div>
+                        <div className="col-md-4">
+                              <select className="form-control m-2" value={type} onChange={(e) => { filterByType(e.target.value) }} >
 
-                                          <option value="all">All</option>
-                                          <option value="delux">Delux</option>
-                                          <option value="non-delux">Non Delux</option>
+                                    <option value="all">All</option>
+                                    <option value="delux">Delux</option>
+                                    <option value="non-delux">Non Delux</option>
 
-                                    </select>
-                              </div>
+                              </select>
                         </div>
                   </div>
+
 
                   <div className="row justify-content-center mt-5"  >
                         {loading ? (
