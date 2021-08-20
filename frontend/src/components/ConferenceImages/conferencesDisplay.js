@@ -8,15 +8,19 @@ const ConferenceDis = ({ conference }) => {
                   <Link to={`/conference/${conference._id}`}>
                         <Card.Img className='card-img' src={conference.conImage} variant='top' />
                   </Link>
-
+                  <center>
                   <Card.Body>
                         <Link to={`/conference/${conference._id}`}>
-                            <Card.Title as='div'><h3>{conference.conName}</h3></Card.Title>
+                            <Card.Title as='div'><h1>{conference.conName}</h1></Card.Title>
                             <Link to={`/conference/${conference._id}`}>
-                             <Card.Title as='div'><h5>{conference.conSeats} Seats</h5></Card.Title>
+                             <Card.Title as='div'><h6>Maximum Capacity: {conference.conSeats} Seats</h6></Card.Title>
+                        </Link>
+                        <Link to={`/conference/${conference._id}`}>
+                             <Card.Title as='div'><h6>Price: RS.{conference.conPrice}</h6></Card.Title>
                         </Link>
                         </Link>
                   </Card.Body>
+                  </center>
             </Card>
       )
 }
