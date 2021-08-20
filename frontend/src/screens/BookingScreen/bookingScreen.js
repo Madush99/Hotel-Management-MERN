@@ -37,7 +37,7 @@ const BookingScreen = ({ match }) => {
             console.log(token);
             const bookingDetails = {
                   token,
-                  user: JSON.parse(localStorage.getItem('currentUser')),
+                  userid: JSON.parse(localStorage.getItem('userInfo'))._id,
                   rooms,
                   fromdate,
                   todate,
@@ -49,6 +49,7 @@ const BookingScreen = ({ match }) => {
             try {
 
                   const result = await axios.post('/api/booking/bookroom', bookingDetails)
+                  console.log(result)
                   Swal.fire('Congrats', 'Your Room has booked succeessfully', 'success').then(result => {
                         window.location.href = '/profile'
                   })
@@ -159,6 +160,9 @@ const BookingScreen = ({ match }) => {
                                                                               <ListGroup.Item as="li" variant="secondary">
                                                                                     <b>Details</b>
                                                                               </ListGroup.Item>
+                                                                              <ListGroup.Item as="li" disabled>
+                                                                                    <p><b>Name</b> : {JSON.parse(localStorage.getItem('userInfo')).name}</p>
+                                                                              </ListGroup.Item>
                                                                               <ListGroup.Item as="li" disabled><b>Max Count: </b> {rooms.maxcount}</ListGroup.Item>
                                                                               <ListGroup.Item as="li" disabled>
                                                                                     <b>Room Type: </b> {rooms.type}
@@ -170,7 +174,7 @@ const BookingScreen = ({ match }) => {
                                                                               <ListGroup.Item as="li" variant="secondary">
                                                                                     <b>BOOK NOW</b>
                                                                               </ListGroup.Item>
-                                                                              <ListGroup.Item as="li" disabled><b>Name: </b> {JSON.parse(localStorage.getItem('currentUser'))}</ListGroup.Item>
+                                                                              <ListGroup.Item as="li" disabled><b>Name: </b> {JSON.parse(localStorage.getItem('userInfo')).name}</ListGroup.Item>
                                                                               <ListGroup.Item as="li" disabled><b>From Date: </b> {match.params.fromdate}</ListGroup.Item>
                                                                               <ListGroup.Item as="li" disabled><b>To Date: </b> {match.params.todate}</ListGroup.Item>
                                                                               <ListGroup.Item as="li" disabled>
