@@ -25,6 +25,7 @@ import RoomManagementScreen from './screens/RoomManagementScreen/roomManagementS
 import RoomsListScreen from './screens/RoomsListScreen/roomsListScreen';
 import RestaurantManagement from './screens/RestaurantManagement/restManagement'
 import RoomUpdateScreen from './screens/RoomUpdateScreen/roomUpdateScreen';
+import ReqScreen from './screens/reqAProposalScreen/reqProInsert'
 import AllFoods from './screens/FoodsScreen/foodsScreen';
 import FoodManagement from './screens/FoodManagementScreen/foodManagementScreen';
 
@@ -65,6 +66,7 @@ const App = () => {
         <Route path="/update/:id" component={RoomUpdateScreen} />
         <Route path="/roomManagement" component={RoomManagementScreen} />
         <Route path="/listAllRooms" component={RoomsListScreen} />
+        <Route path="/requestPropsal" component={ReqScreen} />
         <Route path="/foods" component={AllFoods } />
         <Route path="/foodManagement" component={FoodManagement} />
 
