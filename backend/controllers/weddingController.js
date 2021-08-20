@@ -67,7 +67,7 @@ const getWedDetailsById = asyncHandler(async (req, res) => {
                 wedHallName: wedding.wedHallName,
                 wedSeats: wedding.wedSeats,
                 wedDes: wedding.wedDes,
-                wedImage: wedding.wedImage,
+                wedImages: wedding.wedImages,
                 
           })
     } else {

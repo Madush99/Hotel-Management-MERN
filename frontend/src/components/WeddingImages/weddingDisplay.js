@@ -8,7 +8,7 @@ const WeddingDis = ({ wedding }) => {
       return (
             <Card className='my-3 p-3 rounded' border="dark">
                   <Link to={`/wedding/${wedding._id}`}>
-                        <Card.Img className='card-img' src={wedding.wedImage} variant='top' />
+                        <Card.Img className='card-img' src={wedding.wedImages[0]} variant='top' />
                   </Link>
 
                   <Card.Body>

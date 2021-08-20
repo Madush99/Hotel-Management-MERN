@@ -42,11 +42,20 @@ const WeddingByIdScreen = ({ match, history }) => {
                                                 <Row>
                                                       <Col md={12}>
                                                             <Carousel nextLabel="" prevLabel="">
-                                                                 
+                                                                 {weddings.wedImages && weddings.wedImages.map((url1) => {
+                                                                       return (
+                                                                        <Carousel.Item>
+                                                                              <img
+                                                                                    src={url1}
+                                                                                    className="img-fluid d-block w-100"
+                                                                                    style={{ height: "500px" }}
+
+                                                                                    />
+                                                                        </Carousel.Item>
+                                                                       )
+                                                                 })}
                                                                        
-                                                                              <Carousel.Item>
-                                                                              <img src = {weddings.wedImage}/>
-                                                                              </Carousel.Item>
+                                                                              
                                                                        
                                                                   
                                                             </Carousel>
