@@ -4,6 +4,7 @@ import Rooms from '../models/roomModel.js'
 import { v4 as uuidv4 } from 'uuid'
 import moment from 'moment'
 import Stripe from 'stripe';
+//import { Router } from 'express'
 
 const stripe = new Stripe('sk_test_51JPWGjSI37Hyu4LSE4vX93j1azAOjpcgYNLvdh9avZuqoUElA7PO2w8xquKa0Z4yt8Ad1lEdRMH4HRxiicAW3Gyc00IVYrwUME');
 
@@ -11,7 +12,7 @@ const stripe = new Stripe('sk_test_51JPWGjSI37Hyu4LSE4vX93j1azAOjpcgYNLvdh9avZuq
 const bookRoom = asyncHandler(async (req, res) => {
 
 
-      const { room, user, fromdate, todate, totalDays, totalAmount, token } = req.body
+      const { rooms, userid, fromdate, todate, totalDays, totalAmount, token } = req.body
 
       try {
 
@@ -39,9 +40,10 @@ const bookRoom = asyncHandler(async (req, res) => {
             if (payment) {
                   try {
                         const newbooking = new Bookings({
-                              user: user._id,
-                              room: room.name,
-                              roomid: room._id,
+
+                              rooms: rooms.name,
+                              roomid: rooms._id,
+                              userid,
                               totalDays: totalDays,
                               fromdate: moment(fromdate).format("DD-MM-YYYY"),
                               todate: moment(todate).format("DD-MM-YYYY"),
@@ -50,18 +52,35 @@ const bookRoom = asyncHandler(async (req, res) => {
                               status: 'booked'
                         });
 
-                        await newbooking.save(async (err, booking) => {
-                              const oldroom = await Rooms.findOne({ _id: room._id });
+                        const booking = await newbooking.save()
 
-                              oldroom.currentbookings.push({
-                                    bookingid: booking._id,
-                                    fromdate: moment(fromdate).format("DD-MM-YYYY"),
-                                    todate: moment(todate).format("DD-MM-YYYY"),
-                                    userid: user._id,
-                                    status: 'booked'
-                              });
-                              await oldroom.save();
-                        });
+                        const roomtemp = await Rooms.findOne({ _id: rooms._id })
+
+                        roomtemp.currentBookings.push({
+                              booking: booking._id,
+                              fromdate: moment(fromdate).format("DD_MM_YYYY"),
+                              todate: moment(todate).format("DD-MM-YYYY"),
+                              userid: userid,
+                              status: booking.status
+                        })
+
+
+                        await roomtemp.save()
+
+                        // (async (err, bookings) => {
+                        //       const oldroom = await Rooms.findOne({ _id: rooms._id });
+
+                        //       oldroom.currentBookings.push({
+                        //             bookings: bookings._id,
+                        //             fromdate: moment(fromdate).format("DD-MM-YYYY"),
+                        //             todate: moment(todate).format("DD-MM-YYYY"),
+                        //             userid: user._id,
+                        //             status: 'booked'
+                        //       });
+                        //       await oldroom.save();
+                        // });
+
+
 
                         res.send("Room Booked Successfully");
 
@@ -80,4 +99,15 @@ const bookRoom = asyncHandler(async (req, res) => {
 
 })
 
-export { bookRoom }
+
+const getallbookings = asyncHandler(async (req, res) => {
+      try {
+            const bookings = await Bookings.find({});
+            res.send(bookings);
+      } catch (error) {
+            return res.status(400).json({ message: error });
+      }
+})
+
+
+export { bookRoom, getallbookings }

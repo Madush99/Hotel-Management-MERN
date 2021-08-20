@@ -41,7 +41,7 @@ const RestEditScreen = ({ match, history }) => {
       useEffect(() => {
             if (restaurants) {
                   Swal.fire('Congrats', 'Restaurant Added SUCCESSFULY', 'success').then(result => {
-                        window.location.href = '/'
+                        window.location.href = '/restaurantManagement'
                   })
             }
       }, [history, restaurants])
@@ -109,10 +109,7 @@ const RestEditScreen = ({ match, history }) => {
 
       return (
             <>
-                  <Link to='/' className='btn btn-light my-3'>
-                        Go Back
-                  </Link>
-                  <FormContainer>
+                    <FormContainer>
                         <h1 style={{ textAlign: "center" }}>ADD RESTAURANTS</h1>
                         {loading && <Loader />}
                         {error && <Message variant='danger'>{error} </Message>}

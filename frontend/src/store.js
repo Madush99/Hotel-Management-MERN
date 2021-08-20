@@ -15,8 +15,18 @@ import { conferenceInsertReducer, conAllReducer } from './reducers/conferenceRed
 import {
       restAllReducer,
       restDetailsReducer,
-      restCreateReducer
+      restCreateReducer,
+      restDeleteReducer
 } from './reducers/restaurentsReducer'
+import { bookingListReducer } from './reducers/bookingReducers.js'
+
+import {
+      foodsAllReducer, 
+      foodsCreateReducer,
+      foodDeleteReducer
+} from './reducers/foodReducer'
+
+
 
 
 
@@ -29,6 +39,7 @@ const reducer = combineReducers({
       weddingInsert: weddingInsertReducer,
       roomBookdetails: roomBookDetailReducer,
       restaurantsAll: restAllReducer,
+    
       restDetails: restDetailsReducer,
       wedAll: wedAllReducer,
       conferenceInsert: conferenceInsertReducer,
@@ -38,7 +49,13 @@ const reducer = combineReducers({
       createRoom: roomCreate,
       listAllRooms: roomList,
       roomDelete: roomDeleteReducer,
-      roomUpdate: roomUpdateReducer
+      restDelete: restDeleteReducer,
+      roomUpdate: roomUpdateReducer,
+      listAllBookings: bookingListReducer,
+      foodsAll:foodsAllReducer,
+      createFood:foodsCreateReducer,
+      foodsDelete:foodDeleteReducer
+
 })
 
 

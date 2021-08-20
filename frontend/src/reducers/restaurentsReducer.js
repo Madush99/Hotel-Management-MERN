@@ -8,7 +8,10 @@ import {
     REST_CREATE_REQUEST,
     REST_CREATE_SUCCESS,
     REST_CREATE_FAIL,
-    REST_CREATE_RESET
+    REST_CREATE_RESET,
+    REST_DELETE_REQUEST,
+    REST_DELETE_SUCCESS,
+    REST_DELETE_FAIL
 } from '../constants/restaurentsConstants'
 
 
@@ -50,6 +53,20 @@ export const restCreateReducer = (state = {}, action) => {
                   return { loading: false, error: action.payload }
             case REST_CREATE_RESET:
                   return {}
+            default:
+                  return state
+      }
+}
+
+
+export const restDeleteReducer = (state = {}, action) => {
+      switch (action.type) {
+            case REST_DELETE_REQUEST:
+                  return { loading: true }
+            case REST_DELETE_SUCCESS:
+                  return { loading: false, success: true }
+            case REST_DELETE_FAIL:
+                  return { loading: false, error: action.payload }
             default:
                   return state
       }

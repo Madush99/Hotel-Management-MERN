@@ -3,24 +3,29 @@ import asyncHandler from 'express-async-handler'
 
 //retrive food items
 const getFoods = asyncHandler(async (req, res) => {
-    const food = await Food.find({})
-    res.json(food)
-  })
+  const food = await Food.find({})
+  res.json(food)
+})
 
 
 //retrive food items by ID
-const getFoodbyID= asyncHandler(async (req, res) => {
-  const food = await Food.findById(req.params.id)  
+const getFoodbyID = asyncHandler(async (req, res) => {
+  const food = await Food.findById(req.params.id)
 
   if (food) {
-  
-  res.json(food)
+    res.json({
+      _id: food._id,
+      name: food.name,
+      description: food.description,
+      price: food.price,
+      category: food.category,
+      image: food.image,
+
+    })
   } else {
-  res.status(404)
-  throw new Error('food not found')
-  
+    res.status(404)
+    throw new Error('food not found')
   }
- 
 })
 //create food items
 /*const createFood = asyncHandler(async (req, res) => {
@@ -35,41 +40,46 @@ const getFoodbyID= asyncHandler(async (req, res) => {
   const createdFood = await food.save()
   res.status(201).json(createdFood)
 })*/
-  
-
-const createFood = asyncHandler(async(req, res) => {  
-    const { 
-       name,     
-       description,     
-       price,     
-       category,
-       image    
-  } = req.body 
-      const food = await Food.create({  
-        name,
-        description,     
-        price,     
-        category,
-        image  
-         
-     }) 
-        if(food) 
-      {    
-           res.status(201).json({   
-               _id: food._id,    
-              name: food.name,
-              description: food.description,
-              price:food.price,
-              category:food.category,
-              image:food.image   
-           })  
-       } else {   
-            res.status(400)     
-            throw new Error('Invalid food data') 
-         }
-      })
 
 
-  
-  
-  export { getFoods,getFoodbyID,createFood }
+const createFood = asyncHandler(async (req, res) => {
+  const {
+    name,
+    description,
+    price,
+    category,
+    image,
+
+  } = req.body
+  const newfood = await Food({
+    name,
+    description,
+    price,
+    category,
+    image,
+
+  })
+  try {
+    await newfood.save()
+    res.send('Food Added Successfully')
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+})
+
+
+const deleteFood = asyncHandler(async (req, res) => {
+  const food = await Food.findById(req.params.id)
+
+  if (food) {
+    await food.remove()
+    res.json({ message: 'item removed' })
+  } else {
+    res.status(404)
+    throw new Error('Item not found')
+  }
+})
+
+
+
+export { getFoods, getFoodbyID, createFood, deleteFood }

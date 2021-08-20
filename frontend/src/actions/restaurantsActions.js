@@ -8,7 +8,10 @@ import {
     REST_BYID_FAIL,
     REST_CREATE_REQUEST,
     REST_CREATE_SUCCESS,
-    REST_CREATE_FAIL
+    REST_CREATE_FAIL,
+    REST_DELETE_REQUEST,
+    REST_DELETE_SUCCESS,
+    REST_DELETE_FAIL
 } from '../constants/restaurentsConstants'
 
 
@@ -102,4 +105,29 @@ export const createRest = (name,type,tables,phoneNo,email,location,image1,image2
         })
       }
     }
+
+
+
+    export const deleteRest = (id) => async (dispatch) => {
+      try {
+            dispatch({
+                  type: REST_DELETE_REQUEST,
+            })
+
+            await axios.delete(`/api/restaurents/${id}`)
+
+            dispatch({
+                  type: REST_DELETE_SUCCESS,
+
+            })
+      } catch (error) {
+            dispatch({
+                  type: REST_DELETE_FAIL,
+                  payload:
+                        error.response && error.response.data.message
+                              ? error.response.data.message
+                              : error.message,
+            })
+      }
+}
 

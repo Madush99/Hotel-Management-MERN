@@ -97,7 +97,7 @@ const RoomsScreen = () => {
                   <div className="row bs p-3 m-5 dark" data-aos="fade-up"
                         data-aos-anchor-placement="center-bottom">
                         <div className="col-md-4">
-                              <RangePicker style={{ height: "38px" }} onChange={filterByDate} format='DD-MM-YYYY' className='m-2' />
+                              <RangePicker style={{ height: "38px", width: "98%" }} onChange={filterByDate} format='DD-MM-YYYY' className='m-2' />
                         </div>
 
                         <div className="col-md-4">

@@ -1,30 +1,30 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { listRooms, deleteRoom } from '../../actions/roomAction'
+import { allFoods, deleteFood } from '../../actions/foodsAction'
 import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Table, Button } from 'react-bootstrap'
 import Swal from 'sweetalert2'
 
-const RoomsListScreen = ({ history, match }) => {
+const FoodListScreen = ({ history, match }) => {
 
       const dispatch = useDispatch()
 
-      const listAllRooms = useSelector((state) => state.listAllRooms)
-      const { loading, error, rooms } = listAllRooms
+      const foodsAll = useSelector((state) => state.foodsAll)
+      const { loading, error, foods } = foodsAll
 
-      const roomDelete = useSelector((state) => state.roomDelete)
-      const { success: successDelete } = roomDelete
+      const foodsDelete = useSelector((state) => state.foodsDelete)
+      const { success: successDelete } = foodsDelete
 
       useEffect(() => {
-            dispatch(listRooms())
+            dispatch(allFoods())
             // if (successDelete) {
             //       Swal.fire('Room Deleted, Successfuly', 'success').then(result => {
             //             window.location.href = '/roomManagement'
             //       })
             // }
-      }, [dispatch, successDelete])
+      }, [dispatch,successDelete])
 
 
       const deleteHandler = (id) => {
@@ -45,13 +45,13 @@ const RoomsListScreen = ({ history, match }) => {
                         )
                   }
             })) {
-                  dispatch(deleteRoom(id))
+                  dispatch(deleteFood(id))
             }
       }
 
       return (
             <>
-                  <h1>Rooms List</h1>
+                  <h1>Foods List</h1>
                   {
                         loading ? (
                               <Loader />
@@ -62,22 +62,22 @@ const RoomsListScreen = ({ history, match }) => {
                                     <thead>
                                           <tr>
                                                 <th>ID</th>
-                                                <th>ROOM NAME</th>
-                                                <th>MAX COUNT</th>
-                                                <th>RENT PER DAY</th>
-                                                <th>TYPE</th>
+                                                <th>NAME</th>
+                                                <th>CATEGORY</th>
+                                                <th>PRICE</th>
+                                                <th></th>
                                           </tr>
                                     </thead>
                                     <tbody>
-                                          {rooms.map((rooms) => (
-                                                <tr key={rooms._id}>
-                                                      <td>{rooms._id}</td>
-                                                      <td>{rooms.name}</td>
-                                                      <td>{rooms.maxcount}</td>
-                                                      <td>RS.{rooms.rentperday}</td>
-                                                      <td>{rooms.type}</td>
+                                          {foods.map((foods) => (
+                                                <tr key={foods._id}>
+                                                      <td>{foods._id}</td>
+                                                      <td>{foods.name}</td>
+                                                      <td>{foods.category}</td>
+                                                      <td>RS.{foods.price}</td>
+                                                      
                                                       <td>
-                                                            <LinkContainer to={`/update/${rooms._id}`} >
+                                                            <LinkContainer to={`/update/${foods._id}`} >
                                                                   <Button variant='light' className='btn-sm'>
                                                                         <i className='fas fa-edit'></i>
                                                                   </Button>
@@ -85,7 +85,7 @@ const RoomsListScreen = ({ history, match }) => {
                                                             <Button
                                                                   variant='danger'
                                                                   className='btn-sm'
-                                                                  onClick={() => deleteHandler(rooms._id)}
+                                                                  onClick={() => deleteHandler(foods._id)}
                                                             >
                                                                   <i className='fas fa-trash'></i>
                                                             </Button>
@@ -100,4 +100,4 @@ const RoomsListScreen = ({ history, match }) => {
       )
 }
 
-export default RoomsListScreen
+export default FoodListScreen

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 const bookingSchema = mongoose.Schema({
-      room: {
+      rooms: {
             type: String,
             required: true
       },
@@ -9,11 +9,7 @@ const bookingSchema = mongoose.Schema({
             type: String,
             required: true
       },
-      userid: {
-            type: mongoose.Schema.Types.ObjectId,
-            required: false,
-            ref: 'User'
-      },
+      userid: { type: String, required: true },
       fromdate: {
             type: String,
             required: true,
