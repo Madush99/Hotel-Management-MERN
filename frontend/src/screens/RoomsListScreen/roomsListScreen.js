@@ -51,7 +51,7 @@ const RoomsListScreen = ({ history, match }) => {
 
       return (
             <>
-                  <h1>Rooms</h1>
+                  <h1>Rooms List</h1>
                   {
                         loading ? (
                               <Loader />
