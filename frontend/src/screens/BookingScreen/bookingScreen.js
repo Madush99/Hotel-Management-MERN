@@ -51,13 +51,11 @@ const BookingScreen = ({ match }) => {
                   const result = await axios.post('/api/booking/bookroom', bookingDetails)
                   console.log(result)
                   Swal.fire('Congrats', 'Your Room has booked succeessfully', 'success').then(result => {
-                        window.location.href = '/profile'
+                        window.location.href = '/rooms'
                   })
 
             } catch (error) {
-                  Swal.fire('Congrats', 'Your Room has booked succeessfully', 'success').then(result => {
-                        window.location.href = '/'
-                  })
+                  Swal.fire('Oops', 'Something went wrong , please try later', 'error')
                   console.log(error);
 
             }
@@ -181,7 +179,7 @@ const BookingScreen = ({ match }) => {
                                                                                     <b>Total Days : </b> {totalDays}
                                                                               </ListGroup.Item>
 
-                                                                              <ListGroup.Item as="li" disabled ><b>Total Amount :{rooms.rentperday * totalDays}</b></ListGroup.Item>
+                                                                              <ListGroup.Item as="li" disabled ><b>Total Amount : LKR {rooms.rentperday * totalDays}</b></ListGroup.Item>
 
                                                                               <StripeCheckout Checkout
                                                                                     amount={rooms.rentperday * totalDays * 100}
