@@ -4,6 +4,7 @@ import { Button, Row, Col } from 'react-bootstrap'
 import CreateRoomScreen from '../CreateRoomScreen/createRoomScreen';
 import RoomsListScreen from '../RoomsListScreen/roomsListScreen';
 import { Container } from 'react-bootstrap';
+import BookingListScreen from '../BookingListScreen/bookingListScreen';
 
 const { TabPane } = Tabs;
 
@@ -35,12 +36,11 @@ const RoomManagementScreen = () => {
                                     </div>
 
                               </TabPane>
-                              <TabPane tab="Add Room" key="3">
+                              <TabPane tab="BOOKINGS" key="3">
 
-
-
-
-
+                                    <div className="row">
+                                          <BookingListScreen />
+                                    </div>
                               </TabPane>
                               <TabPane tab="Users" key="4">
 

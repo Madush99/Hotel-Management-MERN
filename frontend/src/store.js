@@ -18,6 +18,7 @@ import {
       restCreateReducer,
       restDeleteReducer
 } from './reducers/restaurentsReducer'
+import { bookingListReducer } from './reducers/bookingReducers.js'
 
 
 
@@ -40,7 +41,8 @@ const reducer = combineReducers({
       listAllRooms: roomList,
       roomDelete: roomDeleteReducer,
       restDelete: restDeleteReducer,
-      roomUpdate: roomUpdateReducer
+      roomUpdate: roomUpdateReducer,
+      listAllBookings: bookingListReducer
 })
 
 
