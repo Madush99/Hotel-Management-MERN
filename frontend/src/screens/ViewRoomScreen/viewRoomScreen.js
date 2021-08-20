@@ -35,7 +35,7 @@ const ViewRoomScreen = ({ match, history }) => {
                                                 <Row>
                                                       <Col md={12}>
                                                             <Carousel nextLabel="" prevLabel="">
-                                                                  {rooms.imageurls && rooms.imageurls.map((url) => {
+                                                                  {rooms.imageUrls && rooms.imageUrls.map((url) => {
                                                                         return (
                                                                               <Carousel.Item>
                                                                                     <img
@@ -56,10 +56,12 @@ const ViewRoomScreen = ({ match, history }) => {
                                                       <Col >
                                                             <br></br>
                                                             <div class="vl">
-                                                                  <h6 className="hj">Shangri-La Colombo</h6>
-                                                                  <h1 className="hj">{rooms.name}</h1>
-
-                                                            </div>            <hr></hr>
+                                                                  <div className="jk">
+                                                                        <h6>Shangri-La Colombo</h6>
+                                                                        <h1> {rooms.name}</h1>
+                                                                  </div>
+                                                            </div>
+                                                            <hr></hr>
 
                                                             <h6>Amenities</h6>
                                                             <hr></hr>

@@ -1,5 +1,6 @@
 {
   "name": "frontend",
+  "proxy": "http://localhost:6500",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -21,10 +22,14 @@
     "react-router-bootstrap": "^0.25.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-stripe-checkout": "^2.6.3",
     "redux": "^4.1.1",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
-    "sweetalert2": "^11.1.4",
+    "stripe": "^8.169.0",
+    "styled-components": "^5.3.0",
+    "sweetalert2": "^11.1.2",
+    "uuid": "^8.3.2",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -53,6 +58,5 @@
   },
   "devDependencies": {
     "redux-devtools": "^3.7.0"
-  },
-  "proxy": "http://localhost:6500"
+  }
 }

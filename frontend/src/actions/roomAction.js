@@ -9,7 +9,19 @@ import {
       ROOMS_BYIDL_FAIL,
       ROOMS_POSTBYID_REQUEST,
       ROOMS_POSTBYID_SUCCESS,
-      ROOMS_POSTBYIDL_FAIL
+      ROOMS_POSTBYIDL_FAIL,
+      CREATE_ROOMS_REQUEST,
+      CREATE_ROOMS_SUCCESS,
+      CREATE_ROOMS_FAIL,
+      ROOMS_LIST_REQUEST,
+      ROOMS_LIST_SUCCESS,
+      ROOMS_LIST_FAIL,
+      ROOMS_DELETE_REQUEST,
+      ROOMS_DELETE_SUCCESS,
+      ROOMS_DELETE_FAIL,
+      ROOMS_UPDATE_RESET,
+      ROOMS_UPDATE_SUCCESS,
+      ROOMS_UPDATE_FAIL
 } from '../constants/roomsConstants.js'
 
 export const allRooms = () => async (dispatch) => {
@@ -79,6 +91,108 @@ export const bookRoomDetails = (roomid) => async (dispatch) => {
       } catch (error) {
             dispatch({
                   type: ROOMS_POSTBYIDL_FAIL,
+                  payload:
+                        error.response && error.response.data.message
+                              ? error.response.data.message
+                              : error.message,
+            })
+      }
+}
+
+export const roomCreate = (name, maxcount, features1, features2, features3, features4, features5, rentperday, imageUrl1, imageUrl2, imageUrl3, type, description) => async (dispatch, getState) => {
+      try {
+            dispatch({
+                  type: CREATE_ROOMS_REQUEST,
+            })
+
+
+            const { data } = await axios.post(`/api/rooms/createrooms`, { name, maxcount, features1, features2, features3, features4, features5, rentperday, imageUrl1, imageUrl2, imageUrl3, type, description })
+
+            dispatch({
+                  type: CREATE_ROOMS_SUCCESS,
+                  payload: data,
+            })
+
+
+
+      } catch (error) {
+            dispatch({
+                  type: CREATE_ROOMS_FAIL,
+                  payload:
+                        error.response && error.response.data.message
+                              ? error.response.data.message
+                              : error.message,
+            })
+
+      }
+}
+
+
+export const listRooms = () => async (dispatch) => {
+      try {
+            dispatch({
+                  type: ROOMS_LIST_REQUEST,
+            })
+
+            const { data } = await axios.get(`/api/rooms/allrooms`)
+
+            dispatch({
+                  type: ROOMS_LIST_SUCCESS,
+                  payload: data
+            })
+      } catch (error) {
+            dispatch({
+                  type: ROOMS_LIST_FAIL,
+                  payload:
+                        error.response && error.response.data.message
+                              ? error.response.data.message
+                              : error.message,
+            })
+      }
+}
+
+
+export const deleteRoom = (id) => async (dispatch) => {
+      try {
+            dispatch({
+                  type: ROOMS_DELETE_REQUEST,
+            })
+
+            await axios.delete(`/api/rooms/${id}`)
+
+            dispatch({
+                  type: ROOMS_DELETE_SUCCESS,
+
+            })
+      } catch (error) {
+            dispatch({
+                  type: ROOMS_DELETE_FAIL,
+                  payload:
+                        error.response && error.response.data.message
+                              ? error.response.data.message
+                              : error.message,
+            })
+      }
+}
+
+export const updateRoom = (rooms) => async (dispatch, getState) => {
+      try {
+            dispatch({
+                  type: ROOMS_UPDATE_RESET,
+            })
+
+
+            const { data } = await axios.put(`/api/rooms/${rooms._id}`, rooms)
+
+            dispatch({
+                  type: ROOMS_UPDATE_SUCCESS,
+                  payload: data,
+            })
+
+
+      } catch (error) {
+            dispatch({
+                  type: ROOMS_UPDATE_FAIL,
                   payload:
                         error.response && error.response.data.message
                               ? error.response.data.message

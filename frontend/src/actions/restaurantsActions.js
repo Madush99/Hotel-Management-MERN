@@ -3,6 +3,15 @@ import {
     REST_ALL_REQUEST,
     REST_ALL_SUCCESS,
     REST_ALL_FAIL,
+    REST_BYID_REQUEST,
+    REST_BYID_SUCCESS,
+    REST_BYID_FAIL,
+    REST_CREATE_REQUEST,
+    REST_CREATE_SUCCESS,
+    REST_CREATE_FAIL,
+    REST_DELETE_REQUEST,
+    REST_DELETE_SUCCESS,
+    REST_DELETE_FAIL
 } from '../constants/restaurentsConstants'
 
 
@@ -33,3 +42,92 @@ export const allRestaurants = () => async (dispatch) => {
           })
     }
 }
+
+//get Restaurant details by id
+
+export const getRestDetails = (id) => async (dispatch, getState) => {
+      try {
+            dispatch({
+                  type: REST_BYID_REQUEST,
+            })
+
+            const { data } = await axios.get(`/api/restaurents/${id}`)
+
+            dispatch({
+                  type: REST_BYID_SUCCESS,
+                  payload: data
+            })
+
+      } catch (error) {
+            dispatch({
+                  type: REST_BYID_FAIL,
+                  payload:
+                        error.response && error.response.data.message
+                              ? error.response.data.message
+                              : error.message,
+            })
+      }
+}
+
+
+//create Restaurent
+
+
+export const createRest = (name,type,tables,phoneNo,email,location,image1,image2,image3,description) => async (dispatch, getState) => {
+      try {
+        dispatch({
+          type: REST_CREATE_REQUEST,
+        })
+    
+      //   const {
+      //     userLogin: { userInfo },
+      //   } = getState()
+    
+      //   const config = {
+      //     headers: {
+      //       Authorization: `Bearer ${userInfo.token}`,
+      //     },
+      //   }
+    
+        const { data } = await axios.post(`/api/restaurents/create`, {name,type,tables,phoneNo,email,location,image1,image2,image3,description})
+    
+        dispatch({
+          type: REST_CREATE_SUCCESS,
+          payload: data,
+        })
+      } catch (error) {
+        dispatch({
+          type: REST_CREATE_FAIL,
+          payload:
+            error.response && error.response.data.message
+              ? error.response.data.message
+              : error.message,
+        })
+      }
+    }
+
+
+
+    export const deleteRest = (id) => async (dispatch) => {
+      try {
+            dispatch({
+                  type: REST_DELETE_REQUEST,
+            })
+
+            await axios.delete(`/api/restaurents/${id}`)
+
+            dispatch({
+                  type: REST_DELETE_SUCCESS,
+
+            })
+      } catch (error) {
+            dispatch({
+                  type: REST_DELETE_FAIL,
+                  payload:
+                        error.response && error.response.data.message
+                              ? error.response.data.message
+                              : error.message,
+            })
+      }
+}
+

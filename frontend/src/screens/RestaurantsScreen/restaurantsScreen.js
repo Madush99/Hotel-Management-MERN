@@ -6,8 +6,7 @@ import Rest from '../../components/RestaurantImages/resturantsDisplay'
 import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import { Row, Col } from 'react-bootstrap'
-
-
+import './style.css'
 
 
 const RestaurantScreen = () => {
@@ -15,7 +14,7 @@ const RestaurantScreen = () => {
       const dispatch = useDispatch()
 
       const restaurantsAll = useSelector((state) => state.restaurantsAll)
-      const { loading, error, restautants } = restaurantsAll
+      const { loading, error, restaurants } = restaurantsAll
 
       useEffect(() => {
             dispatch(allRestaurants())
@@ -25,20 +24,24 @@ const RestaurantScreen = () => {
       return (
             <>
             <Carousel />
-                <h1>Restaurants</h1>
+            <br></br>
+                <h1 style={{ textAlign: "center" }}>RESTAURANTS</h1>
                 {
                         loading ? (<Loader />) : error ? (<Message variant='danger'>{error}</Message>
                         ) : (
-                <Row className='ro'>
-                              {restautants.map((restaurant) =>
+                              <Row className='ro' style={{ backgroundColor: "#eaeaf7" }} >
+                              {restaurants.map((restaurant) =>
 
-                                    <Col key={restaurant._id} sm={12} md={6} lg={4} xl={3}>
+                                    <Col key={restaurant._id} sm={12} md={6} lg={4} xl={4}>
                                           <Rest restaurant={restaurant} />
                                     </Col>
-
+                                   
+                                    
+                              
                                )}
                   </Row>
                   )}
+                 
             </>
       )
 }

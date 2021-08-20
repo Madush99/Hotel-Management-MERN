@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 const bookingSchema = mongoose.Schema({
-      room: {
+      rooms: {
             type: String,
             required: true
       },
@@ -9,10 +9,7 @@ const bookingSchema = mongoose.Schema({
             type: String,
             required: true
       },
-      userid: {
-            type: String,
-            required: true,
-      },
+      userid: { type: String, required: true },
       fromdate: {
             type: String,
             required: true,
@@ -36,8 +33,13 @@ const bookingSchema = mongoose.Schema({
       status: {
             type: String,
             required: true,
+            default: 'booked'
       },
 
 }, {
       timestamps: true
 })
+
+const Bookings = mongoose.model('bookings', bookingSchema)
+
+export default Bookings

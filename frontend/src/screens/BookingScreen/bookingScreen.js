@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { Carousel, Row, Col, ListGroup } from 'react-bootstrap'
 import moment from 'moment'
+import Swal from 'sweetalert2'
+import axios from "axios";
 import Aos from 'aos'
 import 'aos/dist/aos.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { bookRoomDetails } from '../../actions/roomAction'
+import StripeCheckout from 'react-stripe-checkout'
+import '../BookingScreen/booking.css'
+
 Aos.init()
 Aos.refresh()
 
 const BookingScreen = ({ match }) => {
 
-      const [rentperday, setrentperday] = useState()
+
       const fromdate = moment(match.params.fromdate, 'DD-MM-YYYY')
       const todate = moment(match.params.todate, 'DD-MM-YYYY')
       const totalDays = moment.duration(todate.diff(fromdate)).asDays() + 1
@@ -22,27 +27,41 @@ const BookingScreen = ({ match }) => {
       const { loading, error, rooms } = roomBookdetails
 
 
-
       useEffect(() => {
             dispatch(bookRoomDetails(match.params.roomid))
 
       }, [dispatch, match])
 
-      // async function tokenHander(token) {
+      async function tokenHander(token) {
 
-      //       console.log(token);
-      //       const bookingDetails = {
+            console.log(token);
+            const bookingDetails = {
+                  token,
+                  userid: JSON.parse(localStorage.getItem('userInfo'))._id,
+                  rooms,
+                  fromdate,
+                  todate,
+                  totalDays,
+                  totalAmount: rooms.rentperday * totalDays
 
-      //             token,
-      //             user: JSON.parse(localStorage.getItem('currentUser')),
-      //             room,
-      //             fromdate,
-      //             todate,
-      //             totalDays,
-      //             totalAmount
+            }
 
-      //       }
-      // }
+            try {
+
+                  const result = await axios.post('/api/booking/bookroom', bookingDetails)
+                  console.log(result)
+                  Swal.fire('Congrats', 'Your Room has booked succeessfully', 'success').then(result => {
+                        window.location.href = '/profile'
+                  })
+
+            } catch (error) {
+                  Swal.fire('Congrats', 'Your Room has booked succeessfully', 'success').then(result => {
+                        window.location.href = '/'
+                  })
+                  console.log(error);
+
+            }
+      }
 
       return (
 
@@ -63,7 +82,7 @@ const BookingScreen = ({ match }) => {
                                                             <Row>
                                                                   <Col md={12}>
                                                                         <Carousel nextLabel="" prevLabel="">
-                                                                              {rooms.imageurls && rooms.imageurls.map((url) => {
+                                                                              {rooms.imageUrls && rooms.imageUrls.map((url) => {
                                                                                     return (
                                                                                           <Carousel.Item>
                                                                                                 <img
@@ -84,8 +103,11 @@ const BookingScreen = ({ match }) => {
                                                                   <Col >
                                                                         <br></br>
                                                                         <div class="vl">
-                                                                              <h6 className="hj">Shangri-La Colombo</h6>
-                                                                              <h1 className="hj">{rooms.name}</h1>
+                                                                              <div className="jk">
+                                                                                    <h6>Shangri-La Colombo</h6>
+                                                                                    <h1 >{rooms.name}</h1>
+                                                                              </div>
+
 
                                                                         </div>            <hr></hr>
 
@@ -138,6 +160,9 @@ const BookingScreen = ({ match }) => {
                                                                               <ListGroup.Item as="li" variant="secondary">
                                                                                     <b>Details</b>
                                                                               </ListGroup.Item>
+                                                                              <ListGroup.Item as="li" disabled>
+                                                                                    <p><b>Name</b> : {JSON.parse(localStorage.getItem('userInfo')).name}</p>
+                                                                              </ListGroup.Item>
                                                                               <ListGroup.Item as="li" disabled><b>Max Count: </b> {rooms.maxcount}</ListGroup.Item>
                                                                               <ListGroup.Item as="li" disabled>
                                                                                     <b>Room Type: </b> {rooms.type}
@@ -149,15 +174,26 @@ const BookingScreen = ({ match }) => {
                                                                               <ListGroup.Item as="li" variant="secondary">
                                                                                     <b>BOOK NOW</b>
                                                                               </ListGroup.Item>
+                                                                              <ListGroup.Item as="li" disabled><b>Name: </b> {JSON.parse(localStorage.getItem('userInfo')).name}</ListGroup.Item>
                                                                               <ListGroup.Item as="li" disabled><b>From Date: </b> {match.params.fromdate}</ListGroup.Item>
                                                                               <ListGroup.Item as="li" disabled><b>To Date: </b> {match.params.todate}</ListGroup.Item>
                                                                               <ListGroup.Item as="li" disabled>
                                                                                     <b>Total Days : </b> {totalDays}
                                                                               </ListGroup.Item>
-                                                                              <ListGroup.Item as="li" disabled ><b>Total Amount :{rooms.rentperday * totalDays}</b>{totalAmount}</ListGroup.Item>
-                                                                              <ListGroup.Item as="li" disabled > <button className='btn btn-outline-warning'>Pay Now</button></ListGroup.Item>
 
+                                                                              <ListGroup.Item as="li" disabled ><b>Total Amount :{rooms.rentperday * totalDays}</b></ListGroup.Item>
 
+                                                                              <StripeCheckout Checkout
+                                                                                    amount={rooms.rentperday * totalDays * 100}
+                                                                                    shippingAddress
+                                                                                    token={tokenHander}
+                                                                                    stripeKey='pk_test_51JPWGjSI37Hyu4LS14ggmcl7QaBe64PshUwoHcOqfMgFrpRqT2jmYQ2VpskMdLGcKUkROnXRy8YZ87FfkEJMSVcw00Os62ys8R'
+                                                                                    currency='LKR'
+                                                                              >
+
+                                                                                    <ListGroup.Item as="li" disabled > <button className='btn btn-outline-warning'>Pay Now</button></ListGroup.Item>
+
+                                                                              </StripeCheckout>
                                                                         </ListGroup>
                                                                   </Col>
                                                             </Row>
