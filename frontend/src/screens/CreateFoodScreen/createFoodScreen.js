@@ -20,8 +20,8 @@ const FoodCreateScreen = ({ match, history }) => {
       const [name, setName] = useState('')
       const [category, setCategory] = useState('')
       const [price, setPrice] = useState(0)
-      const [image, setImage] = useState('') 
       const [description, setDescription] = useState('')
+      const [image, setImage] = useState('') 
       const [uploading, setUploading] = useState(false)
 
 
@@ -43,7 +43,7 @@ const FoodCreateScreen = ({ match, history }) => {
 
       const submitHandler = (e) => {
             e.preventDefault()
-            dispatch(addFood(name, category, price,image, description))
+            dispatch(addFood(name, category, price, description,image))
       }
 
 
