@@ -62,10 +62,10 @@ const RoomsListScreen = ({ history, match }) => {
                                     <thead>
                                           <tr>
                                                 <th>ID</th>
-                                                <th>NAME</th>
-                                                <th>EMAIL</th>
-                                                <th>ADMIN</th>
-                                                <th></th>
+                                                <th>ROOM NAME</th>
+                                                <th>MAX COUNT</th>
+                                                <th>RENT PER DAY</th>
+                                                <th>TYPE</th>
                                           </tr>
                                     </thead>
                                     <tbody>

@@ -36,11 +36,14 @@ const BookingListScreen = () => {
                                                 <th>TOTALDAYS</th>
                                                 <th>TOTALAMOUNT</th>
                                                 <th>STATUS</th>
+                                                <th>CANCEL BOOKING</th>
+
                                           </tr>
                                     </thead>
                                     <tbody>
                                           {bookings.map((book) => (
                                                 <tr key={book._id}>
+                                                      <td>{book._id}</td>
                                                       <td>{book.rooms}</td>
                                                       <td>{book.fromdate}</td>
                                                       <td>{book.todate}</td>
