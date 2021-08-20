@@ -16,7 +16,9 @@ const SignupScreen = ({ location, history }) => {
       const [wedHallName, setHallName] = useState('')
       const [wedSeats, setSeats] = useState('')
       const [wedDes, setDes] = useState('')
-      const [wedImage, setImage] = useState('')
+      const [wedImg1, setImg1] = useState('')
+      const [wedImg2, setImg2] = useState('')
+      const [wedImg3, setImg3] = useState('')
       const [uploading, setUploading] = useState(false)
 
       const dispatch = useDispatch()
@@ -35,29 +37,67 @@ const SignupScreen = ({ location, history }) => {
 
       const submitHandler = (e) => {
             e.preventDefault()
-                  dispatch(weddingAdd(wedHallName, wedSeats, wedDes, wedImage))
+                  dispatch(weddingAdd(wedHallName, wedSeats, wedDes, wedImg1, wedImg2, wedImg3,))
       }
 
-      const uploadFileHandler = async (e) => {
+      const uploadFileHandler1 = async (e) => {
         const file = e.target.files[0]
         const formData = new FormData()
         formData.append('image', file)
         setUploading(true)
 
         try {
-            const config = {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            }
-            const { data } = await axios.post('http://localhost:6500/api/uploads/image', formData, config)
-            setImage(data)
+            // const config = {
+            //     headers: {
+            //         'Content-Type': 'multipart/form-data'
+            //     }
+            // }
+            const { data } = await axios.post('http://localhost:6500/api/uploads/image', formData)
+            setImg1(data)
             setUploading(false)
         } catch (error) {
             console.error(error)
             setUploading(false)
         }
     }
+
+    const uploadFileHandler2 = async (e) => {
+      const file = e.target.files[0]
+      const formData = new FormData()
+      formData.append('image', file)
+      setUploading(true)
+
+      try {
+      //     const config = {
+      //         headers: {
+      //             'Content-Type': 'multipart/form-data'
+      //         }
+      //     }
+          const { data } = await axios.post('http://localhost:6500/api/uploads/image', formData)
+          setImg2(data)
+          setUploading(false)
+      } catch (error) {
+          console.error(error)
+          setUploading(false)
+      }
+  }
+
+
+  const uploadFileHandler3 = async (e) => {
+      const file = e.target.files[0]
+      const formData = new FormData()
+      formData.append('image', file)
+      setUploading(true)
+
+      try {
+          const { data } = await axios.post('http://localhost:6500/api/uploads/image', formData)
+          setImg3(data)
+          setUploading(false)
+      } catch (error) {
+          console.error(error)
+          setUploading(false)
+      }
+  }
 
       return (
             
@@ -105,11 +145,35 @@ const SignupScreen = ({ location, history }) => {
                                                                             <div className="form-group bn">
                                                                                 <Form.Label>Upload Document</Form.Label>
                                                                                 <Form.Control type='text' className="form-control" placeholder='Enter Document URL'
-                                                                                    value={wedImage}
-                                                                                    onChange={(e) => setImage(e.target.value)}
+                                                                                    value={wedImg1}
+                                                                                    onChange={(e) => setImg1(e.target.value)}
                                                                                 ></Form.Control>
                                                                             </div>
-                                                                            <Form.File id="file" label='Choose File' custom onChange={uploadFileHandler}></Form.File>
+                                                                            <Form.File id="file" label='Choose File' custom onChange={uploadFileHandler1}></Form.File>
+                                                                            {uploading && <Loader />}
+                                                                        </Form.Group>
+
+                                                                        <Form.Group controlId='image'>
+                                                                            <div className="form-group bn">
+                                                                                <Form.Label>Upload Document</Form.Label>
+                                                                                <Form.Control type='text' className="form-control" placeholder='Enter Document URL'
+                                                                                    value={wedImg2}
+                                                                                    onChange={(e) => setImg2(e.target.value)}
+                                                                                ></Form.Control>
+                                                                            </div>
+                                                                            <Form.File id="file" label='Choose File' custom onChange={uploadFileHandler2}></Form.File>
+                                                                            {uploading && <Loader />}
+                                                                        </Form.Group>
+
+                                                                        <Form.Group controlId='image'>
+                                                                            <div className="form-group bn">
+                                                                                <Form.Label>Upload Document</Form.Label>
+                                                                                <Form.Control type='text' className="form-control" placeholder='Enter Document URL'
+                                                                                    value={wedImg3}
+                                                                                    onChange={(e) => setImg3(e.target.value)}
+                                                                                ></Form.Control>
+                                                                            </div>
+                                                                            <Form.File id="file" label='Choose File' custom onChange={uploadFileHandler3}></Form.File>
                                                                             {uploading && <Loader />}
                                                                         </Form.Group>
                                                                         <br/>

@@ -42,11 +42,20 @@ const WeddingByIdScreen = ({ match, history }) => {
                                                 <Row>
                                                       <Col md={12}>
                                                             <Carousel nextLabel="" prevLabel="">
-                                                                 
+                                                                 {weddings.wedImages && weddings.wedImages.map((url1) => {
+                                                                       return (
+                                                                        <Carousel.Item>
+                                                                              <img
+                                                                                    src={url1}
+                                                                                    className="img-fluid d-block w-100"
+                                                                                    style={{ height: "500px" }}
+
+                                                                                    />
+                                                                        </Carousel.Item>
+                                                                       )
+                                                                 })}
                                                                        
-                                                                              <Carousel.Item>
-                                                                              <img src = {weddings.wedImage}/>
-                                                                              </Carousel.Item>
+                                                                              
                                                                        
                                                                   
                                                             </Carousel>
@@ -58,19 +67,19 @@ const WeddingByIdScreen = ({ match, history }) => {
 
                                                 <Row>
                                                       <Col >
-                                                            <br></br>
+                                                      <br/>
                                                             <div class="vl">
-                                                                  <br/>
-                                                                  <br/>
-                                                                  <h1 className="hj">{weddings.wedHallName}</h1>
-
+                                                                 <div className="hk">
+                                                                  <h6 > Shangri la </h6>
+                                                                  <h1 > {weddings.wedHallName}</h1>
+                                                                  </div>
                                                             </div>            <hr></hr>
 
                                                             <h6>Amenities</h6>
                                                             <hr></hr>
                                                             <h6>Wedding Hall Description</h6>
                                                             <p>{weddings.wedDes}</p>
-
+                                                            <br/>
                                                             <h6>Number of Seats</h6>
                                                             <ul class="b">
                                                                   <p>{weddings.wedSeats} Seats</p>
@@ -83,6 +92,13 @@ const WeddingByIdScreen = ({ match, history }) => {
                                                             <p className='km'>
                                                                   <b>For More Information, please call (+94) 76 666 3881</b></p>
                                                             
+                                                                  <ListGroup as="ul" align="center">
+                                                                  <ListGroup.Item as="li" variant="secondary">
+                                                                        <b>Request a Proposal</b>
+                                                                  </ListGroup.Item>
+                                                                  <ListGroup.Item as="li" disabled><p>Complete a simple form to let us know your event requirements and leave the planning to us. </p></ListGroup.Item>
+                                                                  <ListGroup.Item><button type="button" class="btn btn-warning">Request a Proposal</button></ListGroup.Item>
+                                                            </ListGroup>
                                                       </Col>
                                                 </Row>
 

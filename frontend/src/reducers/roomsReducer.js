@@ -18,7 +18,11 @@ import {
       ROOMS_LIST_RESET,
       ROOMS_DELETE_REQUEST,
       ROOMS_DELETE_SUCCESS,
-      ROOMS_DELETE_FAIL
+      ROOMS_DELETE_FAIL,
+      ROOMS_UPDATE_REQUEST,
+      ROOMS_UPDATE_SUCCESS,
+      ROOMS_UPDATE_FAIL,
+      ROOMS_UPDATE_RESET
 } from '../constants/roomsConstants.js'
 
 export const roomsAllReducer = (state = { rooms: [] }, action) => {
@@ -101,4 +105,23 @@ export const roomDeleteReducer = (state = {}, action) => {
             default:
                   return state
       }
+}
+
+export const roomUpdateReducer = (state = { rooms: {} }, action) => {
+
+      switch (action.type) {
+            case ROOMS_UPDATE_REQUEST:
+                  return { loading: true }
+            case ROOMS_UPDATE_SUCCESS:
+                  return { loading: false, success: true, rooms: action.payload }
+            case ROOMS_UPDATE_FAIL:
+                  return { loading: false, error: action.payload }
+            case ROOMS_UPDATE_RESET:
+                  return {
+                        rooms: {}
+                  }
+            default:
+                  return state
+      }
+
 }

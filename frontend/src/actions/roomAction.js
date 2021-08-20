@@ -18,7 +18,10 @@ import {
       ROOMS_LIST_FAIL,
       ROOMS_DELETE_REQUEST,
       ROOMS_DELETE_SUCCESS,
-      ROOMS_DELETE_FAIL
+      ROOMS_DELETE_FAIL,
+      ROOMS_UPDATE_RESET,
+      ROOMS_UPDATE_SUCCESS,
+      ROOMS_UPDATE_FAIL
 } from '../constants/roomsConstants.js'
 
 export const allRooms = () => async (dispatch) => {
@@ -164,6 +167,32 @@ export const deleteRoom = (id) => async (dispatch) => {
       } catch (error) {
             dispatch({
                   type: ROOMS_DELETE_FAIL,
+                  payload:
+                        error.response && error.response.data.message
+                              ? error.response.data.message
+                              : error.message,
+            })
+      }
+}
+
+export const updateRoom = (rooms) => async (dispatch, getState) => {
+      try {
+            dispatch({
+                  type: ROOMS_UPDATE_RESET,
+            })
+
+
+            const { data } = await axios.put(`/api/rooms/${rooms._id}`, rooms)
+
+            dispatch({
+                  type: ROOMS_UPDATE_SUCCESS,
+                  payload: data,
+            })
+
+
+      } catch (error) {
+            dispatch({
+                  type: ROOMS_UPDATE_FAIL,
                   payload:
                         error.response && error.response.data.message
                               ? error.response.data.message
