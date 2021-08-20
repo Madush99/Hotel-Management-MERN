@@ -14,10 +14,7 @@ const WeddingSchema = mongoose.Schema({
             type: String,
             required: true
       },
-      wedImage: {
-            type: String,
-            required: true
-      },
+      wedImages: []
 })
 
 const Wedding = mongoose.model('Wedding', WeddingSchema)
