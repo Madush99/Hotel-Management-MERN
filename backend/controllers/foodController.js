@@ -72,6 +72,19 @@ const createFood = asyncHandler(async(req, res) => {  
       }
       })
 
+
+      const deleteFood = asyncHandler(async (req, res) => {
+        const food = await Food.findById(req.params.id)
+    
+        if (food) {
+            await food.remove()
+            res.json({ message: 'item removed' })
+        } else {
+            res.status(404)
+            throw new Error('Item not found')
+        }
+    })
+
   
   
-  export { getFoods,getFoodbyID,createFood }
+  export { getFoods,getFoodbyID,createFood , deleteFood}

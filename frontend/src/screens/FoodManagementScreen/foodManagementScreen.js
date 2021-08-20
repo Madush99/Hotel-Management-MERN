@@ -2,6 +2,7 @@ import React from 'react'
 import { Tabs } from "antd";
 import { Button, Row, Col } from 'react-bootstrap'
 import AddFood from '../CreateFoodScreen/createFoodScreen'
+import FoodList from '../FoodListScreen/foodListScreen'
 import { Container } from 'react-bootstrap';
 
 const { TabPane } = Tabs;
@@ -23,7 +24,7 @@ const FoodManagementScreen = () => {
                         <Tabs defaultActiveKey="1">
                               <TabPane tab="FOOD LIST" key="1">
                                     <div className="row">      
-                                   
+                                   <FoodList />
 
                                     </div>
                               </TabPane>

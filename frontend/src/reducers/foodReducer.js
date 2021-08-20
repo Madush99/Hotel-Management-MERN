@@ -6,6 +6,9 @@ import {
     FOODS_CREATE_SUCCESS,
     FOODS_CREATE_FAIL,
     FOODS_CREATE_RESET,
+    FOODS_DELETE_REQUEST,
+    FOODS_DELETE_SUCCESS,
+    FOODS_DELETE_FAIL
 } from '../constants/foodsConstants'
 
 
@@ -37,4 +40,18 @@ export const foodsCreateReducer = (state = {}, action) => {
           default:
                 return state
     }
+}
+
+
+export const foodDeleteReducer = (state = {}, action) => {
+      switch (action.type) {
+            case FOODS_DELETE_REQUEST:
+                  return { loading: true }
+            case FOODS_DELETE_SUCCESS:
+                  return { loading: false, success: true }
+            case FOODS_DELETE_FAIL:
+                  return { loading: false, error: action.payload }
+            default:
+                  return state
+      }
 }
