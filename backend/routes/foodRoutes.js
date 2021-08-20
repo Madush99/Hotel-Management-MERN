@@ -8,4 +8,4 @@ router.get('/:id', getFoodbyID)
 router.post('/addfood', createFood)
 
 
-export default router
+export default router 

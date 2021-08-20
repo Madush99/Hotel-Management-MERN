@@ -8,7 +8,6 @@ import LoginScreen from './screens/LoginScreen/loginScreen'
 import SignupScreen from './screens/SignupScreen/singupScreen'
 import RoomsScreen from './screens/RoomScreen/roomsScreen';
 import LandingScreen from './screens/LandingScreen/landingScreen';
-import FoodScreen from './screens/FoodScreen/FoodScreen';
 import ViewRoomScreen from './screens/ViewRoomScreen/viewRoomScreen';
 import UserProfile from './screens/UserProfileScreen/userProfileScreen'
 import weddingInsertScreen from './screens/WeddingInsertScreen/weddingInsertScreen'
@@ -26,6 +25,11 @@ import RoomManagementScreen from './screens/RoomManagementScreen/roomManagementS
 import RoomsListScreen from './screens/RoomsListScreen/roomsListScreen';
 import RestaurantManagement from './screens/RestaurantManagement/restManagement'
 import RoomUpdateScreen from './screens/RoomUpdateScreen/roomUpdateScreen';
+import AllFoods from './screens/FoodsScreen/foodsScreen';
+import FoodManagement from './screens/FoodManagementScreen/foodManagementScreen';
+
+
+
 
 
 
@@ -40,11 +44,12 @@ const App = () => {
         <Route path="/rooms" component={RoomsScreen} />
         <Route path="/login" component={LoginScreen} />
         <Route path="/signup" component={SignupScreen} />
-        <Route path="/food" component={FoodScreen} />
         <Route path="/room/:id" component={ViewRoomScreen} />
         <Route path="/roombook/:roomid/:fromdate/:todate" component={BookingScreen} />
         <Route path="/restaurants" component={Restaurents} />
         <Route path="/profile" component={UserProfile} />
+        
+
         <Route path="/weddingInsert" component={weddingInsertScreen} />
         <Route path='/search/:keyword' component={RoomsScreen} />
         <Route path="/weddings" component={WeddingScreen} />
@@ -60,6 +65,9 @@ const App = () => {
         <Route path="/update/:id" component={RoomUpdateScreen} />
         <Route path="/roomManagement" component={RoomManagementScreen} />
         <Route path="/listAllRooms" component={RoomsListScreen} />
+        <Route path="/foods" component={AllFoods } />
+        <Route path="/foodManagement" component={FoodManagement} />
+
       </div>
     </Router>
   );

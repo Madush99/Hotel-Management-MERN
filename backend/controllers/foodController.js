@@ -8,20 +8,24 @@ const getFoods = asyncHandler(async (req, res) => {
   })
 
 
-//retrive food items by ID
-const getFoodbyID= asyncHandler(async (req, res) => {
-  const food = await Food.findById(req.params.id)  
-
-  if (food) {
+  //retrive food items by ID
+  const getFoodbyID= asyncHandler(async (req, res) => {
+    const food = await Food.findById(req.params.id)  
   
-  res.json(food)
-  } else {
-  res.status(404)
-  throw new Error('food not found')
+    if (food) {
+      res.json({
+      _id:food._id,
+      name:food.name,
+      description:food.description,
+      price:food.price,
+      category:food.category,
+      images:food.images,
   
-  }
- 
-})
+    })} else {
+    res.status(404)
+    throw new Error('food not found') 
+    }
+  })
 //create food items
 /*const createFood = asyncHandler(async (req, res) => {
   const food = new Food({
@@ -43,32 +47,30 @@ const createFood = asyncHandler(async(req, res) => {  
        description,     
        price,     
        category,
-       image    
+       image1,
+       image2,
+       image3
+           
   } = req.body 
-      const food = await Food.create({  
+      const newfood = await Food({  
         name,
         description,     
         price,     
         category,
-        image  
+      images:[
+        image1,
+        image2,
+        image3]  
          
      }) 
-        if(food) 
+       try
       {    
-           res.status(201).json({   
-               _id: food._id,    
-              name: food.name,
-              description: food.description,
-              price:food.price,
-              category:food.category,
-              image:food.image   
-           })  
-       } else {   
-            res.status(400)     
-            throw new Error('Invalid food data') 
-         }
+        await newfood.save()
+         res.send('Food Added Successfully')
+         } catch(error) {
+        return res.status(400).json({ error });
+      }
       })
-
 
   
   
