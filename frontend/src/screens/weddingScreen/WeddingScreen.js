@@ -5,6 +5,7 @@ import WeddingDis from '../../components/WeddingImages/weddingDisplay.js'
 import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import { Row, Col } from 'react-bootstrap'
+import WeddingCarouselContainer from '../../components/WeddingImages/weddingCorousel.js'
 
 
 const WeddingScreen = () => {
@@ -21,13 +22,13 @@ const WeddingScreen = () => {
 
       return (
             <>
-            
+            <WeddingCarouselContainer/>
             <br></br>
-                <h1 style={{ textAlign: "center" }}>Weddings</h1>
+                {/* <h1 style={{ textAlign: "center" }}>Weddings</h1> */}
                 {
                         loading ? (<Loader />) : error ? (<Message variant='danger'>{error}</Message>
                         ) : (
-                <Row className='ro' style={{ backgroundColor: "#bbbbbb" }} >
+                <Row className='ro' style={{ backgroundColor: "#189AB4" }} >
                               {weddings.map((wedding) =>
 
                                     <Col key={wedding._id} sm={12} md={6} lg={4} xl={4}>

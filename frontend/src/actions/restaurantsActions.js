@@ -70,23 +70,23 @@ export const getRestDetails = (id) => async (dispatch, getState) => {
 //create Restaurent
 
 
-export const createRest = (name,type,tables,phoneNo,email,location,image,description) => async (dispatch, getState) => {
+export const createRest = (name,type,tables,phoneNo,email,location,image1,image2,image3,description) => async (dispatch, getState) => {
       try {
         dispatch({
           type: REST_CREATE_REQUEST,
         })
     
-        const {
-          userLogin: { userInfo },
-        } = getState()
+      //   const {
+      //     userLogin: { userInfo },
+      //   } = getState()
     
-        const config = {
-          headers: {
-            Authorization: `Bearer ${userInfo.token}`,
-          },
-        }
+      //   const config = {
+      //     headers: {
+      //       Authorization: `Bearer ${userInfo.token}`,
+      //     },
+      //   }
     
-        const { data } = await axios.post(`/api/restaurents/create`, {name,type,tables,phoneNo,email,location,image,description}, config)
+        const { data } = await axios.post(`/api/restaurents/create`, {name,type,tables,phoneNo,email,location,image1,image2,image3,description})
     
         dispatch({
           type: REST_CREATE_SUCCESS,
