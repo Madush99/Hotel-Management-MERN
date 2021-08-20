@@ -33,6 +33,7 @@ const ReqScreen = () => {
       <br/>
       <h6>Please complete the following form with as many details as possible regarding your event requirements.</h6></center>
       <FormContainer>
+            
                   <form onSubmit={submitHandler} class="row g-3">
                   <h4>Contact Information</h4>
                   <div class="col-md-6">    

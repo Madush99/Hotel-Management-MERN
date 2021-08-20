@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Carousel, Row, Col, ListGroup } from 'react-bootstrap'
 import { weddingById } from '../../actions/weddingAction'
 import './weddingById.css'
+import { LinkContainer } from 'react-router-bootstrap'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
 Aos.init()
@@ -97,7 +98,7 @@ const WeddingByIdScreen = ({ match, history }) => {
                                                                         <b>Request a Proposal</b>
                                                                   </ListGroup.Item>
                                                                   <ListGroup.Item as="li" disabled><p>Complete a simple form to let us know your event requirements and leave the planning to us. </p></ListGroup.Item>
-                                                                  <ListGroup.Item><button type="button" class="btn btn-warning">Request a Proposal</button></ListGroup.Item>
+                                                                  <ListGroup.Item><LinkContainer to='/requestPropsal'><button type="button" class="btn btn-warning">Request a Proposal</button></LinkContainer></ListGroup.Item>
                                                             </ListGroup>
                                                       </Col>
                                                 </Row>
