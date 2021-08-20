@@ -4,6 +4,7 @@ import Rooms from '../models/roomModel.js'
 import { v4 as uuidv4 } from 'uuid'
 import moment from 'moment'
 import Stripe from 'stripe';
+import { Router } from 'express'
 
 const stripe = new Stripe('sk_test_51JPWGjSI37Hyu4LSE4vX93j1azAOjpcgYNLvdh9avZuqoUElA7PO2w8xquKa0Z4yt8Ad1lEdRMH4HRxiicAW3Gyc00IVYrwUME');
 
@@ -98,4 +99,15 @@ const bookRoom = asyncHandler(async (req, res) => {
 
 })
 
-export { bookRoom }
+
+const getallbookings = asyncHandler(async (req, res) => {
+      try {
+            const bookings = await Bookings.find({});
+            res.send(bookings);
+      } catch (error) {
+            return res.status(400).json({ message: error });
+      }
+})
+
+
+export { bookRoom, getallbookings }
