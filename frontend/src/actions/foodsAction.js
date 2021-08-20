@@ -46,7 +46,7 @@ export const allFoods = () => async (dispatch) => {
 }
 
 
-export const addFood = (name,description,price,category,image1,image2,image3) => async (dispatch, getState) => {
+export const addFood = (name,description,price,category,image) => async (dispatch, getState) => {
     try {
       dispatch({
         type: FOODS_CREATE_REQUEST,
@@ -54,7 +54,7 @@ export const addFood = (name,description,price,category,image1,image2,image3) =>
   
   
   
-      const { data } = await axios.post(`http://localhost:6500/api/food/addfood`, {name,price,category,image1,image2,image3,description})
+      const { data } = await axios.post(`http://localhost:6500/api/food/addfood`, {name,price,category,image,description})
   
       dispatch({
         type: FOODS_CREATE_SUCCESS,

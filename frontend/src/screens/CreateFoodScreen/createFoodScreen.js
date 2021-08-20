@@ -20,9 +20,7 @@ const FoodCreateScreen = ({ match, history }) => {
       const [name, setName] = useState('')
       const [category, setCategory] = useState('')
       const [price, setPrice] = useState(0)
-      const [image1, setImage1] = useState('')
-      const [image2, setImage2] = useState('')
-      const [image3, setImage3] = useState('')
+      const [image, setImage] = useState('') 
       const [description, setDescription] = useState('')
       const [uploading, setUploading] = useState(false)
 
@@ -45,12 +43,12 @@ const FoodCreateScreen = ({ match, history }) => {
 
       const submitHandler = (e) => {
             e.preventDefault()
-            dispatch(addFood(name, category, price, image1,image2,image3, description))
+            dispatch(addFood(name, category, price,image, description))
       }
 
 
 
-      const uploadFileHandler1 = async (e) => {
+      const uploadFileHandler = async (e) => {
             const file = e.target.files[0]
             const formData = new FormData()
             formData.append('image', file)
@@ -59,7 +57,7 @@ const FoodCreateScreen = ({ match, history }) => {
             try {
                   const { data } = await axios.post('/api/uploads/image', formData)
 
-                  setImage1(data)
+                  setImage(data)
                   setUploading(false)
             } catch (error) {
                   console.error(error)
@@ -67,42 +65,9 @@ const FoodCreateScreen = ({ match, history }) => {
             }
       }
 
-      const uploadFileHandler2 = async (e) => {
-            const file = e.target.files[0]
-            const formData = new FormData()
-            formData.append('image', file)
-            setUploading(true)
+     
 
-            try {
-                 
-                const { data } = await axios.post('/api/uploads/image', formData)
-
-                  setImage2(data)
-                  setUploading(false)
-            } catch (error) {
-                  console.error(error)
-                  setUploading(false)
-            }
-      }
-
-      const uploadFileHandler3 = async (e) => {
-            const file = e.target.files[0]
-            const formData = new FormData()
-            formData.append('image', file)
-            setUploading(true)
-
-            try {
-                  
-
-                  const { data } = await axios.post('/api/uploads/image', formData)
-
-                  setImage3(data)
-                  setUploading(false)
-            } catch (error) {
-                  console.error(error)
-                  setUploading(false)
-            }
-      }
+      
 
       return (
             <>
@@ -179,50 +144,18 @@ const FoodCreateScreen = ({ match, history }) => {
                                           <Form.Control
                                                 type='text'
                                                 placeholder='Enter Image url'
-                                                value={image1}
-                                                onChange={(e) => setImage1(e.target.value)}
+                                                value={image}
+                                                onChange={(e) => setImage(e.target.value)}
                                           ></Form.Control>
                                           <Form.File
                                                 id='image-file'
                                                 label='Choose File'
                                                 custom
-                                                onChange={uploadFileHandler1}
+                                                onChange={uploadFileHandler}
                                           ></Form.File>
                                           {uploading && <Loader />}
                                     </Form.Group>
-                                    <Form.Group controlId='image'>
-                                          <Form.Label>Image</Form.Label>
-                                          <Form.Control
-                                                type='text'
-                                                placeholder='Enter Image url'
-                                                value={image2}
-                                                onChange={(e) => setImage2(e.target.value)}
-                                          ></Form.Control>
-                                          <Form.File
-                                                id='image-file'
-                                                label='Choose File'
-                                                custom
-                                                onChange={uploadFileHandler2}
-                                          ></Form.File>
-                                          {uploading && <Loader />}
-                                    </Form.Group>
-                                    <Form.Group controlId='image'>
-                                          <Form.Label>Image</Form.Label>
-                                          <Form.Control
-                                                type='text'
-                                                placeholder='Enter Image url'
-                                                value={image3}
-                                                onChange={(e) => setImage3(e.target.value)}
-                                          ></Form.Control>
-                                          <Form.File
-                                                id='image-file'
-                                                label='Choose File'
-                                                custom
-                                                onChange={uploadFileHandler3}
-                                          ></Form.File>
-                                          {uploading && <Loader />}
-                                    </Form.Group>
-
+                                  
 
 
                                     <Button type='submit' variant='primary' style={{ width: "100%", height: "35px" }} >

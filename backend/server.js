@@ -20,6 +20,7 @@ import uploadRoutes from './routes/uploadRoutes.js'
 import bookingRoutes from './routes/bookingRoutes.js'
 
 import foodRoutes from './routes/foodRoutes.js'
+import orderRoutes from './routes/orderRoutes.js'
 
 
 dotenv.config()
@@ -51,6 +52,7 @@ app.use('/api/weddings', weddingRoutes)
 app.use('/api/conference', conferenceRoutes)
 app.use('/api/conInside', conInsideRoutes)
 app.use('/api/uploads', uploadRoutes)
+app.use('/api/orders', orderRoutes)
 
 const __dirname = path.resolve()
 app.use('/images', express.static(path.join(__dirname, '/images')))
