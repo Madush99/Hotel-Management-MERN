@@ -14,17 +14,20 @@ const ConferenceSchema = mongoose.Schema({
             type: String,
             required: true
       },
-      conImage: {
-            type: String,
-      },
       conPrice: {
-        type: Number,
-        required: true
-      },
+            type: Number,
+            required: true
+          },
+
       conFeatures: {
-        type: String,
-        required: true
-      },
+            type: String,
+            required: true
+          },
+
+      conImages: []
+
+
+      
 })
 
 const Conference = mongoose.model('Conference', ConferenceSchema)

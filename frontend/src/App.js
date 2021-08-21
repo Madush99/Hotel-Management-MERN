@@ -28,6 +28,7 @@ import RoomUpdateScreen from './screens/RoomUpdateScreen/roomUpdateScreen';
 import ReqScreen from './screens/reqAProposalScreen/reqProInsert'
 import AllFoods from './screens/FoodsScreen/foodsScreen';
 import FoodManagement from './screens/FoodManagementScreen/foodManagementScreen';
+import ConferenceByIdScreen from './screens/conferenceByIdScreen/conferenceById'
 import FoodDetail from './screens/FoodDetailScreen/foodDetailScreen'
 import CartScreen from './screens/CartScreen/cartScreen'
 import ShippingScreen from './screens/ShippingScreen/shippingScreen'
@@ -76,6 +77,7 @@ const App = () => {
         <Route path="/requestPropsal" component={ReqScreen} />
         <Route path="/foods" component={AllFoods } />
         <Route path="/foodManagement" component={FoodManagement} />
+        <Route path="/con/:id" component={ConferenceByIdScreen} />
         <Route path="/food/:id" component={FoodDetail} />
         <Route path='/cart/:id?' component={CartScreen} />
         <Route path='/shipping' component={ShippingScreen} />
