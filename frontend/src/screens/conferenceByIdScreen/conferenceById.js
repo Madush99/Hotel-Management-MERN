@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Carousel, Row, Col, ListGroup } from 'react-bootstrap'
 import { conferenceById } from '../../actions/conferenceAction.js'
@@ -6,6 +6,7 @@ import './conferenceById.css'
 import { LinkContainer } from 'react-router-bootstrap'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
+import StripeCheckout from 'react-stripe-checkout'
 Aos.init()
 Aos.refresh()
 
@@ -21,6 +22,7 @@ const ConferenceByIdScreen = ({ match, history }) => {
             dispatch(conferenceById(match.params.id))
       }, [dispatch, match])
 
+      const [qty, setQty] = useState(1)
 
       return (
             <>
@@ -102,8 +104,29 @@ const ConferenceByIdScreen = ({ match, history }) => {
                                                                   <ListGroup.Item as="li" variant="secondary">
                                                                         <b>Book Now</b>
                                                                   </ListGroup.Item>
-                                                                  <ListGroup.Item as="li" disabled><p>Complete a simple form to let us know your event requirements and leave the planning to us. </p></ListGroup.Item>
-                                                                  <ListGroup.Item><LinkContainer to='/requestPropsal'><button type="button" class="btn btn-warning">Request a Proposal</button></LinkContainer></ListGroup.Item>
+                                                        
+                                                                  <ListGroup.Item as="li"><div class="col-md-12">    
+                                                                        <label for="inputEmail4" class="form-label">Date</label>
+                                                                        <input type="date" class="form-control" id="inputEmail4" name="email"/>
+                                                                    </div></ListGroup.Item>
+                                                                    <ListGroup.Item as="li"><div class="col-md-12">    
+                                                                        <label for="inputEmail4" class="form-label">Number of Hours</label>
+                                                                        <input type="number" class="form-control" id="inputEmail4" name="email" value={qty}
+                                                                              onChange={(e) => setQty(e.target.value)}/>
+                                                                    </div></ListGroup.Item>
+                                                                    <ListGroup.Item as="li" disabled><h5> Total Price: Rs.{conference.conPrice*qty} </h5></ListGroup.Item>
+                                                                  <ListGroup.Item>
+                                                                  <StripeCheckout Checkout
+                                                                                    amount={conference.conPrice*qty*100}
+                                                                                    shippingAddress
+                                                                                    stripeKey='pk_test_51JPWGjSI37Hyu4LS14ggmcl7QaBe64PshUwoHcOqfMgFrpRqT2jmYQ2VpskMdLGcKUkROnXRy8YZ87FfkEJMSVcw00Os62ys8R'
+                                                                                    currency='LKR'
+                                                                              >
+
+                                                                                    <ListGroup.Item as="li" disabled > <button className='btn btn-outline-warning'>Pay Now</button></ListGroup.Item>
+
+                                                                              </StripeCheckout>
+                                                                  </ListGroup.Item>
                                                             </ListGroup>
                                                       </Col>
                                                 </Row>
