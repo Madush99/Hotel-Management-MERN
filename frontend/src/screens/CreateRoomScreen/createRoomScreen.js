@@ -110,7 +110,7 @@ const CreateRoomScreen = ({ location, history }) => {
       return (
             <>
                   <FormContainer>
-                        <h1>ADD RESTAURANTS</h1>
+                        <h1 align='center'>ADD RESTAURANTS</h1>
                         {loading && <Loader />}
                         {error && <Message variant='danger'>{error} </Message>}
                         {loading ? (
@@ -120,10 +120,10 @@ const CreateRoomScreen = ({ location, history }) => {
                         ) : (
                               <Form onSubmit={submitHandler}>
                                     <Form.Group controlId='name'>
-                                          <Form.Label>Name</Form.Label>
+                                          <Form.Label>Room Name</Form.Label>
                                           <Form.Control
                                                 type='name'
-                                                placeholder='Enter name'
+                                                placeholder='Enter room name'
                                                 value={name}
                                                 onChange={(e) => setName(e.target.value)}
                                           ></Form.Control>
@@ -133,7 +133,7 @@ const CreateRoomScreen = ({ location, history }) => {
                                           <Form.Label>Max count</Form.Label>
                                           <Form.Control
                                                 type='number'
-                                                placeholder='Enter type'
+                                                placeholder='Enter max count'
                                                 value={maxcount}
                                                 onChange={(e) => setMaxcount(e.target.value)}
                                           ></Form.Control>
@@ -143,7 +143,7 @@ const CreateRoomScreen = ({ location, history }) => {
                                           <Form.Label>Features1</Form.Label>
                                           <Form.Control
                                                 type='text'
-                                                placeholder='Enter tables'
+                                                placeholder='Enter features 1'
                                                 value={features1}
                                                 onChange={(e) => setFeatures1(e.target.value)}
                                           ></Form.Control>
@@ -153,7 +153,7 @@ const CreateRoomScreen = ({ location, history }) => {
                                           <Form.Label>Features2</Form.Label>
                                           <Form.Control
                                                 type='text'
-                                                placeholder='Enter Phone No'
+                                                placeholder='Enter features 2'
                                                 value={features2}
                                                 onChange={(e) => setFeatures2(e.target.value)}
                                           ></Form.Control>
@@ -163,7 +163,7 @@ const CreateRoomScreen = ({ location, history }) => {
                                           <Form.Label>Features3</Form.Label>
                                           <Form.Control
                                                 type='text'
-                                                placeholder='Enter Email'
+                                                placeholder='Enter features 3'
                                                 value={features3}
                                                 onChange={(e) => setFeatures3(e.target.value)}
                                           ></Form.Control>
@@ -173,7 +173,7 @@ const CreateRoomScreen = ({ location, history }) => {
                                           <Form.Label>Features4</Form.Label>
                                           <Form.Control
                                                 type='text'
-                                                placeholder='Enter Location'
+                                                placeholder='Enter features 4'
                                                 value={features4}
                                                 onChange={(e) => setFeatures4(e.target.value)}
                                           ></Form.Control>
@@ -183,13 +183,13 @@ const CreateRoomScreen = ({ location, history }) => {
                                           <Form.Label>Features5</Form.Label>
                                           <Form.Control
                                                 type='text'
-                                                placeholder='Enter price'
+                                                placeholder='Enter features 5'
                                                 value={features5}
                                                 onChange={(e) => setFeatures5(e.target.value)}
                                           ></Form.Control>
                                     </Form.Group>
                                     <Form.Group controlId='description'>
-                                          <Form.Label>rentperday</Form.Label>
+                                          <Form.Label>Rent per day</Form.Label>
                                           <Form.Control
                                                 type='price'
                                                 placeholder='Enter price'
@@ -198,10 +198,10 @@ const CreateRoomScreen = ({ location, history }) => {
                                           ></Form.Control>
                                     </Form.Group>
                                     <Form.Group controlId='description'>
-                                          <Form.Label>type</Form.Label>
+                                          <Form.Label>Type</Form.Label>
                                           <Form.Control
                                                 type='text'
-                                                placeholder='Enter price'
+                                                placeholder='Enter room type'
                                                 value={type}
                                                 onChange={(e) => setType(e.target.value)}
                                           ></Form.Control>
@@ -210,7 +210,7 @@ const CreateRoomScreen = ({ location, history }) => {
                                           <Form.Label>Descrition</Form.Label>
                                           <Form.Control
                                                 type='text'
-                                                placeholder='Enter price'
+                                                placeholder='Enter room description'
                                                 value={description}
                                                 onChange={(e) => setDescription(e.target.value)}
                                           ></Form.Control>
@@ -266,12 +266,17 @@ const CreateRoomScreen = ({ location, history }) => {
 
 
 
-                                    <Button type='submit' variant='primary'>
-                                          ADD
-                                    </Button>
+                                    <center>
+                                          <Button style={{ width: "200px" }} type='submit' variant='warning'>
+                                                ADD
+                                          </Button>
+                                    </center>
+                                    <br></br>
                               </Form>
+
                         )}
                   </FormContainer>
+
             </>
       )
 }
