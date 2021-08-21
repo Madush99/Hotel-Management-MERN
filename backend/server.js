@@ -59,6 +59,10 @@ app.use('/images', express.static(path.join(__dirname, '/images')))
 app.use('/api/booking', bookingRoutes)
 app.use('/api/food', foodRoutes)
 
+
+//paypal id connect
+app.get('/api/config/paypal', (req, res) => res.send(process.env.PAYPAL_CLIENT_ID))
+
 //create port 
 const PORT = process.env.PORT || 6500
 
