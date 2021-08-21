@@ -27,6 +27,8 @@ import {
       foodDetailsReducer
 } from './reducers/foodReducer'
 
+import { cartReducer } from './reducers/cartReducer'
+
 
 
 
@@ -53,12 +55,13 @@ const reducer = combineReducers({
       restDelete: restDeleteReducer,
       roomUpdate: roomUpdateReducer,
       listAllBookings: bookingListReducer,
-      foodsAll:foodsAllReducer,
-      createFood:foodsCreateReducer,
-      foodsDelete:foodDeleteReducer,
+      foodsAll: foodsAllReducer,
+      createFood: foodsCreateReducer,
+      foodsDelete: foodDeleteReducer,
       foodDetailsByid: foodDetailsReducer,
       foodsAll: foodsAllReducer,
-      
+      cart: cartReducer
+
 
 })
 
@@ -67,7 +70,19 @@ const userInfoFromStorage = localStorage.getItem('userInfo')
       ? JSON.parse(localStorage.getItem('userInfo'))
       : null
 
+
+const cartItemsFromStorage = localStorage.getItem('cartItems') ? JSON.parse
+      (localStorage.getItem('cartItems')) : []
+
+
+const shippingAddressFromStorage = localStorage.getItem('shippingAddress') ? JSON.parse
+      (localStorage.getItem('shippingAddress')) : {}
+
 const initialState = {
+      cart: {
+            cartItems: cartItemsFromStorage,
+            shippingAddress: shippingAddressFromStorage
+      },
       userLogin: { userInfo: userInfoFromStorage }
 }
 

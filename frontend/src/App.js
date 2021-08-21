@@ -29,6 +29,7 @@ import ReqScreen from './screens/reqAProposalScreen/reqProInsert'
 import AllFoods from './screens/FoodsScreen/foodsScreen';
 import FoodManagement from './screens/FoodManagementScreen/foodManagementScreen';
 import FoodDetail from './screens/FoodDetailScreen/foodDetailScreen'
+import CartScreen from './screens/CartScreen/cartScreen'
 
 
 
@@ -71,6 +72,7 @@ const App = () => {
         <Route path="/foods" component={AllFoods } />
         <Route path="/foodManagement" component={FoodManagement} />
         <Route path="/food/:id" component={FoodDetail} />
+        <Route path='/cart/:id?' component={CartScreen} />
 
       </div>
     </Router>
