@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Container } from 'react-bootstrap'
 import FormContainer from '../../components/FormContainer'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../../components/Message'
@@ -129,169 +129,174 @@ const RoomUpdateScreen = ({ match, history }) => {
 
       return (
             <>
-                  <FormContainer>
-                        <h1>ADD RESTAURANTS</h1>
-                        {loadingUpdate && <Loader />}
-                        {errorUpdate && <Message variant='danger'>{errorUpdate} </Message>}
-                        {loading ? (
-                              <Loader />
-                        ) : error ? (
-                              <Message variant='danger'>{error}</Message>
-                        ) : (
-                              <Form onSubmit={submitHandler}>
-                                    <Form.Group controlId='name'>
-                                          <Form.Label>Name</Form.Label>
-                                          <Form.Control
-                                                type='name'
-                                                placeholder='Enter name'
-                                                value={name}
-                                                onChange={(e) => setName(e.target.value)}
-                                          ></Form.Control>
-                                    </Form.Group>
+                  <Container>
+                        <FormContainer>
+                              <h1 align='center'>UPDATE ROOM DETAILS</h1>
+                              {loadingUpdate && <Loader />}
+                              {errorUpdate && <Message variant='danger'>{errorUpdate} </Message>}
+                              {loading ? (
+                                    <Loader />
+                              ) : error ? (
+                                    <Message variant='danger'>{error}</Message>
+                              ) : (
+                                    <Form onSubmit={submitHandler}>
+                                          <Form.Group controlId='name'>
+                                                <Form.Label>Name</Form.Label>
+                                                <Form.Control
+                                                      type='name'
+                                                      placeholder='Enter name'
+                                                      value={name}
+                                                      onChange={(e) => setName(e.target.value)}
+                                                ></Form.Control>
+                                          </Form.Group>
 
-                                    <Form.Group controlId='type'>
-                                          <Form.Label>Max count</Form.Label>
-                                          <Form.Control
-                                                type='number'
-                                                placeholder='Enter type'
-                                                value={maxcount}
-                                                onChange={(e) => setMaxcount(e.target.value)}
-                                          ></Form.Control>
-                                    </Form.Group>
+                                          <Form.Group controlId='type'>
+                                                <Form.Label>Max count</Form.Label>
+                                                <Form.Control
+                                                      type='number'
+                                                      placeholder='Enter type'
+                                                      value={maxcount}
+                                                      onChange={(e) => setMaxcount(e.target.value)}
+                                                ></Form.Control>
+                                          </Form.Group>
 
-                                    <Form.Group controlId='text'>
-                                          <Form.Label>Features1</Form.Label>
-                                          <Form.Control
-                                                type='text'
-                                                placeholder='Enter tables'
-                                                value={features1}
-                                                onChange={(e) => setFeatures1(e.target.value)}
-                                          ></Form.Control>
-                                    </Form.Group>
+                                          <Form.Group controlId='text'>
+                                                <Form.Label>Features1</Form.Label>
+                                                <Form.Control
+                                                      type='text'
+                                                      placeholder='Enter tables'
+                                                      value={features1}
+                                                      onChange={(e) => setFeatures1(e.target.value)}
+                                                ></Form.Control>
+                                          </Form.Group>
 
-                                    <Form.Group controlId='text'>
-                                          <Form.Label>Features2</Form.Label>
-                                          <Form.Control
-                                                type='text'
-                                                placeholder='Enter Phone No'
-                                                value={features2}
-                                                onChange={(e) => setFeatures2(e.target.value)}
-                                          ></Form.Control>
-                                    </Form.Group>
+                                          <Form.Group controlId='text'>
+                                                <Form.Label>Features2</Form.Label>
+                                                <Form.Control
+                                                      type='text'
+                                                      placeholder='Enter Phone No'
+                                                      value={features2}
+                                                      onChange={(e) => setFeatures2(e.target.value)}
+                                                ></Form.Control>
+                                          </Form.Group>
 
-                                    <Form.Group controlId='text'>
-                                          <Form.Label>Features3</Form.Label>
-                                          <Form.Control
-                                                type='text'
-                                                placeholder='Enter Email'
-                                                value={features3}
-                                                onChange={(e) => setFeatures3(e.target.value)}
-                                          ></Form.Control>
-                                    </Form.Group>
+                                          <Form.Group controlId='text'>
+                                                <Form.Label>Features3</Form.Label>
+                                                <Form.Control
+                                                      type='text'
+                                                      placeholder='Enter Email'
+                                                      value={features3}
+                                                      onChange={(e) => setFeatures3(e.target.value)}
+                                                ></Form.Control>
+                                          </Form.Group>
 
-                                    <Form.Group controlId='price'>
-                                          <Form.Label>Features4</Form.Label>
-                                          <Form.Control
-                                                type='text'
-                                                placeholder='Enter Location'
-                                                value={features4}
-                                                onChange={(e) => setFeatures4(e.target.value)}
-                                          ></Form.Control>
-                                    </Form.Group>
+                                          <Form.Group controlId='price'>
+                                                <Form.Label>Features4</Form.Label>
+                                                <Form.Control
+                                                      type='text'
+                                                      placeholder='Enter Location'
+                                                      value={features4}
+                                                      onChange={(e) => setFeatures4(e.target.value)}
+                                                ></Form.Control>
+                                          </Form.Group>
 
-                                    <Form.Group controlId='description'>
-                                          <Form.Label>Features5</Form.Label>
-                                          <Form.Control
-                                                type='text'
-                                                placeholder='Enter price'
-                                                value={features5}
-                                                onChange={(e) => setFeatures5(e.target.value)}
-                                          ></Form.Control>
-                                    </Form.Group>
-                                    <Form.Group controlId='description'>
-                                          <Form.Label>rentperday</Form.Label>
-                                          <Form.Control
-                                                type='price'
-                                                placeholder='Enter price'
-                                                value={rentperday}
-                                                onChange={(e) => setRentperday(e.target.value)}
-                                          ></Form.Control>
-                                    </Form.Group>
-                                    <Form.Group controlId='description'>
-                                          <Form.Label>type</Form.Label>
-                                          <Form.Control
-                                                type='text'
-                                                placeholder='Enter price'
-                                                value={type}
-                                                onChange={(e) => setType(e.target.value)}
-                                          ></Form.Control>
-                                    </Form.Group>
-                                    <Form.Group controlId='description'>
-                                          <Form.Label>Descrition</Form.Label>
-                                          <Form.Control
-                                                type='text'
-                                                placeholder='Enter price'
-                                                value={description}
-                                                onChange={(e) => setDescription(e.target.value)}
-                                          ></Form.Control>
-                                    </Form.Group>
-                                    <Form.Group controlId='image'>
-                                          <Form.Label>Image</Form.Label>
-                                          <Form.Control
-                                                type='text'
-                                                placeholder='Enter Image url'
-                                                value={imageUrl1}
-                                                onChange={(e) => setImageurl1(e.target.value)}
-                                          ></Form.Control>
-                                          <Form.File
-                                                id='image-file'
-                                                label='Choose File'
-                                                custom
-                                                onChange={uploadFileHandler1}
-                                          ></Form.File>
-                                          {uploading && <Loader />}
-                                    </Form.Group>
-                                    <Form.Group controlId='image'>
-                                          <Form.Label>Image</Form.Label>
-                                          <Form.Control
-                                                type='text'
-                                                placeholder='Enter Image url'
-                                                value={imageUrl2}
-                                                onChange={(e) => setImageurl2(e.target.value)}
-                                          ></Form.Control>
-                                          <Form.File
-                                                id='image-file'
-                                                label='Choose File'
-                                                custom
-                                                onChange={uploadFileHandler2}
-                                          ></Form.File>
-                                          {uploading && <Loader />}
-                                    </Form.Group>
-                                    <Form.Group controlId='image'>
-                                          <Form.Label>Image</Form.Label>
-                                          <Form.Control
-                                                type='text'
-                                                placeholder='Enter Image url'
-                                                value={imageUrl3}
-                                                onChange={(e) => setImageurl3(e.target.value)}
-                                          ></Form.Control>
-                                          <Form.File
-                                                id='image-file'
-                                                label='Choose File'
-                                                custom
-                                                onChange={uploadFileHandler3}
-                                          ></Form.File>
-                                          {uploading && <Loader />}
-                                    </Form.Group>
+                                          <Form.Group controlId='description'>
+                                                <Form.Label>Features5</Form.Label>
+                                                <Form.Control
+                                                      type='text'
+                                                      placeholder='Enter price'
+                                                      value={features5}
+                                                      onChange={(e) => setFeatures5(e.target.value)}
+                                                ></Form.Control>
+                                          </Form.Group>
+                                          <Form.Group controlId='description'>
+                                                <Form.Label>rentperday</Form.Label>
+                                                <Form.Control
+                                                      type='price'
+                                                      placeholder='Enter price'
+                                                      value={rentperday}
+                                                      onChange={(e) => setRentperday(e.target.value)}
+                                                ></Form.Control>
+                                          </Form.Group>
+                                          <Form.Group controlId='description'>
+                                                <Form.Label>type</Form.Label>
+                                                <Form.Control
+                                                      type='text'
+                                                      placeholder='Enter price'
+                                                      value={type}
+                                                      onChange={(e) => setType(e.target.value)}
+                                                ></Form.Control>
+                                          </Form.Group>
+                                          <Form.Group controlId='description'>
+                                                <Form.Label>Descrition</Form.Label>
+                                                <Form.Control
+                                                      type='text'
+                                                      placeholder='Enter price'
+                                                      value={description}
+                                                      onChange={(e) => setDescription(e.target.value)}
+                                                ></Form.Control>
+                                          </Form.Group>
+                                          <Form.Group controlId='image'>
+                                                <Form.Label>Image</Form.Label>
+                                                <Form.Control
+                                                      type='text'
+                                                      placeholder='Enter Image url'
+                                                      value={imageUrl1}
+                                                      onChange={(e) => setImageurl1(e.target.value)}
+                                                ></Form.Control>
+                                                <Form.File
+                                                      id='image-file'
+                                                      label='Choose File'
+                                                      custom
+                                                      onChange={uploadFileHandler1}
+                                                ></Form.File>
+                                                {uploading && <Loader />}
+                                          </Form.Group>
+                                          <Form.Group controlId='image'>
+                                                <Form.Label>Image</Form.Label>
+                                                <Form.Control
+                                                      type='text'
+                                                      placeholder='Enter Image url'
+                                                      value={imageUrl2}
+                                                      onChange={(e) => setImageurl2(e.target.value)}
+                                                ></Form.Control>
+                                                <Form.File
+                                                      id='image-file'
+                                                      label='Choose File'
+                                                      custom
+                                                      onChange={uploadFileHandler2}
+                                                ></Form.File>
+                                                {uploading && <Loader />}
+                                          </Form.Group>
+                                          <Form.Group controlId='image'>
+                                                <Form.Label>Image</Form.Label>
+                                                <Form.Control
+                                                      type='text'
+                                                      placeholder='Enter Image url'
+                                                      value={imageUrl3}
+                                                      onChange={(e) => setImageurl3(e.target.value)}
+                                                ></Form.Control>
+                                                <Form.File
+                                                      id='image-file'
+                                                      label='Choose File'
+                                                      custom
+                                                      onChange={uploadFileHandler3}
+                                                ></Form.File>
+                                                {uploading && <Loader />}
+                                          </Form.Group>
 
+                                          <center>
+                                                <Button style={{ width: "200px" }} type='submit' variant='warning'>
+                                                      UPDATE
+                                                </Button>
+                                          </center>
 
-
-                                    <Button type='submit' variant='primary'>
-                                          ADD
-                                    </Button>
-                              </Form>
-                        )}
-                  </FormContainer>
+                                          <br></br>
+                                    </Form>
+                              )}
+                        </FormContainer>
+                  </Container>
+                  <br></br>
             </>
       )
 }

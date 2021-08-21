@@ -29,7 +29,7 @@ const BookingListScreen = () => {
                               <Table striped bordered hover responsive className='table-sm'>
                                     <thead>
                                           <tr>
-                                                <th>ID</th>
+
                                                 <th>NAME</th>
                                                 <th>FROMDATE</th>
                                                 <th>TODATE</th>
@@ -43,13 +43,13 @@ const BookingListScreen = () => {
                                     <tbody>
                                           {bookings.map((book) => (
                                                 <tr key={book._id}>
-                                                      <td>{book._id}</td>
+
                                                       <td>{book.rooms}</td>
                                                       <td>{book.fromdate}</td>
                                                       <td>{book.todate}</td>
                                                       <td>{book.totalDays}</td>
                                                       <td>{book.totalAmount}</td>
-                                                      <td>{book.status}</td>
+                                                      <td>{book.status} <i className='fad fa-check' style={{ color: 'green' }}></i></td>
                                                       <td>
                                                             <LinkContainer to='' >
                                                                   <Button variant='light' className='btn-sm'>
