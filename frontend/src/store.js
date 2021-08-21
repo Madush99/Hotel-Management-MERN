@@ -21,10 +21,21 @@ import {
 import { bookingListReducer } from './reducers/bookingReducers.js'
 
 import {
-      foodsAllReducer, 
+      foodsAllReducer,
       foodsCreateReducer,
-      foodDeleteReducer
+      foodDeleteReducer,
+      foodDetailsReducer
 } from './reducers/foodReducer'
+
+import { cartReducer } from './reducers/cartReducer'
+
+import{
+      orderCreateReducer,
+      orderDetailsReducer,
+      orderPayReducer,
+      orderListReducer,
+
+} from './reducers/orderReducer'
 
 
 
@@ -39,7 +50,7 @@ const reducer = combineReducers({
       weddingInsert: weddingInsertReducer,
       roomBookdetails: roomBookDetailReducer,
       restaurantsAll: restAllReducer,
-    
+
       restDetails: restDetailsReducer,
       wedAll: wedAllReducer,
       conferenceInsert: conferenceInsertReducer,
@@ -52,10 +63,17 @@ const reducer = combineReducers({
       restDelete: restDeleteReducer,
       roomUpdate: roomUpdateReducer,
       listAllBookings: bookingListReducer,
-      foodsAll:foodsAllReducer,
-      createFood:foodsCreateReducer,
-      foodsDelete:foodDeleteReducer,
       conById: conByIdReducer,
+      foodsAll: foodsAllReducer,
+      createFood: foodsCreateReducer,
+      foodsDelete: foodDeleteReducer,
+      foodDetailsByid: foodDetailsReducer,
+      foodsAll: foodsAllReducer,
+      cart: cartReducer,
+      orderCreate:  orderCreateReducer,
+      orderDetails: orderDetailsReducer,
+      orderPay: orderPayReducer,
+      orderList:orderListReducer
 
 })
 
@@ -64,7 +82,19 @@ const userInfoFromStorage = localStorage.getItem('userInfo')
       ? JSON.parse(localStorage.getItem('userInfo'))
       : null
 
+
+const cartItemsFromStorage = localStorage.getItem('cartItems') ? JSON.parse
+      (localStorage.getItem('cartItems')) : []
+
+
+const shippingAddressFromStorage = localStorage.getItem('shippingAddress') ? JSON.parse
+      (localStorage.getItem('shippingAddress')) : {}
+
 const initialState = {
+      cart: {
+            cartItems: cartItemsFromStorage,
+            shippingAddress: shippingAddressFromStorage
+      },
       userLogin: { userInfo: userInfoFromStorage }
 }
 

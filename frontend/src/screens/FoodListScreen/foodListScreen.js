@@ -65,6 +65,7 @@ const FoodListScreen = ({ history, match }) => {
                                                 <th>NAME</th>
                                                 <th>CATEGORY</th>
                                                 <th>PRICE</th>
+                                                <th>DESCRIPTION</th>
                                                 <th></th>
                                           </tr>
                                     </thead>
@@ -75,6 +76,7 @@ const FoodListScreen = ({ history, match }) => {
                                                       <td>{foods.name}</td>
                                                       <td>{foods.category}</td>
                                                       <td>RS.{foods.price}</td>
+                                                      <td>{foods.description}</td>
                                                       
                                                       <td>
                                                             <LinkContainer to={`/update/${foods._id}`} >
