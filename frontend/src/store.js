@@ -29,6 +29,10 @@ import {
 
 import { cartReducer } from './reducers/cartReducer'
 
+import{
+      orderCreateReducer
+} from './reducers/orderReducer'
+
 
 
 
@@ -60,8 +64,8 @@ const reducer = combineReducers({
       foodsDelete: foodDeleteReducer,
       foodDetailsByid: foodDetailsReducer,
       foodsAll: foodsAllReducer,
-      cart: cartReducer
-
+      cart: cartReducer,
+      orderCreate:  orderCreateReducer
 
 })
 
