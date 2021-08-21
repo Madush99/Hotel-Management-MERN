@@ -8,7 +8,10 @@ import {
     FOODS_CREATE_FAIL,
     FOODS_DELETE_REQUEST,
     FOODS_DELETE_SUCCESS,
-    FOODS_DELETE_FAIL
+    FOODS_DELETE_FAIL,
+    FOODS_BYID_REQUEST,
+    FOODS_BYID_SUCCESS,
+    FOODS_BYID_FAIL
     
 } from '../constants/foodsConstants'
 
@@ -46,7 +49,7 @@ export const allFoods = () => async (dispatch) => {
 }
 
 
-export const addFood = (name,description,price,category,image) => async (dispatch, getState) => {
+export const addFood = (name,category,price,description,image) => async (dispatch, getState) => {
     try {
       dispatch({
         type: FOODS_CREATE_REQUEST,
@@ -54,7 +57,7 @@ export const addFood = (name,description,price,category,image) => async (dispatc
   
   
   
-      const { data } = await axios.post(`http://localhost:6500/api/food/addfood`, {name,price,category,image,description})
+      const { data } = await axios.post(`/api/food/addfood`, {name,category,price,description,image})
   
       dispatch({
         type: FOODS_CREATE_SUCCESS,
@@ -95,3 +98,27 @@ export const addFood = (name,description,price,category,image) => async (dispatc
     }
 }
 
+
+export const getFoodDetails = (id) => async (dispatch, getState) => {
+      try {
+            dispatch({
+                  type: FOODS_BYID_REQUEST,
+            })
+
+            const { data } = await axios.get(`/api/food/${id}`)
+
+            dispatch({
+                  type: FOODS_BYID_SUCCESS,
+                  payload: data
+            })
+
+      } catch (error) {
+            dispatch({
+                  type: FOODS_BYID_FAIL,
+                  payload:
+                        error.response && error.response.data.message
+                              ? error.response.data.message
+                              : error.message,
+            })
+      }
+}
