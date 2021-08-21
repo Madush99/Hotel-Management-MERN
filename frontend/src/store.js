@@ -21,7 +21,7 @@ import {
 import { bookingListReducer } from './reducers/bookingReducers.js'
 
 import {
-      foodsAllReducer, 
+      foodsAllReducer,
       foodsCreateReducer,
       foodDeleteReducer,
       foodDetailsReducer
@@ -40,7 +40,7 @@ const reducer = combineReducers({
       weddingInsert: weddingInsertReducer,
       roomBookdetails: roomBookDetailReducer,
       restaurantsAll: restAllReducer,
-    
+
       restDetails: restDetailsReducer,
       wedAll: wedAllReducer,
       conferenceInsert: conferenceInsertReducer,
@@ -56,7 +56,9 @@ const reducer = combineReducers({
       foodsAll:foodsAllReducer,
       createFood:foodsCreateReducer,
       foodsDelete:foodDeleteReducer,
-      foodDetailsByid: foodDetailsReducer
+      foodDetailsByid: foodDetailsReducer,
+      foodsAll: foodsAllReducer,
+      
 
 })
 
