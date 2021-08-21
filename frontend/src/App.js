@@ -33,6 +33,8 @@ import CartScreen from './screens/CartScreen/cartScreen'
 import ShippingScreen from './screens/ShippingScreen/shippingScreen'
 import PaymentScreen from './screens/PaymentScreen/payementScreen'
 import PlaceOrder from './screens/PlaceOrderScreen/placeOrderScreen'
+import HomeScreen from './screens/HomeScreen/homeScreen';
+import Nav1 from './components/Navbar/nav';
 
 
 
@@ -46,7 +48,9 @@ const App = () => {
     <Router>
       <div>
         <Navbar />
+        <Nav1 />
         <Route path="/" component={LandingScreen} exact />
+        <Route path="/homescreen" component={HomeScreen} />
         <Route path="/rooms" component={RoomsScreen} />
         <Route path="/login" component={LoginScreen} />
         <Route path="/signup" component={SignupScreen} />
@@ -54,7 +58,7 @@ const App = () => {
         <Route path="/roombook/:roomid/:fromdate/:todate" component={BookingScreen} />
         <Route path="/restaurants" component={Restaurents} />
         <Route path="/profile" component={UserProfile} />
-        
+
 
         <Route path="/weddingInsert" component={weddingInsertScreen} />
         <Route path='/search/:keyword' component={RoomsScreen} />
@@ -66,13 +70,13 @@ const App = () => {
         <Route path="/admin/createRoom" component={CreateRoomScreen} />
         <Route path="/restaurantList" component={RestaurantList} />
         <Route path="/wedding/:id" component={WeddingByIdScreen} />
-    
+
         <Route path="/restaurantManagement" component={RestaurantManagement} />
         <Route path="/update/:id" component={RoomUpdateScreen} />
         <Route path="/roomManagement" component={RoomManagementScreen} />
         <Route path="/listAllRooms" component={RoomsListScreen} />
         <Route path="/requestPropsal" component={ReqScreen} />
-        <Route path="/foods" component={AllFoods } />
+        <Route path="/foods" component={AllFoods} />
         <Route path="/foodManagement" component={FoodManagement} />
         <Route path="/food/:id" component={FoodDetail} />
         <Route path='/cart/:id?' component={CartScreen} />
