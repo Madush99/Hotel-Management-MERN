@@ -1,5 +1,6 @@
 import React from 'react'
 import { Tabs } from "antd";
+import { Button, Row, Col } from 'react-bootstrap'
 import RestaurentList from '../AllRestaurant/restaurantTable'
 import AddRestaurant from '../RestaurantCreate/restCreate'
 import { Container } from 'react-bootstrap';
@@ -12,6 +13,13 @@ const RestaurantgementScreen = () => {
           <Container>
                 <div className="ml-3">
                       <h2 className="text-center m-2" style={{ fontSize: "35px" }}>RESTAURANT MANAGEMENT</h2>
+                      <Row className='align-items-center'>
+                              <Col className='text-right'>
+                                    <Button className='my-3'>
+                                          <i className='fas fa-plus'>  Generate Report</i>
+                                    </Button>
+                              </Col>
+                        </Row>
                       <Tabs defaultActiveKey="1">
                             <TabPane tab="RESTAURANT LIST" key="1">
                                   <div className="row">
