@@ -18,7 +18,9 @@ const SignupScreen = ({ location, history }) => {
       const [conDes, setDes] = useState('')
       const [conPrice, setPrice] = useState('')
       const [confeatures, setFeatures] = useState('')
-      const [conImage, setImage] = useState('')
+      const [conImg1, setImg1] = useState('')
+      const [conImg2, setImg2] = useState('')
+      const [conImg3, setImg3] = useState('')
       const [uploading, setUploading] = useState(false)
 
       const dispatch = useDispatch()
@@ -29,36 +31,78 @@ const SignupScreen = ({ location, history }) => {
       useEffect(() => {
             if (conferenceInfo) {
                   Swal.fire('Successful', 'Successfully Inserted Conference Room', 'success').then(result => {
-                        window.location.href = '/profile'
+                        window.location.href = '/'
                   })
             }
       }, [history, conferenceInfo])
 
       const submitHandler = (e) => {
             e.preventDefault()
-                  dispatch(conferenceAdd( conName, conDes, conSeats, conPrice, conImage, confeatures ))
+                  dispatch(conferenceAdd( conName, conDes, conSeats, conPrice, confeatures, conImg1, conImg2, conImg3 ))
       }
 
-      const uploadFileHandler = async (e) => {
+      const uploadFileHandler1 = async (e) => {
         const file = e.target.files[0]
         const formData = new FormData()
         formData.append('image', file)
         setUploading(true)
 
         try {
-            const config = {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            }
-            const { data } = await axios.post('http://localhost:6500/api/uploads/image', formData, config)
-            setImage(data)
+            // const config = {
+            //     headers: {
+            //         'Content-Type': 'multipart/form-data'
+            //     }
+            // }
+            const { data } = await axios.post('http://localhost:6500/api/uploads/image', formData)
+            setImg1(data)
             setUploading(false)
         } catch (error) {
             console.error(error)
             setUploading(false)
         }
     }
+
+    const uploadFileHandler2 = async (e) => {
+      const file = e.target.files[0]
+      const formData = new FormData()
+      formData.append('image', file)
+      setUploading(true)
+
+      try {
+          // const config = {
+          //     headers: {
+          //         'Content-Type': 'multipart/form-data'
+          //     }
+          // }
+          const { data } = await axios.post('http://localhost:6500/api/uploads/image', formData)
+          setImg2(data)
+          setUploading(false)
+      } catch (error) {
+          console.error(error)
+          setUploading(false)
+      }
+  }
+
+  const uploadFileHandler3 = async (e) => {
+      const file = e.target.files[0]
+      const formData = new FormData()
+      formData.append('image', file)
+      setUploading(true)
+
+      try {
+          // const config = {
+          //     headers: {
+          //         'Content-Type': 'multipart/form-data'
+          //     }
+          // }
+          const { data } = await axios.post('http://localhost:6500/api/uploads/image', formData)
+          setImg3(data)
+          setUploading(false)
+      } catch (error) {
+          console.error(error)
+          setUploading(false)
+      }
+  }
 
       return (
             
@@ -116,13 +160,38 @@ const SignupScreen = ({ location, history }) => {
                                                                             <div className="form-group bn">
                                                                                 <Form.Label>Upload Document</Form.Label>
                                                                                 <Form.Control type='text' className="form-control" placeholder='Enter Document URL'
-                                                                                    value={conImage}
-                                                                                    onChange={(e) => setImage(e.target.value)}
+                                                                                    value={conImg1}
+                                                                                    onChange={(e) => setImg1(e.target.value)}
                                                                                 ></Form.Control>
                                                                             </div>
-                                                                            <Form.File id="file" label='Choose File' custom onChange={uploadFileHandler}></Form.File>
+                                                                            <Form.File id="file" label='Choose File' custom onChange={uploadFileHandler1}></Form.File>
                                                                             {uploading && <Loader />}
                                                                         </Form.Group>
+
+                                                                        <Form.Group controlId='image'>
+                                                                            <div className="form-group bn">
+                                                                                <Form.Label>Upload Document</Form.Label>
+                                                                                <Form.Control type='text' className="form-control" placeholder='Enter Document URL'
+                                                                                    value={conImg2}
+                                                                                    onChange={(e) => setImg2(e.target.value)}
+                                                                                ></Form.Control>
+                                                                            </div>
+                                                                            <Form.File id="file" label='Choose File' custom onChange={uploadFileHandler2}></Form.File>
+                                                                            {uploading && <Loader />}
+                                                                        </Form.Group>
+
+                                                                        <Form.Group controlId='image'>
+                                                                            <div className="form-group bn">
+                                                                                <Form.Label>Upload Document</Form.Label>
+                                                                                <Form.Control type='text' className="form-control" placeholder='Enter Document URL'
+                                                                                    value={conImg3}
+                                                                                    onChange={(e) => setImg3(e.target.value)}
+                                                                                ></Form.Control>
+                                                                            </div>
+                                                                            <Form.File id="file" label='Choose File' custom onChange={uploadFileHandler3}></Form.File>
+                                                                            {uploading && <Loader />}
+                                                                        </Form.Group>
+
                                                                         <br/>
                                                                         <button type="submit" class="btn btn-outline-warning btn-block text-uppercase mb-2 rounded-pill shadow-sm">Submit</button>
 
