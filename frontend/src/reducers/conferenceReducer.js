@@ -1,4 +1,4 @@
-import { CONFERENCE_INSERT_REQUEST,  CONFERENCE_INSERT_SUCCESS, CONFERENCE_INSERT_FAIL, CONFERENCE_ALL_REQUEST, CONFERENCE_ALL_SUCCESS, CONFERENCE_ALL_FAIL } from '../constants/conferenceConstant.js'
+import { CONFERENCE_INSERT_REQUEST,  CONFERENCE_INSERT_SUCCESS, CONFERENCE_INSERT_FAIL, CONFERENCE_ALL_REQUEST, CONFERENCE_ALL_SUCCESS, CONFERENCE_ALL_FAIL, CONFERENCE_BYID_REQUEST, CONFERENCE_BYID_SUCCESS, CONFERENCE_BYID_FAIL } from '../constants/conferenceConstant.js'
 
 export const conferenceInsertReducer = (state = {}, action) => {
     switch (action.type) {
@@ -21,6 +21,19 @@ export const conAllReducer = (state = { conference: [] }, action) => {
           case CONFERENCE_ALL_SUCCESS:
                 return { loading: false, conference: action.payload }
           case CONFERENCE_ALL_FAIL:
+                return { loading: false, error: action.payload }
+          default:
+                return state
+    }
+}
+
+export const conByIdReducer = (state = { conference: {} }, action) => {
+    switch (action.type) {
+          case CONFERENCE_BYID_REQUEST:
+                return { ...state, loading: true }
+          case CONFERENCE_BYID_SUCCESS:
+                return { loading: false, conference: action.payload }
+          case CONFERENCE_BYID_FAIL:
                 return { loading: false, error: action.payload }
           default:
                 return state

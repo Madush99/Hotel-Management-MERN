@@ -9,8 +9,8 @@ import {
       userDetailsReducer,
       userRegisterReducer,
 } from './reducers/userReducer'
-import { weddingInsertReducer, wedAllReducer, conByIdReducer } from './reducers/weddingReducer.js'
-import { conferenceInsertReducer, conAllReducer } from './reducers/conferenceReducer'
+import { weddingInsertReducer, wedAllReducer, wedByIdReducer } from './reducers/weddingReducer.js'
+import { conferenceInsertReducer, conAllReducer, conByIdReducer } from './reducers/conferenceReducer'
 
 import {
       restAllReducer,
@@ -30,7 +30,11 @@ import {
 import { cartReducer } from './reducers/cartReducer'
 
 import{
-      orderCreateReducer
+      orderCreateReducer,
+      orderDetailsReducer,
+      orderPayReducer,
+      orderListReducer,
+
 } from './reducers/orderReducer'
 
 
@@ -52,20 +56,24 @@ const reducer = combineReducers({
       conferenceInsert: conferenceInsertReducer,
       createRestaurant: restCreateReducer,
       conAll: conAllReducer,
-      wedById: conByIdReducer,
+      wedById: wedByIdReducer,
       createRoom: roomCreate,
       listAllRooms: roomList,
       roomDelete: roomDeleteReducer,
       restDelete: restDeleteReducer,
       roomUpdate: roomUpdateReducer,
       listAllBookings: bookingListReducer,
+      conById: conByIdReducer,
       foodsAll: foodsAllReducer,
       createFood: foodsCreateReducer,
       foodsDelete: foodDeleteReducer,
       foodDetailsByid: foodDetailsReducer,
       foodsAll: foodsAllReducer,
       cart: cartReducer,
-      orderCreate:  orderCreateReducer
+      orderCreate:  orderCreateReducer,
+      orderDetails: orderDetailsReducer,
+      orderPay: orderPayReducer,
+      orderList:orderListReducer
 
 })
 

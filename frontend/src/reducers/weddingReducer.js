@@ -27,7 +27,7 @@ export const wedAllReducer = (state = { weddings: [] }, action) => {
     }
 }
 
-export const conByIdReducer = (state = { weddings: {} }, action) => {
+export const wedByIdReducer = (state = { weddings: {} }, action) => {
     switch (action.type) {
           case WEDDING_BYID_REQUEST:
                 return { ...state, loading: true }

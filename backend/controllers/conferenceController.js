@@ -1,43 +1,71 @@
 import asyncHandler from 'express-async-handler'
 import Conference from '../models/conferenceModel.js'
 
-const insertCon = asyncHandler(async(req, res) => {
+// const insertCon = asyncHandler(async(req, res) => {
 
 
-    const { 
+//     const { 
+//         conName,
+//         conSeats,
+//         conDes,
+//         conImage,
+//         conPrice,
+//         conFeatures
+//     } = req.body
+
+//    const conference = await Conference.create({
+//         conName,
+//         conSeats,
+//         conDes,
+//         conImage,
+//         conPrice,
+//         conFeatures
+//    })
+
+//    if(conference) {
+//        res.status(201).json({
+//         _id: conference._id,
+//         conName:  conference.conName,
+//         conDes:  conference.conDes,
+//         conSeats:  conference.conSeats,
+//         conImage:  conference.conImage,
+//         conPrice:  conference.conPrice,
+//         conFeatures:  conference.conFeatures,
+//        })
+//    } else {
+//        res.status(400)
+//        throw new Error('Invalid Conference room data')
+//    }
+
+// })
+
+const insertCon = asyncHandler(async (req, res) => {
+
+    const { conName,
+        conSeats,
+        conDes,
+        conPrice,
+        conFeatures, conImg1, conImg2, conImg3  } = req.body
+
+
+    const newconference = new Conference({
         conName,
         conSeats,
         conDes,
-        conImage,
         conPrice,
-        conFeatures
-    } = req.body
-
-   const conference = await Conference.create({
-        conName,
-        conSeats,
-        conDes,
-        conImage,
-        conPrice,
-        conFeatures
-   })
-
-   if(conference) {
-       res.status(201).json({
-        _id: conference._id,
-        conName:  conference.conName,
-        conDes:  conference.conDes,
-        conSeats:  conference.conSeats,
-        conImage:  conference.conImage,
-        conPrice:  conference.conPrice,
-        conFeatures:  conference.conFeatures,
-       })
-   } else {
-       res.status(400)
-       throw new Error('Invalid Conference room data')
-   }
-
+        conFeatures,
+        conImages: [conImg1, conImg2, conImg3]
+        
+    })
+    
+    try {
+          await newconference.save()
+          res.send('New Conference room Added Successfully')
+    } catch (error) {
+          return res.status(400).json({ error });
+    }
 })
+
 
 const getAllConDetails = asyncHandler(async (req, res) => {
     const conference = await Conference.find({})
@@ -53,7 +81,7 @@ const getConDetailsById = asyncHandler(async (req, res) => {
             conName:  conference.conName,
             conDes:  conference.conDes,
             conSeats:  conference.conSeats,
-            conImage:  conference.conImage,
+            conImages:  conference.conImages,
             conPrice:  conference.conPrice,
             conFeatures:  conference.conFeatures,
                 
