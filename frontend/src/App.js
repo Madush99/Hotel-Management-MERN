@@ -34,6 +34,7 @@ import ShippingScreen from './screens/ShippingScreen/shippingScreen'
 import PaymentScreen from './screens/PaymentScreen/payementScreen'
 import PlaceOrder from './screens/PlaceOrderScreen/placeOrderScreen'
 import OrderScreen from './screens/OrderScreen/orderScreen'
+import OrderList from './screens/OrderListScreen/orderListScreen'
 
 
 
@@ -81,6 +82,7 @@ const App = () => {
         <Route path='/payment' component={PaymentScreen} />
         <Route path='/placeorder' component={PlaceOrder} />
         <Route path='/order/:id' component={OrderScreen} />
+        <Route path='/orderList' component={OrderList} />
 
       </div>
     </Router>

@@ -3,6 +3,7 @@ import { Tabs } from "antd";
 import { Button, Row, Col } from 'react-bootstrap'
 import AddFood from '../CreateFoodScreen/createFoodScreen'
 import FoodList from '../FoodListScreen/foodListScreen'
+import OrderList from '../OrderListScreen/orderListScreen'
 import { Container } from 'react-bootstrap';
 
 const { TabPane } = Tabs;
@@ -35,10 +36,10 @@ const FoodManagementScreen = () => {
                                     </div>
 
                               </TabPane>
-                              <TabPane tab="Add Room" key="3">
+                              <TabPane tab="Order List" key="3">
 
 
-
+                              <OrderList />
 
 
                               </TabPane>

@@ -154,7 +154,7 @@ const OrderScreen = ({ match, history }) => {
                                                     />
                                                 </Col>
                                                 <Col>
-                                                    <Link to={`/product/${item.food}`}>
+                                                    <Link to={`/food/${item.food}`}>
                                                         {item.name}
                                                     </Link>
                                                 </Col>
@@ -177,23 +177,26 @@ const OrderScreen = ({ match, history }) => {
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
-                                    <Col>Total Price</Col>
+                                    <Col>Items</Col>
                                     <Col>Rs.{order.itemsPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
-
+                                    <Col>Shipping</Col>
+                                    <Col>Rs.{order.shippingPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
-                                 
+                                    <Col>Tax</Col>
+                                    <Col>Rs.{order.taxPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
-                                 
+                                    <Col>Total</Col>
+                                    <Col>Rs.{order.totalPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
 
