@@ -5,6 +5,7 @@ import Room1 from '../assets/images/room1.jpg'
 import Room2 from '../assets/images/room2.jpg'
 import Room3 from '../assets/images/room3.jpg'
 import Room4 from '../assets/images/room4.jpg'
+import Room5 from '../assets/images/room5.jpg'
 
 const RoomsCarousel = () => {
       return (
@@ -49,6 +50,18 @@ const RoomsCarousel = () => {
                         <img
                               className="d-block w-100"
                               src={Room4}
+                              alt="Third slide"
+                              style={{ height: "500px", objectFit: "cover" }}
+                        />
+                        <Carousel.Caption>
+                              <h3>Third slide label</h3>
+                              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        </Carousel.Caption>
+                  </Carousel.Item>
+                  <Carousel.Item interval={2000}>
+                        <img
+                              className="d-block w-100"
+                              src={Room5}
                               alt="Third slide"
                               style={{ height: "500px", objectFit: "cover" }}
                         />

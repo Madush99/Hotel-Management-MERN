@@ -23,6 +23,8 @@ const RoomsScreen = () => {
       const [loading, setloading] = useState(false);
       const [searchkey, setsearchkey] = useState('')
       const [type, settype] = useState('all')
+
+
       function filterByDate(dates) {
             setfromdate(moment(dates[0]).format('DD-MM-YYYY'))
             settodate(moment(dates[1]).format('DD-MM-YYYY'))

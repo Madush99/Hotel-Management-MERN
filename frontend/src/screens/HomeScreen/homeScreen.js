@@ -11,6 +11,7 @@ import max8 from '../HomeScreen/max8.jpg'
 import max10 from '../HomeScreen/max10.jpg'
 import max11 from '../HomeScreen/max11.jpg'
 import '../HomeScreen/home.css'
+import SilderCarousel from '../../components/SliderCarousel/silderCarousel'
 
 
 const HomeScreen = () => {
@@ -42,9 +43,10 @@ const HomeScreen = () => {
 
                         <hr></hr>
                         <Row>
-
-                              <h1>Recommended room types</h1>
-
+                              <center><h1>Recommended room types</h1>
+                                    <p>Offering striking views of the Indian Ocean, Beira Lake and the city beyond, our 500 guest rooms and suites, and 41 serviced apartments are tastefully furnished to complement the urban-oceanside location and are among the largest in Colombo.</p>
+                              </center>
+                              <SilderCarousel />
 
                         </Row>
                         <hr></hr>
@@ -81,6 +83,7 @@ const HomeScreen = () => {
                               </Col>
                         </Row>
                         <br></br>
+                        <hr></hr>
                         <Row className='ki' >
 
                               <center>
