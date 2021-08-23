@@ -118,6 +118,7 @@ const RoomsScreen = () => {
                                     <option value="all">All</option>
                                     <option value="delux">Delux</option>
                                     <option value="non-delux">Non Delux</option>
+                                    <option value="Horizon-club">Horizon-club</option>
 
                               </select>
                         </div>
