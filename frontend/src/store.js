@@ -9,7 +9,7 @@ import {
       userDetailsReducer,
       userRegisterReducer,
 } from './reducers/userReducer'
-import { weddingInsertReducer, wedAllReducer, wedByIdReducer } from './reducers/weddingReducer.js'
+import { weddingInsertReducer, wedAllReducer, wedByIdReducer, wedDeleteReducer } from './reducers/weddingReducer.js'
 import { conferenceInsertReducer, conAllReducer, conByIdReducer } from './reducers/conferenceReducer'
 
 import {
@@ -79,6 +79,7 @@ const reducer = combineReducers({
       orderPay: orderPayReducer,
       orderList:orderListReducer,
       createTbookings:tableBookingReducer,
+      wedDelete:wedDeleteReducer,
 
 })
 

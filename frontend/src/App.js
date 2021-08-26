@@ -40,6 +40,8 @@ import OrderScreen from './screens/OrderScreen/orderScreen'
 import OrderList from './screens/OrderListScreen/orderListScreen'
 import ReservationScreen from './screens/ReservationScreen/reservationScreen'
 
+import WeddingListScreen from './screens/weddingListScreen/weddingListScreen'
+import WedEventMgtScreen from './screens/weddingEventMgtScreen/weddingEventMgtScreen'
 
 
 
@@ -92,6 +94,8 @@ const App = () => {
         <Route path='/orderList' component={OrderList} />
         <Route path='/bookNow/:id' component={ReservationScreen} />
 
+        <Route path='/wedList' component={WeddingListScreen} />
+        <Route path='/wedEveMgt' component={WedEventMgtScreen} />
       </div>
     </Router>
   );
