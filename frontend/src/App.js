@@ -38,6 +38,8 @@ import HomeScreen from './screens/HomeScreen/homeScreen';
 import Nav1 from './components/Navbar/nav';
 import OrderScreen from './screens/OrderScreen/orderScreen'
 import OrderList from './screens/OrderListScreen/orderListScreen'
+import ReservationScreen from './screens/ReservationScreen/reservationScreen'
+
 import WeddingListScreen from './screens/weddingListScreen/weddingListScreen'
 import WedEventMgtScreen from './screens/weddingEventMgtScreen/weddingEventMgtScreen'
 import ConferenceListScreen from './screens/conferenceListScreen/conferenceListScreen'
@@ -91,6 +93,8 @@ const App = () => {
         <Route path='/placeorder' component={PlaceOrder} />
         <Route path='/order/:id' component={OrderScreen} />
         <Route path='/orderList' component={OrderList} />
+        <Route path='/bookNow/:id' component={ReservationScreen} />
+
         <Route path='/wedList' component={WeddingListScreen} />
         <Route path='/wedEveMgt' component={WedEventMgtScreen} />
         <Route path='/conList' component={ConferenceListScreen} />

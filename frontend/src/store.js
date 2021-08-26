@@ -37,6 +37,10 @@ import{
 
 } from './reducers/orderReducer'
 
+import {
+      tableBookingReducer
+} from './reducers/tableBookingReducer'
+
 
 
 
@@ -74,6 +78,7 @@ const reducer = combineReducers({
       orderDetails: orderDetailsReducer,
       orderPay: orderPayReducer,
       orderList:orderListReducer,
+      createTbookings:tableBookingReducer,
       wedDelete:wedDeleteReducer,
       conDelete:conDeleteReducer,
 
