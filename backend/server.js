@@ -21,6 +21,7 @@ import bookingRoutes from './routes/bookingRoutes.js'
 
 import foodRoutes from './routes/foodRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
+import tableBookingRoutes from './routes/tableBookingRoutes.js'
 
 
 dotenv.config()
@@ -58,6 +59,7 @@ const __dirname = path.resolve()
 app.use('/images', express.static(path.join(__dirname, '/images')))
 app.use('/api/booking', bookingRoutes)
 app.use('/api/food', foodRoutes)
+app.use('/api/tableBooking', tableBookingRoutes)
 
 
 //paypal id connect

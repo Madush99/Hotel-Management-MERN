@@ -38,6 +38,7 @@ import HomeScreen from './screens/HomeScreen/homeScreen';
 import Nav1 from './components/Navbar/nav';
 import OrderScreen from './screens/OrderScreen/orderScreen'
 import OrderList from './screens/OrderListScreen/orderListScreen'
+import ReservationScreen from './screens/ReservationScreen/reservationScreen'
 
 
 
@@ -89,6 +90,7 @@ const App = () => {
         <Route path='/placeorder' component={PlaceOrder} />
         <Route path='/order/:id' component={OrderScreen} />
         <Route path='/orderList' component={OrderList} />
+        <Route path='/bookNow/:id' component={ReservationScreen} />
 
       </div>
     </Router>
