@@ -4,7 +4,7 @@ import { Card } from 'react-bootstrap'
 
 const ConferenceDis = ({ conference }) => {
       return (
-            <Card className='my-3 p-3 rounded' border="info">
+            <Card className='bs my-3 p-3 rounded'>
                   <Link to={`/con/${conference._id}`}>
                         <Card.Img className='card-img' src={conference.conImages[0]} variant='top' />
                   </Link>

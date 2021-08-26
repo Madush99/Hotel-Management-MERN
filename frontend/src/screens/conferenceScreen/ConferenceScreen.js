@@ -27,7 +27,7 @@ const ConferenceScreen = () => {
                 {
                         loading ? (<Loader />) : error ? (<Message variant='danger'>{error}</Message>
                         ) : (
-                <Row className='ro' style={{ backgroundColor: "#bbbbbb" }} >
+                <Row className='ro' >
                               {conference.map((conference) =>
 
                                     <Col key={conference._id} sm={12} md={6} lg={4} xl={4}>

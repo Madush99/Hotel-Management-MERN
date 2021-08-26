@@ -10,7 +10,7 @@ import { Form } from 'react-bootstrap'
 import Swal from 'sweetalert2'
 
 
-const SignupScreen = ({ location, history }) => {
+const ConInsertScreen = ({ location, history }) => {
 
 
       const [conName, setName] = useState('')
@@ -107,16 +107,11 @@ const SignupScreen = ({ location, history }) => {
       return (
             
             <>
-  
-                  <div className="maincontainer">
+                  <center>
                         <div class="container-fluid">
-                              <div class="row no-gutter">
 
-
-                                    <div class="col-md-6 d-none d-md-flex bg-image1"></div>
-
-                                    <div class="col-md-6 bg-light">
-                                          <div class="signup d-flex align-items-center py-5">
+                                    
+                                          
 
                                                 <div class="container">
                                                       <div class="row">
@@ -126,51 +121,53 @@ const SignupScreen = ({ location, history }) => {
                                                                   {loading && <Loader />}
                                                                   </div>
                                                                   <center>
-                                                                  <h3 class="display-4">Insert Conference Rooms</h3>
+                                                                  <h4>Insert Conference Rooms</h4>
                                                                   </center>
                                                                   <br/>
                                                                   
                                                                   <form onSubmit={submitHandler}>
                                                                         <div class="form-group mb-3">
-                                                                              < input id="Enter Wedding Hall Name" type="text" placeholder="Enter Conference room Name" required="" autofocus="" className="form-control rounded-pill border-0 shadow-sm px-4" 
+                                                                              < input id="Enter Wedding Hall Name" type="text" placeholder="Enter Conference room Name" required="" autofocus="" className="form-control " 
                                                                               value={conName}
                                                                               onChange={(e) => setName(e.target.value)} />
                                                                         </div>
                                                                         <div class="form-group mb-3">
-                                                                              <input id="input seats" type="text" placeholder="Enter maximum seatings" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" 
+                                                                              <input id="input seats" type="text" placeholder="Enter maximum seatings" required="" class="form-control" 
                                                                               value={conSeats}
                                                                               onChange={(e) => setSeats(e.target.value)}/>
                                                                         </div>
                                                                         <div class="form-group mb-3">
-                                                                              <input id="input description" type="text" placeholder="Enter con description" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" 
+                                                                              <input id="input description" type="text" placeholder="Enter con description" required="" class="form-control" 
                                                                               value={conDes}
                                                                               onChange={(e) => setDes(e.target.value)}/>
                                                                         </div>
                                                                         <div class="form-group mb-3">
-                                                                              <input id="input description" type="text" placeholder="Enter con price" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" 
+                                                                              <input id="input description" type="text" placeholder="Enter con price" required="" class="form-control" 
                                                                               value={conPrice}
                                                                               onChange={(e) => setPrice(e.target.value)}/>
                                                                         </div>
                                                                         <div class="form-group mb-3">
-                                                                              <input id="input description" type="text" placeholder="Enter con features" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" 
+                                                                              <input id="input description" type="text" placeholder="Enter con features" required="" class="form-control" 
                                                                               value={confeatures}
                                                                               onChange={(e) => setFeatures(e.target.value)}/>
                                                                         </div>
+                                                                        <br/>
                                                                         <Form.Group controlId='image'>
                                                                             <div className="form-group bn">
-                                                                                <Form.Label>Upload Document</Form.Label>
+                                                                                <Form.Label>Add Image</Form.Label>
                                                                                 <Form.Control type='text' className="form-control" placeholder='Enter Document URL'
                                                                                     value={conImg1}
                                                                                     onChange={(e) => setImg1(e.target.value)}
                                                                                 ></Form.Control>
                                                                             </div>
+                                                                            
                                                                             <Form.File id="file" label='Choose File' custom onChange={uploadFileHandler1}></Form.File>
                                                                             {uploading && <Loader />}
                                                                         </Form.Group>
-
+                                                                        <br/>
                                                                         <Form.Group controlId='image'>
                                                                             <div className="form-group bn">
-                                                                                <Form.Label>Upload Document</Form.Label>
+                                                                                <Form.Label>Add Image</Form.Label>
                                                                                 <Form.Control type='text' className="form-control" placeholder='Enter Document URL'
                                                                                     value={conImg2}
                                                                                     onChange={(e) => setImg2(e.target.value)}
@@ -179,10 +176,10 @@ const SignupScreen = ({ location, history }) => {
                                                                             <Form.File id="file" label='Choose File' custom onChange={uploadFileHandler2}></Form.File>
                                                                             {uploading && <Loader />}
                                                                         </Form.Group>
-
+                                                                        <br/>
                                                                         <Form.Group controlId='image'>
                                                                             <div className="form-group bn">
-                                                                                <Form.Label>Upload Document</Form.Label>
+                                                                                <Form.Label>Add Image</Form.Label>
                                                                                 <Form.Control type='text' className="form-control" placeholder='Enter Document URL'
                                                                                     value={conImg3}
                                                                                     onChange={(e) => setImg3(e.target.value)}
@@ -201,12 +198,12 @@ const SignupScreen = ({ location, history }) => {
                                                       </div>
                                                 </div>
                                           </div>
-                                    </div>
-                              </div>
-                        </div>
-                  </div>
+                                    
+                              
+                        
+                        </center>
             </>
       )
 }
 
-export default SignupScreen
+export default ConInsertScreen

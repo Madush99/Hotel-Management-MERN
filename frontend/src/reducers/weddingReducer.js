@@ -1,4 +1,4 @@
-import { WEDDING_INSERT_REQUEST, WEDDING_INSERT_SUCCESS, WEDDING_INSERT_FAIL, WEDDING_ALL_REQUEST, WEDDING_ALL_SUCCESS, WEDDING_ALL_FAIL, WEDDING_BYID_REQUEST, WEDDING_BYID_SUCCESS, WEDDING_BYID_FAIL } from '../constants/weddingConstant.js'
+import { WEDDING_INSERT_REQUEST, WEDDING_INSERT_SUCCESS, WEDDING_INSERT_FAIL, WEDDING_ALL_REQUEST, WEDDING_ALL_SUCCESS, WEDDING_ALL_FAIL, WEDDING_BYID_REQUEST, WEDDING_BYID_SUCCESS, WEDDING_BYID_FAIL, WEDDING_DELETE_REQUEST, WEDDING_DELETE_SUCCESS, WEDDING_DELETE_FAIL } from '../constants/weddingConstant.js'
 
 export const weddingInsertReducer = (state = {}, action) => {
     switch (action.type) {
@@ -38,4 +38,17 @@ export const wedByIdReducer = (state = { weddings: {} }, action) => {
           default:
                 return state
     }
+}
+
+export const wedDeleteReducer = (state = {}, action) => {
+      switch (action.type) {
+            case WEDDING_DELETE_REQUEST:
+                  return { loading: true }
+            case WEDDING_DELETE_SUCCESS:
+                  return { loading: false, success: true }
+            case WEDDING_DELETE_FAIL:
+                  return { loading: false, error: action.payload }
+            default:
+                  return state
+      }
 }
