@@ -52,9 +52,19 @@ const Navbar = () => {
                                                 <LinkContainer to="/weddingInsert">
                                                       <NavDropdown.Item class="link-dark">Wedding</NavDropdown.Item>
                                                 </LinkContainer>
+
                                                 <LinkContainer to="/roomManagement">
                                                       <NavDropdown.Item class="link-dark">Room Management</NavDropdown.Item>
                                                 </LinkContainer>
+
+                                                <LinkContainer to="/restaurantManagement">
+                                                      <NavDropdown.Item class="link-dark">Restaurant Management</NavDropdown.Item>
+                                                </LinkContainer>
+
+                                                <LinkContainer to="/foodManagement">
+                                                      <NavDropdown.Item class="link-dark">Food Management</NavDropdown.Item>
+                                                </LinkContainer>
+
 
 
                                           </NavDropdown>

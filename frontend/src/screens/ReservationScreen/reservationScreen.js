@@ -30,9 +30,9 @@ const ReservationScreen = ({ match, history }) => {
       const { restaurants } = restDetails
 
    
-      const [userid, setUserid] = useState(JSON.parse(localStorage.getItem('userInfo'))._id)
+      const [userid, setUserid] = useState(JSON.parse(localStorage.getItem('userInfo')).name)
     
-       const [restaurantid,setRestaurant] = useState(restaurants._id)
+       const [restaurantid,setRestaurant] = useState(restaurants.name)
       const [date, setDate] = useState('')
       const [phoneNo, setPhoneNo] = useState('')
       const [adults, setAdults] = useState(0)
@@ -45,7 +45,7 @@ const ReservationScreen = ({ match, history }) => {
       useEffect(() => {
             if (tbookings) {
                   Swal.fire('Congrats', 'SUCCESSFULY', 'success').then(result => {
-                        window.location.href = ''
+                        window.location.href = '/restaurants'
                   })
             }
             dispatch(getRestDetails(match.params.id))
@@ -53,7 +53,7 @@ const ReservationScreen = ({ match, history }) => {
 
       const submitHandler = (e) => {
             e.preventDefault()
-            dispatch(creatTableBooking(userid,restaurants._id,date,phoneNo, adults, childrens, time ))
+            dispatch(creatTableBooking(userid,restaurants.name,date,phoneNo, adults, childrens, time ))
       }
 
 
@@ -74,7 +74,7 @@ const ReservationScreen = ({ match, history }) => {
                         ) : (
                               <Form onSubmit={submitHandler}>
                                     <Form.Group controlId='userid'>
-                                          <Form.Label>USerId</Form.Label>
+                                          <Form.Label>User Name</Form.Label>
                                           <Form.Control
                                                 type='text'
                                                 placeholder=''
@@ -84,11 +84,11 @@ const ReservationScreen = ({ match, history }) => {
                                     </Form.Group>
 
                                     <Form.Group controlId='restaurantid'>
-                                          <Form.Label>restaurantid</Form.Label>
+                                          <Form.Label>restaurant Name</Form.Label>
                                           <Form.Control
                                                 type='text'
                                                 placeholder=''
-                                                value={restaurants._id}
+                                                value={restaurants.name}
                                                 onChange={(e) => setRestaurant(e.target.value)}
                                           ></Form.Control>
                                     </Form.Group>

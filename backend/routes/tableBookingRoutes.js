@@ -5,7 +5,7 @@ import { protect, admin } from '../middleware/authMiddleware.js'
 
 
 
-router.route('/').post(createTBooking).get(getAlltableBookings)
+router.route('/').post(createTBooking).get(protect, getAlltableBookings)
 
 
 
