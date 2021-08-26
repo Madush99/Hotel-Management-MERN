@@ -30,7 +30,7 @@ const SignupScreen = ({ location, history }) => {
       useEffect(() => {
             if (weddingInfo) {
                   Swal.fire('Successful', 'Wedding Hall Data Has been Succesfully Added', 'success').then(result => {
-                        window.location.href = '/'
+                        window.location.href = '/wedEveMgt'
                   })
             }
       }, [history, weddingInfo])
@@ -103,15 +103,15 @@ const SignupScreen = ({ location, history }) => {
             
             <>
   
-                  <div className="maincontainer">
+                  
                         <div class="container-fluid">
-                              <div class="row no-gutter">
+                              
 
 
-                                    <div class="col-md-6 d-none d-md-flex bg-image1"></div>
+                                    
 
-                                    <div class="col-md-6 bg-light">
-                                          <div class="signup d-flex align-items-center py-5">
+                                    
+                                          
 
                                                 <div class="container">
                                                       <div class="row">
@@ -121,29 +121,29 @@ const SignupScreen = ({ location, history }) => {
                                                                   {loading && <Loader />}
                                                                   </div>
                                                                   <center>
-                                                                  <h3 class="display-4">Insert Wedding Hall</h3>
+                                                                  <h4>Insert Wedding Hall</h4>
                                                                   </center>
                                                                   <br/>
                                                                   
                                                                   <form onSubmit={submitHandler}>
                                                                         <div class="form-group mb-3">
-                                                                              < input id="Enter Wedding Hall Name" type="text" placeholder="Enter Wedding Hall Name" required="" autofocus="" className="form-control rounded-pill border-0 shadow-sm px-4" 
+                                                                              < input id="Enter Wedding Hall Name" type="text" placeholder="Enter Wedding Hall Name" required="" autofocus="" className="form-control" 
                                                                               value={wedHallName}
                                                                               onChange={(e) => setHallName(e.target.value)} />
                                                                         </div>
                                                                         <div class="form-group mb-3">
-                                                                              <input id="input seats" type="text" placeholder="Enter maximum seatings" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" 
+                                                                              <input id="input seats" type="text" placeholder="Enter maximum seatings" required="" class="form-control" 
                                                                               value={wedSeats}
                                                                               onChange={(e) => setSeats(e.target.value)}/>
                                                                         </div>
                                                                         <div class="form-group mb-3">
-                                                                              <input id="input description" type="text" placeholder="Enter wedding hall description" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" 
+                                                                              <input id="input description" type="text" placeholder="Enter wedding hall description" required="" class="form-control" 
                                                                               value={wedDes}
                                                                               onChange={(e) => setDes(e.target.value)}/>
                                                                         </div>
                                                                         <Form.Group controlId='image'>
                                                                             <div className="form-group bn">
-                                                                                <Form.Label>Upload Document</Form.Label>
+                                                                                <Form.Label>Add Image</Form.Label>
                                                                                 <Form.Control type='text' className="form-control" placeholder='Enter Document URL'
                                                                                     value={wedImg1}
                                                                                     onChange={(e) => setImg1(e.target.value)}
@@ -155,7 +155,7 @@ const SignupScreen = ({ location, history }) => {
 
                                                                         <Form.Group controlId='image'>
                                                                             <div className="form-group bn">
-                                                                                <Form.Label>Upload Document</Form.Label>
+                                                                                <Form.Label>Add Image</Form.Label>
                                                                                 <Form.Control type='text' className="form-control" placeholder='Enter Document URL'
                                                                                     value={wedImg2}
                                                                                     onChange={(e) => setImg2(e.target.value)}
@@ -167,7 +167,7 @@ const SignupScreen = ({ location, history }) => {
 
                                                                         <Form.Group controlId='image'>
                                                                             <div className="form-group bn">
-                                                                                <Form.Label>Upload Document</Form.Label>
+                                                                                <Form.Label>Add Image</Form.Label>
                                                                                 <Form.Control type='text' className="form-control" placeholder='Enter Document URL'
                                                                                     value={wedImg3}
                                                                                     onChange={(e) => setImg3(e.target.value)}
@@ -184,10 +184,10 @@ const SignupScreen = ({ location, history }) => {
                                                       </div>
                                                 </div>
                                           </div>
-                                    </div>
-                              </div>
-                        </div>
-                  </div>
+                                   
+                             
+                        
+                  
             </>
       )
 }
