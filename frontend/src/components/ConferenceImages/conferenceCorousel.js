@@ -1,17 +1,17 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
 
-import wed1 from '../assets/weddingimg/wed1.jpg'
-import wed2 from '../assets/weddingimg/wed2.jpg'
-import wed3 from '../assets/weddingimg/wed3.jpg'
+import con1 from '../assets/conferenceImg/con1.jpg'
+import con2 from '../assets/conferenceImg/con2.jpg'
+import con3 from '../assets/conferenceImg/con3.jpg'
 
-const WeddingCarouselContainer = () => {
+const ConferenceCarouselContainer = () => {
     return (
       <Carousel fade={true} pause={false}>
         <Carousel.Item interval={2000}>
           <img
             className="d-block w-100"
-            src={wed1}
+            src={con1}
             alt="First slide"
             style={{ height: "500px", objectFit:"cover" }}
           />
@@ -21,7 +21,7 @@ const WeddingCarouselContainer = () => {
         <Carousel.Item interval={2000}>
           <img
             className="d-block w-100"
-            src={wed2}
+            src={con2}
             alt="Third slide"
             style={{ height: "500px", objectFit:"cover" }}
           />
@@ -31,7 +31,7 @@ const WeddingCarouselContainer = () => {
         <Carousel.Item interval={2000}>
           <img
             className="d-block w-100"
-            src={wed3}
+            src={con3}
             alt="Third slide"
             style={{ height: "500px", objectFit:"cover" }}
           />
@@ -43,4 +43,4 @@ const WeddingCarouselContainer = () => {
     )
   }
   
-  export default WeddingCarouselContainer;
+  export default ConferenceCarouselContainer;

@@ -6,6 +6,7 @@ import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import { Row, Col } from 'react-bootstrap'
 import Swal from 'sweetalert2'
+import ConferenceCarouselContainer from '../../components/ConferenceImages/conferenceCorousel.js'
 
 const ConferenceScreen = () => {
 
@@ -21,7 +22,7 @@ const ConferenceScreen = () => {
 
       return (
             <>
-            
+            <ConferenceCarouselContainer/>
             <br></br>
                 <h1 style={{ textAlign: "center" }}>Conference Rooms</h1>
                 {

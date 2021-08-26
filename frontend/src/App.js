@@ -40,6 +40,7 @@ import OrderScreen from './screens/OrderScreen/orderScreen'
 import OrderList from './screens/OrderListScreen/orderListScreen'
 import WeddingListScreen from './screens/weddingListScreen/weddingListScreen'
 import WedEventMgtScreen from './screens/weddingEventMgtScreen/weddingEventMgtScreen'
+import ConferenceListScreen from './screens/conferenceListScreen/conferenceListScreen'
 
 
 
@@ -92,6 +93,7 @@ const App = () => {
         <Route path='/orderList' component={OrderList} />
         <Route path='/wedList' component={WeddingListScreen} />
         <Route path='/wedEveMgt' component={WedEventMgtScreen} />
+        <Route path='/conList' component={ConferenceListScreen} />
       </div>
     </Router>
   );
