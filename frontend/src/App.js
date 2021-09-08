@@ -38,8 +38,11 @@ import HomeScreen from './screens/HomeScreen/homeScreen';
 import Nav1 from './components/Navbar/nav';
 import OrderScreen from './screens/OrderScreen/orderScreen'
 import OrderList from './screens/OrderListScreen/orderListScreen'
+import ReservationScreen from './screens/ReservationScreen/reservationScreen'
 import WeddingListScreen from './screens/weddingListScreen/weddingListScreen'
 import WedEventMgtScreen from './screens/weddingEventMgtScreen/weddingEventMgtScreen'
+import TableBookings from './screens/TableBookingListScreen/tableBookinglistScreen'
+import ConferenceListScreen from './screens/conferenceListScreen/conferenceListScreen'
 
 
 
@@ -62,8 +65,6 @@ const App = () => {
         <Route path="/roombook/:roomid/:fromdate/:todate" component={BookingScreen} />
         <Route path="/restaurants" component={Restaurents} />
         <Route path="/profile" component={UserProfile} />
-
-
         <Route path="/weddingInsert" component={weddingInsertScreen} />
         <Route path='/search/:keyword' component={RoomsScreen} />
         <Route path="/weddings" component={WeddingScreen} />
@@ -74,7 +75,6 @@ const App = () => {
         <Route path="/admin/createRoom" component={CreateRoomScreen} />
         <Route path="/restaurantList" component={RestaurantList} />
         <Route path="/wedding/:id" component={WeddingByIdScreen} />
-
         <Route path="/restaurantManagement" component={RestaurantManagement} />
         <Route path="/update/:id" component={RoomUpdateScreen} />
         <Route path="/roomManagement" component={RoomManagementScreen} />
@@ -90,8 +90,11 @@ const App = () => {
         <Route path='/placeorder' component={PlaceOrder} />
         <Route path='/order/:id' component={OrderScreen} />
         <Route path='/orderList' component={OrderList} />
+        <Route path='/bookNow/:id' component={ReservationScreen} />
+        <Route path='/tablebookings' component={TableBookings} />
         <Route path='/wedList' component={WeddingListScreen} />
         <Route path='/wedEveMgt' component={WedEventMgtScreen} />
+        <Route path='/conList' component={ConferenceListScreen} />
       </div>
     </Router>
   );

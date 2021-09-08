@@ -31,7 +31,7 @@ const ConInsertScreen = ({ location, history }) => {
       useEffect(() => {
             if (conferenceInfo) {
                   Swal.fire('Successful', 'Successfully Inserted Conference Room', 'success').then(result => {
-                        window.location.href = '/'
+                        window.location.href = '/wedEveMgt'
                   })
             }
       }, [history, conferenceInfo])
@@ -127,27 +127,27 @@ const ConInsertScreen = ({ location, history }) => {
                                                                   
                                                                   <form onSubmit={submitHandler}>
                                                                         <div class="form-group mb-3">
-                                                                              < input id="Enter Wedding Hall Name" type="text" placeholder="Enter Conference room Name" required="" autofocus="" className="form-control " 
+                                                                              < input id="Enter Wedding Hall Name" type="text" placeholder="Enter Conference Room Name" required="" autofocus="" className="form-control " 
                                                                               value={conName}
                                                                               onChange={(e) => setName(e.target.value)} />
                                                                         </div>
                                                                         <div class="form-group mb-3">
-                                                                              <input id="input seats" type="text" placeholder="Enter maximum seatings" required="" class="form-control" 
+                                                                              <input id="input seats" type="text" placeholder="Enter Maximum Seatings" required="" class="form-control" 
                                                                               value={conSeats}
                                                                               onChange={(e) => setSeats(e.target.value)}/>
                                                                         </div>
                                                                         <div class="form-group mb-3">
-                                                                              <input id="input description" type="text" placeholder="Enter con description" required="" class="form-control" 
+                                                                              <input id="input description" type="text" placeholder="Enter Description" required="" class="form-control" 
                                                                               value={conDes}
                                                                               onChange={(e) => setDes(e.target.value)}/>
                                                                         </div>
                                                                         <div class="form-group mb-3">
-                                                                              <input id="input description" type="text" placeholder="Enter con price" required="" class="form-control" 
+                                                                              <input id="input description" type="text" placeholder="Enter Price" required="" class="form-control" 
                                                                               value={conPrice}
                                                                               onChange={(e) => setPrice(e.target.value)}/>
                                                                         </div>
                                                                         <div class="form-group mb-3">
-                                                                              <input id="input description" type="text" placeholder="Enter con features" required="" class="form-control" 
+                                                                              <input id="input description" type="text" placeholder="Enter Features" required="" class="form-control" 
                                                                               value={confeatures}
                                                                               onChange={(e) => setFeatures(e.target.value)}/>
                                                                         </div>
@@ -155,7 +155,7 @@ const ConInsertScreen = ({ location, history }) => {
                                                                         <Form.Group controlId='image'>
                                                                             <div className="form-group bn">
                                                                                 <Form.Label>Add Image</Form.Label>
-                                                                                <Form.Control type='text' className="form-control" placeholder='Enter Document URL'
+                                                                                <Form.Control type='text' className="form-control" placeholder='Enter Image URL'
                                                                                     value={conImg1}
                                                                                     onChange={(e) => setImg1(e.target.value)}
                                                                                 ></Form.Control>
@@ -168,7 +168,7 @@ const ConInsertScreen = ({ location, history }) => {
                                                                         <Form.Group controlId='image'>
                                                                             <div className="form-group bn">
                                                                                 <Form.Label>Add Image</Form.Label>
-                                                                                <Form.Control type='text' className="form-control" placeholder='Enter Document URL'
+                                                                                <Form.Control type='text' className="form-control" placeholder='Enter Image URL'
                                                                                     value={conImg2}
                                                                                     onChange={(e) => setImg2(e.target.value)}
                                                                                 ></Form.Control>
@@ -180,7 +180,7 @@ const ConInsertScreen = ({ location, history }) => {
                                                                         <Form.Group controlId='image'>
                                                                             <div className="form-group bn">
                                                                                 <Form.Label>Add Image</Form.Label>
-                                                                                <Form.Control type='text' className="form-control" placeholder='Enter Document URL'
+                                                                                <Form.Control type='text' className="form-control" placeholder='Enter Image URL'
                                                                                     value={conImg3}
                                                                                     onChange={(e) => setImg3(e.target.value)}
                                                                                 ></Form.Control>

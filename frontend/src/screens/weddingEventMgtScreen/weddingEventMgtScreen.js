@@ -1,9 +1,10 @@
 import React from 'react'
 import { Tabs } from "antd";
 import { Button, Row, Col } from 'react-bootstrap'
-import WeddingList from '../weddingListScreen/weddingListScreen'
+import WeddingListScreen from '../weddingListScreen/weddingListScreen'
 import SignupScreen from '../WeddingInsertScreen/weddingInsertScreen'
 import ConInsertScreen from '../conferenceInsertScreen/conferenceInsert'
+import ConferenceListScreen from '../conferenceListScreen/conferenceListScreen'
 import { Container } from 'react-bootstrap';
 
 const { TabPane } = Tabs;
@@ -22,9 +23,9 @@ const WedEventMgtScreen = () => {
                               </Col>
                         </Row>
                       <Tabs defaultActiveKey="1">
-                            <TabPane tab="WEDDING LIST" key="1">
+                            <TabPane tab="WEDDING HALL LIST" key="1">
                                   <div className="row">
-                                        <WeddingList />
+                                        <WeddingListScreen />
 
                                   </div>
                             </TabPane>
@@ -41,11 +42,18 @@ const WedEventMgtScreen = () => {
                                   </div>
 
                             </TabPane>
-                            <TabPane tab="Users" key="4">
+                            
+                            
+                            <TabPane tab="CONFERENCE ROOM LIST" key="4">
+                                  <div className="row">
+                                        <ConferenceListScreen />
 
-
-
+                                  </div>
                             </TabPane>
+
+
+
+                            
                       </Tabs>
                 </div>
           </Container>

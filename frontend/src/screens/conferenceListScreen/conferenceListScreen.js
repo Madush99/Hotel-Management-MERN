@@ -4,27 +4,27 @@ import { Table, Button, Row, Col, Container } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../../components/Message'
 import Loader from '../../components/Loader'
-import { allWeddings, deletewedding } from '../../actions/weddingAction'
+import { allConference, deleteConference } from '../../actions/conferenceAction'
 import Swal from 'sweetalert2'
 
 
 
 
 
-const WeddingListScreen = () => {
+const ConferenceListScreen = () => {
 
 
     const dispatch = useDispatch()
 
-    const wedAll = useSelector((state) => state.wedAll)
-    const { loading, error, weddings } = wedAll
+    const conAll = useSelector((state) => state.conAll)
+    const { loading, error, conference } = conAll
 
 
-    const wedDelete = useSelector((state) => state.wedDelete)
-    const { success: successDelete } = wedDelete
+    const conDelete = useSelector((state) => state.conDelete)
+    const { success: successDelete } = conDelete
 
     useEffect(() => {
-        dispatch(allWeddings())
+        dispatch(allConference())
     }, [dispatch])
 
 
@@ -46,15 +46,15 @@ const WeddingListScreen = () => {
                 )
             }
         })) {
-            dispatch(deletewedding(id))
+            dispatch(deleteConference(id))
         }
     }
 
     return (
         <>
-            <center>
-            <h1>Wedding Hall List</h1>
-            </center>
+        <center>
+            <h1>Conference Room List</h1>
+        </center>
             {
                 loading ? (
                     <Loader />
@@ -66,19 +66,23 @@ const WeddingListScreen = () => {
                             <thead class="table-light">
                                 <tr>
                                     <th>ID</th>
-                                    <th>Wedding Hall</th>
+                                    <th>Conference Room</th>
                                     <th>maximum Seating</th>
-                                    <th>Hall Description</th>
+                                    <th>Description</th>
+                                    <th>Price</th>
+                                    <th>Features</th>
 
                                 </tr>
                             </thead>
                             <tbody>
-                                {weddings.map(wedding => (
-                                    <tr key={wedding._id}>
-                                        <td>{wedding._id}</td>
-                                        <td>{wedding.wedHallName}</td>
-                                        <td>{wedding.wedSeats}</td>
-                                        <td>{wedding.wedDes}</td>
+                                {conference.map(conference => (
+                                    <tr key={conference._id}>
+                                        <td>{conference._id}</td>
+                                        <td>{conference.conName}</td>
+                                        <td>{conference.conSeats}</td>
+                                        <td>{conference.conDes}</td>
+                                        <td>{conference.conPrice}</td>
+                                        <td>{conference.conFeatures}</td>
             
                                         <td>
                                             <LinkContainer to=''>
@@ -90,7 +94,7 @@ const WeddingListScreen = () => {
                                             <Button
                                                 variant='danger'
                                                 className='btn-sm'
-                                                onClick={() => deleteHandler(wedding._id)}
+                                                onClick={() => deleteHandler(conference._id)}
                                             >
                                                 <i className='fas fa-trash'></i>
                                             </Button>
@@ -109,4 +113,4 @@ const WeddingListScreen = () => {
 }
 
 
-export default WeddingListScreen
+export default ConferenceListScreen

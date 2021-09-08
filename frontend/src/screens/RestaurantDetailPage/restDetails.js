@@ -22,6 +22,13 @@ const RestaurantDetail = ({ match, history }) => {
     }, [dispatch, match])
 
 
+
+
+    const bookNowHandler = () => {
+        history.push(`/bookNow/${match.params.id}`)
+    }
+
+
     return (
         <>
             <div>
@@ -49,7 +56,7 @@ const RestaurantDetail = ({ match, history }) => {
                                             })}
                                         </Carousel>
 
-                                        
+
                                     </Col>
 
 
@@ -91,9 +98,20 @@ const RestaurantDetail = ({ match, history }) => {
 
                                     <Col className="de">
 
-                                        <div class="d-grid gap-2">
+                                        {/* <div class="d-grid gap-2">
                                             <a class="btnn" type="button" href="/booknow">Book Your Table Now!</a>
-                                        </div>
+                                        </div> */}
+
+                                        <ListGroup.Item>
+                                            <Button
+                                                onClick={bookNowHandler}
+                                                className='btn-block '
+                                                type='button'
+                                                variant='warning'
+                                            >
+                                               Book Now !
+                                            </Button>
+                                        </ListGroup.Item>
 
 
                                         <Row>
