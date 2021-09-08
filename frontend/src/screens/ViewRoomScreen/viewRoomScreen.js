@@ -57,7 +57,7 @@ const ViewRoomScreen = ({ match, history }) => {
                                                             <br></br>
                                                             <div class="vl">
                                                                   <div className="jk">
-                                                                        <h6>Shangri-La Colombo</h6>
+                                                                        <h6>Grand Hotel Colombo</h6>
                                                                         <h1> {rooms.name}</h1>
                                                                   </div>
                                                             </div>
