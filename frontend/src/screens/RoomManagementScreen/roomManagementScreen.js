@@ -1,14 +1,22 @@
-import React from 'react'
+import { React, useRef } from 'react'
 import { Tabs } from "antd";
 import { Button, Row, Col } from 'react-bootstrap'
 import CreateRoomScreen from '../CreateRoomScreen/createRoomScreen';
 import RoomsListScreen from '../RoomsListScreen/roomsListScreen';
 import { Container } from 'react-bootstrap';
 import BookingListScreen from '../BookingListScreen/bookingListScreen';
+import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
 
 const { TabPane } = Tabs;
 
 const RoomManagementScreen = () => {
+
+      const pdfExportComponent = useRef(null);
+
+      const handleExportWithComponent = (event) => {
+            pdfExportComponent.current.save();
+      }
+
       return (
 
             <Container>
@@ -17,9 +25,7 @@ const RoomManagementScreen = () => {
                         <h2 className="text-center m-2" style={{ fontSize: "35px" }}>ROOM MANAGEMENT</h2>
                         <Row className='align-items-center'>
                               <Col className='text-right'>
-                                    <Button className='my-3'>
-                                          <i className='fas fa-plus'>  Generate Report</i>
-                                    </Button>
+                                    <Button primary={true} onClick={handleExportWithComponent}>Export with Component</Button>
                               </Col>
                         </Row>
                         <Tabs defaultActiveKey="1">
@@ -39,8 +45,12 @@ const RoomManagementScreen = () => {
                               <TabPane tab="BOOKINGS" key="3">
 
                                     <div className="row">
-                                          <BookingListScreen />
+                                          <PDFExport ref={pdfExportComponent} paperSize="A4">
+                                                <BookingListScreen />
+
+                                          </PDFExport>
                                     </div>
+
                               </TabPane>
                               <TabPane tab="Users" key="4">
 
@@ -49,7 +59,7 @@ const RoomManagementScreen = () => {
                               </TabPane>
                         </Tabs>
                   </div>
-            </Container>
+            </Container >
       )
 }
 
