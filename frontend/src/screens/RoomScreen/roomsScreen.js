@@ -139,7 +139,7 @@ const RoomsScreen = () => {
                                                       <h1>{room.name}</h1>
                                                       <b>
                                                             <p>Max Count: {room.maxcount}</p>
-                                                            <p>Phone Number: {room.phonenumber}</p>
+                                                            <p></p>
                                                             <p>Type: {room.type}</p>
                                                       </b>
 
