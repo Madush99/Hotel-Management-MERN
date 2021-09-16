@@ -138,7 +138,7 @@ const RestaurantUpdateScreen = ({ match, history }) => {
 
     return (
         <>
-            <Link to='/admin/productlist' className='btn btn-light my-3'>
+            <Link to='/restaurantManagement' className='btn btn-primary my-3' style={{ marginLeft:"80px"}}>
                 Go Back
             </Link>
             <FormContainer>
