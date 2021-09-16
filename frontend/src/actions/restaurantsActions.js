@@ -11,7 +11,11 @@ import {
     REST_CREATE_FAIL,
     REST_DELETE_REQUEST,
     REST_DELETE_SUCCESS,
-    REST_DELETE_FAIL
+    REST_DELETE_FAIL,
+    REST_UPDATE_REQUEST,
+    REST_UPDATE_SUCCESS,
+    REST_UPDATE_FAIL,
+    
 } from '../constants/restaurentsConstants'
 
 
@@ -131,3 +135,30 @@ export const createRest = (name,type,tables,phoneNo,email,location,image1,image2
       }
 }
 
+
+
+ export const updateRestaurantDetails = (restaurant) => async(dispatch) => {
+
+      try{
+            dispatch({
+                  type: REST_UPDATE_REQUEST,
+            })
+
+            const { data } = axios.put(`/api/restaurents/${restaurant._id}`, restaurant)
+            
+            dispatch({
+                  type: REST_UPDATE_SUCCESS,
+                  payload: data,
+            })
+
+      } catch (error) {
+            dispatch({
+                  type: REST_UPDATE_FAIL,
+                  payload:
+                        error.response && error.response.data.message
+                        ? error.response.data.message
+                        : error.message
+            })
+      }
+
+ }

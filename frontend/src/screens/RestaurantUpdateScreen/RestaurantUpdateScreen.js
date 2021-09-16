@@ -6,11 +6,11 @@ import FormContainer from '../../components/FormContainer'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../../components/Message'
 import Loader from '../../components/Loader'
-import { getRestDetails } from '../../actions/restaurantsActions'
+import { getRestDetails, updateRestaurantDetails } from '../../actions/restaurantsActions'
+import { REST_UPDATE_RESET } from '../../constants/restaurentsConstants'
 
 
-
-const RestaurantUpdateScreen = ({ match }) => {
+const RestaurantUpdateScreen = ({ match, history }) => {
 
     const restaurantId = match.params.id
 
@@ -32,31 +32,51 @@ const RestaurantUpdateScreen = ({ match }) => {
     const restDetails = useSelector((state) => state.restDetails)
     const { loading, error, restaurants } = restDetails
 
+    const restUpdate = useSelector((state) => state.restUpdate)
+    const { loading: loadingUpdate, error: errorUpdate, success: successUpdate} = restUpdate
+
 
     useEffect(() => {
 
-        if (!restaurants.name || restaurants._id !== restaurantId) {
-            dispatch(getRestDetails(restaurantId))
-        } else {
-            setName(restaurants.name)
-            setType(restaurants.type)
-            setTables(restaurants.tables)
-            setPhoneNo(restaurants.phoneNo)
-            setEmail(restaurants.email)
-            setLocation(restaurants.location)
-            setImage1(restaurants.image1)
-            setImage2(restaurants.image2)
-            setImage3(restaurants.image3)
-            setDescription(restaurants.description)
+        if(successUpdate){
+            dispatch({ type: REST_UPDATE_RESET })
+            history.push('/restaurantManagement')
+        }else {
+            if (!restaurants.name || restaurants._id !== restaurantId) {
+                dispatch(getRestDetails(restaurantId))
+            } else {
 
+                setName(restaurants.name)
+                setType(restaurants.type)
+                setTables(restaurants.tables)
+                setPhoneNo(restaurants.phoneNo)
+                setEmail(restaurants.email)
+                setLocation(restaurants.location)
+                setImage1(restaurants.image1)
+                setImage2(restaurants.image2)
+                setImage3(restaurants.image3)
+                setDescription(restaurants.description)
+            }
 
-        }
-    }, [dispatch, restaurantId, restaurants, match])
+        }     
+    }, [dispatch,history, restaurantId, restaurants, match, successUpdate])
 
 
     const submitHandler = (e) => {
         e.preventDefault()
-        //Update restaurant
+        dispatch(updateRestaurantDetails({
+            _id: restaurantId,
+            name,
+            type,
+            tables,
+            phoneNo,
+            email,
+            location,
+            image1,
+            image2,
+            image3,
+            description
+        }))
     }
 
     const uploadFileHandler1 = async (e) => {
@@ -123,8 +143,8 @@ const RestaurantUpdateScreen = ({ match }) => {
             </Link>
             <FormContainer>
                 <h1 style={{ textAlign: "center" }}>UPDATE RESTAURANTS</h1>
-                {loading && <Loader />}
-                {error && <Message variant='danger'>{error} </Message>}
+                {loadingUpdate && <Loader />}
+                {errorUpdate && <Message variant='danger'>{errorUpdate} </Message>}
                 {loading ? (
                     <Loader />
                 ) : error ? (
