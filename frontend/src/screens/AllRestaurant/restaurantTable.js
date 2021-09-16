@@ -82,11 +82,11 @@ const RestaurantListScreen = () => {
                                         <td>{restaurant.email}</td>
                                         <td>{restaurant.location}</td>
                                         <td>
-                                            <LinkContainer to=''>
-                                                <Button variant='light' className='btn-sm'>
-                                                    <i className='fas fa-edit'></i>
-                                                </Button>
-                                            </LinkContainer>
+                                        <LinkContainer to={`/updateRestaurant/${restaurant._id}`} >
+                                                                  <Button variant='light' className='btn-sm'>
+                                                                        <i className='fas fa-edit'></i>
+                                                                  </Button>
+                                                            </LinkContainer>
                                             <Button
                                                 variant='danger'
                                                 className='btn-sm'
