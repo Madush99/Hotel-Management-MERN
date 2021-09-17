@@ -5,6 +5,7 @@ import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Table, Button } from 'react-bootstrap'
+import { Tag, Divider } from 'antd';
 
 const BookingListScreen = () => {
 
@@ -49,7 +50,7 @@ const BookingListScreen = () => {
                                                       <td>{book.todate}</td>
                                                       <td>{book.totalDays}</td>
                                                       <td>{book.totalAmount}</td>
-                                                      <td>{book.status} <i className='fad fa-check' style={{ color: 'green' }}></i></td>
+                                                      <td>{book.status === 'booked' ? (<Tag color="green">Confirmed <i className='fad fa-check' style={{ color: 'green' }}></i></Tag>) : (<Tag color="red">Cancelled  <i className='fad fa-times' style={{ color: 'red' }}></i></Tag>)} </td>
                                                       <td>
                                                             <LinkContainer to='' >
                                                                   <Button variant='light' className='btn-sm'>
