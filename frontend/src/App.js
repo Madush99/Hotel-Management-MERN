@@ -43,6 +43,7 @@ import WeddingListScreen from './screens/weddingListScreen/weddingListScreen'
 import WedEventMgtScreen from './screens/weddingEventMgtScreen/weddingEventMgtScreen'
 import TableBookings from './screens/TableBookingListScreen/tableBookinglistScreen'
 import ConferenceListScreen from './screens/conferenceListScreen/conferenceListScreen'
+import RestaurantUpdateScreen from './screens/RestaurantUpdateScreen/RestaurantUpdateScreen';
 
 
 
@@ -95,6 +96,7 @@ const App = () => {
         <Route path='/wedList' component={WeddingListScreen} />
         <Route path='/wedEveMgt' component={WedEventMgtScreen} />
         <Route path='/conList' component={ConferenceListScreen} />
+        <Route path="/updateRestaurant/:id" component={RestaurantUpdateScreen} />
       </div>
     </Router>
   );
