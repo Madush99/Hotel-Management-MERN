@@ -126,13 +126,12 @@ const cancelBookings = asyncHandler(async (req, res) => {
       try {
             const bookingitem = await Bookings.findOne({ _id: bookingid })
             bookingitem.status = 'cancelled'
-            await bookingitem.save()
-
+            await bookingitem.save();
             const room = await Rooms.findOne({ _id: roomid })
             const bookings = room.currentBookings
             const temp = bookings.filter(booking => booking.bookingid.toString() !== bookingid)
-            console.log(temp)
-            room.currentBookings = temp
+            console.log(temp);
+            room.currentBookings = temp;
             await room.save()
 
             res.send('Bookings cancelled sucessfully')
@@ -142,16 +141,7 @@ const cancelBookings = asyncHandler(async (req, res) => {
       }
 })
 
-const getAllBookedRooms = asyncHandler(async (req, res) => {
-      const bookings = await Bookings.find(req.params.status = 'booked')
-
-      if (bookings) {
-            res.json(bookings)
-      } else {
-            res.status(404)
-      }
-})
 
 
 
-export { bookRoom, getallbookings, getUserBookings, cancelBookings, getAllBookedRooms }
+export { bookRoom, getallbookings, getUserBookings, cancelBookings }
