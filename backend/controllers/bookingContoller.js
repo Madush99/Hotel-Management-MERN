@@ -142,6 +142,16 @@ const cancelBookings = asyncHandler(async (req, res) => {
       }
 })
 
+const getAllBookedRooms = asyncHandler(async (req, res) => {
+      const bookings = await Bookings.find(req.params.status = 'booked')
+
+      if (bookings) {
+            res.json(bookings)
+      } else {
+            res.status(404)
+      }
+})
 
 
-export { bookRoom, getallbookings, getUserBookings, cancelBookings }
+
+export { bookRoom, getallbookings, getUserBookings, cancelBookings, getAllBookedRooms }
