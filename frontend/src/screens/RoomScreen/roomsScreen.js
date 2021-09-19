@@ -13,6 +13,7 @@ import RoomsCarousel from '../../components/RoomsCorousel/roomsCarousel'
 import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 
+
 AOS.init();
 const { RangePicker } = DatePicker;
 
@@ -32,35 +33,36 @@ const RoomsScreen = () => {
             settodate(moment(dates[1]).format('DD-MM-YYYY'))
 
             var temp = []
-            for (var room of duplicatehotes) {
+
+            for (const room of duplicatehotes) {
                   var availability = false;
+                  if (room.currentBookings.length > 0) {
+                        for (const booking of room.currentBookings) {
 
-                  for (var booking of room.currentBookings) {
-
-                        if (room.currentBookings.length) {
-                              if (
-                                    !moment(moment(dates[0]).format('DD-MM-YYYY')).isBetween(booking.fromdate, booking.todate) &&
-                                    !moment(moment(dates[1]).format('DD-MM-YYYY')).isBetween(booking.fromdate, booking.todate)
-                              ) {
+                              if (room.currentBookings.length) {
                                     if (
-                                          moment(dates[0]).format('DD-MM-YYYY') !== booking.fromdate &&
-                                          moment(dates[0]).format('DD-MM-YYYY') !== booking.todate &&
-                                          moment(dates[1]).format('DD-MM-YYYY') !== booking.fromdate &&
-                                          moment(dates[1]).format('DD-MM-YYYY') !== booking.todate
+                                          !moment(moment(dates[0]).format('DD-MM-YYYY')).isBetween(booking.fromdate, booking.todate) &&
+                                          !moment(moment(dates[1]).format('DD-MM-YYYY')).isBetween(booking.fromdate, booking.todate)
                                     ) {
-                                          availability = true;
+                                          if (
+                                                moment(dates[0]).format('DD-MM-YYYY') !== booking.fromdate &&
+                                                moment(dates[0]).format('DD-MM-YYYY') !== booking.todate &&
+                                                moment(dates[1]).format('DD-MM-YYYY') !== booking.fromdate &&
+                                                moment(dates[1]).format('DD-MM-YYYY') !== booking.todate
+                                          ) {
+                                                availability = true;
+                                          }
                                     }
                               }
+
+
                         }
-
-
+                        if (availability === true || room.currentBookings.length === 0) {
+                              temp.push(room)
+                        }
+                        sethotels(temp)
                   }
-                  if (availability || room.currentBookings.length == 0) {
-                        temp.push(room)
-                  }
-                  sethotels(temp)
             }
-
       }
 
       useEffect(async () => {

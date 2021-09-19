@@ -129,7 +129,7 @@ const cancelBookings = asyncHandler(async (req, res) => {
             await bookingitem.save();
             const room = await Rooms.findOne({ _id: roomid })
             const bookings = room.currentBookings
-            const temp = bookings.filter(booking => booking.bookingid.toString() !== bookingid)
+            const temp = bookings.filter(booking => typeof booking.bookingid == "undefined" || booking.bookingid.toString() !== bookingid)
             console.log(temp);
             room.currentBookings = temp;
             await room.save()
