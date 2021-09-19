@@ -99,7 +99,7 @@ const updateFood = asyncHandler(async(req,res) => {
     foods.category = category,
     foods.image = image
 
-    const updateFood = await Food.save()
+    const updateFood = await foods.save()
     res.json(updateFood)
   } else {
     res.status(404)
