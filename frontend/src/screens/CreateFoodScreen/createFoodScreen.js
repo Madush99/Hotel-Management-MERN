@@ -72,7 +72,7 @@ const FoodCreateScreen = ({ match, history }) => {
       return (
             <>
                     <FormContainer>
-                        <h1 style={{ textAlign: "center" }}>ADD RESTAURANTS</h1>
+                        <h1 style={{ textAlign: "center" }}>ADD FOOD</h1>
                         {loading && <Loader />}
                         {error && <Message variant='danger'>{error} </Message>}
                         {loading ? (
