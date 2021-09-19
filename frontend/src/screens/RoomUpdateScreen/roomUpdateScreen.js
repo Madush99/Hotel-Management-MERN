@@ -55,9 +55,9 @@ const RoomUpdateScreen = ({ match, history }) => {
                         setFeatures4(rooms.features4)
                         setFeatures5(rooms.features5)
                         setRentperday(rooms.rentperday)
-                        setImageurl1(rooms.imageUrl1)
-                        setImageurl2(rooms.imageUrl2)
-                        setImageurl3(rooms.imageUrl3)
+                        setImageurl1(rooms.imageUrls[0])
+                        setImageurl2(rooms.imageUrls[1])
+                        setImageurl3(rooms.imageUrls[2])
                         setDescription(rooms.description)
                         setType(rooms.type)
                   }
