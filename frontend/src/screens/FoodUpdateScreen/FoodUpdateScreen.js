@@ -12,7 +12,21 @@ import { getFoodDetails } from '../../actions/foodsAction'
 
 
 
-const FoodUpdateScreen = () => {
+const FoodUpdateScreen = (match) => {
+    const foodId =match.params.id
+    
+    const [name, setName] = useState('')
+    const [category, setCategory] = useState('')
+    const [price, setPrice] = useState(0)
+    const [description, setDescription] = useState('')
+    const [image, setImage] = useState('') 
+    const [uploading, setUploading] = useState(false)
+
+    const dispatch = useDispatch()
+
+    const foodDetailsByid = useSelector((state) => state.foodDetailsByid)
+    const { loading, error, foods } = foodDetailsByid
+
 
 } 
 export default FoodUpdateScreen
