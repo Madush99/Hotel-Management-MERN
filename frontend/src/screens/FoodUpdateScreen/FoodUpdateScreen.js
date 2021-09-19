@@ -12,7 +12,7 @@ import { getFoodDetails } from '../../actions/foodsAction'
 
 
 
-const FoodUpdateScreen = (match) => {
+const FoodUpdateScreen = ({match}) => {
     const foodId =match.params.id
 
     const [name, setName] = useState('')

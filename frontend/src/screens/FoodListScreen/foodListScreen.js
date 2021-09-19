@@ -79,7 +79,7 @@ const FoodListScreen = ({ history, match }) => {
                                                       <td>{foods.description}</td>
                                                       
                                                       <td>
-                                                            <LinkContainer to={`/update/${foods._id}`} >
+                                                            <LinkContainer to={`/foodUpdate/${foods._id}`} >
                                                                   <Button variant='light' className='btn-sm'>
                                                                         <i className='fas fa-edit'></i>
                                                                   </Button>

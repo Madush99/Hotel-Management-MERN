@@ -123,9 +123,6 @@ const FoodCreateScreen = ({ match, history }) => {
 
                                    
 
-                                  
-
-                                    
 
                                     <Form.Group controlId='description'>
                                           <Form.Label>Descrition</Form.Label>
