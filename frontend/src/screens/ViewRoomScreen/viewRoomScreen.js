@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Carousel, Row, Col, ListGroup } from 'react-bootstrap'
 import { getRoomDetails } from '../../actions/roomAction.js'
 import '../ViewRoomScreen/viewrooms.css'
+import Message from '../../components/Message'
+import Loader from '../../components/Loader'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
 Aos.init()
@@ -25,9 +27,9 @@ const ViewRoomScreen = ({ match, history }) => {
             <>
                   <div>
                         {loading ? (
-                              <h1>loading...</h1>
+                              <Loader />
                         ) : error ? (
-                              <h1>Error....</h1>
+                              <Message />
                         ) : (
                               <>
                                     <div className="container">

@@ -10,6 +10,8 @@ import 'antd/dist/antd.css'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import RoomsCarousel from '../../components/RoomsCorousel/roomsCarousel'
+import Message from '../../components/Message'
+import Loader from '../../components/Loader'
 
 AOS.init();
 const { RangePicker } = DatePicker;
@@ -126,7 +128,7 @@ const RoomsScreen = () => {
 
                   <div className="row justify-content-center mt-5"  >
                         {loading ? (
-                              <h1>loading....</h1>
+                              <Loader />
                         ) : (
 
                               <div className="col-md-9 mt-2">
