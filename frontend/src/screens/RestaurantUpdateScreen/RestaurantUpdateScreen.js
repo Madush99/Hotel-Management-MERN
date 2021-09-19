@@ -52,9 +52,9 @@ const RestaurantUpdateScreen = ({ match, history }) => {
                 setPhoneNo(restaurants.phoneNo)
                 setEmail(restaurants.email)
                 setLocation(restaurants.location)
-                setImage1(restaurants.image1)
-                setImage2(restaurants.image2)
-                setImage3(restaurants.image3)
+                setImage1(restaurants.images[0])
+                setImage2(restaurants.images[1])
+                setImage3(restaurants.images[2])
                 setDescription(restaurants.description)
             }
 
