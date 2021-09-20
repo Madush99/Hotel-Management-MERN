@@ -7,7 +7,9 @@ import Reservation from '../models/tableBookingModel.js'
 const createTBooking = asyncHandler(async (req, res) => {
     const {
         userid,
+        userName,
         restaurantid,
+        restaurantName,
         date,
         phoneNo,
         adults,
@@ -19,7 +21,9 @@ const createTBooking = asyncHandler(async (req, res) => {
     const newReserve = new Reservation({
 
         userid,
+        userName,
         restaurantid,
+        restaurantName,
         date,
         phoneNo,
         adults,
@@ -42,4 +46,16 @@ const getAlltableBookings = asyncHandler(async (req, res) => {
     res.json(Tbookings)
 })
 
-export { createTBooking, getAlltableBookings }
+
+const getUserTableBookings = asyncHandler(async(req, res) =>{
+
+    const { userid } = req.body
+try{
+    const tBookings = await Reservation.find({ userid: userid})
+    res.json(tBookings)
+}catch (error){
+    return res.status(400).json({message:"Error"})
+}
+})
+
+export { createTBooking, getAlltableBookings, getUserTableBookings }

@@ -46,8 +46,8 @@ const TbookingsListScreen = ({ history }) => {
                             {tablebookings.map(tbooking => (
                                 <tr key={tbooking._id}>
                                     <td>{tbooking._id}</td>
-                                    <td>{tbooking.userid}</td>
-                                    <td>{tbooking.restaurantid}</td>
+                                    <td>{tbooking.userName}</td>
+                                    <td>{tbooking.restaurantName}</td>
                                     <td>{tbooking.date}</td>
                                     <td>{tbooking.phoneNo}</td>
                                     <td>{tbooking.adults}</td>

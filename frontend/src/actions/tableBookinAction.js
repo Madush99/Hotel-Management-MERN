@@ -10,7 +10,7 @@ import {
 
 
 
-export const creatTableBooking = (userid,restaurantid,date,phoneNo,adults,childrens,time) => async (dispatch, getState) => {
+export const creatTableBooking = (userid,userName,restaurantid,restaurantName,date,phoneNo,adults,childrens,time) => async (dispatch, getState) => {
     try {
       dispatch({
         type: TBOOKING_CREATE_REQUEST,
@@ -26,7 +26,7 @@ export const creatTableBooking = (userid,restaurantid,date,phoneNo,adults,childr
     //     },
     //   }
   
-      const { data } = await axios.post(`/api/tableBooking`, {userid,restaurantid,date,phoneNo,adults,childrens,time})
+      const { data } = await axios.post(`/api/tableBooking`, {userid,userName,restaurantid,restaurantName,date,phoneNo,adults,childrens,time})
   
       dispatch({
         type: TBOOKING_CREATE_SUCCESS,

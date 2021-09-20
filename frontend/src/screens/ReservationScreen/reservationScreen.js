@@ -30,9 +30,10 @@ const ReservationScreen = ({ match, history }) => {
       const { restaurants } = restDetails
 
    
-      const [userid, setUserid] = useState(JSON.parse(localStorage.getItem('userInfo')).name)
-    
-       const [restaurantid,setRestaurant] = useState(restaurants.name)
+      const [userid, setUserid] = useState(JSON.parse(localStorage.getItem('userInfo'))._id)
+      const [userName, setUserName] = useState(JSON.parse(localStorage.getItem('userInfo')).name)
+      const [restaurantid,setRestaurant] = useState(restaurants._id)
+      const [restaurantName,setRestaurantName] = useState(restaurants.name)
       const [date, setDate] = useState('')
       const [phoneNo, setPhoneNo] = useState('')
       const [adults, setAdults] = useState(0)
@@ -53,7 +54,7 @@ const ReservationScreen = ({ match, history }) => {
 
       const submitHandler = (e) => {
             e.preventDefault()
-            dispatch(creatTableBooking(userid,restaurants.name,date,phoneNo, adults, childrens, time ))
+            dispatch(creatTableBooking(userid,userName,restaurants._id,restaurants.name,date,phoneNo, adults, childrens, time ))
       }
 
 
@@ -74,7 +75,7 @@ const ReservationScreen = ({ match, history }) => {
                         ) : (
                               <Form onSubmit={submitHandler}>
                                     <Form.Group controlId='userid'>
-                                          <Form.Label>User Name</Form.Label>
+                                          <Form.Label>User ID</Form.Label>
                                           <Form.Control
                                                 type='text'
                                                 placeholder=''
@@ -84,6 +85,28 @@ const ReservationScreen = ({ match, history }) => {
                                     </Form.Group>
 
                                     <Form.Group controlId='restaurantid'>
+                                          <Form.Label>restaurant ID</Form.Label>
+                                          <Form.Control
+                                                type='text'
+                                                placeholder=''
+                                                value={restaurants._id}
+                                                onChange={(e) => setRestaurant(e.target.value)}
+                                          ></Form.Control>
+                                    </Form.Group>
+
+                                    <Form.Group controlId='username'>
+                                          <Form.Label>User Name</Form.Label>
+                                          <Form.Control
+                                                type='text'
+                                                placeholder=''
+                                                value={userName}
+                                                onChange={(e) => setUserName(e.target.value)}
+                                          ></Form.Control>
+                                    </Form.Group>
+
+                                  
+
+                                     <Form.Group controlId='restaurantid'>
                                           <Form.Label>restaurant Name</Form.Label>
                                           <Form.Control
                                                 type='text'
@@ -92,9 +115,6 @@ const ReservationScreen = ({ match, history }) => {
                                                 onChange={(e) => setRestaurant(e.target.value)}
                                           ></Form.Control>
                                     </Form.Group>
-
-                                   
-
 
                                     <Form.Group controlId='date'>
                                           <Form.Label>Date</Form.Label>

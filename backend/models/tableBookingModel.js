@@ -10,6 +10,15 @@ const tableBookingSchema = mongoose.Schema({
             type: String,
             required: true,     
       },
+      userName:{
+            type:String,
+            required: true
+      },
+
+      restaurantName:{
+            type: String,
+            required: true
+      },
      
       date: {
             type: Date,
