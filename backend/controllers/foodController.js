@@ -80,6 +80,35 @@ const deleteFood = asyncHandler(async (req, res) => {
   }
 })
 
+const updateFood = asyncHandler(async(req,res) => {
+  const {
+    name,
+    description,
+    price,
+    category,
+    image,
+
+  } = req.body
+
+  const foods = await Food.findById(req.params.id)
+
+  if (foods) {
+    foods.name = name,
+    foods.description = description,
+    foods.price = price,
+    foods.category = category,
+    foods.image = image
+
+    const updateFood = await foods.save()
+    res.json(updateFood)
+  } else {
+    res.status(404)
+    throw new Error('Food Item Not found')
+  }
 
 
-export { getFoods, getFoodbyID, createFood, deleteFood }
+})
+
+
+
+export { getFoods, getFoodbyID, createFood, deleteFood,updateFood }

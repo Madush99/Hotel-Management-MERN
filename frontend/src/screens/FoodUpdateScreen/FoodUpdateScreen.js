@@ -1,78 +1,53 @@
+import React, {useEffect,useState} from 'react'
+import {Form,Button,Container} from 'react-bootstrap'
 import axios from 'axios'
-import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Form, Button, Select, Dropdown } from 'react-bootstrap'
+import FormContainer from '../../components/FormContainer'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../../components/Message'
 import Loader from '../../components/Loader'
-import FormContainer from '../../components/FormContainer'
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min'
-import { addFood } from '../../actions/foodsAction'
-import Swal from 'sweetalert2'
+import { getFoodDetails } from '../../actions/foodsAction'
 
 
 
 
 
-const FoodCreateScreen = ({ match, history }) => {
+const FoodUpdateScreen = ({match}) => {
+    const foodId =match.params.id
 
+    const [name, setName] = useState('')
+    const [category, setCategory] = useState('')
+    const [price, setPrice] = useState(0)
+    const [description, setDescription] = useState('')
+    const [image, setImage] = useState('') 
+    const [uploading, setUploading] = useState(false)
 
-      const [name, setName] = useState('')
-      const [category, setCategory] = useState('')
-      const [price, setPrice] = useState(0)
-      const [description, setDescription] = useState('')
-      const [image, setImage] = useState('') 
-      const [uploading, setUploading] = useState(false)
+    const dispatch = useDispatch()
 
+    const foodDetailsByid = useSelector((state) => state.foodDetailsByid)
+    const { loading, error, foods } = foodDetailsByid
 
-      const dispatch = useDispatch()
+    useEffect(() =>{
+        if(!foods.name || foods._id !== foodId){
+            dispatch(getFoodDetails(foodId))
+        }else{
+            setName(foods.name)
+            setCategory(foods.category)
+            setPrice(foods.price)
+            setDescription(foods.description)
+            setImage(foods.image)
+    
+        }
+    },[dispatch,foodId,foods])
 
-
-      const createFood = useSelector((state) => state.createFood)
-      const { loading, error, foods } = createFood
-
-
-
-      useEffect(() => {
-            if (foods) {
-                  Swal.fire('Congrats', 'Added SUCCESSFULY', 'success').then(result => {
-                        window.location.href = '/foodManagement'
-                  })
-            }
-      }, [history, foods])
-
-      const submitHandler = (e) => {
-            e.preventDefault()
-            dispatch(addFood(name, category, price, description,image))
-      }
-
-
-
-      const uploadFileHandler = async (e) => {
-            const file = e.target.files[0]
-            const formData = new FormData()
-            formData.append('image', file)
-            setUploading(true)
-
-            try {
-                  const { data } = await axios.post('/api/uploads/image', formData)
-
-                  setImage(data)
-                  setUploading(false)
-            } catch (error) {
-                  console.error(error)
-                  setUploading(false)
-            }
-      }
-
-     
-
-      
-
-      return (
-            <>
-                    <FormContainer>
-                        <h1 style={{ textAlign: "center" }}>ADD FOOD</h1>
+    const submitHandler = (e) => {
+        e.preventDefault()
+        //Update foods
+    }
+    return (
+        <>
+             <FormContainer>
+                        <h1 style={{ textAlign: "center" }}>Update Foods</h1>
                         {loading && <Loader />}
                         {error && <Message variant='danger'>{error} </Message>}
                         {loading ? (
@@ -123,6 +98,9 @@ const FoodCreateScreen = ({ match, history }) => {
 
                                    
 
+                                  
+
+                                    
 
                                     <Form.Group controlId='description'>
                                           <Form.Label>Descrition</Form.Label>
@@ -148,7 +126,7 @@ const FoodCreateScreen = ({ match, history }) => {
                                                 id='image-file'
                                                 label='Choose File'
                                                 custom
-                                                onChange={uploadFileHandler}
+                                                // onChange={uploadFileHandler}
                                           ></Form.File>
                                           {uploading && <Loader />}
                                     </Form.Group>
@@ -161,8 +139,10 @@ const FoodCreateScreen = ({ match, history }) => {
                               </Form>
                         )}
                   </FormContainer>
-            </>
-      )
-}
+        </>
+    )
 
-export default FoodCreateScreen
+
+} 
+
+export default FoodUpdateScreen
