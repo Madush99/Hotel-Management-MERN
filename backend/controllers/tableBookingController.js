@@ -49,13 +49,23 @@ const getAlltableBookings = asyncHandler(async (req, res) => {
 
 const getUserTableBookings = asyncHandler(async (req, res) => {
 
-    const { userid } = req.body
+    // const { userid } = req.body
+    // try {
+    //     const tBookings = await Reservation.find({ userid: userid })
+    //     res.json(tBookings)
+    // } catch (error) {
+    //     return res.status(400).json({ message: "Error" })
+    // }
+
+    
+    const { userid } = req.body;
     try {
-        const tBookings = await Reservation.find({ userid: userid })
-        res.json(tBookings)
+          const bookings = await Reservation.find({ userid: userid }).sort({ _id: -1 })
+          res.send(bookings)
     } catch (error) {
-        return res.status(400).json({ message: "Error" })
+          return res.status(400).json({ message: "Error" })
     }
+     
 })
 
 export { createTBooking, getAlltableBookings, getUserTableBookings }
