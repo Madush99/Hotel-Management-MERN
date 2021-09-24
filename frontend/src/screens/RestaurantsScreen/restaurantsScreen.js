@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import Carousel from '../../components/RestaurantImages/restaurantsCarousal'
-import {allRestaurants} from '../../actions/restaurantsActions'
+import {allRestaurants, filterRestaurants} from '../../actions/restaurantsActions'
+import Search from '../../components/Search/Search'
 import { useDispatch, useSelector } from 'react-redux'
 import Rest from '../../components/RestaurantImages/resturantsDisplay'
 import Message from '../../components/Message'
@@ -11,7 +12,10 @@ import './style.css'
 
 const RestaurantScreen = () => {
 
+      
+
       const dispatch = useDispatch()
+    
 
       const restaurantsAll = useSelector((state) => state.restaurantsAll)
       const { loading, error, restaurants } = restaurantsAll
@@ -24,6 +28,7 @@ const RestaurantScreen = () => {
       return (
             <>
             <Carousel />
+            <Search />
             <br></br>
                 <h1 style={{ textAlign: "center" }}>RESTAURANTS</h1>
                 {

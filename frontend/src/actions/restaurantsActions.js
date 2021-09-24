@@ -15,6 +15,7 @@ import {
     REST_UPDATE_REQUEST,
     REST_UPDATE_SUCCESS,
     REST_UPDATE_FAIL,
+ 
     
 } from '../constants/restaurentsConstants'
 
@@ -162,3 +163,19 @@ export const createRest = (name,type,tables,phoneNo,email,location,image1,image2
       }
 
  }
+
+
+ export const filterRestaurants = (searchkey) => async dispatch =>{
+
+      var filteredRest;
+
+      dispatch({ type: REST_ALL_REQUEST })
+
+      try{
+            const response = await axios.get('/api/restaurents/')
+            filteredRest = response.data.filter(restaurant => restaurant.name.toLowerCase().includes(searchkey))
+            dispatch({ type: REST_ALL_SUCCESS, payload: filteredRest })
+      } catch (error){
+            dispatch({ type: REST_ALL_FAIL, payload: error })
+      }
+ } 

@@ -10,10 +10,14 @@ import { PDFExport, savePDF } from "@progress/kendo-react-pdf";
 
 
 
+
 const { TabPane } = Tabs;
 
 
 const RestaurantgementScreen = () => {
+
+      
+
 
 
       const pdfExportComponent = useRef(null)
@@ -30,14 +34,7 @@ const RestaurantgementScreen = () => {
                   <div className="ml-3">
                         <h2 className="text-center m-2" style={{ fontSize: "35px" }}>RESTAURANT MANAGEMENT</h2>
                         <br />
-                        <Row className=''>
-
-                              <Col className='text-left'>
-                                    <form class="form-inline my-2 my-lg-0">
-                                          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                                          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-                                    </form>
-                              </Col>
+                        <Row className=''>   
 
                               <Col className='text-right'>
                                     <Button primary={true} onClick={handleExportWithComponent}>Generate Report</Button>
