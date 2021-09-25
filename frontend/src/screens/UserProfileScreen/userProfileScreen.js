@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap';
 import { Tabs } from "antd";
 import { Button, Row, Col } from 'react-bootstrap'
 import UserRoomBookimgs from '../UserRoomBookings/userRoomBookimgs';
+import UserTableReservations from '../UserTableReservations/UserTableReservations';
 const { TabPane } = Tabs;
 
 const UserProfile = () => {
@@ -36,7 +37,7 @@ const UserProfile = () => {
                                     <TabPane tab="RESTAURANT BOOKINGS" key="3">
 
                                           <div className="row">
-
+                                                <UserTableReservations />
                                           </div>
 
                                     </TabPane>

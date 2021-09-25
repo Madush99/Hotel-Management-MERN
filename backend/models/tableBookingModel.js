@@ -21,7 +21,7 @@ const tableBookingSchema = mongoose.Schema({
       },
      
       date: {
-            type: Date,
+            type: String,
             required: true,
       },
       phoneNo: {

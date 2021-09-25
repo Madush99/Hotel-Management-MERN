@@ -10,6 +10,7 @@ import { Redirect } from 'react-router-dom/cjs/react-router-dom.min'
 import { creatTableBooking } from '../../actions/tableBookinAction'
 import { getRestDetails } from '../../actions/restaurantsActions'
 import Swal from 'sweetalert2'
+import moment from 'moment'
 
 
 
@@ -41,7 +42,7 @@ const ReservationScreen = ({ match, history }) => {
       const [time, setTime] = useState('')
      
 
-
+    
 
       useEffect(() => {
             if (tbookings) {
@@ -121,7 +122,7 @@ const ReservationScreen = ({ match, history }) => {
                                           <Form.Control
                                                 type='date'
                                                 placeholder='Date'
-                                                value={date}
+                                                value= {date}
                                                 onChange={(e) => setDate(e.target.value)}
                                           ></Form.Control>
                                     </Form.Group>

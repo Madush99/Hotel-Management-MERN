@@ -39,7 +39,7 @@ const TbookingsListScreen = ({ history }) => {
                                 <th>ADULTS</th>
                                 <th>CHILDRENS</th>
                                 <th>TIME</th>
-                                <th></th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -53,7 +53,8 @@ const TbookingsListScreen = ({ history }) => {
                                     <td>{tbooking.adults}</td>
                                     <td>{tbooking.childrens}</td>
                                     <td>{tbooking.time}</td>
-                                    <td>
+                                    <td>gg</td>
+                                    {/* <td>
                                         <LinkContainer to=''>
                                             <Button variant='light' className='btn-sm'>
                                                 <i className='fas fa-edit'></i>
@@ -63,7 +64,7 @@ const TbookingsListScreen = ({ history }) => {
                                           
                                             <i className='fas fa-trash'></i>
                                         </Button>
-                                    </td>
+                                    </td> */}
                                 </tr>
 
 

@@ -1,5 +1,7 @@
 import asyncHandler from 'express-async-handler'
+import moment from 'moment'
 import Reservation from '../models/tableBookingModel.js'
+import Restaurant from '../models/restaurentModel.js'
 
 
 
@@ -24,7 +26,7 @@ const createTBooking = asyncHandler(async (req, res) => {
         userName,
         restaurantid,
         restaurantName,
-        date,
+        date:moment(date).format("DD-MM-YYYY"),
         phoneNo,
         adults,
         childrens,
@@ -68,4 +70,30 @@ const getUserTableBookings = asyncHandler(async (req, res) => {
      
 })
 
-export { createTBooking, getAlltableBookings, getUserTableBookings }
+
+
+
+const cancelBooking = asyncHandler(async (req, res) => {
+    const { bookingid, restaurantid } = req.body
+
+    try {
+          const booking = await Reservation.findOne({ _id: bookingid })
+          booking.status = 'cancelled'
+          await booking.save();
+          const table = await Restaurant.findOne({ _id: restaurantid })
+          const bookings = table.currentBookings
+          const temp = bookings.filter(booking => typeof booking.bookingid == "undefined" || booking.bookingid.toString() !== bookingid)
+          console.log(temp);
+          table.currentBookings = temp;
+          await room.save()
+
+          res.send('Bookings cancelled sucessfully')
+    } catch (error) {
+          console.log(error);
+          return res.status(400).json({ message: "error" })
+    }
+})
+
+
+
+export { createTBooking, getAlltableBookings, getUserTableBookings, cancelBooking }
