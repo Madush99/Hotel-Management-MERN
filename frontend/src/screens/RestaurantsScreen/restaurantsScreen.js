@@ -30,7 +30,7 @@ const RestaurantScreen = () => {
             <Carousel />
             <Search />
             <br></br>
-                <h1 style={{ textAlign: "center" }}>RESTAURANTS</h1>
+                <h1 style={{ textAlign: "center" }}>RESTAURANTS & Bars</h1>
                 {
                         loading ? (<Loader />) : error ? (<Message variant='danger'>{error}</Message>
                         ) : (
