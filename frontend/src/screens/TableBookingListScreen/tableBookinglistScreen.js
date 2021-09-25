@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import { listBookings } from '../../actions/tableBookinAction'
+import { Tag, Divider } from 'antd';
 
 const TbookingsListScreen = ({ history }) => {
     const dispatch = useDispatch()
@@ -53,7 +54,7 @@ const TbookingsListScreen = ({ history }) => {
                                     <td>{tbooking.adults}</td>
                                     <td>{tbooking.childrens}</td>
                                     <td>{tbooking.time}</td>
-                                    <td>gg</td>
+                                    <td>{tbooking.status === 'booked' ? (<Tag color='green'>Confirmed</Tag>) : (<Tag color='red'>Cancelled</Tag>)}</td>
                                     {/* <td>
                                         <LinkContainer to=''>
                                             <Button variant='light' className='btn-sm'>

@@ -40,6 +40,11 @@ const tableBookingSchema = mongoose.Schema({
             type: String,
             required: true,
       },
+      status: {
+            type: String,
+            required: true,
+            default: 'booked'
+      },
      
 
 }, {

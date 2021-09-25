@@ -7,6 +7,6 @@ import { protect, admin } from '../middleware/authMiddleware.js'
 
 router.route('/').post(createTBooking).get(protect, getAlltableBookings)
 router.post('/tableReservations',  getUserTableBookings)
-router.put('/tableReservations/cancel', cancelBooking)
+router.post('/cancelReservation', cancelBooking)
 
 export default router

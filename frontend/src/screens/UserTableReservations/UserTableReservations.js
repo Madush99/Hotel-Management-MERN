@@ -31,7 +31,7 @@ const UserTableReservations = () => {
 
         try {
             setLoading(true)
-            const result = await (await axios.post('/tableReservations/cancel', { bookingid, restaurantid })).data
+            const result = await (await axios.post('/api/tableBooking/cancelReservation', { bookingid })).data
             setLoading(false)
             Swal.fire('Congrats', 'Your Table Reservation has cancelled', 'success').then(result => {
                 window.location.href = '/profile'

@@ -30,7 +30,8 @@ const createTBooking = asyncHandler(async (req, res) => {
         phoneNo,
         adults,
         childrens,
-        time
+        time,
+        status: 'booked'
 
     })
     try {
@@ -50,15 +51,6 @@ const getAlltableBookings = asyncHandler(async (req, res) => {
 
 
 const getUserTableBookings = asyncHandler(async (req, res) => {
-
-    // const { userid } = req.body
-    // try {
-    //     const tBookings = await Reservation.find({ userid: userid })
-    //     res.json(tBookings)
-    // } catch (error) {
-    //     return res.status(400).json({ message: "Error" })
-    // }
-
     
     const { userid } = req.body;
     try {
@@ -74,18 +66,18 @@ const getUserTableBookings = asyncHandler(async (req, res) => {
 
 
 const cancelBooking = asyncHandler(async (req, res) => {
-    const { bookingid, restaurantid } = req.body
+    const { bookingid } = req.body
 
     try {
           const booking = await Reservation.findOne({ _id: bookingid })
           booking.status = 'cancelled'
           await booking.save();
-          const table = await Restaurant.findOne({ _id: restaurantid })
-          const bookings = table.currentBookings
-          const temp = bookings.filter(booking => typeof booking.bookingid == "undefined" || booking.bookingid.toString() !== bookingid)
-          console.log(temp);
-          table.currentBookings = temp;
-          await room.save()
+        //   const table = await Restaurant.findOne({ _id: restaurantid })
+        //   const bookings = table.currentBookings
+        //   const temp = bookings.filter(booking => typeof booking.bookingid == "undefined" || booking.bookingid.toString() !== bookingid)
+        //   console.log(temp);
+        //   table.currentBookings = temp;
+        //   await table.save()
 
           res.send('Bookings cancelled sucessfully')
     } catch (error) {
