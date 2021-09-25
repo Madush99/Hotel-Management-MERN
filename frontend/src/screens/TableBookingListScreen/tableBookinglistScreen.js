@@ -54,7 +54,8 @@ const TbookingsListScreen = ({ history }) => {
                                     <td>{tbooking.adults}</td>
                                     <td>{tbooking.childrens}</td>
                                     <td>{tbooking.time}</td>
-                                    <td>{tbooking.status === 'booked' ? (<Tag color='green'>Confirmed</Tag>) : (<Tag color='red'>Cancelled</Tag>)}</td>
+                                    <td>{tbooking.status === 'booked' ? (<Tag color='green'>Confirmed</Tag>) : (<Tag color='red'><i class="fa fa-times" aria-hidden="true"></i>
+                                        Cancelled</Tag>)}</td>
                                     {/* <td>
                                         <LinkContainer to=''>
                                             <Button variant='light' className='btn-sm'>
