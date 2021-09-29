@@ -138,3 +138,32 @@ export const updateWedDetails = (weddings) => async (dispatch) => {
       }
 
 }
+
+export const filterweddings = (searchkey) => async dispatch => {
+      var filteredWeddings;
+      try {
+            dispatch({
+            type: WEDDING_ALL_REQUEST,
+            })
+
+            const  response = await axios.get('/api/weddings/')
+            filteredWeddings = response.data.filter(weddings => weddings.wedHallName.toLowerCase().includes(searchkey))
+            dispatch({
+                type: WEDDING_ALL_SUCCESS,
+                payload: filteredWeddings
+            })
+
+      } catch (error) {
+            console.log(error)
+                 dispatch({
+                  type: WEDDING_ALL_FAIL,
+                  payload:
+                        error.response && error.response.data.message
+                              ? error.response.data.message
+                              : error.message,
+
+            })
+
+      }
+
+  }
