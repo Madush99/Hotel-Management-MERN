@@ -1,5 +1,5 @@
 import axios from "axios"
-import { CONFERENCE_INSERT_REQUEST, CONFERENCE_INSERT_SUCCESS, CONFERENCE_INSERT_FAIL, CONFERENCE_ALL_REQUEST, CONFERENCE_ALL_SUCCESS, CONFERENCE_ALL_FAIL, CONFERENCE_BYID_REQUEST, CONFERENCE_BYID_SUCCESS, CONFERENCE_BYID_FAIL, CONFERENCE_DELETE_REQUEST, CONFERENCE_DELETE_SUCCESS, CONFERENCE_DELETE_FAIL } from '../constants/conferenceConstant.js'
+import { CONFERENCE_INSERT_REQUEST, CONFERENCE_INSERT_SUCCESS, CONFERENCE_INSERT_FAIL, CONFERENCE_ALL_REQUEST, CONFERENCE_ALL_SUCCESS, CONFERENCE_ALL_FAIL, CONFERENCE_BYID_REQUEST, CONFERENCE_BYID_SUCCESS, CONFERENCE_BYID_FAIL, CONFERENCE_DELETE_REQUEST, CONFERENCE_DELETE_SUCCESS, CONFERENCE_DELETE_FAIL, CONFERENCE_UPDATE_REQUEST, CONFERENCE_UPDATE_SUCCESS, CONFERENCE_UPDATE_FAIL, CONFERENCE_UPDATE_RESET } from '../constants/conferenceConstant.js'
 
 export const conferenceAdd = (conName, conDes, conSeats, conPrice, conFeatures, conImg1, conImg2, conImg3) => async (dispatch) => {
     try {
@@ -109,4 +109,31 @@ export const deleteConference = (id) => async (dispatch) => {
                             : error.message,
           })
     }
+}
+
+
+export const updateConDetails = (conference) => async (dispatch) => {
+
+      try {
+            dispatch({
+                  type: CONFERENCE_UPDATE_REQUEST,
+            })
+
+            const { data } = axios.put(`/api/conference/${conference._id}`, conference)
+
+            dispatch({
+                  type: CONFERENCE_UPDATE_SUCCESS,
+                  payload: data,
+            })
+
+      } catch (error) {
+            dispatch({
+                  type: CONFERENCE_UPDATE_FAIL,
+                  payload:
+                        error.response && error.response.data.message
+                              ? error.response.data.message
+                              : error.message
+            })
+      }
+
 }
