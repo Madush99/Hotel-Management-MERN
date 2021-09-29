@@ -28,7 +28,7 @@ const WeddingScreen = () => {
                 {
                         loading ? (<Loader />) : error ? (<Message variant='danger'>{error}</Message>
                         ) : (
-                <Row className='ro' style={{ backgroundColor: "#eaeaf7" }} >
+                <Row className='ro'>
                               {weddings.map((wedding) =>
 
                                     <Col key={wedding._id} sm={12} md={6} lg={4} xl={4}>

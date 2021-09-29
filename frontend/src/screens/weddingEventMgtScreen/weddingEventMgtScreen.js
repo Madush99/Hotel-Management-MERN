@@ -36,7 +36,16 @@ const WedEventMgtScreen = () => {
                                   </div>
 
                             </TabPane>
-                            <TabPane tab="INSERT CONFERENCE ROOM DETAILS" key="3">
+
+
+                            <TabPane tab="CONFERENCE ROOM LIST" key="3">
+                                  <div className="row">
+                                        <ConferenceListScreen />
+
+                                  </div>
+                            </TabPane>
+
+                            <TabPane tab="INSERT CONFERENCE ROOM DETAILS" key="4">
                                 <div className="row">
                                         <ConInsertScreen />
                                   </div>
@@ -44,12 +53,7 @@ const WedEventMgtScreen = () => {
                             </TabPane>
                             
                             
-                            <TabPane tab="CONFERENCE ROOM LIST" key="4">
-                                  <div className="row">
-                                        <ConferenceListScreen />
-
-                                  </div>
-                            </TabPane>
+                            
 
 
 
