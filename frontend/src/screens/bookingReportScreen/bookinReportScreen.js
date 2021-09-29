@@ -41,7 +41,7 @@ const BookinReportScreen = () => {
 
                                     <Container style={{ alignItems: 'center' }} >
                                           <tbody>
-                                                <PDFExport ref={pdfExportComponent} paperSize="A4">
+                                                <PDFExport ref={pdfExportComponent} paperSize="A3">
                                                       <img src={logo} className='smallimg'></img>
 
                                                       <hr className='df'></hr>
@@ -57,7 +57,7 @@ const BookinReportScreen = () => {
                                                       {bookings.map((book) => (
                                                             <tr key={book._id} >
 
-                                                                  {tot = count++}.
+                                                                  {tot = count++}
                                                                   <td style={{ paddingLeft: '10px' }}>{book.rooms}</td>
                                                                   <td style={{ paddingLeft: '10px' }}>{book.fromdate}</td>
                                                                   <td style={{ paddingLeft: '10px' }}>{book.todate}</td>

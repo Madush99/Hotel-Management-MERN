@@ -7,6 +7,7 @@ import { Container } from 'react-bootstrap';
 import BookingListScreen from '../BookingListScreen/bookingListScreen';
 import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
 import BookinReportScreen from '../bookingReportScreen/bookinReportScreen';
+import RoomsReport from '../RoomsReport/roomsReport';
 
 const { TabPane } = Tabs;
 
@@ -34,7 +35,9 @@ const RoomManagementScreen = () => {
                               <TabPane tab="ROOM LIST" key="1">
                                     <div className="row">
                                           <RoomsListScreen />
-
+                                          <PDFExport ref={pdfExportComponent} paperSize="A3">
+                                                <RoomsReport />
+                                          </PDFExport>
                                     </div>
                               </TabPane>
                               <TabPane tab="ADD ROOM" key="2">
@@ -49,7 +52,7 @@ const RoomManagementScreen = () => {
                                     <div className="row">
 
                                           <BookingListScreen />
-                                          <PDFExport ref={pdfExportComponent} paperSize="A4">
+                                          <PDFExport ref={pdfExportComponent} paperSize="A3">
                                                 <BookinReportScreen />
                                           </PDFExport>
 
