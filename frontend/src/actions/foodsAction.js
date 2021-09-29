@@ -148,3 +148,33 @@ export const updateFoodDetails = (food) => async (dispatch) => {
             })
       }
 }
+
+export const filterFoods = (searchkey) => async dispatch => {
+
+      var filteredFoods;
+
+      try {
+            dispatch({
+                  type: FOODS_ALL_REQUEST,
+            })
+  
+            const  response = await axios.get('/api/food/')
+            filteredFoods = response.data.filter(food => food.name.toLowerCase().includes(searchkey))
+
+            dispatch({
+                  type: FOODS_ALL_SUCCESS,
+                  payload: filteredFoods
+            })
+      } catch (error) {
+            console.log(error)
+  
+            dispatch({
+                  type: FOODS_ALL_FAIL,
+                  payload:
+                        error.response && error.response.data.message
+                              ? error.response.data.message
+                              : error.message,
+  
+            })
+      }
+  }

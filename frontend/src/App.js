@@ -48,9 +48,7 @@ import ReservationReport from './screens/RestaurantTableBookingReport/Reservatio
 import BookinReportScreen from './screens/bookingReportScreen/bookinReportScreen';
 import FoodUpdateScreen from './screens/FoodUpdateScreen/FoodUpdateScreen';
 import ConferenceUpdateScreen from './screens/ConferenceUpdateScreen/ConferenceUpdateScreen'
-
-
-
+import WeddingUpdateScreen from './screens/WeddingUpdateScreen/WeddingUpdateScreen'
 
 
 
@@ -105,6 +103,7 @@ const App = () => {
         <Route path="/bookingreport" component={BookinReportScreen} />
         <Route path="/foodUpdate/:id" component={FoodUpdateScreen} />
         <Route path="/conUpdate/:id" component={ConferenceUpdateScreen} />
+        <Route path="/wedUpdate/:id" component={WeddingUpdateScreen} />
       </div>
     </Router>
   );

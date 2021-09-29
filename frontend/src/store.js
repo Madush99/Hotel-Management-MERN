@@ -9,7 +9,7 @@ import {
       userDetailsReducer,
       userRegisterReducer,
 } from './reducers/userReducer'
-import { weddingInsertReducer, wedAllReducer, wedByIdReducer, wedDeleteReducer } from './reducers/weddingReducer.js'
+import { weddingInsertReducer, wedAllReducer, wedByIdReducer, wedDeleteReducer, wedUpdateReducer } from './reducers/weddingReducer.js'
 import { conferenceInsertReducer, conAllReducer, conByIdReducer, conDeleteReducer, conUpdateReducer } from './reducers/conferenceReducer'
 
 import {

@@ -6,7 +6,7 @@ import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import { Row, Col } from 'react-bootstrap'
 import WeddingCarouselContainer from '../../components/WeddingImages/weddingCorousel.js'
-
+import WedSearch from '../../components/WeddingSearch/WeddingSearch.js'
 
 const WeddingScreen = () => {
 
@@ -25,6 +25,9 @@ const WeddingScreen = () => {
             <WeddingCarouselContainer/>
             <br></br>
                 <h1 style={{ textAlign: "center" }}>Wedding Halls</h1>
+                <center>
+                <WedSearch/>
+                </center>
                 {
                         loading ? (<Loader />) : error ? (<Message variant='danger'>{error}</Message>
                         ) : (
