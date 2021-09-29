@@ -6,6 +6,7 @@ import RoomsListScreen from '../RoomsListScreen/roomsListScreen';
 import { Container } from 'react-bootstrap';
 import BookingListScreen from '../BookingListScreen/bookingListScreen';
 import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
+import BookinReportScreen from '../bookingReportScreen/bookinReportScreen';
 
 const { TabPane } = Tabs;
 
@@ -27,6 +28,7 @@ const RoomManagementScreen = () => {
                               <Col className='text-right'>
                                     <Button primary={true} onClick={handleExportWithComponent}>Export with Component</Button>
                               </Col>
+
                         </Row>
                         <Tabs defaultActiveKey="1">
                               <TabPane tab="ROOM LIST" key="1">
@@ -45,10 +47,12 @@ const RoomManagementScreen = () => {
                               <TabPane tab="BOOKINGS" key="3">
 
                                     <div className="row">
-                                          <PDFExport ref={pdfExportComponent} paperSize="A4">
-                                                <BookingListScreen />
 
+                                          <BookingListScreen />
+                                          <PDFExport ref={pdfExportComponent} paperSize="A4">
+                                                <BookinReportScreen />
                                           </PDFExport>
+
                                     </div>
 
                               </TabPane>
