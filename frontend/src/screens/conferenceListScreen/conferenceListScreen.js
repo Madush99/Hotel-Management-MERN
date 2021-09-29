@@ -85,7 +85,7 @@ const ConferenceListScreen = () => {
                                         <td>{conference.conFeatures}</td>
             
                                         <td>
-                                            <LinkContainer to=''>
+                                            <LinkContainer to={`/conUpdate/${conference._id}`}>
                                                 <Button variant='light' className='btn-sm'>
                                                     <i className='fas fa-edit'></i>
                                                 </Button>

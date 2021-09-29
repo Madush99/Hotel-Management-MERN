@@ -10,7 +10,7 @@ import {
       userRegisterReducer,
 } from './reducers/userReducer'
 import { weddingInsertReducer, wedAllReducer, wedByIdReducer, wedDeleteReducer } from './reducers/weddingReducer.js'
-import { conferenceInsertReducer, conAllReducer, conByIdReducer, conDeleteReducer } from './reducers/conferenceReducer'
+import { conferenceInsertReducer, conAllReducer, conByIdReducer, conDeleteReducer, conUpdateReducer } from './reducers/conferenceReducer'
 
 import {
       restAllReducer,
@@ -26,7 +26,8 @@ import {
       foodsAllReducer,
       foodsCreateReducer,
       foodDeleteReducer,
-      foodDetailsReducer
+      foodDetailsReducer,
+      foodUpdateRedudcer
 } from './reducers/foodReducer'
 
 import { cartReducer } from './reducers/cartReducer'
@@ -85,7 +86,9 @@ const reducer = combineReducers({
       tablebookingList: tablebookingListReducer,
       wedDelete:wedDeleteReducer,
       conDelete:conDeleteReducer,
-      restUpdate:restaurantUpdateReducer
+      restUpdate:restaurantUpdateReducer,
+      conUpdate:conUpdateReducer,
+      foodUpdate: foodUpdateRedudcer
 
 })
 

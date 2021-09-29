@@ -1,16 +1,18 @@
 import React, {useState, useEffect} from 'react'
-// import './conferenceInsert.css'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
-import { conferenceAdd } from '../../actions/conferenceAction'
+import { conferenceById } from '../../actions/conferenceAction'
 import Message from '../../components/Message.js'
 import Loader from '../../components/Loader.js'
 import { Form } from 'react-bootstrap'
 import Swal from 'sweetalert2'
 
 
-const ConInsertScreen = ({ location, history }) => {
+const ConferenceUpdateScreen = ({ match }) => {
+
+
+    const conferenceId = match.params.id
 
 
       const [conName, setName] = useState('')
@@ -25,20 +27,30 @@ const ConInsertScreen = ({ location, history }) => {
 
       const dispatch = useDispatch()
 
-      const conferenceInsert = useSelector(state => state.conferenceInsert)
-      const { loading, error, conferenceInfo } = conferenceInsert
+      const conById = useSelector(state => state.conById)
+      const { loading, error, conference } = conById
 
       useEffect(() => {
-            if (conferenceInfo) {
-                  Swal.fire('Successful', 'Successfully Inserted Conference Room', 'success').then(result => {
-                        window.location.href = '/wedEveMgt'
-                  })
-            }
-      }, [history, conferenceInfo])
+            if (!conference.conName || conference._id !== conferenceId ) {
+                dispatch(conferenceById(conferenceId))
+                  }
+                  else{
+                    setName(conference.conName)
+                    setSeats(conference.conSeats)
+                    setDes(conference.conDes)
+                    setPrice(conference.conPrice)
+                    setFeatures(conference.confeatures)
+                    setImg1(conference.conImages[0])
+                    setImg2(conference.conImages[1])
+                    setImg3(conference.conImages[2])
+                  }            
+
+
+      }, [dispatch, conferenceId, conference])
 
       const submitHandler = (e) => {
             e.preventDefault()
-                  dispatch(conferenceAdd( conName, conDes, conSeats, conPrice, confeatures, conImg1, conImg2, conImg3 ))
+                //   dispatch(conferenceAdd( conName, conDes, conSeats, conPrice, confeatures, conImg1, conImg2, conImg3 ))
       }
 
       const uploadFileHandler1 = async (e) => {
@@ -109,10 +121,6 @@ const ConInsertScreen = ({ location, history }) => {
             <>
                   <center>
                         <div class="container-fluid">
-
-                                    
-                                          
-
                                                 <div class="container">
                                                       <div class="row">
                                                             <div class="col-lg-10 col-xl-7 mx-auto">
@@ -206,4 +214,4 @@ const ConInsertScreen = ({ location, history }) => {
       )
 }
 
-export default ConInsertScreen
+export default ConferenceUpdateScreen

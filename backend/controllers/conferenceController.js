@@ -97,9 +97,11 @@ const updateConDetails = asyncHandler(async (req, res) => {
         conName,
         conSeats,
         conDes,
-        conImage,
         conPrice,
-        conFeatures
+        conFeatures,
+        conImg1,
+        conImg2,
+        conImg3
     } = req.body
 
     const conference = await Conference.findById(req.params.id)
@@ -108,9 +110,11 @@ const updateConDetails = asyncHandler(async (req, res) => {
           conference.conName = conName
           conference.conSeats = conSeats
           conference.conDes = conDes
-          conference.conImage = conImage
+          conference.conImages = [conImg1, conImg2, conImg3]
           conference.conPrice = conPrice
           conference.conFeatures = conFeatures
+
+          
           const updateConference = await conference.save()
           res.json(updateConference)
 
