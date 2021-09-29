@@ -26,7 +26,6 @@ import { filterconference } from '../../actions/conferenceAction'
                         </button>
                     </div>
 
-
                 </div>
 
             </div>
