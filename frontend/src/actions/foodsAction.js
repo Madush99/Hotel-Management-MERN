@@ -11,7 +11,11 @@ import {
     FOODS_DELETE_FAIL,
     FOODS_BYID_REQUEST,
     FOODS_BYID_SUCCESS,
-    FOODS_BYID_FAIL
+    FOODS_BYID_FAIL,
+    FOODS_UPDATE_REQUEST,
+    FOODS_UPDATE_SUCCESS,
+    FOODS_UPDATE_FAIL
+
     
 } from '../constants/foodsConstants'
 
@@ -115,6 +119,28 @@ export const getFoodDetails = (id) => async (dispatch, getState) => {
       } catch (error) {
             dispatch({
                   type: FOODS_BYID_FAIL,
+                  payload:
+                        error.response && error.response.data.message
+                              ? error.response.data.message
+                              : error.message,
+            })
+      }
+}
+
+export const updateFoodDetails = (food) => async (dispatch) => {
+      try{
+            dispatch({
+                  type: FOODS_UPDATE_REQUEST,
+            })
+            const { data } = axios.put(`/api/food/${food._id}`, food)
+            dispatch({
+                  type: FOODS_UPDATE_SUCCESS,
+                  payload: data,
+            })
+
+      } catch (error){
+            dispatch({
+                  type:FOODS_UPDATE_FAIL,
                   payload:
                         error.response && error.response.data.message
                               ? error.response.data.message
