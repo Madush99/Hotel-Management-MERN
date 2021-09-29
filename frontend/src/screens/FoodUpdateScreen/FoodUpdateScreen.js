@@ -51,7 +51,7 @@ const FoodUpdateScreen = ({ match, history }) => {
       }, [dispatch, foodId, foods, history, match, successUpdate])
 
       const submitHandler = (e) => {
-            e.preventDefaulat()
+            e.preventDefault()
             dispatch(updateFoodDetails({
                   _id: foodId,
                   name,
