@@ -8,7 +8,7 @@ import Loader from '../../components/Loader'
 import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
 import logo from './riverfront.png'
 import '../bookingReportScreen/report.css'
-
+import { Tag, Divider } from 'antd';
 
 const BookinReportScreen = () => {
 
@@ -63,7 +63,10 @@ const BookinReportScreen = () => {
                                                                   <td style={{ paddingLeft: '10px' }}>{book.todate}</td>
                                                                   <center>  <td style={{ paddingLeft: '10px' }}>{book.totalDays}</td></center>
                                                                   <td style={{ paddingLeft: '10px' }}>{book.totalAmount}</td>
+                                                                  <td>
+                                                                        <p><b>Status</b>: {book.status === 'booked' ? (<Tag color="green">Confirmed</Tag>) : (<Tag color="red">Cancelled</Tag>)}</p>
 
+                                                                  </td>
                                                             </tr>
 
 
