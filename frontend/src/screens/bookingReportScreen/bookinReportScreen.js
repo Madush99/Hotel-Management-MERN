@@ -6,7 +6,7 @@ import { Table, Button, Container } from 'react-bootstrap'
 import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
-import logo from './riverfront.png'
+import logo from '../bookingReportScreen/riverfront.png'
 import '../bookingReportScreen/report.css'
 import { Tag, Divider } from 'antd';
 
@@ -45,7 +45,8 @@ const BookinReportScreen = () => {
                                                       <img src={logo} className='smallimg'></img>
 
                                                       <hr className='df'></hr>
-                                                      <h1 style={{ alignItems: 'center' }}>R O O M   B O O K I N G S</h1>
+                                                      <center>  <h1 style={{ alignItems: 'center' }}>R O O M   B O O K I N G S</h1></center>
+                                                      <br />
                                                       <tr>
                                                             <th>NO</th>
                                                             <th style={{ paddingLeft: '10px' }}>Room Name</th>
