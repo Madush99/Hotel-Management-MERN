@@ -7,6 +7,7 @@ import Loader from '../../components/Loader'
 import { Row, Col } from 'react-bootstrap'
 import Swal from 'sweetalert2'
 import ConferenceCarouselContainer from '../../components/ConferenceImages/conferenceCorousel.js'
+import ConSearch from '../../components/ConferenceSearch/conSearch.js'
 
 const ConferenceScreen = () => {
 
@@ -25,6 +26,9 @@ const ConferenceScreen = () => {
             <ConferenceCarouselContainer/>
             <br></br>
                 <h1 style={{ textAlign: "center" }}>Conference Rooms</h1>
+                <center>
+                <ConSearch/>
+                </center>
                 {
                         loading ? (<Loader />) : error ? (<Message variant='danger'>{error}</Message>
                         ) : (

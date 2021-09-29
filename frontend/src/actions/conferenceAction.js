@@ -137,3 +137,32 @@ export const updateConDetails = (conference) => async (dispatch) => {
       }
 
 }
+
+export const filterconference = (searchkey) => async dispatch => {
+      var filteredConference;
+      try {
+            dispatch({
+            type: CONFERENCE_ALL_REQUEST,
+            })
+
+            const  response = await axios.get('/api/conference/')
+            filteredConference = response.data.filter(conference => conference.conName.toLowerCase().includes(searchkey))
+            dispatch({
+                type: CONFERENCE_ALL_SUCCESS,
+                payload: filteredConference
+            })
+
+      } catch (error) {
+            console.log(error)
+                 dispatch({
+                  type: CONFERENCE_ALL_FAIL,
+                  payload:
+                        error.response && error.response.data.message
+                              ? error.response.data.message
+                              : error.message,
+
+            })
+
+      }
+
+  }
