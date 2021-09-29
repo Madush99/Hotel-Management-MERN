@@ -7,6 +7,7 @@ import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import { Row, Col } from 'react-bootstrap'
 import './food.css'
+import FoodSearch from '../../components/FoodSearch/FoodSearch'
 
 
 const FoodScreen = () => {
@@ -24,6 +25,7 @@ const FoodScreen = () => {
       return (
             <>
             <Carousel />
+            <FoodSearch />
             <br></br>
                 <h1 style={{ textAlign: "center" }}>MENU</h1>
                 {
