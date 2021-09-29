@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import Message from '../../components/Message'
+import Loader from '../../components/Loader'
 import { Tag, Divider } from 'antd';
 
 
@@ -53,9 +55,9 @@ const UserRoomBookimgs = () => {
             <>
                   <div>
                         {loading ? (
-                              <h1>loading...</h1>
+                              <Loader />
                         ) : error ? (
-                              <h1>Error....</h1>
+                              <Message />
                         ) : (
                               mybookings.map(booking => {
                                     return <div className="row">
