@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { WEDDING_INSERT_REQUEST, WEDDING_INSERT_SUCCESS, WEDDING_INSERT_FAIL, WEDDING_ALL_REQUEST, WEDDING_ALL_SUCCESS, WEDDING_ALL_FAIL, WEDDING_BYID_REQUEST, WEDDING_BYID_SUCCESS, WEDDING_BYID_FAIL, WEDDING_DELETE_REQUEST, WEDDING_DELETE_SUCCESS, WEDDING_DELETE_FAIL } from '../constants/weddingConstant.js'
+import { WEDDING_INSERT_REQUEST, WEDDING_INSERT_SUCCESS, WEDDING_INSERT_FAIL, WEDDING_ALL_REQUEST, WEDDING_ALL_SUCCESS, WEDDING_ALL_FAIL, WEDDING_BYID_REQUEST, WEDDING_BYID_SUCCESS, WEDDING_BYID_FAIL, WEDDING_DELETE_REQUEST, WEDDING_DELETE_SUCCESS, WEDDING_DELETE_FAIL,WEDDING_UPDATE_REQUEST, WEDDING_UPDATE_SUCCESS, WEDDING_UPDATE_FAIL, WEDDING_UPDATE_RESET } from '../constants/weddingConstant.js'
 
 export const weddingAdd = (wedHallName, wedSeats, wedDes, wedimg1, wedimg2, wedimg3) => async (dispatch) => {
     try {
@@ -111,3 +111,59 @@ export const deletewedding = (id) => async (dispatch) => {
           })
     }
 }
+
+
+export const updateWedDetails = (weddings) => async (dispatch) => {
+
+      try {
+            dispatch({
+                  type: WEDDING_UPDATE_REQUEST,
+            })
+
+            const { data } = axios.put(`/api/weddings/${weddings._id}`, weddings)
+
+            dispatch({
+                  type: WEDDING_UPDATE_SUCCESS,
+                  payload: data,
+            })
+
+      } catch (error) {
+            dispatch({
+                  type: WEDDING_UPDATE_FAIL,
+                  payload:
+                        error.response && error.response.data.message
+                              ? error.response.data.message
+                              : error.message
+            })
+      }
+
+}
+
+export const filterweddings = (searchkey) => async dispatch => {
+      var filteredWeddings;
+      try {
+            dispatch({
+            type: WEDDING_ALL_REQUEST,
+            })
+
+            const  response = await axios.get('/api/weddings/')
+            filteredWeddings = response.data.filter(weddings => weddings.wedHallName.toLowerCase().includes(searchkey))
+            dispatch({
+                type: WEDDING_ALL_SUCCESS,
+                payload: filteredWeddings
+            })
+
+      } catch (error) {
+            console.log(error)
+                 dispatch({
+                  type: WEDDING_ALL_FAIL,
+                  payload:
+                        error.response && error.response.data.message
+                              ? error.response.data.message
+                              : error.message,
+
+            })
+
+      }
+
+  }

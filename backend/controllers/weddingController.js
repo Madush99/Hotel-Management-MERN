@@ -81,16 +81,18 @@ const updateWedDetails = asyncHandler(async (req, res) => {
         wedHallName,
         wedSeats,
         wedDes,
-        wedImage
+        wedimg1,
+        wedimg2,
+        wedimg3
     } = req.body
 
     const wedding = await Wedding.findById(req.params.id)
 
     if (wedding) {
-          wedding.wedHallNam = wedHallName
+          wedding.wedHallName = wedHallName
           wedding.wedSeats = wedSeats
           wedding.wedDes = wedDes
-          wedding.wedImage = wedImage
+          wedding.wedImages = [wedimg1, wedimg2, wedimg3]
           const updateWedding = await wedding.save()
           res.json(updateWedding)
 

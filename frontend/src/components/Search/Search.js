@@ -1,7 +1,7 @@
 import React,{ useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { filterRestaurants } from '../../actions/restaurantsActions'
-import './search.css'
+
 
 export default function Search(){
 

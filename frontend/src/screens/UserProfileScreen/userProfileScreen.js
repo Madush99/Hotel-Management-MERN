@@ -4,6 +4,8 @@ import { Tabs } from "antd";
 import { Button, Row, Col } from 'react-bootstrap'
 import UserRoomBookimgs from '../UserRoomBookings/userRoomBookimgs';
 import UserTableReservations from '../UserTableReservations/UserTableReservations';
+import UserFoodOrders from '../UserFoodOrders/UserFoodOrders';
+
 const { TabPane } = Tabs;
 
 const UserProfile = () => {
@@ -50,7 +52,9 @@ const UserProfile = () => {
                                     </TabPane>
                                     <TabPane tab="FOOD ORDERS" key="5">
 
-
+                                          <div className="row">
+                                                <UserFoodOrders />
+                                          </div>
 
                                     </TabPane>
                               </Tabs>
