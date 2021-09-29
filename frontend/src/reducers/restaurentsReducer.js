@@ -11,7 +11,12 @@ import {
     REST_CREATE_RESET,
     REST_DELETE_REQUEST,
     REST_DELETE_SUCCESS,
-    REST_DELETE_FAIL
+    REST_DELETE_FAIL,
+    REST_UPDATE_REQUEST,
+    REST_UPDATE_SUCCESS,
+    REST_UPDATE_FAIL,
+    REST_UPDATE_RESET
+
 } from '../constants/restaurentsConstants'
 
 
@@ -67,6 +72,25 @@ export const restDeleteReducer = (state = {}, action) => {
                   return { loading: false, success: true }
             case REST_DELETE_FAIL:
                   return { loading: false, error: action.payload }
+            default:
+                  return state
+      }
+}
+
+
+export const restaurantUpdateReducer = (state = { restaurants: {} }, action) => {
+
+      switch (action.type){
+            case REST_UPDATE_REQUEST:
+                  return { loading: true }
+            case REST_UPDATE_SUCCESS:
+                  return { loading: false, success:true, restaurants:action.payload }
+            case REST_UPDATE_FAIL:
+                  return { loading: false, error: action.payload }
+            case REST_UPDATE_RESET:
+                  return{
+                        restaurants: {}
+                  }
             default:
                   return state
       }

@@ -26,14 +26,17 @@ const Navbar = () => {
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
                               <ul class="navbar-nav ml-auto">
+                                    {/* < li class="nav-item">
+                                          <a class="nav-link active" aria-current="page" href='/weddings'>Wedding</a>
+                                    </li> */}
                                     {userInfo ? (
                                           <NavDropdown className="link" title={userInfo.name} id='username'>
                                                 <LinkContainer to="/profile">
                                                       <NavDropdown.Item class="link-dark">Profile</NavDropdown.Item>
                                                 </LinkContainer>
-                                                <LinkContainer to="/rooms">
+                                                {/* <LinkContainer to="/rooms">
                                                       <NavDropdown.Item class="link-dark">Rooms</NavDropdown.Item>
-                                                </LinkContainer>
+                                                </LinkContainer> */}
                                                 <NavDropdown.Item onClick={logoutHandler}>
                                                       <li className="link">logout</li>
                                                 </NavDropdown.Item>
@@ -46,12 +49,25 @@ const Navbar = () => {
 
                                     {userInfo && userInfo.isAdmin && (
                                           <NavDropdown className="link" title='Admin'>
+                                                {/* <LinkContainer to="/weddingInsert">
+                                                      <NavDropdown.Item class="link-dark">Wedding</NavDropdown.Item>
+                                                </LinkContainer> */}
                                                 <LinkContainer to="/wedEveMgt">
                                                       <NavDropdown.Item class="link-dark">Wedding & Event Management</NavDropdown.Item>
                                                 </LinkContainer>
+
                                                 <LinkContainer to="/roomManagement">
                                                       <NavDropdown.Item class="link-dark">Room Management</NavDropdown.Item>
                                                 </LinkContainer>
+
+                                                <LinkContainer to="/restaurantManagement">
+                                                      <NavDropdown.Item class="link-dark">Restaurant Management</NavDropdown.Item>
+                                                </LinkContainer>
+
+                                                <LinkContainer to="/foodManagement">
+                                                      <NavDropdown.Item class="link-dark">Food Management</NavDropdown.Item>
+                                                </LinkContainer>
+
 
 
                                           </NavDropdown>

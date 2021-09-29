@@ -1,55 +1,86 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Tabs } from "antd";
 import { Button, Row, Col } from 'react-bootstrap'
 import RestaurentList from '../AllRestaurant/restaurantTable'
 import AddRestaurant from '../RestaurantCreate/restCreate'
+import TableBookings from '../TableBookingListScreen/tableBookinglistScreen'
+import ReservationReport from '../RestaurantTableBookingReport/ReservationReport'
 import { Container } from 'react-bootstrap';
+import { PDFExport, savePDF } from "@progress/kendo-react-pdf";
+
+
+
 
 const { TabPane } = Tabs;
 
 
 const RestaurantgementScreen = () => {
-    return (
-          <Container>
-                <div className="ml-3">
-                      <h2 className="text-center m-2" style={{ fontSize: "35px" }}>RESTAURANT MANAGEMENT</h2>
-                      <Row className='align-items-center'>
+
+      
+
+
+
+      const pdfExportComponent = useRef(null)
+
+      const handleExportWithComponent = (event) => {
+            pdfExportComponent.current.save()
+
+
+      }
+
+
+      return (
+            <Container>
+                  <div className="ml-3">
+                        <h2 className="text-center m-2" style={{ fontSize: "35px" }}>RESTAURANT MANAGEMENT</h2>
+                        <br />
+                        <Row className=''>   
+
                               <Col className='text-right'>
-                                    <Button className='my-3'>
-                                          <i className='fas fa-plus'>  Generate Report</i>
-                                    </Button>
+                                    <Button primary={true} onClick={handleExportWithComponent}>Generate Report</Button>
                               </Col>
                         </Row>
-                      <Tabs defaultActiveKey="1">
-                            <TabPane tab="RESTAURANT LIST" key="1">
-                                  <div className="row">
-                                        <RestaurentList />
+                        <br />
+                        <Tabs defaultActiveKey="1">
+                              <TabPane tab="RESTAURANT LIST" key="1">
+                                    <div className="row">
+                                          <RestaurentList />
 
-                                  </div>
-                            </TabPane>
-                            <TabPane tab="ADD RESTAURANT" key="2">
+                                    </div>
+                              </TabPane>
+                              <TabPane tab="ADD RESTAURANT" key="2">
 
-                                  <div className="row">
-                                        <AddRestaurant />
-                                  </div>
+                                    <div className="row">
+                                          <AddRestaurant />
+                                    </div>
 
-                            </TabPane>
-                            <TabPane tab="Add Room" key="3">
+                              </TabPane>
 
-
-
-
-
-                            </TabPane>
-                            <TabPane tab="Users" key="4">
+                              <TabPane tab="TABLE BOOKINGS" key="3" onClick={handleExportWithComponent}>
 
 
+                                    <div className='row'>
 
-                            </TabPane>
-                      </Tabs>
-                </div>
-          </Container>
-    )
+                                          <TableBookings />
+
+                                    </div>
+
+                              </TabPane>
+
+                              <TabPane tab="RESERVATIONS" key="4">
+
+                                    <div className="row">
+                                          <PDFExport ref={pdfExportComponent} paperSize="A4">
+                                                <ReservationReport />
+                                          </PDFExport>
+                                    </div>
+
+                              </TabPane>
+
+                        </Tabs>
+                  </div>
+            </Container>
+      )
 }
 
 export default RestaurantgementScreen

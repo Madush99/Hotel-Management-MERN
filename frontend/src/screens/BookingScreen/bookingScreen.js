@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { bookRoomDetails } from '../../actions/roomAction'
 import StripeCheckout from 'react-stripe-checkout'
 import '../BookingScreen/booking.css'
+import Message from '../../components/Message'
+import Loader from '../../components/Loader'
 
 Aos.init()
 Aos.refresh()
@@ -67,9 +69,9 @@ const BookingScreen = ({ match }) => {
 
                   <div>
                         {loading ? (
-                              <h1>loading...</h1>
+                              <Loader />
                         ) : error ? (
-                              <h1>Error....</h1>
+                              <Message />
                         ) : (
                               <>
                                     <div className='m-5'>
@@ -102,7 +104,7 @@ const BookingScreen = ({ match }) => {
                                                                         <br></br>
                                                                         <div class="vl">
                                                                               <div className="jk">
-                                                                                    <h6>Shangri-La Colombo</h6>
+                                                                                    <h6>Grand Hotel Colombo</h6>
                                                                                     <h1 >{rooms.name}</h1>
                                                                               </div>
 

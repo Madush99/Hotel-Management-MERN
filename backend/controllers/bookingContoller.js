@@ -57,7 +57,7 @@ const bookRoom = asyncHandler(async (req, res) => {
                         const roomtemp = await Rooms.findOne({ _id: rooms._id })
 
                         roomtemp.currentBookings.push({
-                              booking: booking._id,
+                              bookingid: booking._id,
                               fromdate: moment(fromdate).format("DD_MM_YYYY"),
                               todate: moment(todate).format("DD-MM-YYYY"),
                               userid: userid,
@@ -109,5 +109,39 @@ const getallbookings = asyncHandler(async (req, res) => {
       }
 })
 
+const getUserBookings = asyncHandler(async (req, res) => {
+      const { userid } = req.body;
+      try {
+            const bookings = await Bookings.find({ userid: userid }).sort({ _id: -1 })
+            res.send(bookings)
+      } catch (error) {
+            return res.status(400).json({ message: "Error" })
+      }
+})
 
-export { bookRoom, getallbookings }
+
+const cancelBookings = asyncHandler(async (req, res) => {
+      const { bookingid, roomid } = req.body
+
+      try {
+            const bookingitem = await Bookings.findOne({ _id: bookingid })
+            bookingitem.status = 'cancelled'
+            await bookingitem.save();
+            const room = await Rooms.findOne({ _id: roomid })
+            const bookings = room.currentBookings
+            const temp = bookings.filter(booking => typeof booking.bookingid == "undefined" || booking.bookingid.toString() !== bookingid)
+            console.log(temp);
+            room.currentBookings = temp;
+            await room.save()
+
+            res.send('Bookings cancelled sucessfully')
+      } catch (error) {
+            console.log(error);
+            return res.status(400).json({ message: "error" })
+      }
+})
+
+
+
+
+export { bookRoom, getallbookings, getUserBookings, cancelBookings }

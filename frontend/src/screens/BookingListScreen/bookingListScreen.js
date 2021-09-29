@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react'
+import axios from "axios";
 import { useDispatch, useSelector } from 'react-redux'
 import { listBookings } from '../../actions/bookingActions'
 import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Table, Button } from 'react-bootstrap'
+import Swal from "sweetalert2";
+import { Tag, Divider } from 'antd';
 
 const BookingListScreen = () => {
 
@@ -16,6 +19,26 @@ const BookingListScreen = () => {
       useEffect(() => {
             dispatch((listBookings()))
       }, [dispatch])
+
+
+      async function cancelBooking(bookingid, roomid) {
+
+
+            try {
+                  // loading(true);
+                  const result = await (await axios.post('/api/booking/cancelbookings', { bookingid, roomid })).data
+                  // loading(false);
+                  Swal.fire('Congrats', 'Your Room has cancelled succeessfully', 'success').then(result => {
+                        window.location.href = '/roomManagement'
+                  })
+            } catch (error) {
+                  Swal.fire('Oops', 'Something went wrong', 'error').then(result => {
+                        window.location.href = '/roomManagement'
+                  })
+                  // loading(false)
+            }
+
+      }
 
       return (
             <>
@@ -49,13 +72,14 @@ const BookingListScreen = () => {
                                                       <td>{book.todate}</td>
                                                       <td>{book.totalDays}</td>
                                                       <td>{book.totalAmount}</td>
-                                                      <td>{book.status} <i className='fad fa-check' style={{ color: 'green' }}></i></td>
                                                       <td>
-                                                            <LinkContainer to='' >
-                                                                  <Button variant='light' className='btn-sm'>
-                                                                        <i className='fad fa-times' style={{ color: 'red' }}></i>
-                                                                  </Button>
-                                                            </LinkContainer>
+                                                            <p><b>Status</b>: {book.status === 'booked' ? (<Tag color="green">Confirmed</Tag>) : (<Tag color="red">Cancelled</Tag>)}</p>
+
+                                                      </td>
+                                                      <td>
+                                                            <div className='text-right'>
+                                                                  {book.status === 'booked' && (<button className='btn btn-primary' onClick={() => cancelBooking(book._id, book.roomid)}>Cancel Booking</button>)}
+                                                            </div>
                                                       </td>
                                                 </tr>
                                           ))}

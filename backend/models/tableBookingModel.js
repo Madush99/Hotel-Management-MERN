@@ -10,9 +10,18 @@ const tableBookingSchema = mongoose.Schema({
             type: String,
             required: true,     
       },
+      userName:{
+            type:String,
+            required: true
+      },
+
+      restaurantName:{
+            type: String,
+            required: true
+      },
      
       date: {
-            type: Date,
+            type: String,
             required: true,
       },
       phoneNo: {
@@ -30,6 +39,11 @@ const tableBookingSchema = mongoose.Schema({
       time: {
             type: String,
             required: true,
+      },
+      status: {
+            type: String,
+            required: true,
+            default: 'booked'
       },
      
 

@@ -10,6 +10,9 @@ import 'antd/dist/antd.css'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import RoomsCarousel from '../../components/RoomsCorousel/roomsCarousel'
+import Message from '../../components/Message'
+import Loader from '../../components/Loader'
+
 
 AOS.init();
 const { RangePicker } = DatePicker;
@@ -30,35 +33,36 @@ const RoomsScreen = () => {
             settodate(moment(dates[1]).format('DD-MM-YYYY'))
 
             var temp = []
-            for (var room of duplicatehotes) {
+
+            for (const room of duplicatehotes) {
                   var availability = false;
+                  if (room.currentBookings.length > 0) {
+                        for (const booking of room.currentBookings) {
 
-                  for (var booking of room.currentBookings) {
-
-                        if (room.currentBookings.length) {
-                              if (
-                                    !moment(moment(dates[0]).format('DD-MM-YYYY')).isBetween(booking.fromdate, booking.todate) &&
-                                    !moment(moment(dates[1]).format('DD-MM-YYYY')).isBetween(booking.fromdate, booking.todate)
-                              ) {
+                              if (room.currentBookings.length) {
                                     if (
-                                          moment(dates[0]).format('DD-MM-YYYY') !== booking.fromdate &&
-                                          moment(dates[0]).format('DD-MM-YYYY') !== booking.todate &&
-                                          moment(dates[1]).format('DD-MM-YYYY') !== booking.fromdate &&
-                                          moment(dates[1]).format('DD-MM-YYYY') !== booking.todate
+                                          !moment(moment(dates[0]).format('DD-MM-YYYY')).isBetween(booking.fromdate, booking.todate) &&
+                                          !moment(moment(dates[1]).format('DD-MM-YYYY')).isBetween(booking.fromdate, booking.todate)
                                     ) {
-                                          availability = true;
+                                          if (
+                                                moment(dates[0]).format('DD-MM-YYYY') !== booking.fromdate &&
+                                                moment(dates[0]).format('DD-MM-YYYY') !== booking.todate &&
+                                                moment(dates[1]).format('DD-MM-YYYY') !== booking.fromdate &&
+                                                moment(dates[1]).format('DD-MM-YYYY') !== booking.todate
+                                          ) {
+                                                availability = true;
+                                          }
                                     }
                               }
+
+
                         }
-
-
+                        if (availability === true || room.currentBookings.length === 0) {
+                              temp.push(room)
+                        }
+                        sethotels(temp)
                   }
-                  if (availability || room.currentBookings.length == 0) {
-                        temp.push(room)
-                  }
-                  sethotels(temp)
             }
-
       }
 
       useEffect(async () => {
@@ -126,7 +130,7 @@ const RoomsScreen = () => {
 
                   <div className="row justify-content-center mt-5"  >
                         {loading ? (
-                              <h1>loading....</h1>
+                              <Loader />
                         ) : (
 
                               <div className="col-md-9 mt-2">
@@ -139,7 +143,7 @@ const RoomsScreen = () => {
                                                       <h1>{room.name}</h1>
                                                       <b>
                                                             <p>Max Count: {room.maxcount}</p>
-                                                            <p>Phone Number: {room.phonenumber}</p>
+                                                            <p></p>
                                                             <p>Type: {room.type}</p>
                                                       </b>
 

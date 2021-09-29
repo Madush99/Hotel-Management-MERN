@@ -39,7 +39,7 @@ const CreateRoomScreen = ({ location, history }) => {
 
       useEffect(() => {
             if (rooms) {
-                  Swal.fire('Congrats', 'Your Room has booked succeessfully', 'success').then(result => {
+                  Swal.fire('Congrats', 'You  have added succeessfully', 'success').then(result => {
                         window.location.href = '/roomManagement'
                   })
             }
