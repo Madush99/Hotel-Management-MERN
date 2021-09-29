@@ -8,6 +8,7 @@ import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import { Row, Col } from 'react-bootstrap'
 import './style.css'
+import Aos from 'aos'
 
 
 const RestaurantScreen = () => {

@@ -11,6 +11,9 @@ import { creatTableBooking } from '../../actions/tableBookinAction'
 import { getRestDetails } from '../../actions/restaurantsActions'
 import Swal from 'sweetalert2'
 import moment from 'moment'
+import Aos from 'aos'
+
+Aos.init()
 
 
 
@@ -65,8 +68,10 @@ const ReservationScreen = ({ match, history }) => {
      
       return (
             <>
+            <div data-aos="zoom-out">
                     <FormContainer>
-                        <h1 style={{ textAlign: "center" }}>Booking Details</h1>
+                        <h1 style={{ textAlign: "center"}}>Booking Details</h1>
+                        <br />
                         {loading && <Loader />}
                         {error && <Message variant='danger'>{error} </Message>}
                         {loading ? (
@@ -74,7 +79,7 @@ const ReservationScreen = ({ match, history }) => {
                         ) : error ? (
                               <Message variant='danger'>{error}</Message>
                         ) : (
-                              <Form onSubmit={submitHandler}>
+                              <Form onSubmit={submitHandler} className="shadow p-3 mb-5 bg-white rounded">
                                     <Form.Group controlId='userid'>
                                           <Form.Label>User ID</Form.Label>
                                           <Form.Control
@@ -174,6 +179,7 @@ const ReservationScreen = ({ match, history }) => {
                               </Form>
                         )}
                   </FormContainer>
+                  </div>
             </>
       )
 }
