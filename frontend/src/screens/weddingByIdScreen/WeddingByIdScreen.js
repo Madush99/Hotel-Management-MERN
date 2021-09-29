@@ -71,7 +71,7 @@ const WeddingByIdScreen = ({ match, history }) => {
                                                       <br/>
                                                             <div class="vl">
                                                                  <div className="hk">
-                                                                  <h6 > Shangri la </h6>
+                                                                  <h6 > Grand Hotel </h6>
                                                                   <h1 > {weddings.wedHallName}</h1>
                                                                   </div>
                                                             </div>            <hr></hr>

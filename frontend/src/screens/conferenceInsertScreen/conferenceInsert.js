@@ -142,7 +142,7 @@ const ConInsertScreen = ({ location, history }) => {
                                                                               onChange={(e) => setDes(e.target.value)}/>
                                                                         </div>
                                                                         <div class="form-group mb-3">
-                                                                              <input id="input description" type="text" placeholder="Enter Price" required="" class="form-control" 
+                                                                              <input id="input description" type="number" placeholder="Enter Price" required="" class="form-control" 
                                                                               value={conPrice}
                                                                               onChange={(e) => setPrice(e.target.value)}/>
                                                                         </div>
