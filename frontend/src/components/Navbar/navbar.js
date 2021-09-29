@@ -6,9 +6,9 @@ import { Nav, NavDropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import logo from '../Navbar/riverfront.png'
 import '../Navbar/nav.css'
+import Swal from 'sweetalert2'
 
-
-const Navbar = () => {
+const Navbar = (history) => {
 
       const dispatch = useDispatch()
 
@@ -17,6 +17,9 @@ const Navbar = () => {
 
       const logoutHandler = () => {
             dispatch(logout())
+            Swal.fire('Successful', 'Successfully Logged Out ', 'success').then(result => {
+                  window.location.href = '/login'
+            })
       }
 
       return (
