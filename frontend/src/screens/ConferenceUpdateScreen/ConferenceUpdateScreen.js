@@ -2,14 +2,14 @@ import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
-import { allConference,  } from '../../actions/conferenceAction'
+import { conferenceById } from '../../actions/conferenceAction'
 import Message from '../../components/Message.js'
 import Loader from '../../components/Loader.js'
 import { Form } from 'react-bootstrap'
 import Swal from 'sweetalert2'
 
 
-const ConferenceUpdateScreen = ({ match, history }) => {
+const ConferenceUpdateScreen = ({ match }) => {
 
 
     const conferenceId = match.params.id
@@ -27,12 +27,12 @@ const ConferenceUpdateScreen = ({ match, history }) => {
 
       const dispatch = useDispatch()
 
-      const conUpdate = useSelector(state => state.conUpdate)
-      const { loading, error, conference } = conUpdate
+      const conById = useSelector(state => state.conById)
+      const { loading, error, conference } = conById
 
       useEffect(() => {
             if (!conference.conName || conference._id !== conferenceId ) {
-                dispatch(allConference(conferenceId))
+                dispatch(conferenceById(conferenceId))
                   }
                   else{
                     setName(conference.conName)
@@ -40,13 +40,13 @@ const ConferenceUpdateScreen = ({ match, history }) => {
                     setDes(conference.conDes)
                     setPrice(conference.conPrice)
                     setFeatures(conference.confeatures)
-                    setImg1(conference.conImg1)
-                    setImg2(conference.conImg2)
-                    setImg3(conference.conImg3)
+                    setImg1(conference.conImages[0])
+                    setImg2(conference.conImages[1])
+                    setImg3(conference.conImages[2])
                   }            
 
 
-      }, [dispatch, conferenceId, conference, match])
+      }, [dispatch, conferenceId, conference])
 
       const submitHandler = (e) => {
             e.preventDefault()
@@ -121,10 +121,6 @@ const ConferenceUpdateScreen = ({ match, history }) => {
             <>
                   <center>
                         <div class="container-fluid">
-
-                                    
-                                          
-
                                                 <div class="container">
                                                       <div class="row">
                                                             <div class="col-lg-10 col-xl-7 mx-auto">
