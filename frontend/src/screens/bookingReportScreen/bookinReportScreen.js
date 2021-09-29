@@ -6,9 +6,9 @@ import { Table, Button, Container } from 'react-bootstrap'
 import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
-import logo from './riverfront.png'
+import logo from '../bookingReportScreen/riverfront.png'
 import '../bookingReportScreen/report.css'
-
+import { Tag, Divider } from 'antd';
 
 const BookinReportScreen = () => {
 
@@ -31,7 +31,6 @@ const BookinReportScreen = () => {
 
       return (
             <>
-                  <h1>Rooms List</h1>
                   {
                         loading ? (
                               <Loader />
@@ -40,25 +39,35 @@ const BookinReportScreen = () => {
                         ) : (
                               <>
 
-                                    <Button primary={true} onClick={handleExportWithComponent} style={{ marginLeft: '1000px' }}>Generate PDF Report</Button>
-
-                                    <Container style={{ paddingLeft: '400px' }} >
-
-                                          <h1>Booked Rooms List</h1>
+                                    <Container style={{ alignItems: 'center' }} >
                                           <tbody>
-                                                <PDFExport ref={pdfExportComponent} paperSize="A4">
+                                                <PDFExport ref={pdfExportComponent} paperSize="A3">
                                                       <img src={logo} className='smallimg'></img>
 
                                                       <hr className='df'></hr>
+                                                      <center>  <h1 style={{ alignItems: 'center' }}>R O O M   B O O K I N G S</h1></center>
+                                                      <br />
+                                                      <tr>
+                                                            <th>NO</th>
+                                                            <th style={{ paddingLeft: '10px' }}>Room Name</th>
+                                                            <th style={{ paddingLeft: '10px' }}>From Date</th>
+                                                            <th style={{ paddingLeft: '10px' }}>To Date</th>
+                                                            <th style={{ paddingLeft: '10px' }}>Total Days</th>
+                                                            <th style={{ paddingLeft: '10px' }}>Charge</th>
+                                                      </tr>
                                                       {bookings.map((book) => (
                                                             <tr key={book._id} >
-                                                                  {tot = count++}.
-                                                                  <td>{book.rooms}</td>
-                                                                  <td>{book.fromdate}</td>
-                                                                  <td>{book.todate}</td>
-                                                                  <td>{book.totalDays}</td>
-                                                                  <td>{book.totalAmount}</td>
 
+                                                                  {tot = count++}
+                                                                  <td style={{ paddingLeft: '10px' }}>{book.rooms}</td>
+                                                                  <td style={{ paddingLeft: '10px' }}>{book.fromdate}</td>
+                                                                  <td style={{ paddingLeft: '10px' }}>{book.todate}</td>
+                                                                  <center>  <td style={{ paddingLeft: '10px' }}>{book.totalDays}</td></center>
+                                                                  <td style={{ paddingLeft: '10px' }}>{book.totalAmount}</td>
+                                                                  <td>
+                                                                        <p><b>Status</b>: {book.status === 'booked' ? (<Tag color="green">Confirmed</Tag>) : (<Tag color="red">Cancelled</Tag>)}</p>
+
+                                                                  </td>
                                                             </tr>
 
 

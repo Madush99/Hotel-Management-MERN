@@ -81,7 +81,7 @@ const WeddingListScreen = () => {
                                         <td>{wedding.wedDes}</td>
             
                                         <td>
-                                            <LinkContainer to=''>
+                                            <LinkContainer to={`/wedUpdate/${wedding._id}`}>
                                                 <Button variant='light' className='btn-sm'>
                                                     <i className='fas fa-edit'></i>
                                                 </Button>

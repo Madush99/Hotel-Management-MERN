@@ -1,23 +1,25 @@
 import React, {useState, useEffect} from 'react'
-// import './conferenceInsert.css'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
-import { conferenceAdd } from '../../actions/conferenceAction'
+import { conferenceById, updateConDetails } from '../../actions/conferenceAction'
 import Message from '../../components/Message.js'
 import Loader from '../../components/Loader.js'
 import { Form } from 'react-bootstrap'
 import Swal from 'sweetalert2'
+import { CONFERENCE_UPDATE_RESET } from '../../constants/conferenceConstant'
 
 
-const ConInsertScreen = ({ location, history }) => {
+const ConferenceUpdateScreen = ({ match, history }) => {
+
+    const conferenceId = match.params.id
 
 
       const [conName, setName] = useState('')
       const [conSeats, setSeats] = useState('')
       const [conDes, setDes] = useState('')
       const [conPrice, setPrice] = useState('')
-      const [confeatures, setFeatures] = useState('')
+      const [conFeatures, setFeatures] = useState('')
       const [conImg1, setImg1] = useState('')
       const [conImg2, setImg2] = useState('')
       const [conImg3, setImg3] = useState('')
@@ -25,20 +27,41 @@ const ConInsertScreen = ({ location, history }) => {
 
       const dispatch = useDispatch()
 
-      const conferenceInsert = useSelector(state => state.conferenceInsert)
-      const { loading, error, conferenceInfo } = conferenceInsert
+      const conById = useSelector((state) => state.conById)
+      const { loading, error, conference } = conById
+
+
+      const conUpdate = useSelector((state) => state.conUpdate)
+      const { loading:loadingUpdate, error:errorUpdate, success:successUpdate } = conUpdate
 
       useEffect(() => {
-            if (conferenceInfo) {
-                  Swal.fire('Successful', 'Successfully Inserted Conference Room', 'success').then(result => {
-                        window.location.href = '/wedEveMgt'
-                  })
-            }
-      }, [history, conferenceInfo])
+          if(successUpdate){
+              dispatch({type:CONFERENCE_UPDATE_RESET})
+              Swal.fire('Successful', 'Successfully Updated Conference Room', 'success').then(result => {
+                window.location.href = '/wedEveMgt'
+          })
+
+          }
+            if (!conference.conName || conference._id !== conferenceId ) {
+                dispatch(conferenceById(conferenceId))
+                  }
+                  else{
+                    setName(conference.conName)
+                    setSeats(conference.conSeats)
+                    setDes(conference.conDes)
+                    setPrice(conference.conPrice)
+                    setFeatures(conference.conFeatures)
+                    setImg1(conference.conImages[0])
+                    setImg2(conference.conImages[1])
+                    setImg3(conference.conImages[2])
+                  }            
+
+
+      }, [dispatch, conferenceId, conference, match, successUpdate])
 
       const submitHandler = (e) => {
             e.preventDefault()
-                  dispatch(conferenceAdd( conName, conDes, conSeats, conPrice, confeatures, conImg1, conImg2, conImg3 ))
+                  dispatch(updateConDetails({_id: conferenceId, conName, conDes, conSeats, conPrice, conFeatures, conImg1, conImg2, conImg3 }))
       }
 
       const uploadFileHandler1 = async (e) => {
@@ -109,19 +132,15 @@ const ConInsertScreen = ({ location, history }) => {
             <>
                   <center>
                         <div class="container-fluid">
-
-                                    
-                                          
-
                                                 <div class="container">
                                                       <div class="row">
                                                             <div class="col-lg-10 col-xl-7 mx-auto">
                                                                   <div className='nm'>
-                                                                  {error && <Message variant='danger'>{error}</Message>}
-                                                                  {loading && <Loader />}
+                                                                  {errorUpdate && <Message variant='danger'>{error}</Message>}
+                                                                  {loadingUpdate && <Loader />}
                                                                   </div>
                                                                   <center>
-                                                                  <h4>Insert Conference Rooms</h4>
+                                                                  <h4>Update Conference Rooms</h4>
                                                                   </center>
                                                                   <br/>
                                                                   
@@ -148,7 +167,7 @@ const ConInsertScreen = ({ location, history }) => {
                                                                         </div>
                                                                         <div class="form-group mb-3">
                                                                               <input id="input description" type="text" placeholder="Enter Features" required="" class="form-control" 
-                                                                              value={confeatures}
+                                                                              value={conFeatures}
                                                                               onChange={(e) => setFeatures(e.target.value)}/>
                                                                         </div>
                                                                         <br/>
@@ -206,4 +225,4 @@ const ConInsertScreen = ({ location, history }) => {
       )
 }
 
-export default ConInsertScreen
+export default ConferenceUpdateScreen

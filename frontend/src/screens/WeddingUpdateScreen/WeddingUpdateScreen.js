@@ -1,44 +1,60 @@
 import React, {useState, useEffect} from 'react'
-// import './conferenceInsert.css'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
-import { conferenceAdd } from '../../actions/conferenceAction'
+import { weddingById, updateWedDetails } from '../../actions/weddingAction.js'
 import Message from '../../components/Message.js'
 import Loader from '../../components/Loader.js'
 import { Form } from 'react-bootstrap'
 import Swal from 'sweetalert2'
+import { WEDDING_UPDATE_RESET } from '../../constants/weddingConstant.js'
 
 
-const ConInsertScreen = ({ location, history }) => {
+const WeddingUpdateScreen = ({ match, history }) => {
 
+    const weddingId = match.params.id
 
-      const [conName, setName] = useState('')
-      const [conSeats, setSeats] = useState('')
-      const [conDes, setDes] = useState('')
-      const [conPrice, setPrice] = useState('')
-      const [confeatures, setFeatures] = useState('')
-      const [conImg1, setImg1] = useState('')
-      const [conImg2, setImg2] = useState('')
-      const [conImg3, setImg3] = useState('')
+      const [wedHallName, setHallName] = useState('')
+      const [wedSeats, setSeats] = useState('')
+      const [wedDes, setDes] = useState('')
+      const [wedImg1, setImg1] = useState('')
+      const [wedImg2, setImg2] = useState('')
+      const [wedImg3, setImg3] = useState('')
       const [uploading, setUploading] = useState(false)
 
       const dispatch = useDispatch()
 
-      const conferenceInsert = useSelector(state => state.conferenceInsert)
-      const { loading, error, conferenceInfo } = conferenceInsert
+      const wedById = useSelector((state) => state.wedById)
+      const { loading, error, weddings } = wedById
+
+      const wedUpdate = useSelector((state) => state.wedUpdate)
+      const { loading:loadingUpdate, error:errorUpdate, success:successUpdate } = wedUpdate
 
       useEffect(() => {
-            if (conferenceInfo) {
-                  Swal.fire('Successful', 'Successfully Inserted Conference Room', 'success').then(result => {
-                        window.location.href = '/wedEveMgt'
-                  })
+            if (successUpdate) {
+                dispatch({type:WEDDING_UPDATE_RESET})
+                Swal.fire('Successful', 'Successfully Updated Wedding Room', 'success').then(result => {
+                    window.location.href = '/wedEveMgt'
+              }) 
             }
-      }, [history, conferenceInfo])
+
+            if (!weddings.wedHallName || weddings._id !== weddingId) {
+                dispatch(weddingById(weddingId))
+                  }
+            else{
+                setHallName(weddings.wedHallName)
+                setSeats(weddings.wedSeats)
+                setDes(weddings.wedDes)
+                setImg1(weddings.wedImages[0])
+                setImg2(weddings.wedImages[1])
+                setImg3(weddings.wedImages[2])
+            }
+
+      }, [dispatch, weddingId, weddings, match, successUpdate])
 
       const submitHandler = (e) => {
             e.preventDefault()
-                  dispatch(conferenceAdd( conName, conDes, conSeats, conPrice, confeatures, conImg1, conImg2, conImg3 ))
+                  dispatch(updateWedDetails({_id: weddingId, wedHallName, wedSeats, wedDes, wedImg1, wedImg2, wedImg3}))
       }
 
       const uploadFileHandler1 = async (e) => {
@@ -69,11 +85,11 @@ const ConInsertScreen = ({ location, history }) => {
       setUploading(true)
 
       try {
-          // const config = {
-          //     headers: {
-          //         'Content-Type': 'multipart/form-data'
-          //     }
-          // }
+      //     const config = {
+      //         headers: {
+      //             'Content-Type': 'multipart/form-data'
+      //         }
+      //     }
           const { data } = await axios.post('http://localhost:6500/api/uploads/image', formData)
           setImg2(data)
           setUploading(false)
@@ -83,6 +99,7 @@ const ConInsertScreen = ({ location, history }) => {
       }
   }
 
+
   const uploadFileHandler3 = async (e) => {
       const file = e.target.files[0]
       const formData = new FormData()
@@ -90,11 +107,6 @@ const ConInsertScreen = ({ location, history }) => {
       setUploading(true)
 
       try {
-          // const config = {
-          //     headers: {
-          //         'Content-Type': 'multipart/form-data'
-          //     }
-          // }
           const { data } = await axios.post('http://localhost:6500/api/uploads/image', formData)
           setImg3(data)
           setUploading(false)
@@ -107,8 +119,13 @@ const ConInsertScreen = ({ location, history }) => {
       return (
             
             <>
-                  <center>
+  
+                  
                         <div class="container-fluid">
+                              
+
+
+                                    
 
                                     
                                           
@@ -121,89 +138,75 @@ const ConInsertScreen = ({ location, history }) => {
                                                                   {loading && <Loader />}
                                                                   </div>
                                                                   <center>
-                                                                  <h4>Insert Conference Rooms</h4>
+                                                                  <h4>Update Wedding Hall</h4>
                                                                   </center>
                                                                   <br/>
                                                                   
                                                                   <form onSubmit={submitHandler}>
                                                                         <div class="form-group mb-3">
-                                                                              < input id="Enter Wedding Hall Name" type="text" placeholder="Enter Conference Room Name" required="" autofocus="" className="form-control " 
-                                                                              value={conName}
-                                                                              onChange={(e) => setName(e.target.value)} />
+                                                                              < input id="Enter Wedding Hall Name" type="text" placeholder="Enter Wedding Hall Name" required="" autofocus="" className="form-control" 
+                                                                              value={wedHallName}
+                                                                              onChange={(e) => setHallName(e.target.value)} />
                                                                         </div>
                                                                         <div class="form-group mb-3">
-                                                                              <input id="input seats" type="text" placeholder="Enter Maximum Seatings" required="" class="form-control" 
-                                                                              value={conSeats}
+                                                                              <input id="input seats" type="text" placeholder="Enter maximum seatings" required="" class="form-control" 
+                                                                              value={wedSeats}
                                                                               onChange={(e) => setSeats(e.target.value)}/>
                                                                         </div>
                                                                         <div class="form-group mb-3">
-                                                                              <input id="input description" type="text" placeholder="Enter Description" required="" class="form-control" 
-                                                                              value={conDes}
+                                                                              <input id="input description" type="text" placeholder="Enter wedding hall description" required="" class="form-control" 
+                                                                              value={wedDes}
                                                                               onChange={(e) => setDes(e.target.value)}/>
                                                                         </div>
-                                                                        <div class="form-group mb-3">
-                                                                              <input id="input description" type="number" placeholder="Enter Price" required="" class="form-control" 
-                                                                              value={conPrice}
-                                                                              onChange={(e) => setPrice(e.target.value)}/>
-                                                                        </div>
-                                                                        <div class="form-group mb-3">
-                                                                              <input id="input description" type="text" placeholder="Enter Features" required="" class="form-control" 
-                                                                              value={confeatures}
-                                                                              onChange={(e) => setFeatures(e.target.value)}/>
-                                                                        </div>
-                                                                        <br/>
                                                                         <Form.Group controlId='image'>
                                                                             <div className="form-group bn">
                                                                                 <Form.Label>Add Image</Form.Label>
-                                                                                <Form.Control type='text' className="form-control" placeholder='Enter Image URL'
-                                                                                    value={conImg1}
+                                                                                <Form.Control type='text' className="form-control" placeholder='Enter Document URL'
+                                                                                    value={wedImg1}
                                                                                     onChange={(e) => setImg1(e.target.value)}
                                                                                 ></Form.Control>
                                                                             </div>
-                                                                            
                                                                             <Form.File id="file" label='Choose File' custom onChange={uploadFileHandler1}></Form.File>
                                                                             {uploading && <Loader />}
                                                                         </Form.Group>
-                                                                        <br/>
+
                                                                         <Form.Group controlId='image'>
                                                                             <div className="form-group bn">
                                                                                 <Form.Label>Add Image</Form.Label>
-                                                                                <Form.Control type='text' className="form-control" placeholder='Enter Image URL'
-                                                                                    value={conImg2}
+                                                                                <Form.Control type='text' className="form-control" placeholder='Enter Document URL'
+                                                                                    value={wedImg2}
                                                                                     onChange={(e) => setImg2(e.target.value)}
                                                                                 ></Form.Control>
                                                                             </div>
                                                                             <Form.File id="file" label='Choose File' custom onChange={uploadFileHandler2}></Form.File>
                                                                             {uploading && <Loader />}
                                                                         </Form.Group>
-                                                                        <br/>
+
                                                                         <Form.Group controlId='image'>
                                                                             <div className="form-group bn">
                                                                                 <Form.Label>Add Image</Form.Label>
-                                                                                <Form.Control type='text' className="form-control" placeholder='Enter Image URL'
-                                                                                    value={conImg3}
+                                                                                <Form.Control type='text' className="form-control" placeholder='Enter Document URL'
+                                                                                    value={wedImg3}
                                                                                     onChange={(e) => setImg3(e.target.value)}
                                                                                 ></Form.Control>
                                                                             </div>
                                                                             <Form.File id="file" label='Choose File' custom onChange={uploadFileHandler3}></Form.File>
                                                                             {uploading && <Loader />}
                                                                         </Form.Group>
-
                                                                         <br/>
                                                                         <button type="submit" class="btn btn-outline-warning btn-block text-uppercase mb-2 rounded-pill shadow-sm">Submit</button>
-
-                                                                        
+     
                                                                   </form>
                                                             </div>
                                                       </div>
                                                 </div>
                                           </div>
-                                    
-                              
+                                   
+                             
                         
-                        </center>
+                  
             </>
       )
 }
 
-export default ConInsertScreen
+export default WeddingUpdateScreen
