@@ -11,7 +11,11 @@ import {
     FOODS_DELETE_FAIL,
     FOODS_BYID_REQUEST,
     FOODS_BYID_SUCCESS,
-    FOODS_BYID_FAIL
+    FOODS_BYID_FAIL,
+    FOODS_UPDATE_REQUEST,
+    FOODS_UPDATE_SUCCESS,
+    FOODS_UPDATE_FAIL,
+    FOODS_UPDATE_RESET
 
 } from '../constants/foodsConstants'
 
@@ -73,3 +77,21 @@ export const foodDetailsReducer = (state = { foods: {} }, action) => {
                   return state
       }
 }
+
+export const foodUpdateRedudcer = (state = { foods: {} }, action) => {
+      switch (action.type) {
+            case FOODS_UPDATE_REQUEST:
+                  return {  loading: true }
+            case FOODS_UPDATE_SUCCESS:
+                  return { loading: false, success:true, foods: action.payload }
+            case FOODS_UPDATE_FAIL:
+                  return { loading: false, error: action.payload }
+            case FOODS_UPDATE_RESET:
+                  return {
+                        foods:{}
+                  }
+            default:
+                  return state
+      }
+}
+
