@@ -26,7 +26,8 @@ import {
       foodsAllReducer,
       foodsCreateReducer,
       foodDeleteReducer,
-      foodDetailsReducer
+      foodDetailsReducer,
+      foodUpdateRedudcer
 } from './reducers/foodReducer'
 
 import { cartReducer } from './reducers/cartReducer'
@@ -87,6 +88,7 @@ const reducer = combineReducers({
       conDelete:conDeleteReducer,
       restUpdate:restaurantUpdateReducer,
       conUpdate:conUpdateReducer,
+      foodUpdate: foodUpdateRedudcer
 
 })
 
