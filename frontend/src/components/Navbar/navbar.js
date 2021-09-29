@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Nav, NavDropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import logo from '../Navbar/riverfront.png'
+import '../Navbar/nav.css'
 
 
 const Navbar = () => {
@@ -20,7 +22,8 @@ const Navbar = () => {
       return (
             <nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
                   <div class="container-fluid">
-                        <a class="navbar-brand" href="/">Navbar</a>
+                        <a class="navbar-brand" href="/">
+                              <img src={logo} style={{ width: '100px', height: '40px' }}></img> GRAND HOTEL</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                               <span class="navbar-toggler-icon"></span>
                         </button>
@@ -43,7 +46,8 @@ const Navbar = () => {
                                           </NavDropdown>
 
                                     ) : <li class="nav-item">
-                                          <a class="nav-link active" aria-current="page" href='/login'>Login</a>
+                                          <a class="nav-link active" aria-current="page" href='/login'><i class="fa fa-user-circle" aria-hidden="true"></i> Login</a>
+
                                     </li>}
 
 
