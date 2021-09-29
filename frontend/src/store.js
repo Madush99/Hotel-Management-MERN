@@ -37,6 +37,7 @@ import{
       orderDetailsReducer,
       orderPayReducer,
       orderListReducer,
+      orderListMyReducer
 
 } from './reducers/orderReducer'
 
@@ -88,8 +89,8 @@ const reducer = combineReducers({
       conDelete:conDeleteReducer,
       restUpdate:restaurantUpdateReducer,
       conUpdate:conUpdateReducer,
-      foodUpdate: foodUpdateRedudcer
-
+      foodUpdate: foodUpdateRedudcer,
+      myOrders:orderListMyReducer
 })
 
 
