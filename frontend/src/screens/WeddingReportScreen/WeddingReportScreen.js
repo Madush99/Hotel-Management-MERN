@@ -56,7 +56,7 @@ const WeddingReport = (history) => {
                                     <img style={{ width: '50px' }} src={logo} className='smallimg'></img>
                                 </Container>
 
-                                <p className='jt mt-4' ><b>~~~~~weddings ROOM REPORT~~~~~</b></p>
+                                <p className='jt mt-4' ><b>~~~~~WEDDING HALL REPORT~~~~~</b></p>
                                 <br /><center>
                                     <tr className='ptp'>
                                         <th style={{ paddingLeft: '20px' }}>NO </th>
