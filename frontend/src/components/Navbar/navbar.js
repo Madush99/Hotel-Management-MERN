@@ -23,7 +23,7 @@ const Navbar = (history) => {
       }
 
       return (
-            <nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
                   <div class="container-fluid">
                         <a class="navbar-brand" href="/">
                               <img src={logo} style={{ width: '100px', height: '40px' }}></img> GRAND HOTEL</a>
