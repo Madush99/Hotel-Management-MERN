@@ -105,16 +105,16 @@ const SignupScreen = ({ location, history }) => {
                                                                         <center><p class="text-muted mb-4">Create an Account using Social Links.</p></center>
 
                                                                         <div class="social-media">
-                                                                              <a href="#" class="social-icon">
+                                                                              <a href="https://twitter.com/" class="social-icon">
                                                                                     <i class="fab fa-twitter"></i>
                                                                               </a>
-                                                                              <a href="#" class="social-icon">
+                                                                              <a href="https://accounts.google.com/signup/v2/webcreateaccount?hl=en&flowName=GlifWebSignIn&flowEntry=SignUp" class="social-icon">
                                                                                     <i class="fab fa-google"></i>
                                                                               </a>
-                                                                              <a href="#" class="social-icon">
+                                                                              <a href="https://www.facebook.com/" class="social-icon">
                                                                                     <i class="fab fa-facebook"></i>
                                                                               </a>
-                                                                              <a href="#" class="social-icon">
+                                                                              <a href="https://www.linkedin.com/home" class="social-icon">
                                                                                     <i class="fab fa-linkedin-in"></i>
                                                                               </a>
                                                                         </div>
