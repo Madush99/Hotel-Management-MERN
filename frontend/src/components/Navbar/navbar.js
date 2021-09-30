@@ -35,8 +35,13 @@ const Navbar = (history) => {
                                     {/* < li class="nav-item">
                                           <a class="nav-link active" aria-current="page" href='/weddings'>Wedding</a>
                                     </li> */}
+                                    <LinkContainer to='/cart'>
+                                          <Nav.Link><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                Cart</Nav.Link>
+                                    </LinkContainer>
                                     {userInfo ? (
                                           <NavDropdown className="link" title={userInfo.name} id='username'>
+
                                                 <LinkContainer to="/profile">
                                                       <NavDropdown.Item class="link-dark">Profile</NavDropdown.Item>
                                                 </LinkContainer>
