@@ -5,6 +5,7 @@ import AddFood from '../CreateFoodScreen/createFoodScreen'
 import FoodList from '../FoodListScreen/foodListScreen'
 import OrderList from '../OrderListScreen/orderListScreen'
 import { Container } from 'react-bootstrap';
+import FoodOrderReport from '../FoodOrderReport/FoodOrderReport';
 
 const { TabPane } = Tabs;
 
@@ -15,13 +16,6 @@ const FoodManagementScreen = () => {
 
                   <div className="ml-3">
                         <h2 className="text-center m-2" style={{ fontSize: "35px" }}>FOOD MANAGEMENT</h2>
-                        <Row className='align-items-center'>
-                              <Col className='text-right'>
-                                    <Button className='my-3'>
-                                          <i className='fas fa-plus'>  Generate Report</i>
-                                    </Button>
-                              </Col>
-                        </Row>
                         <Tabs defaultActiveKey="1">
                               <TabPane tab="FOOD LIST" key="1">
                                     <div className="row">      
@@ -43,9 +37,9 @@ const FoodManagementScreen = () => {
 
 
                               </TabPane>
-                              <TabPane tab="Users" key="4">
+                              <TabPane tab="Order Report" key="4">
 
-
+                                    <FoodOrderReport />
 
                               </TabPane>
                         </Tabs>
