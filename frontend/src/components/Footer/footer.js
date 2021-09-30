@@ -8,7 +8,7 @@ const Footer = () => {
         <footer>
         <div className= "container">
             <div className= "sec aboutus">
-                <h2>About Us</h2>
+                <h4>About Us</h4>
                 <p>Offering striking views of the Indian Ocean, Beira Lake and the city beyond, our 500 guest rooms and suites, and 41 serviced apartments are tastefully furnished to complement the urban-oceanside location and are among the largest in Colombo.</p>
                 
                 <ul className="sci">
@@ -20,7 +20,7 @@ const Footer = () => {
             
             </div>
             <div className= "sec quickLinks">
-                <h2>Quick Links</h2>
+                <h4>Quick Links</h4>
                 <ul>
                     <li><a href="#">About</a></li>
                     <li><a href="#">About</a></li>
@@ -30,11 +30,11 @@ const Footer = () => {
                 </ul>
            </div>
            <div className= "sec contact">
-           <h2>Contact Us</h2>
+           <h4>Contact Us</h4>
            <ul className="info"> 
                 <li>
                     <span><i class="fas fa-map-marker-alt"></i></span>
-                    <span>119/2<br></br>moratuwa</span>
+                    <span>119/2, moratuwa</span>
                 </li>
                 <li>
                     <span><i class="fas fa-phone-alt"></i></span>
@@ -42,11 +42,11 @@ const Footer = () => {
                 </li>
                 <li>
                     <span><i class="fas fa-envelope"></i></span>
-                    <span>119/2<br></br>moratuwa</span>
+                    <span>119/2, moratuwa</span>
                 </li>
                 <li>
                     <span><i class="fas fa-map-marker-alt"></i></span>
-                    <span>119/2<br></br>moratuwa</span>
+                    <span>119/2, moratuwa</span>
                 </li>
            </ul>
                </div>

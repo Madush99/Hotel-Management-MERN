@@ -1,27 +1,10 @@
 
-*
-{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
-    font-size: 12px;
-}
-
-body{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    min-height: 100vh;
-    flex-direction: column;
-    background: #ede7f6;
-}
 footer{
     position: relative;
     width: 100%;
-    height: auto;
+    height: 80% !important;
     padding: 50px 100px;
-    background: #111;
+    background: #222;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -35,27 +18,28 @@ footer .container
 }
 footer .container .sec{
     margin-right: 30px;
+    margin-top: -55px;
 }
 
 footer .container .sec.aboutus{
     width: 40%;
 }
 
-footer .container h2{
+footer .container h4{
     position: relative;
     color: #fff;
     font-weight: 500;
     margin-bottom: 15px;
 }
 
-footer .container h2::before{
+footer .container h4::before{
     content: '';
     position: absolute;
     bottom: -5px;
     left: 0;
     width: 50px;
     height: 2px;
-    background: #f00;
+    background: gold;
 }
 
 footer p{
@@ -90,7 +74,7 @@ footer p{
 
 .sci li a .fab{
     color: #fff;
-    font-size: 20px;
+    font-size: 17px;
 }
 
 .quickLinks{
@@ -107,6 +91,11 @@ footer p{
     margin-bottom: 10px;
     display: inline-block;
 }
+
+.info li i{
+    color: gold;
+}
+
 .quickLinks ul li a:hover{
     color: #fff;
 }
@@ -126,7 +115,7 @@ footer p{
 }
 .contact .info li span:nth-child(1){
     color: #fff;
-    font-size: 20px;
+    font-size: 17px;
     margin-right: 10px;
 }
 
