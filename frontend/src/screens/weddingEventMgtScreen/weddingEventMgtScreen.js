@@ -6,6 +6,8 @@ import SignupScreen from '../WeddingInsertScreen/weddingInsertScreen'
 import ConInsertScreen from '../conferenceInsertScreen/conferenceInsert'
 import ConferenceListScreen from '../conferenceListScreen/conferenceListScreen'
 import { Container } from 'react-bootstrap';
+import ConferenceReport from '../ConferenceReport/ConferenceReport.js'
+import WeddingReport from '../WeddingReportScreen/WeddingReportScreen.js'
 
 const { TabPane } = Tabs;
 
@@ -15,13 +17,7 @@ const WedEventMgtScreen = () => {
           <Container>
                 <div className="ml-3">
                       <h2 className="text-center m-2" style={{ fontSize: "35px" }}>WEDDING & CONFERENCE MANAGEMENT</h2>
-                      <Row className='align-items-center'>
-                              <Col className='text-right'>
-                                    <Button className='my-3'>
-                                          <i className='fas fa-plus'>  Generate Report</i>
-                                    </Button>
-                              </Col>
-                        </Row>
+
                       <Tabs defaultActiveKey="1">
                             <TabPane tab="WEDDING HALL LIST" key="1">
                                   <div className="row">
@@ -52,11 +48,20 @@ const WedEventMgtScreen = () => {
 
                             </TabPane>
                             
+                            <TabPane tab="CONFERENCE ROOM REPORT" key="5">
+                                  <div className="row">
+                                        <ConferenceReport/>
+
+                                  </div>
+                            </TabPane>
+
+                            <TabPane tab="WEDDING HALL REPORT" key="6">
+                                  <div className="row">
+                                        <WeddingReport/>
+
+                                  </div>
+                            </TabPane>
                             
-                            
-
-
-
                             
                       </Tabs>
                 </div>
