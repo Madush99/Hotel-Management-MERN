@@ -70,7 +70,7 @@ const RestaurantgementScreen = () => {
                               <TabPane tab="RESERVATIONS" key="4">
 
                                     <div className="row">
-                                          <PDFExport ref={pdfExportComponent} paperSize="A4">
+                                          <PDFExport ref={pdfExportComponent} paperSize="A3" margin='100'>
                                                 <ReservationReport />
                                           </PDFExport>
                                     </div>

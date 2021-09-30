@@ -6,11 +6,14 @@ import FormContainer from '../../components/FormContainer'
 import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import { listBookings } from '../../actions/tableBookinAction'
-
-
+import logo from './riverfront.png'
+import './reservation.css'
 
 const ReservationReport = (history) => {
     const dispatch = useDispatch()
+
+    let count = 1
+    let tot = 0
 
     const tablebookingList = useSelector(state => state.tablebookingList)
     const { loading, error, tablebookings } = tablebookingList
@@ -29,42 +32,62 @@ const ReservationReport = (history) => {
 
     return (
         <>
-            <h1 style={{marginTop:"50px"}}><center>Table Reservation Report</center></h1>
+        <div style={{background:'#1b1b1b'}}>
+            <Container className='justify-content-center' style={{width:'50%'}}>
+            <img style={{width:'50px'}} src={logo} className='smallimg'></img>
+            
            
-                <Container style={{marginTop:"-50px"}} >
+            </Container>
+           
+                
+               
                 {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message>
                     : (
-                       <Container style={{marginLeft:"150px", marginRight:"300px"}}>
-                             {tablebookings.map((bookings)=>{
-                                return <Row key={bookings._id}>
-                                    <Col md={3}>
-                                    <h1>Customer Name:</h1>
-                                    <h1>Restaurant Name:</h1>
-                                    <h1>Date:</h1>
-                                    <h1>Phone No:</h1>
-                                    <h1>Adults:</h1>
-                                    <h1>Chidrens:</h1>
-                                    <h1>Reserve Time:</h1>
-                                    </Col>
-
-                                    <Col md={8} style={{marginLeft:"-80px"}} >
-                                    <h1>{bookings.userid}</h1>
-                                    <h1>{bookings.restaurantid}</h1>
-                                    <h1>{bookings.date}</h1>
-                                    <h1>{bookings.phoneNo}</h1>
-                                    <h1>{bookings.adults}</h1>
-                                    <h1>{bookings.childrens}</h1>
-                                    <h1>{bookings.time}</h1>
-                                    <br />
-                                    </Col>
-                                   
-                                    
-                                </Row>
-                             })}
-                                
+                        
+                        
+                       <Container className='tbl' style={{boxSizing:'border-box'}}>
+                            
+                            <p className='pp' ><b>~~~~~Table Reservation Report~~~~~</b></p>
+                             <br /><center>
+                                          <tr className='thh'>
+                                                <th  style={{ paddingLeft: '20px' }}>NO </th>
+                           
+                                                <th style={{ paddingLeft: '20px' }}>USER NAME</th>
+                                                <th style={{ paddingLeft: '20px' }}>RESTAURANT NAME</th>
+                                                <th style={{ paddingLeft: '20px' }}>DATE</th>
+                                                <th style={{ paddingLeft: '20px' }}>PHONE NO</th>
+                                                <th style={{ paddingLeft: '20px' }}>ADULTS</th>
+                                                <th style={{ paddingLeft: '20px' }}>CHILDRENS</th>
+                                                <th style={{ paddingLeft: '20px' }}>TIME</th>
+                                                <th style={{ paddingLeft: '20px' }}>Status</th>
+                                          </tr>
+                                         
+                                         
+                                          {tablebookings.map((tablebookings) => (
+                                            
+                                            <tr className='tdd' key={tablebookings._id} >
+                                                      <td style={{ paddingLeft: '10px' }}>{tot = count++}</td>
+                                                     
+                                                      <td style={{ paddingLeft: '10px' }}>{tablebookings.userName}</td>
+                                                      <td style={{ paddingLeft: '10px' }}>{tablebookings.restaurantName}</td>
+                                                      <td style={{ paddingLeft: '10px' }}>{tablebookings.date}</td>
+                                                      <td style={{ paddingLeft: '10px' }}>{tablebookings.phoneNo}</td>
+                                                      <td style={{ paddingLeft: '10px' }}>{tablebookings.adults}</td>
+                                                      <td style={{ paddingLeft: '10px' }}>{tablebookings.childrens}</td>
+                                                      <td style={{ paddingLeft: '10px' }}>{tablebookings.time}</td>
+                                                      <td style={{ paddingLeft: '20px' }}>{tablebookings.status}</td>
+                                                </tr>
+                                               
+                                          ))}
+                                          </center>
+                                          <br />
+                                        <p className='pp' ><b>Total Number of Table Bookings: {tot}</b></p>
+                                           
+                                          
+                                        
                        </Container>
                     )}
-            </Container>
+          </div>
            
         </>
     )
