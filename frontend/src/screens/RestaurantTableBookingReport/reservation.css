@@ -16,3 +16,10 @@
    text-align: center;
    
 }
+.generate{
+    margin-bottom: 20px;
+   text-align: right;
+}
+.report{
+    border-radius: 25px;
+}
