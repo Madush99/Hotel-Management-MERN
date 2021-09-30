@@ -20,13 +20,13 @@ const Footer = () => {
             
             </div>
             <div className= "sec quickLinks">
-                <h4>Quick Links</h4>
+                <h4>Created By</h4>
                 <ul>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="#">Madusanka</a></li>
+                    <li><a href="#">Agasthi</a></li>
+                    <li><a href="#">Ushini</a></li>
+                    <li><a href="#">Bulner</a></li>
+                   
                 </ul>
            </div>
            <div className= "sec contact">
