@@ -95,7 +95,7 @@ const FoodCreateScreen = ({ match, history }) => {
                                           <Form.Label>Category</Form.Label>
                                           <Form.Control
                                                 type='name'
-                                                placeholder='Enter name'
+                                                placeholder='Enter Category'
                                                 value={category}
                                                 onChange={(e) => setCategory(e.target.value)}
                                           ></Form.Control>
@@ -115,7 +115,7 @@ const FoodCreateScreen = ({ match, history }) => {
                                           <Form.Label>Price</Form.Label>
                                           <Form.Control
                                                 type='number'
-                                                placeholder='Enter tables'
+                                                placeholder='price'
                                                 value={price}
                                                 onChange={(e) => setPrice(e.target.value)}
                                           ></Form.Control>
@@ -125,10 +125,10 @@ const FoodCreateScreen = ({ match, history }) => {
 
 
                                     <Form.Group controlId='description'>
-                                          <Form.Label>Descrition</Form.Label>
+                                          <Form.Label>Description</Form.Label>
                                           <Form.Control
                                                 type='text'
-                                                placeholder='Enter price'
+                                                placeholder='Enter Description'
                                                 value={description}
                                                 onChange={(e) => setDescription(e.target.value)}
                                           ></Form.Control>
