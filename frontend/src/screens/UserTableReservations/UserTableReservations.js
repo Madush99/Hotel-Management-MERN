@@ -52,15 +52,18 @@ const UserTableReservations = () => {
                     <h1>Error...</h1>
                 ) : (
                     myReservations.map(reserve => {
-                        return <div className="row">
+                        return <div className="row justify-content-center">
                             <div className="col-md-6 my-auto">
                                 <div className='bs m-1 p-2 '>
-                                    <h1>Table Reservations</h1>
-                                    <p>ReservationId : {reserve._id}</p>
-                                    <p>Restaurant Name : {reserve.restaurantName}</p>
-                                    <p><b>Date : </b>{reserve.date}</p>
-                                    <p><b>Status</b> : {reserve.status === 'booked' ? (<Tag color="green">Confirmed</Tag>) : (<Tag color="red"><i class="fa fa-times" ></i> 
-                                        Cancelled</Tag>)}</p>
+                                    <h1><center>Table Reservations</center></h1>
+                                    <br />
+                                    <center>
+                                        <p><b>ReservationId : {reserve._id}</b></p>
+                                        <p><b>Restaurant Name : {reserve.restaurantName}</b></p>
+                                        <p><b>Date : {reserve.date}</b></p>
+                                        <p><b>Status</b> : {reserve.status === 'booked' ? (<Tag color="green">Confirmed</Tag>) : (<Tag color="red"><i class="fa fa-times" ></i>
+                                            Cancelled</Tag>)}</p>
+                                    </center>
                                     <div className='text-right'>
                                         {reserve.status === 'booked' && (<button className='btn btn-outline-danger' style={{ borderRadius: '20px' }} onClick={() => cancelReservation(reserve._id, reserve.restaurantid)}>Cancel Booking</button>)}
                                     </div>
