@@ -67,7 +67,7 @@ const RestaurantDetail = ({ match, history }) => {
                                         <br></br>
                                         <div class="vl">
                                             <div className="title">
-                                                <h6>Shangri-La Colombo</h6>
+                                                <h6>Grand Hotel</h6>
                                                 <h1> {restaurants.name}</h1>
                                             </div>
                                         </div>
@@ -77,7 +77,7 @@ const RestaurantDetail = ({ match, history }) => {
                                             <h6>The authentic Chinese restaurant in the city </h6>
                                             <hr></hr>
 
-                                            <p>Shangri-La’s signature Chinese restaurant Shang Palace celebrates cuisine steeped in rich tradition. The décor is inspired from Beijing’s traditional siheyuan houses and blends beautifully with modern luxury. </p>
+                                            <p>Grand Hotel’s signature Chinese restaurant Shang Palace celebrates cuisine steeped in rich tradition. The décor is inspired from Beijing’s traditional siheyuan houses and blends beautifully with modern luxury. </p>
                                             <p>At Shang Palace we invite you to enjoy the varied flavours of Dongbei, Sichuan and Canton. Succulent meats, fresh seafood, delicate dim sum, a range of Chinese teas and cocktails all feature in our extensive menu, allowing you to indulge in a true feast.</p>
                                             <p>Our weekday lunch set menu features intricate delicacies including flavourful soups, the finest dim sum, meats, seafood, rice and noodles. Available from Tuesday to Friday‬.</p>
                                             <p>Location - Level 3</p>
