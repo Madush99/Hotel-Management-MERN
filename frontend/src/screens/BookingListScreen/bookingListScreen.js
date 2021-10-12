@@ -78,7 +78,7 @@ const BookingListScreen = () => {
                                                       </td>
                                                       <td>
                                                             <div className='text-right'>
-                                                                  {book.status === 'booked' && (<button className='btn btn-primary' onClick={() => cancelBooking(book._id, book.roomid)}>Cancel Booking</button>)}
+                                                                  {book.status === 'booked' && (<button className='btn btn-danger' onClick={() => cancelBooking(book._id, book.roomid)}>Cancel Booking</button>)}
                                                             </div>
                                                       </td>
                                                 </tr>

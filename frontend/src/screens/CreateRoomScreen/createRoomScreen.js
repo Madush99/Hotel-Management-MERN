@@ -121,7 +121,7 @@ const CreateRoomScreen = ({ location, history }) => {
                               <Form onSubmit={submitHandler}>
                                     <Form.Group controlId='name'>
                                           <Form.Label>Room Name</Form.Label>
-                                          <Form.Control
+                                          <Form.Control required
                                                 type='name'
                                                 placeholder='Enter room name'
                                                 value={name}
@@ -131,7 +131,7 @@ const CreateRoomScreen = ({ location, history }) => {
 
                                     <Form.Group controlId='type'>
                                           <Form.Label>Max count</Form.Label>
-                                          <Form.Control
+                                          <Form.Control required
                                                 type='number'
                                                 placeholder='Enter max count'
                                                 value={maxcount}
@@ -141,7 +141,7 @@ const CreateRoomScreen = ({ location, history }) => {
 
                                     <Form.Group controlId='number'>
                                           <Form.Label>Features1</Form.Label>
-                                          <Form.Control
+                                          <Form.Control required
                                                 type='text'
                                                 placeholder='Enter features 1'
                                                 value={features1}
@@ -151,7 +151,7 @@ const CreateRoomScreen = ({ location, history }) => {
 
                                     <Form.Group controlId='text'>
                                           <Form.Label>Features2</Form.Label>
-                                          <Form.Control
+                                          <Form.Control required
                                                 type='text'
                                                 placeholder='Enter features 2'
                                                 value={features2}
@@ -161,7 +161,7 @@ const CreateRoomScreen = ({ location, history }) => {
 
                                     <Form.Group controlId='text'>
                                           <Form.Label>Features3</Form.Label>
-                                          <Form.Control
+                                          <Form.Control required
                                                 type='text'
                                                 placeholder='Enter features 3'
                                                 value={features3}

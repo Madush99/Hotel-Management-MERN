@@ -124,7 +124,7 @@ const BookingScreen = ({ match }) => {
                                                                               <li>{rooms.features4}</li>
                                                                               <li>{rooms.features5}</li>
                                                                         </ul>
-                                                                        <h6>Bath & Personal Care</h6>
+                                                                        <h6>Bath & Per sonal Care</h6>
                                                                         <ul class="b">
                                                                               <li>Walk-in shower and/or separate bathtub</li>
                                                                               <li>Bathroom mirror</li>

@@ -30,7 +30,7 @@ const UserProfile = () => {
                                                 <h1>Email : {user.email}</h1>
                                           </div>
                                     </TabPane>
-                                    <TabPane tab="ROOM BBOOKINGS" key="2">
+                                    <TabPane tab="ROOM BOOKINGS" key="2">
                                           <div className="row">
 
                                                 <UserRoomBookimgs />
