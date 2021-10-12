@@ -90,7 +90,8 @@ const reducer = combineReducers({
       restUpdate:restaurantUpdateReducer,
       conUpdate:conUpdateReducer,
       foodUpdate: foodUpdateRedudcer,
-      myOrders:orderListMyReducer
+      myOrders:orderListMyReducer,
+      wedUpdate:wedUpdateReducer
 })
 
 
