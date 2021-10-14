@@ -22,7 +22,7 @@ Steps:
 1. Install Dependancies(Frontend & Backend) 
 ```npm install
    cd frontend
-   npm install ```
+   npm install```
    
  2. Run
  ```# Run frontend (:3000) & backend(:6500)
