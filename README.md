@@ -23,6 +23,7 @@ Steps:
 ```npm install
    cd frontend
    npm install ```
+   
  2. Run
  ```# Run frontend (:3000) & backend(:6500)
     npm run client 
