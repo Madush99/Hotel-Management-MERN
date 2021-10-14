@@ -4,7 +4,6 @@ Group-ID : 2021S2_REG_WE_16
 Group Details :
 
 |Name|Student_ID|Username|
-|:---:|:--------:|:------:|
 |Avindika H.M.U|IT19109268|ushiniavindika|
 |Sankalana G.L.A|IT19124940|Agasthi98|
 |Madusanka G.A.P|IT19123950|Madush99|
