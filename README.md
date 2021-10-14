@@ -34,4 +34,5 @@ Steps:
     npm run client 
     
    # Run backend only
-    npm run server```
+    npm run server
+    ```
