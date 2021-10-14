@@ -22,7 +22,8 @@ https://grandhotel.herokuapp.com/
 
 Steps:
 1. Install Dependancies(Frontend & Backend) 
-```npm install
+```
+   npm install
    cd frontend
    npm install
    ```
