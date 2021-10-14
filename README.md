@@ -17,3 +17,15 @@ Used MERN Stack
 
 How To Get Started
 ```https://grandhotel.herokuapp.com/```
+
+Steps:
+1. Install Dependancies(Frontend & Backend) 
+```npm install
+   cd frontend
+   npm install ```
+ 2. Run
+ ```# Run frontend (:3000) & backend(:6500)
+    npm run client 
+    
+    # Run backend only
+    npm run server ```
