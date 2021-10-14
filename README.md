@@ -27,8 +27,8 @@ Steps:
    
 2. Run
  ```
- # Run frontend (:3000) & backend(:6500)
+   # Run frontend (:3000) & backend(:6500)
     npm run client 
     
-    # Run backend only
+   # Run backend only
     npm run server```
