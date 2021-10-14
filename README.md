@@ -16,7 +16,9 @@ Technologies
 Used MERN Stack
 
 How To Get Started
-```https://grandhotel.herokuapp.com/```
+```
+https://grandhotel.herokuapp.com/
+```
 
 Steps:
 1. Install Dependancies(Frontend & Backend) 
